@@ -16,8 +16,8 @@ public class LostBallScript extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Damn its hot today! I feel gross. Time to shower I suppose.");
-            addText("Time to shower I suppose.Yep.");
+            addText("Damn its hot today! I feel gross.");
+            addText("Time to shower I suppose.");
             addText("Yep. Just another day in Mantle.");
         }});
 
