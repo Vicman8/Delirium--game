@@ -1,6 +1,8 @@
 package Level;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.Keyboard;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
 import Utils.Direction;
@@ -93,6 +95,10 @@ public class NPC extends MapEntity {
     public void update(Player player) {
         if (!isLocked) {
             this.performAction(player);
+        }
+
+        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
+            setMapEntityStatus(mapEntityStatus.REMOVED);
         }
         super.update();
     }

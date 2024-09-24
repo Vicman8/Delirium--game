@@ -179,6 +179,27 @@ public class Rectangle implements IntersectableRectangle {
 		return new Rectangle(x, y, getWidth(), getHeight());
 	}
 
+	public boolean isNear(IntersectableRectangle other, float threshold) {
+		// Get the intersection rectangles for both objects
+		Rectangle thisRect = getIntersectRectangle();
+		Rectangle otherRect = other.getIntersectRectangle();
+		
+		// Check if they are already intersecting
+		if (intersects(other)) {
+			return true;
+		}
+	
+		// Check if the horizontal and vertical distances between the edges are within the threshold
+		float leftDist = Math.abs(thisRect.getX1() - otherRect.getX2());
+		float rightDist = Math.abs(thisRect.getX2() - otherRect.getX1());
+		float topDist = Math.abs(thisRect.getY1() - otherRect.getY2());
+		float bottomDist = Math.abs(thisRect.getY2() - otherRect.getY1());
+	
+		// Return true if any edge is within the threshold
+		return leftDist <= threshold || rightDist <= threshold || topDist <= threshold || bottomDist <= threshold;
+	}
+	
+
 	// check if this intersects with another rectangle
 	public boolean intersects(IntersectableRectangle other) {
 		Rectangle intersectRectangle = getIntersectRectangle();

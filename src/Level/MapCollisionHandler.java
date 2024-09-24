@@ -1,5 +1,7 @@
 package Level;
 
+import Engine.Key;
+import Engine.Keyboard;
 import GameObject.GameObject;
 import Utils.Direction;
 import Utils.Point;
@@ -19,6 +21,7 @@ public class MapCollisionHandler {
         for (int i = -1; i <= numberOfTilesToCheck + 1; i++) {
             MapTile mapTile = map.getMapTile(Math.round(tileIndex.x), Math.round(tileIndex.y + i));
             if (mapTile != null && hasCollidedWithMapEntity(gameObject, mapTile, direction)) {
+
                 entityCollidedWith = mapTile;
                 float adjustedPositionX = gameObject.getX();
                 if (direction == Direction.RIGHT) {
