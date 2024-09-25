@@ -7,7 +7,9 @@ import Screens.CreditsScreen;
 import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
 import Screens.PlayLevelTestScreen;
+import Screens.ShoreScreen;
 import Screens.MenuScreen;
+import Screens.OutskirtsScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -46,14 +48,14 @@ public class ScreenCoordinator extends Screen {
 					case MENU:
 						currentScreen = new MenuScreen(this);
 						break;
-					case LEVEL:
-						currentScreen = new PlayLevelScreen(this);
+					case SHORE:
+						currentScreen = new ShoreScreen(this);
 						break;
-					case LEVEL2:
+					case VILLAGE:
 						currentScreen = new PlayLevelTestScreen(this);
 						break;
-					case CREDITS:
-						currentScreen = new CreditsScreen(this);
+					case OUTSKIRTS:
+						currentScreen = new OutskirtsScreen(this);
 						break;
 				}
 				currentScreen.initialize();

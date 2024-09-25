@@ -8,6 +8,7 @@ import Level.NPC;
 import NPCs.Bug;
 import NPCs.Dinosaur;
 import NPCs.Walrus;
+import NPCs.Student;
 import Scripts.MyMap.*;
 import Tilesets.CommonTileset;
 import Utils.Point;
@@ -36,6 +37,10 @@ public class MyMap extends Map {
         //dinosaur.setExistenceFlag("hasTalkedToDino");
         dinosaur.setInteractScript(new DinoScript());
         npcs.add(dinosaur);
+
+        Student student = new Student(4, getMapTile(5, 20).getLocation());
+        student.setInteractScript(new StudentScript());
+        npcs.add(student);
 
         return npcs;
     }

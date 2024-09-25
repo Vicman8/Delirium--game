@@ -30,17 +30,17 @@ public class MenuScreen extends Screen {
     @Override
     public void initialize() {
 
-        title = new SpriteFont("MEDIEVIRIUM", 200, 123, "Arial", 30, new Color(0, 0, 0));
+        title = new SpriteFont("MEDIEVIRIUM", 70, 80, "Arial", 30, new Color(0, 0, 0));
         title.setFontStyle(2);
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
-        playGame = new SpriteFont("THE OUTSKIRTS", 400, 323, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("SHORE", 70, 323, "Arial", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("CREDITS", 400, 423, "Arial", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("OUTSKIRTS", 70, 423, "Arial", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        playTest = new SpriteFont("VILLAGE", 400, 523, "Arial", 30, new Color(49, 207, 240));
+        playTest = new SpriteFont("VILLAGE", 70, 523, "Arial", 30, new Color(49, 207, 240));
         playTest.setOutlineColor(Color.black);
         playTest.setOutlineThickness(3);
         background = new MenuMap();
@@ -79,19 +79,19 @@ public class MenuScreen extends Screen {
             playGame.setColor(new Color(255, 215, 0));
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(49, 207, 240));
-            pointerLocationX = 370;
+            pointerLocationX = 40;
             pointerLocationY = 330;
         } else if (currentMenuItemHovered == 1) {
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(255, 215, 0));
             playTest.setColor(new Color(49, 207, 240));
-            pointerLocationX = 370;
+            pointerLocationX = 40;
             pointerLocationY = 430;
         } else if (currentMenuItemHovered == 2){
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(255, 215, 0));
-            pointerLocationX = 370;
+            pointerLocationX = 40;
             pointerLocationY = 530;
         }
 
@@ -102,11 +102,11 @@ public class MenuScreen extends Screen {
         if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
-                screenCoordinator.setGameState(GameState.LEVEL);
+                screenCoordinator.setGameState(GameState.SHORE);
             } else if (menuItemSelected == 1) {
-                screenCoordinator.setGameState(GameState.CREDITS);
+                screenCoordinator.setGameState(GameState.OUTSKIRTS);
             } else if (menuItemSelected == 2) {
-                screenCoordinator.setGameState(GameState.LEVEL2);
+                screenCoordinator.setGameState(GameState.VILLAGE);
             }
         }
     }
