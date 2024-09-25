@@ -9,6 +9,9 @@ import NPCs.Bug;
 import NPCs.Dinosaur;
 import NPCs.Walrus;
 import NPCs.Student;
+import NPCs.Stache;
+import NPCs.GMA;
+import NPCs.PubSafety;
 import Scripts.MyMap.*;
 import Tilesets.CommonTileset;
 import Utils.Point;
@@ -25,18 +28,18 @@ public class MyMap extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        walrus.setInteractScript(new WalrusScript());
-        npcs.add(walrus);
+        Stache stache = new Stache(1, getMapTile(4, 28).getLocation().subtractY(40));
+        stache.setInteractScript(new WalrusScript());
+        npcs.add(stache);
 
-        Bug bug = new Bug(3, getMapTile(27, 5).getLocation().subtractX(20));
-        bug.setInteractScript(new BugScript());
-        npcs.add(bug);
+        GMA gma = new GMA(3, getMapTile(27, 5).getLocation().subtractX(20));
+        gma.setInteractScript(new BugScript());
+        npcs.add(gma);
         
-        Dinosaur dinosaur = new Dinosaur(2, getMapTile(15, 1).getLocation());
+        PubSafety pubsafety = new PubSafety(2, getMapTile(15, 1).getLocation());
         //dinosaur.setExistenceFlag("hasTalkedToDino");
-        dinosaur.setInteractScript(new DinoScript());
-        npcs.add(dinosaur);
+        pubsafety.setInteractScript(new DinoScript());
+        npcs.add(pubsafety);
 
         Student student = new Student(4, getMapTile(5, 20).getLocation());
         student.setInteractScript(new StudentScript());
