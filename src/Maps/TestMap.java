@@ -23,8 +23,20 @@ public class TestMap extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        enhancedMapTiles.add(pushableRock);
+        // PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
+        // enhancedMapTiles.add(pushableRock);
+
+        for (MapTile tile : mapTiles) {
+            if (tile.getTileIndex() == 3) {
+                int x = Math.round(tile.getX() / tileset.getScaledSpriteWidth());
+                int y = Math.round(tile.getY() / tileset.getScaledSpriteHeight());
+
+                setMapTile(x, y, tileset.getTile(0).build(tile.getX(), tile.getY()));
+
+                PushableRock pushableRock = new PushableRock(getMapTile(x, y).getLocation());
+                enhancedMapTiles.add(pushableRock);
+            }
+        }
 
         return enhancedMapTiles;
     }

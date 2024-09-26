@@ -29,6 +29,7 @@ public class MenuScreen extends Screen {
 
     @Override
     public void initialize() {
+        playGame = new SpriteFont("PLAY GAME do it", 200, 123, "Arial", 30, new Color(49, 207, 240));
 
         title = new SpriteFont("MEDIEVIRIUM", 60, 60, "Arial", 50, new Color(0, 0, 0));
         title.setFontStyle(0);

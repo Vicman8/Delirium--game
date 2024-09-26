@@ -3,6 +3,11 @@ package Game;
 import Engine.GameWindow;
 import Engine.ScreenManager;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import Game.ScreenCoordinator;
+
 /*
  * The game starts here
  * This class just starts up a GameWindow and attaches the ScreenCoordinator to the ScreenManager instance in the GameWindow
@@ -19,5 +24,9 @@ public class Game {
         ScreenManager screenManager = gameWindow.getScreenManager();
         screenManager.setCurrentScreen(new ScreenCoordinator());
         gameWindow.startGame();
+        
+        
     }
 }
+
+
