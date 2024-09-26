@@ -20,7 +20,7 @@ public class StudentScript extends Script {
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
                 addRequirement(new FlagRequirement("hasTalkedToStudent", false));
                 addScriptAction(new TextboxScriptAction() {{
-                    addText("Hey. You may have a better time \ncooling off some other way.");
+                    addText("Sweaty Student: Hey. You may have a better time \ncooling off some other way.");
                     addText("Kaegen: The line’s too long!\nIt's going outside the bathroom door!");
                     addText("Kaegen: Guess it’s time to use the fan in my room\nagain");
                     addText("Kaegen: It’s been so long since I’ve showered.");
