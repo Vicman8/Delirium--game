@@ -27,6 +27,7 @@ public class PlayLevelTestScreen extends Screen {
         // setup state
         flagManager = new FlagManager();
         flagManager.addFlag("hasTalkedToWalrus", false);
+        flagManager.addFlag("introStarted", false);
 
         // define/setup map
         map = new MyMap();

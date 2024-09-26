@@ -18,18 +18,19 @@ public class StudentScript extends Script {
 
         scriptActions.add(new ConditionalScriptAction() {{
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
-                addRequirement(new FlagRequirement("hasTalkedToWalrus", false));
+                addRequirement(new FlagRequirement("hasTalkedToStudent", false));
                 addScriptAction(new TextboxScriptAction() {{
-                    addText("Hi Cat!");
-                    addText("Being near the water is always nice, \nbut this climate is a little too warm for me.");
-                    addText("Someone should invent a machine for that, \nlike a cooler downer machine.");
+                    addText("Hey. You may have a better time \ncooling off some other way.");
+                    addText("Kaegen: The line’s too long!\nIt's going outside the bathroom door!");
+                    addText("Kaegen: Guess it’s time to use the fan in my room\nagain");
+                    addText("Kaegen: It’s been so long since I’ve showered.");
                 }});
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToWalrus", true));
             }});
 
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
-                addRequirement(new FlagRequirement("hasTalkedToWalrus", true));
-                addScriptAction(new TextboxScriptAction("I... \nI'm not sure sure if I love doing walrus things..."));
+                addRequirement(new FlagRequirement("hasTalkedToStudent", true));
+                addScriptAction(new TextboxScriptAction("I should head back to my room.\nThe fan always works when I need it to."));
             }});
         }});
 
