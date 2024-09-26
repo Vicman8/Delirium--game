@@ -4,13 +4,13 @@ import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.Map;
-import Maps.MenuMap;
+import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
 
 // This is the class for the main menu screen
-public class MenuScreen extends Screen {
+public class TitleScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected int currentMenuItemHovered = 0; // current menu item being "hovered" over
     protected int menuItemSelected = -1;
@@ -23,28 +23,22 @@ public class MenuScreen extends Screen {
     protected int pointerLocationX, pointerLocationY;
     protected KeyLocker keyLocker = new KeyLocker();
 
-    public MenuScreen(ScreenCoordinator screenCoordinator) {
+    public TitleScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     @Override
     public void initialize() {
-        playGame = new SpriteFont("PLAY GAME do it", 200, 123, "Arial", 30, new Color(49, 207, 240));
-
-        title = new SpriteFont("MEDIEVIRIUM", 70, 80, "Arial", 30, new Color(0, 0, 0));
-        title.setFontStyle(2);
-        title.setOutlineColor(Color.black);
-        title.setOutlineThickness(3);
-        playGame = new SpriteFont("SHORE", 70, 323, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("PLAY GAME", 200, 123, "Arial", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("OUTSKIRTS", 70, 423, "Arial", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("CREDITS", 200, 223, "Arial", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        playTest = new SpriteFont("VILLAGE", 70, 523, "Arial", 30, new Color(49, 207, 240));
+        playTest = new SpriteFont("PLAY TEST", 200, 323, "Arial", 30, new Color(49, 207, 240));
         playTest.setOutlineColor(Color.black);
         playTest.setOutlineThickness(3);
-        background = new MenuMap();
+        background = new TitleScreenMap();
         background.setAdjustCamera(false);
         keyPressTimer = 0;
         menuItemSelected = -1;
@@ -80,20 +74,20 @@ public class MenuScreen extends Screen {
             playGame.setColor(new Color(255, 215, 0));
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(49, 207, 240));
-            pointerLocationX = 40;
-            pointerLocationY = 330;
+            pointerLocationX = 170;
+            pointerLocationY = 130;
         } else if (currentMenuItemHovered == 1) {
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(255, 215, 0));
             playTest.setColor(new Color(49, 207, 240));
-            pointerLocationX = 40;
-            pointerLocationY = 430;
+            pointerLocationX = 170;
+            pointerLocationY = 230;
         } else if (currentMenuItemHovered == 2){
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(255, 215, 0));
-            pointerLocationX = 40;
-            pointerLocationY = 530;
+            pointerLocationX = 170;
+            pointerLocationY = 330;
         }
 
         // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen
@@ -103,11 +97,11 @@ public class MenuScreen extends Screen {
         if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
-                screenCoordinator.setGameState(GameState.SHORE);
+                screenCoordinator.setGameState(GameState.LEVEL);
             } else if (menuItemSelected == 1) {
-                screenCoordinator.setGameState(GameState.OUTSKIRTS);
+                screenCoordinator.setGameState(GameState.CREDITS);
             } else if (menuItemSelected == 2) {
-                screenCoordinator.setGameState(GameState.VILLAGE);
+                screenCoordinator.setGameState(GameState.LEVEL2);
             }
         }
     }
@@ -117,7 +111,6 @@ public class MenuScreen extends Screen {
         playGame.draw(graphicsHandler);
         credits.draw(graphicsHandler);
         playTest.draw(graphicsHandler);
-        title.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, new Color(49, 207, 240), Color.black, 2);
     }
 }
