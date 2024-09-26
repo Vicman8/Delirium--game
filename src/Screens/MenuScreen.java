@@ -30,8 +30,8 @@ public class MenuScreen extends Screen {
     @Override
     public void initialize() {
 
-        title = new SpriteFont("MEDIEVIRIUM", 70, 80, "Arial", 30, new Color(0, 0, 0));
-        title.setFontStyle(2);
+        title = new SpriteFont("MEDIEVIRIUM", 60, 60, "Arial", 50, new Color(0, 0, 0));
+        title.setFontStyle(0);
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
         playGame = new SpriteFont("SHORE", 70, 323, "Arial", 30, new Color(49, 207, 240));
