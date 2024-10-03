@@ -25,26 +25,8 @@ public class Game {
         screenManager.setCurrentScreen(new ScreenCoordinator());
         gameWindow.startGame();
         
-        //this is to run the heat mechanic on a new thread (the rest of the game would not run otherwise)
-        ExecutorService heatExecutor = Executors.newSingleThreadExecutor();
-        heatExecutor.submit(() -> {
-            
-            
-            int heatLevel = 0;
-
-            for(heatLevel = 0; heatLevel <= 100; heatLevel += 1){
-                /* TODO: if statement that only runs the rest of the loop is the gamestate is LEVEL
-                 * if (getGameState() == GameState.LEVEL){
-                 *      code below in here
-                 * }
-                */
-                    System.out.println("Heat Level = " + heatLevel);
-                    try {
-                        Thread.sleep(300);
-                    } catch (Exception e) {
-                        System.out.println("Sleep error!");
-                    }
-            }//end for
-        }); //end heatExecutor
+        
     }
 }
+
+

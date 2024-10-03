@@ -49,7 +49,7 @@ public abstract class Player extends GameObject {
         this.affectedByTriggers = true;
     }
 
-    public void update() {
+    public void update(Player player, NPC npc) {
         if (!isLocked) {
             moveAmountX = 0;
             moveAmountY = 0;
@@ -70,6 +70,9 @@ public abstract class Player extends GameObject {
 
         updateLockedKeys();
 
+        if(Keyboard.isKeyDown(Key.I) ){
+            System.out.println("In");
+        }
         // update player's animation
         super.update();
     }
@@ -261,5 +264,9 @@ public abstract class Player extends GameObject {
     //     super.draw(graphicsHandler);
     //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     // }
+    public void draw(GraphicsHandler graphicsHandler) {
+        super.draw(graphicsHandler);
+        //drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    }
     
 }
