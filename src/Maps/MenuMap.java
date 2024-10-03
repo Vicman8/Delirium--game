@@ -5,7 +5,7 @@ import Engine.ImageLoader;
 import GameObject.ImageEffect;
 import GameObject.Sprite;
 import Level.Map;
-import Tilesets.CommonTileset;
+import Tilesets.UncommonTileset;
 import Utils.Colors;
 import Utils.Point;
 
@@ -13,17 +13,19 @@ import Utils.Point;
 public class MenuMap extends Map {
 
     private Sprite cat;
+    private Sprite historyMan;
 
     public MenuMap() {
         
-         super("menu_screen_map.txt", new CommonTileset());
+         super("menu_screen_map.txt", new UncommonTileset());
         
-        Point catLocation = getMapTile(8, 4).getLocation().subtractX(6).subtractY(7);
-        cat = new Sprite(ImageLoader.loadSubImage("Cat.png", Colors.MAGENTA, 0, 0, 24, 24));
-        cat.setScale(3);
-        cat.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
-        cat.setLocation(catLocation.x, catLocation.y);
-        
+       
+
+        Point historyManLocation = getMapTile(8, 4).getLocation().subtractX(6).subtractY(7);
+        historyMan = new Sprite(ImageLoader.loadSubImage("MainCharacterWalk_1.png", Colors.MAGENTA, 0, 0, 29, 29));
+        historyMan.setScale(3);
+        historyMan.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+        historyMan.setLocation(historyManLocation.x, historyManLocation.y);
         
          
     }
@@ -31,6 +33,6 @@ public class MenuMap extends Map {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        cat.draw(graphicsHandler);
+        historyMan.draw(graphicsHandler);
     }
 }
