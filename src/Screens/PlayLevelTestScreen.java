@@ -28,6 +28,7 @@ public class PlayLevelTestScreen extends Screen {
         flagManager = new FlagManager();
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("introStarted", false);
+        flagManager.addFlag("fanHasDied", false);
 
         // define/setup map
         map = new MyMap();

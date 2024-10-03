@@ -13,6 +13,7 @@ import NPCs.Student;
 import NPCs.Stache;
 import NPCs.GMA;
 import NPCs.PubSafety;
+import NPCs.Fan;
 import Scripts.MyMap.*;
 import Scripts.TestMap.LostBallScript;
 import Scripts.SimpleTextScript;
@@ -47,6 +48,10 @@ public class MyMap extends Map {
         Student student = new Student(4, getMapTile(5, 15).getLocation());
         student.setInteractScript(new WalrusScript());
         npcs.add(student);
+
+        Fan fan = new Fan(4,getMapTile(23,16).getLocation());
+        fan.setInteractScript(new FanScript());
+        npcs.add(fan);
 
         return npcs;
     }
