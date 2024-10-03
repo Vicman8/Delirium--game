@@ -29,7 +29,7 @@ public class FanScript extends Script {
                 addScriptAction(new TextboxScriptAction() {{
                     addText("Kaegen turns on the fan.");
                     addText("Kaegen: Thank god I have this fan!\nIt at least keeps me from passing out!");
-                    addText("I REALLy have to shower though.");
+                    addText("Kaegen: I REALLY have to shower though.");
                 }});
             }});
     
@@ -40,9 +40,9 @@ public class FanScript extends Script {
                     addText("Kaegen turns on the fan.");
                     addText("After blowing air for a few seconds, it short-circuits.");
                     addText("Kaegen: Ok! I've had enough of this!");
-                    addText("GIVE ME A.C OR GIVE ME DEATH!!!!");
-                    addText("I... feel weak. ");
-                    addText("Shouldn’t... have... shouted.");
+                    addText("Kaegen: GIVE ME A.C OR GIVE ME DEATH!!!!");
+                    addText("Kaegen: I... feel weak. ");
+                    addText("Kaegen: Shouldn’t... have... shouted.");
                 }});
                 addScriptAction(new ChangeFlagScriptAction("fanHasDied", true));
             }});
