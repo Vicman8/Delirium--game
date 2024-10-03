@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class PubSafety extends NPC {
 
     public PubSafety(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("PubSafetyNPC.png"), 30, 30), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("PublicSafetyMedieval.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override

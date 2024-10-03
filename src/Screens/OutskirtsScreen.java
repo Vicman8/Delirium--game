@@ -7,6 +7,7 @@ import Game.ScreenCoordinator;
 import Level.*;
 import Maps.OutskirtsMap;
 import Players.Cat;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
 
 public class OutskirtsScreen extends Screen{
@@ -31,7 +32,7 @@ public class OutskirtsScreen extends Screen{
         map.setFlagManager(flagManager);
 
         // setup player
-        player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
