@@ -28,6 +28,7 @@ public class PlayLevelTestScreen extends Screen {
         // setup state
         flagManager = new FlagManager();
         flagManager.addFlag("hasTalkedToWalrus", false);
+        flagManager.addFlag("hasTalkedToStudent", false);
         flagManager.addFlag("introStarted", false);
         flagManager.addFlag("fanHasDied", false);
 

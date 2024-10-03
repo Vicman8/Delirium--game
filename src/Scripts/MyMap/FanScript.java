@@ -24,9 +24,18 @@ public class FanScript extends Script {
         scriptActions.add(new ConditionalScriptAction() {{
 
             //Add a condition for when Kaegen does attempt to use the fan when he hasn't visited the student
+            addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
+                addRequirement(new FlagRequirement("hasTalkedToStudent", false));
+                addScriptAction(new TextboxScriptAction() {{
+                    addText("Kaegen turns on the fan.");
+                    addText("Kaegen: Thank god I have this fan!\nIt at least keeps me from passing out!");
+                    addText("I REALLy have to shower though.");
+                }});
+            }});
     
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
                 addRequirement(new FlagRequirement("hasTalkedToFan", false));
+                addRequirement(new FlagRequirement("hasTalkedToStudent", true));
                 addScriptAction(new TextboxScriptAction() {{
                     addText("Kaegen turns on the fan.");
                     addText("After blowing air for a few seconds, it short-circuits.");
