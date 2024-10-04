@@ -35,7 +35,7 @@ public class MenuScreen extends Screen {
         title.setFontStyle(0);
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
-        playGame = new SpriteFont("SHORE", 70, 323, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("DORM", 70, 323, "Arial", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
         credits = new SpriteFont("OUTSKIRTS", 70, 423, "Arial", 30, new Color(49, 207, 240));
@@ -103,7 +103,7 @@ public class MenuScreen extends Screen {
         if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
-                screenCoordinator.setGameState(GameState.SHORE);
+                screenCoordinator.setGameState(GameState.DORM);
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.OUTSKIRTS);
             } else if (menuItemSelected == 2) {

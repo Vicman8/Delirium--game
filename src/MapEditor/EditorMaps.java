@@ -7,6 +7,7 @@ import Maps.ShoreMap;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.MenuMap;
+import Maps.MoutainviewDorm;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class EditorMaps {
             add("MenuMap");
             add("OutskirtsMap");
             add("ShoreMap");
+            add("MountainviewDorm");
         }};
     }
 
@@ -36,6 +38,8 @@ public class EditorMaps {
                 return new OutskirtsMap();
             case "ShoreMap":
                 return new ShoreMap();
+            case "MountainviewDorm":
+                return new MoutainviewDorm();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

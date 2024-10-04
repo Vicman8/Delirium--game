@@ -4,6 +4,7 @@ import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Screens.CreditsScreen;
+import Screens.DormScreen;
 import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
 import Screens.PlayLevelTestScreen;
@@ -48,8 +49,8 @@ public class ScreenCoordinator extends Screen {
 					case MENU:
 						currentScreen = new MenuScreen(this);
 						break;
-					case SHORE:
-						currentScreen = new ShoreScreen(this);
+					case DORM:
+						currentScreen = new DormScreen(this);
 						break;
 					case VILLAGE:
 						currentScreen = new PlayLevelTestScreen(this);
