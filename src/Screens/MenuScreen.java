@@ -29,19 +29,19 @@ public class MenuScreen extends Screen {
 
     @Override
     public void initialize() {
-        playGame = new SpriteFont("PLAY GAME do it", 200, 123, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("PLAY GAME do it", 200, 123, "Algerian", 30, new Color(49, 207, 240));
 
-        title = new SpriteFont("MEDIEVIRIUM", 60, 60, "Arial", 50, new Color(0, 0, 0));
+        title = new SpriteFont("MEDIEVIRIUM", 60, 60, "Algerian", 50, new Color(0, 0, 0));
         title.setFontStyle(0);
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
-        playGame = new SpriteFont("SHORE", 70, 323, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("SHORE", 70, 323, "Algerian", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("OUTSKIRTS", 70, 423, "Arial", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("OUTSKIRTS", 70, 423, "Algerian", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        playTest = new SpriteFont("VILLAGE", 70, 523, "Arial", 30, new Color(49, 207, 240));
+        playTest = new SpriteFont("VILLAGE", 70, 523, "Algerian", 30, new Color(49, 207, 240));
         playTest.setOutlineColor(Color.black);
         playTest.setOutlineThickness(3);
         background = new MenuMap();
