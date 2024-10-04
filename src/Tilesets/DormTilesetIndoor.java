@@ -60,6 +60,8 @@ public class DormTilesetIndoor extends Tileset {
 
         mapTiles.add(windowTile);
 
+        
+
         Frame tapestryFrame = new FrameBuilder(getSubImage(0, 4))
                 .withScale(tileScale)
                 .build();
@@ -253,6 +255,39 @@ public class DormTilesetIndoor extends Tileset {
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(phoneTile);
+
+        Frame blackIndoorFrame = new FrameBuilder(getSubImage(5, 4))
+                .withScale(tileScale)
+                .build();
+        
+        MapTileBuilder blankIndoorTile= new MapTileBuilder(blackIndoorFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(blankIndoorTile);
+
+        Frame[] windowFramesMirror = new Frame[] {
+            new FrameBuilder(getSubImage(0, 2), 65)
+                .withScale(tileScale)
+                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                .build(),
+            new FrameBuilder(getSubImage(0, 3), 65)
+                    .withScale(tileScale)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .build(),
+            new FrameBuilder(getSubImage(0, 2), 65)
+                    .withScale(tileScale)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .build(),
+            new FrameBuilder(getSubImage(0, 3), 65)
+                    .withScale(tileScale)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .build()
+        };
+
+        MapTileBuilder windowTileMirror = new MapTileBuilder(windowFramesMirror)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(windowTileMirror);
 
         return mapTiles;
     }
