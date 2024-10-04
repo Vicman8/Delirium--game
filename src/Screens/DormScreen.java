@@ -26,6 +26,9 @@ public class DormScreen extends Screen{
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
+        flagManager.addFlag("hasTalkedToStudent", false);
+        flagManager.addFlag("introStarted", false);
+        flagManager.addFlag("fanHasDied", false);
 
         // define/setup map
         map = new MoutainviewDorm();
