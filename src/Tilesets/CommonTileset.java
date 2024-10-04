@@ -228,7 +228,7 @@ public class CommonTileset extends Tileset {
 
         MapTileBuilder houseRoofBodyTile = new MapTileBuilder(grassFrame)
                 .withTopLayer(houseRoofBodyFrame)
-                .withTileType(TileType.PASSABLE);
+                .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(houseRoofBodyTile);
 
@@ -239,7 +239,7 @@ public class CommonTileset extends Tileset {
 
         MapTileBuilder leftHouseRoofTile = new MapTileBuilder(grassFrame)
                 .withTopLayer(leftHouseRoofFrame)
-                .withTileType(TileType.PASSABLE);
+                .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(leftHouseRoofTile);
 
@@ -251,7 +251,7 @@ public class CommonTileset extends Tileset {
 
         MapTileBuilder rightHouseRoofTile = new MapTileBuilder(grassFrame)
                 .withTopLayer(rightHouseRoofFrame)
-                .withTileType(TileType.PASSABLE);
+                .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(rightHouseRoofTile);
 
