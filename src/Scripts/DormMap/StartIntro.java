@@ -1,4 +1,4 @@
-package Scripts.MyMap;
+package Scripts.DormMap;
 
 import java.util.ArrayList;
 

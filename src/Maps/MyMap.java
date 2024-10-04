@@ -17,6 +17,8 @@ import NPCs.Fan;
 import Scripts.MyMap.*;
 import Scripts.TestMap.LostBallScript;
 import Scripts.SimpleTextScript;
+import Scripts.DormMap.FanScript;
+import Scripts.DormMap.StartIntro;
 import Tilesets.CommonTileset;
 import Utils.Point;
 

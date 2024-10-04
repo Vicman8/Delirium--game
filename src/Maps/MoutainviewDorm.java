@@ -4,9 +4,9 @@ import Level.Map;
 import Level.NPC;
 import Level.Tileset;
 import NPCs.Fan;
-import Scripts.MyMap.FanScript;
-import Scripts.MyMap.StartIntro;
 import Scripts.SimpleTextScript;
+import Scripts.DormMap.FanScript;
+import Scripts.DormMap.StartIntro;
 import Tilesets.DormTilesetIndoor;
 
 import java.util.ArrayList;
