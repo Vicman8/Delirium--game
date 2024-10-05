@@ -58,8 +58,6 @@ public class MyMap extends Map {
         return npcs;
     }
 
-    //Make sure this works before pushing
-    //Show this to group
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
