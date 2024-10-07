@@ -38,7 +38,7 @@ public class MenuScreen extends Screen {
         playGame = new SpriteFont("DORM", 70, 323, "Algerian", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("OUTSKIRTS", 70, 423, "Algerian", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("HEAT DORM", 70, 423, "Algerian", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
         playTest = new SpriteFont("VILLAGE", 70, 523, "Algerian", 30, new Color(49, 207, 240));
@@ -105,7 +105,7 @@ public class MenuScreen extends Screen {
             if (menuItemSelected == 0) {
                 screenCoordinator.setGameState(GameState.DORM);
             } else if (menuItemSelected == 1) {
-                screenCoordinator.setGameState(GameState.OUTSKIRTS);
+                screenCoordinator.setGameState(GameState.HEATDORM);
             } else if (menuItemSelected == 2) {
                 screenCoordinator.setGameState(GameState.VILLAGE);
             }

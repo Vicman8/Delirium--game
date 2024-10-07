@@ -11,10 +11,10 @@ import Level.Tileset;
 import java.util.ArrayList;
 
 // This class represents a "common" tileset of standard tiles defined in the CommonTileset.png file
-public class DormTilesetIndoor extends Tileset {
+public class HeatDormTilesetIndoor extends Tileset {
 
-    public DormTilesetIndoor() {
-        super(ImageLoader.load("DormTilesetIndoor_1.png"), 16, 16, 3);
+    public HeatDormTilesetIndoor() {
+        super(ImageLoader.load("HeatDormTilesetIndoor_1.png"), 16, 16, 3);
     }
 
     @Override
@@ -334,6 +334,16 @@ public class DormTilesetIndoor extends Tileset {
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(clothesTile2);
+
+        Frame bowFrame = new FrameBuilder(getSubImage(4, 4))
+                .withScale(tileScale)
+                .build();
+        
+        MapTileBuilder bowTile= new MapTileBuilder(wallFrame)
+                .withTopLayer(bowFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bowTile);
 
         return mapTiles;
     }

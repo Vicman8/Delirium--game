@@ -5,6 +5,7 @@ import Engine.GraphicsHandler;
 import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.DormScreen;
+import Screens.HeatDormScreen;
 import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
 import Screens.PlayLevelTestScreen;
@@ -55,8 +56,8 @@ public class ScreenCoordinator extends Screen {
 					case VILLAGE:
 						currentScreen = new PlayLevelTestScreen(this);
 						break;
-					case OUTSKIRTS:
-						currentScreen = new OutskirtsScreen(this);
+					case HEATDORM:
+						currentScreen = new HeatDormScreen(this);
 						break;
 				}
 				currentScreen.initialize();
