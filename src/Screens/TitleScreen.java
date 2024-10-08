@@ -97,9 +97,9 @@ public class TitleScreen extends Screen {
         if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
-                screenCoordinator.setGameState(GameState.SHORE);
+                screenCoordinator.setGameState(GameState.DORM);
             } else if (menuItemSelected == 1) {
-                screenCoordinator.setGameState(GameState.OUTSKIRTS);
+                screenCoordinator.setGameState(GameState.HEATDORM);
             } else if (menuItemSelected == 2) {
                 screenCoordinator.setGameState(GameState.VILLAGE);
             }

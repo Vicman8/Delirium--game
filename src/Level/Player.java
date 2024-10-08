@@ -40,7 +40,7 @@ public abstract class Player extends GameObject {
     protected Key INTERACT_KEY = Key.SPACE;
     
     
-    protected Inventory add, remove;
+    //protected Inventory add, remove;
 
     // protected Inventory addInventory = addItem;
 
@@ -54,7 +54,7 @@ public abstract class Player extends GameObject {
         this.affectedByTriggers = true;
     }
 
-    public void update(Player player, NPC npc) {
+    public void update() {
         if (!isLocked) {
             moveAmountX = 0;
             moveAmountY = 0;
@@ -77,21 +77,21 @@ public abstract class Player extends GameObject {
 
         // if(Keyboard.isKeyDown(Key.G) ){
         //     //Inventory.addItem();
-        //     System.out.println("In");
+        //     System.out.prsdintln("In");
         // }
         // update player's animation
         super.update();
     }
 
     // Method that is supposed to update the players inventory when key is pressed
-    protected void updateInventory(Inventory inventory, NPC item){
-        //item = mapEntity();
-        if(Keyboard.isKeyDown(Key.G) && item.isNear(this, (int) (getWidth() * 1.5))){
-            Inventory.addItem(currentAnimationName, currentFrameIndex);
-            //setMapEntityStatus(mapEntityStatus.REMOVED);
+    // protected void updateInventory(Inventory inventory, NPC item){
+    //     //item = mapEntity();
+    //     if(Keyboard.isKeyDown(Key.G) && item.isNear(this, (int) (getWidth() * 1.5))){
+    //         Inventory.addItem(currentAnimationName, currentFrameIndex);
+    //         //setMapEntityStatus(mapEntityStatus.REMOVED);
 
-        }
-    }
+    //     }
+    // }
 
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {
@@ -108,6 +108,7 @@ public abstract class Player extends GameObject {
     // player STANDING state logic
     protected void playerStanding() {
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
+            
             keyLocker.lockKey(INTERACT_KEY);
             map.entityInteract(this);
         }
@@ -115,6 +116,7 @@ public abstract class Player extends GameObject {
         // if a walk key is pressed, player enters WALKING state
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_UP_KEY) || Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             playerState = PlayerState.WALKING;
+            //System.out.println("walking");
         }
     }
 
@@ -127,6 +129,7 @@ public abstract class Player extends GameObject {
 
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
+            //System.out.println("walk left");
             moveAmountX -= walkSpeed;
             facingDirection = Direction.LEFT;
             currentWalkingXDirection = Direction.LEFT;
@@ -255,6 +258,7 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.WALKING;
         facingDirection = direction;
         if (direction == Direction.RIGHT) {
+            
             this.currentAnimationName = "WALK_RIGHT";
         }
         else if (direction == Direction.LEFT) {
@@ -280,9 +284,10 @@ public abstract class Player extends GameObject {
     //     super.draw(graphicsHandler);
     //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     // }
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
-        //drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-    }
     
 }
+
+
+    
+    
+
