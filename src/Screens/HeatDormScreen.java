@@ -33,6 +33,8 @@ public class HeatDormScreen extends Screen{
         flagManager.addFlag("hasTalkedToStudent", false);
         flagManager.addFlag("introStarted", false);
         flagManager.addFlag("fanHasDied", false);
+        flagManager.addFlag("mcUnfainted", false);
+        flagManager.addFlag("bearFought", false);
 
         // define/setup map
         map = new MountainviewDormHeat();

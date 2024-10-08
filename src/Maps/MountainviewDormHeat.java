@@ -5,6 +5,9 @@ import Level.NPC;
 import Level.Tileset;
 import NPCs.Fan;
 import Scripts.SimpleTextScript;
+import Scripts.DeliriousDorm.DeliriumFan;
+import Scripts.DeliriousDorm.DeliriumIntro;
+import Scripts.DormMap.StartIntro;
 import Scripts.TestMap.TreeScript;
 import Tilesets.DormTilesetIndoor;
 import Tilesets.HeatDormTilesetIndoor;
@@ -23,6 +26,7 @@ public class MountainviewDormHeat extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Fan fan = new Fan(1,getMapTile(7,5).getLocation());
+        fan.setInteractScript(new DeliriumFan());
         npcs.add(fan);
 
         return npcs;
@@ -31,23 +35,34 @@ public class MountainviewDormHeat extends Map{
      @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(500, 530, 100, 1, new DeliriumIntro(),"mcUnfainted")); //bottom
+        triggers.add(new Trigger(500, 460, 1, 80, new DeliriumIntro(),"mcUnfainted")); //side
+        triggers.add(new Trigger(600, 460, 1, 80, new DeliriumIntro(),"mcUnfainted")); //side
         return triggers;
     }
 
     
     @Override
     public void loadScripts() {
-        getMapTile(5, 5).setInteractScript(new SimpleTextScript("Kaegen: This is my bed.\nThe covers smell pretty funky."));
+        getMapTile(5, 5).setInteractScript(new SimpleTextScript("Kaegen: This is mine own sleep chamber.\nThe cov'rs smelleth quaint funky."));
 
-        getMapTile(5,7).setInteractScript(new SimpleTextScript("Kaegen: My history textbook has some of the\n most detailed drawings of George Washington in them!"));
+        getMapTile(5,7).setInteractScript(new SimpleTextScript("Kaegen: Mine own hist'ry textbook!\nT's gone! Mine own drawings!"));
 
-        getMapTile(5,8).setInteractScript(new SimpleTextScript("Kaegen: My history textbook has some of the\nmost detailed drawings of George Washington in them!"));
+        getMapTile(7,7).setInteractScript(new SimpleTextScript("Kaegen: Mine own rug from home!\nWho is't did replace t with a dead beareth?!"));
 
-        getMapTile(12,7).setInteractScript(new SimpleTextScript("Kaegen: This is my roommate's laptop.\nThe keys are all sweaty."));
+        getMapTile(7,8).setInteractScript(new SimpleTextScript("Kaegen: Mine own rug from home!\nWho is't did replace t with a dead beareth?!"));
+        
+        getMapTile(8,7).setInteractScript(new SimpleTextScript("Kaegen: Mine own rug from home!\nWho is't did replace t with a dead beareth?!"));
 
-        getMapTile(12,8).setInteractScript(new SimpleTextScript("Kaegen: This is my roommate's laptop.\nThe keys are all sweaty."));
+        getMapTile(8,8).setInteractScript(new SimpleTextScript("Kaegen: Mine own rug from home!\nWho is't did replace t with a dead beareth?!"));
 
-        getMapTile(12,5).setInteractScript(new SimpleTextScript("Kaegen: My roommate keeps forgetting his phone.\nHow is he gonna get help if he ends up fainting?"));
+        getMapTile(5,8).setInteractScript(new SimpleTextScript("Kaegen: Mine own hist'ry textbook!\n T's gone! Mine own drawings!"));
+
+        getMapTile(12,7).setInteractScript(new SimpleTextScript("Kaegen: Mine own roommate's laptop is gone!\nWhat is happening???"));
+
+        getMapTile(12,8).setInteractScript(new SimpleTextScript("Kaegen: Mine own roommate's laptop is gone!\nWhat is happening???"));
+
+        getMapTile(12,5).setInteractScript(new SimpleTextScript("Kaegen: Mine own roommate's phoneth is gone!\nHopefully nobody did steal t."));
     }
     
 
