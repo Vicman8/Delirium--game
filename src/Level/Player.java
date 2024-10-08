@@ -192,6 +192,7 @@ public abstract class Player extends GameObject {
         this.facingDirection = facingDirection;
     }
 
+    
     public Rectangle getInteractionRange() {
         return new Rectangle(
                 getBounds().getX1() - interactionRange,
@@ -199,6 +200,7 @@ public abstract class Player extends GameObject {
                 getBounds().getWidth() + (interactionRange * 2),
                 getBounds().getHeight() + (interactionRange * 2));
     }
+     
 
     public Key getInteractKey() { return INTERACT_KEY; }
     public Direction getCurrentWalkingXDirection() { return currentWalkingXDirection; }

@@ -11,6 +11,7 @@ import Screens.PlayLevelScreen;
 import Screens.PlayLevelTestScreen;
 import Screens.ShoreScreen;
 import Screens.MenuScreen;
+import Screens.OutdoorDormScreen;
 import Screens.OutskirtsScreen;
 
 /*
@@ -53,8 +54,8 @@ public class ScreenCoordinator extends Screen {
 					case DORM:
 						currentScreen = new DormScreen(this);
 						break;
-					case VILLAGE:
-						currentScreen = new PlayLevelTestScreen(this);
+					case DORMEXTERIOR:
+						currentScreen = new OutdoorDormScreen(this);
 						break;
 					case HEATDORM:
 						currentScreen = new HeatDormScreen(this);

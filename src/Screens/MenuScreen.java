@@ -41,7 +41,7 @@ public class MenuScreen extends Screen {
         credits = new SpriteFont("HEAT DORM", 70, 423, "Algerian", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        playTest = new SpriteFont("VILLAGE", 70, 523, "Algerian", 30, new Color(49, 207, 240));
+        playTest = new SpriteFont("DORM EXTERIOR", 70, 523, "Algerian", 30, new Color(49, 207, 240));
         playTest.setOutlineColor(Color.black);
         playTest.setOutlineThickness(3);
         background = new MenuMap();
@@ -107,7 +107,7 @@ public class MenuScreen extends Screen {
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.HEATDORM);
             } else if (menuItemSelected == 2) {
-                screenCoordinator.setGameState(GameState.VILLAGE);
+                screenCoordinator.setGameState(GameState.DORMEXTERIOR);
             }
         }
     }

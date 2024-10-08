@@ -1,6 +1,9 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.KeyLocker;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -11,6 +14,7 @@ import Maps.MoutainviewDorm;
 import Players.HistoryMan;
 import Utils.Direction;
 
+
 public class DormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
@@ -18,6 +22,8 @@ public class DormScreen extends Screen{
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected KeyLocker keyLocker = new KeyLocker();
+    
 
     public DormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -50,6 +56,8 @@ public class DormScreen extends Screen{
         map.preloadScripts();
 
         //winScreen = new WinScreen(this);
+
+        
     }
 
     public void update() {
@@ -60,6 +68,23 @@ public class DormScreen extends Screen{
                 player.update();
                 map.update(player);
                 break;
+        }
+
+        if (Keyboard.isKeyUp(Key.U)) {
+            keyLocker.unlockKey(Key.U);
+        }
+        if (!keyLocker.isKeyLocked(Key.U) && Keyboard.isKeyDown(Key.U)) {
+
+            screenCoordinator.setGameState(GameState.HEATDORM);
+        }
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
         }
     }
 
