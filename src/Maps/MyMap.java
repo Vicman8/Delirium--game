@@ -51,7 +51,7 @@ public class MyMap extends Map {
         student.setInteractScript(new WalrusScript());
         npcs.add(student);
 
-        Fan fan = new Fan(4,getMapTile(23,16).getLocation());
+        Fan fan = new Fan(4,getMapTile(23,16).getLocation(), screenCoordinator);
         fan.setInteractScript(new FanScript());
         npcs.add(fan);
 

@@ -37,7 +37,7 @@ public class HeatDormScreen extends Screen{
         flagManager.addFlag("bearFought", false);
 
         // define/setup map
-        map = new MountainviewDormHeat();
+        map = new MountainviewDormHeat(screenCoordinator);
         map.setFlagManager(flagManager);
 
         // setup player

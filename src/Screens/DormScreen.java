@@ -1,8 +1,9 @@
+//tied to VILLAGE
+
 package Screens;
 
 import Engine.GraphicsHandler;
 import Engine.Key;
-import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
@@ -13,16 +14,16 @@ import Level.Player;
 import Maps.MoutainviewDorm;
 import Players.HistoryMan;
 import Utils.Direction;
-
+import Utils.Point;
 
 public class DormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    protected Player player;
+    public Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    protected KeyLocker keyLocker = new KeyLocker();
+    public static Point dormPos;
     
 
     public DormScreen(ScreenCoordinator screenCoordinator) {
@@ -40,8 +41,13 @@ public class DormScreen extends Screen{
         map = new MoutainviewDorm();
         map.setFlagManager(flagManager);
 
+        //if you have not come here from it's other version, use this maps default start position instead
+        if(VillageScreen.villagePos == null){
+            VillageScreen.villagePos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
+
         // setup player
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new HistoryMan(VillageScreen.villagePos.x,VillageScreen.villagePos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -70,22 +76,11 @@ public class DormScreen extends Screen{
                 break;
         }
 
-        if (Keyboard.isKeyUp(Key.U)) {
-            keyLocker.unlockKey(Key.U);
-        }
-        if (!keyLocker.isKeyLocked(Key.U) && Keyboard.isKeyDown(Key.U)) {
-
-            screenCoordinator.setGameState(GameState.HEATDORM);
-        }
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
+        dormPos = new Point(player.getX(), player.getY());
+        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
+            screenCoordinator.switchWorld(screenCoordinator);
         }
         
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
-        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

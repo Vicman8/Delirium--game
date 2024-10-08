@@ -2,14 +2,20 @@ package Level;
 
 import java.awt.Color;
 
+import Engine.DefaultScreen;
+import Engine.GameWindow;
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
+import Engine.Screen;
+import Engine.ScreenManager;
+import Game.GameState;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
+import Game.ScreenCoordinator;
 
 public abstract class Player extends GameObject {
     // values that affect player movement
@@ -38,8 +44,11 @@ public abstract class Player extends GameObject {
     protected Key MOVE_UP_KEY = Key.UP;
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
+    protected Key SWITCH_WORLD = Key.Q;
 
     protected boolean isLocked = false;
+
+    public int posPrintDelay = 0;
 
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         super(spriteSheet, x, y, startingAnimationName);
@@ -72,6 +81,12 @@ public abstract class Player extends GameObject {
 
         // update player's animation
         super.update();
+
+        posPrintDelay++;
+        if (posPrintDelay == 180){
+            System.out.println("Player coordinates are ("+this.getX()+" ,"+this.getY()+")");
+            posPrintDelay = 0;
+        }
     }
 
     // based on player's current state, call appropriate player state handling method

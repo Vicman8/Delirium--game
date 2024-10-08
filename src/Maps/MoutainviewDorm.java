@@ -9,12 +9,14 @@ import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
 import Scripts.TestMap.TreeScript;
 import Tilesets.DormTilesetIndoor;
+import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
 
 public class MoutainviewDorm extends Map{
+    //public ScreenCoordinator screenCoordinator;
 
-    public MoutainviewDorm() {
+    public MoutainviewDorm(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm_map.txt", new DormTilesetIndoor());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
     }
@@ -23,7 +25,7 @@ public class MoutainviewDorm extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Fan fan = new Fan(1,getMapTile(7,5).getLocation());
+        Fan fan = new Fan(1,getMapTile(7,5).getLocation(), screenCoordinator);
         fan.setInteractScript(new FanScript());
         npcs.add(fan);
 
