@@ -7,11 +7,13 @@ import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
+import Maps.MountainviewDormHeat;
 import Maps.MoutainviewDorm;
 import Players.HistoryMan;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
 
-public class DormScreen extends Screen{
+public class HeatDormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -19,7 +21,7 @@ public class DormScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public DormScreen(ScreenCoordinator screenCoordinator) {
+    public HeatDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -29,13 +31,15 @@ public class DormScreen extends Screen{
         flagManager.addFlag("hasTalkedToStudent", false);
         flagManager.addFlag("introStarted", false);
         flagManager.addFlag("fanHasDied", false);
+        flagManager.addFlag("mcUnfainted", false);
+        flagManager.addFlag("bearFought", false);
 
         // define/setup map
-        map = new MoutainviewDorm();
+        map = new MountainviewDormHeat();
         map.setFlagManager(flagManager);
 
         // setup player
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);

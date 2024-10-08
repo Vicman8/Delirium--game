@@ -25,12 +25,12 @@ public class StudentScript extends Script {
                     addText("Kaegen: Guess it’s time to use the fan in my room\nagain");
                     addText("Kaegen: It’s been so long since I’ve showered.");
                 }});
-                addScriptAction(new ChangeFlagScriptAction("hasTalkedToWalrus", true));
+                addScriptAction(new ChangeFlagScriptAction("hasTalkedToStudent", true));
             }});
 
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
                 addRequirement(new FlagRequirement("hasTalkedToStudent", true));
-                addScriptAction(new TextboxScriptAction("I should head back to my room.\nThe fan always works when I need it to."));
+                addScriptAction(new TextboxScriptAction("Kaegen: I should head back to my room.\nThe fan always works when I need it to."));
             }});
         }});
 

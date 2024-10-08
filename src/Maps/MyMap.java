@@ -13,9 +13,12 @@ import NPCs.Student;
 import NPCs.Stache;
 import NPCs.GMA;
 import NPCs.PubSafety;
+import NPCs.Fan;
 import Scripts.MyMap.*;
 import Scripts.TestMap.LostBallScript;
 import Scripts.SimpleTextScript;
+import Scripts.DormMap.FanScript;
+import Scripts.DormMap.StartIntro;
 import Tilesets.CommonTileset;
 import Utils.Point;
 
@@ -48,11 +51,13 @@ public class MyMap extends Map {
         student.setInteractScript(new WalrusScript());
         npcs.add(student);
 
+        Fan fan = new Fan(4,getMapTile(23,16).getLocation());
+        fan.setInteractScript(new FanScript());
+        npcs.add(fan);
+
         return npcs;
     }
 
-    //Make sure this works before pushing
-    //Show this to group
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
