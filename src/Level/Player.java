@@ -38,6 +38,11 @@ public abstract class Player extends GameObject {
     protected Key MOVE_UP_KEY = Key.UP;
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
+    
+    
+    protected Inventory add, remove;
+
+    // protected Inventory addInventory = addItem;
 
     protected boolean isLocked = false;
 
@@ -70,11 +75,22 @@ public abstract class Player extends GameObject {
 
         updateLockedKeys();
 
-        if(Keyboard.isKeyDown(Key.I) ){
-            System.out.println("In");
-        }
+        // if(Keyboard.isKeyDown(Key.G) ){
+        //     //Inventory.addItem();
+        //     System.out.println("In");
+        // }
         // update player's animation
         super.update();
+    }
+
+    // Method that is supposed to update the players inventory when key is pressed
+    protected void updateInventory(Inventory inventory, NPC item){
+        //item = mapEntity();
+        if(Keyboard.isKeyDown(Key.G) && item.isNear(this, (int) (getWidth() * 1.5))){
+            Inventory.addItem(currentAnimationName, currentFrameIndex);
+            //setMapEntityStatus(mapEntityStatus.REMOVED);
+
+        }
     }
 
     // based on player's current state, call appropriate player state handling method
