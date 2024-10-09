@@ -9,7 +9,6 @@ import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
-import Screens.VillageScreen;
 import Screens.ShoreScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorDormScreen;
@@ -83,12 +82,14 @@ public class ScreenCoordinator extends Screen {
 		boolean hasSwitched = false;
 		
         if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
-            screenCoordinator.setGameState(GameState.VILLAGE);
+            screenCoordinator.setGameState(GameState.HEATDORM);
+			SWITCH_WORLD = Key.W;
 			hasSwitched = true;
     	}
 
-		if(screenCoordinator.getGameState()==GameState.VILLAGE && hasSwitched == false){
+		if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
             screenCoordinator.setGameState(GameState.DORM);
+			SWITCH_WORLD = Key.Q;
 			hasSwitched = true;
     	}
 

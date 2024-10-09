@@ -10,12 +10,10 @@ import Level.Tileset;
 
 import java.util.ArrayList;
 
-public class DormTilesetOutdoor extends Tileset{
+public class MenuTileset extends Tileset{
 
-    private Frame grassFrame;
-
-    public DormTilesetOutdoor() {
-        super(ImageLoader.load("DormTilesetOutdoor_3.png"), 16, 16, 3);
+    public MenuTileset() {
+        super(ImageLoader.load("MenuScreen.png"), 16, 16, 3);
     }
 
     @Override
@@ -185,15 +183,6 @@ public class DormTilesetOutdoor extends Tileset{
 
         //Roof
 
-        Frame grassFrame = new FrameBuilder(getSubImage(5, 3))
-                .withScale(tileScale)
-                .build();
-
-        MapTileBuilder grassTile = new MapTileBuilder(grassFrame)
-                    .withTileType(TileType.PASSABLE);
-
-        mapTiles.add(grassTile);
-
         Frame roofCenterFrame = new FrameBuilder(getSubImage(3, 0))
                 .withScale(tileScale)
                 .build();
@@ -207,8 +196,7 @@ public class DormTilesetOutdoor extends Tileset{
                 .withScale(tileScale)
                 .build();
 
-        MapTileBuilder roofRightTile = new MapTileBuilder(grassFrame)
-                    .withTopLayer(roofRightFrame)
+        MapTileBuilder roofRightTile = new MapTileBuilder(roofRightFrame)
                     .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(roofRightTile);
@@ -217,8 +205,7 @@ public class DormTilesetOutdoor extends Tileset{
                 .withScale(tileScale)
                 .build();
 
-        MapTileBuilder roofLeftTile = new MapTileBuilder(grassFrame)
-                    .withTopLayer(roofLeftFrame)
+        MapTileBuilder roofLeftTile = new MapTileBuilder(roofLeftFrame)
                     .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(roofLeftTile);
@@ -299,7 +286,14 @@ public class DormTilesetOutdoor extends Tileset{
 
         //Walk path
 
-        
+        Frame grassFrame = new FrameBuilder(getSubImage(5, 3))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder grassTile = new MapTileBuilder(grassFrame)
+                    .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(grassTile);
 
         Frame pavementFrame = new FrameBuilder(getSubImage(5, 4))
                 .withScale(tileScale)
@@ -319,6 +313,57 @@ public class DormTilesetOutdoor extends Tileset{
                     .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(brickTileDoorMirror);
+
+        Frame roofRightFrameMirror = new FrameBuilder(getSubImage(3, 2))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder roofRightTileMirror = new MapTileBuilder(grassFrame)
+                    .withTopLayer(roofRightFrameMirror)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(roofRightTileMirror);
+
+        Frame roofFrame = new FrameBuilder(getSubImage(5, 0))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder roofTile = new MapTileBuilder(pavementFrame)
+                    .withTopLayer(roofFrame)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(roofTile);
+
+        Frame roofFrame1 = new FrameBuilder(getSubImage(5, 1))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder roofTile1 = new MapTileBuilder(pavementFrame)
+                    .withTopLayer(roofFrame1)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(roofTile1);
+
+        Frame roofFrame2 = new FrameBuilder(getSubImage(5, 2))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder roofTile2 = new MapTileBuilder(pavementFrame)
+                    .withTopLayer(roofFrame2)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(roofTile2);
+
+        Frame roofFrameMirror = new FrameBuilder(getSubImage(5, 0))
+                .withScale(tileScale)
+                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                .build();
+
+        MapTileBuilder roofTileMirror = new MapTileBuilder(pavementFrame)
+                    .withTopLayer(roofFrameMirror)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(roofTileMirror);
 
         return mapTiles;
     }

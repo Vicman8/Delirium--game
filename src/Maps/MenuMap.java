@@ -5,7 +5,7 @@ import Engine.ImageLoader;
 import GameObject.ImageEffect;
 import GameObject.Sprite;
 import Level.Map;
-import Tilesets.UncommonTileset;
+import Tilesets.MenuTileset;
 import Utils.Colors;
 import Utils.Point;
 
@@ -17,7 +17,7 @@ public class MenuMap extends Map {
 
     public MenuMap() {
         
-         super("menu_screen_map.txt", new UncommonTileset());
+         super("menu_screen_map.txt", new MenuTileset());
         
        
 

@@ -14,7 +14,7 @@ import Game.ScreenCoordinator;
 import java.util.ArrayList;
 
 public class MoutainviewDorm extends Map{
-    //public ScreenCoordinator screenCoordinator;
+    public ScreenCoordinator screenCoordinator;
 
     public MoutainviewDorm(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm_map.txt", new DormTilesetIndoor());

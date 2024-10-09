@@ -1,7 +1,6 @@
 package MapEditor;
 
 import Level.Map;
-import Maps.VillageMap;
 import Maps.OutskirtsMap;
 import Maps.ShoreMap;
 import Maps.TestMap;
@@ -34,8 +33,6 @@ public class EditorMaps {
                 return new TestMap();
             case "TitleScreen":
                 return new TitleScreenMap();
-            case "MyMap":
-                return new VillageMap();
             case "MenuMap":
                 return new MenuMap();
             case "OutskirtsMap":

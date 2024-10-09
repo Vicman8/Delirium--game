@@ -1,5 +1,6 @@
 package NPCs;
 
+
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
@@ -11,11 +12,10 @@ import Utils.Point;
 
 import java.util.HashMap;
 
-// This class is for the walrus NPC
-public class Student extends NPC {
+public class TheThim extends NPC{
 
-    public Student(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("StudentNPC.png"), 30, 30), "STAND_LEFT");
+    public TheThim(int id, Point location) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("TheThimSprite.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override
@@ -39,4 +39,5 @@ public class Student extends NPC {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
     }
+
 }

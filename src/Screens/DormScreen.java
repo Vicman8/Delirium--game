@@ -4,6 +4,7 @@ package Screens;
 
 import Engine.GraphicsHandler;
 import Engine.Key;
+import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
@@ -24,6 +25,7 @@ public class DormScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     public static Point dormPos;
+    protected KeyLocker keyLocker = new KeyLocker();
     
 
     public DormScreen(ScreenCoordinator screenCoordinator) {
@@ -42,12 +44,12 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(VillageScreen.villagePos == null){
-            VillageScreen.villagePos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        }
+        //if(VillageScreen.villagePos == null){
+        //    VillageScreen.villagePos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        //}
 
         // setup player
-        player = new HistoryMan(VillageScreen.villagePos.x,VillageScreen.villagePos.y);
+        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -79,6 +81,14 @@ public class DormScreen extends Screen{
         dormPos = new Point(player.getX(), player.getY());
         if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
             screenCoordinator.switchWorld(screenCoordinator);
+        }
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
         }
         
     }
