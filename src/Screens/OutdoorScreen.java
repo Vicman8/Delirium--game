@@ -1,8 +1,6 @@
 package Screens;
 
 import Engine.GraphicsHandler;
-import Engine.Key;
-import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
@@ -10,34 +8,30 @@ import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
-import Maps.MoutainviewDorm;
+import Maps.MountainviewDormOutdoor;
 import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
-public class DormScreen extends Screen{
+public class OutdoorScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    public Player player;
+    protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    protected KeyLocker keyLocker = new KeyLocker();
-    
+    //public static Point outdoorDormPos;
 
-    public DormScreen(ScreenCoordinator screenCoordinator) {
+    public OutdoorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasTalkedToStudent", false);
-        flagManager.addFlag("introStarted", false);
-        flagManager.addFlag("fanHasDied", false);
 
         // define/setup map
-        map = new MoutainviewDorm();
+        map = new MountainviewDormOutdoor();
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
@@ -45,8 +39,9 @@ public class DormScreen extends Screen{
             ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
 
+
         // setup player
-        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -61,8 +56,6 @@ public class DormScreen extends Screen{
         map.preloadScripts();
 
         //winScreen = new WinScreen(this);
-
-        
     }
 
     public void update() {
@@ -74,20 +67,8 @@ public class DormScreen extends Screen{
                 map.update(player);
                 break;
         }
-
-        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
-        //}
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
-        }
-        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

@@ -3,19 +3,14 @@ package Game;
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Key;
+import Engine.Keyboard;
 import Engine.Screen;
-import Screens.CreditsScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
-import Screens.TitleScreen;
-import Screens.PlayLevelScreen;
-import Screens.ShoreScreen;
 import Screens.MenuScreen;
-import Screens.OutdoorDormScreen;
-import Screens.OutskirtsScreen;
+import Screens.OutdoorScreen;
 import Utils.Point;
-import Players.HistoryMan;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -31,6 +26,8 @@ public class ScreenCoordinator extends Screen {
 
 	public static Key SWITCH_TO_REALITY = Key.W;
 	public static Key SWITCH_TO_MEDIEVAL = Key.Q;
+
+	public static Point savedPlayerPos;
 
 	public GameState getGameState() {
 		return gameState;
@@ -63,7 +60,7 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new DormScreen(this);
 						break;
 					case DORMEXTERIOR:
-						currentScreen = new OutdoorDormScreen(this);
+						currentScreen = new OutdoorScreen(this);
 						break;
 					case HEATDORM:
 						System.out.println("Game state is now "+gameState);
@@ -85,17 +82,35 @@ public class ScreenCoordinator extends Screen {
     public void switchWorld(ScreenCoordinator screenCoordinator){    
 		screenCoordinator = this;
 		boolean hasSwitched = false;
-		
-		if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
-            screenCoordinator.setGameState(GameState.DORM);
-			hasSwitched = true;
-    	}
 
-        if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
-            screenCoordinator.setGameState(GameState.HEATDORM);
-			hasSwitched = true;
-    	}
-		
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
+			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DORM);
+				hasSwitched = true;
+			}
+
+			if(screenCoordinator.getGameState()==GameState.HEATDORMEXTERIOR && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+				hasSwitched = true;
+			}
+		}
+
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.HEATDORM);
+				hasSwitched = true;
+			}
+			
+			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+				hasSwitched = true;
+			}
+		}
+	}
+
+	//updates the static variable
+	public static void setSavedPlayerPosition(int playerX, int playerY){
+		savedPlayerPos = new Point(playerX, playerX);
 	}
 
 	@Override

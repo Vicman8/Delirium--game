@@ -1,17 +1,18 @@
+//tied to dorm
 package Screens;
 
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import Level.FlagManager;
-import Level.Map;
-import Level.Player;
-import Maps.MountainviewDormOutdoor;
+import Level.*;
+import Maps.VillageMap;
 import Players.HistoryMan;
 import Utils.Direction;
+import Utils.Point;
 
-public class OutdoorDormScreen extends Screen{
+// This class is for when the RPG game is actually being played
+public class VillageScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -19,20 +20,30 @@ public class OutdoorDormScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public OutdoorDormScreen(ScreenCoordinator screenCoordinator) {
+    public VillageScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-
+        flagManager.addFlag("hasTalkedToWalrus", false);
+        flagManager.addFlag("hasTalkedToStudent", false);
+        flagManager.addFlag("introStarted", false);
+        flagManager.addFlag("fanHasDied", false);
+        
         // define/setup map
-        map = new MountainviewDormOutdoor();
+        map = new VillageMap(/*screenCoordinator*/);
         map.setFlagManager(flagManager);
 
+        //if you have not come here from it's other version, use this maps default start position instead
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
+
         // setup player
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        //start at the coords from the previous world
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -57,7 +68,22 @@ public class OutdoorDormScreen extends Screen{
                 player.update();
                 map.update(player);
                 break;
+            // if level has been completed, bring up level cleared screen
+            
+            /*
+             * case LEVEL_COMPLETED:
+                winScreen.update();
+                break;
+             */
         }
+
+        // if flag is set at any point during gameplay, game is "won"
+        /*
+        *if (map.getFlagManager().isFlagSet("hasFoundBall")) {
+            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+        }
+        */
+        ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

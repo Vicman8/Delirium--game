@@ -14,7 +14,6 @@ import Maps.MountainviewDormHeat;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
-import Utils.Point;
 
 public class HeatDormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
@@ -24,8 +23,6 @@ public class HeatDormScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
-    public static Point heatDormPos;
-    public static Point heatDormPos;
 
     public HeatDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -47,12 +44,12 @@ public class HeatDormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(DormScreen.dormPos == null){
-            DormScreen.dormPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
         
         // setup player
-        player = new MedievalHistoryMan(DormScreen.dormPos.x,DormScreen.dormPos.y);
+        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -79,10 +76,8 @@ public class HeatDormScreen extends Screen{
                 break;
         }
         
-        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
-            heatDormPos = new Point(player.getX(), player.getY());
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
-        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
