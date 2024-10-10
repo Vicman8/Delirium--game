@@ -9,6 +9,9 @@ import NPCs.TheThim;
 import NPCs.Walrus;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
+import Scripts.Outdoor.CheckUp;
+import Scripts.Outdoor.Exclaim;
+import Scripts.Outdoor.How;
 import Level.Map;
 import Level.NPC;
 import Tilesets.DormTilesetOutdoor;
@@ -31,12 +34,15 @@ public class MountainviewDormOutdoor extends Map{
         npcs.add(TotallyABear);
 
         Stache stache = new Stache(2, getMapTile(15, 15).getLocation().subtractY(40));
+        stache.setInteractScript(new Exclaim());
         npcs.add(stache);
 
         PubSafety pubSafety = new PubSafety(3, getMapTile(12, 19).getLocation().subtractY(40));
+        pubSafety.setInteractScript(new CheckUp());
         npcs.add(pubSafety);
 
         Student student = new Student(4, getMapTile(16, 20).getLocation().subtractY(40));
+        student.setInteractScript(new How());
         npcs.add(student);
 
         return npcs;

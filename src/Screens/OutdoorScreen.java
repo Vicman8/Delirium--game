@@ -29,6 +29,9 @@ public class OutdoorScreen extends Screen{
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
+        flagManager.addFlag("checkDone", false);
+        flagManager.addFlag("E", false);
+        flagManager.addFlag("exclaim",false);
 
         // define/setup map
         map = new MountainviewDormOutdoor();
