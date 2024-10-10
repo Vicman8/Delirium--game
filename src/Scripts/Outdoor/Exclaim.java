@@ -3,6 +3,7 @@ package Scripts.Outdoor;
 import Level.Script;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
+import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
@@ -14,6 +15,7 @@ public class Exclaim extends Script {
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
         scriptActions.add(new LockPlayerScriptAction());
+        scriptActions.add(new NPCFacePlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
             addText("Sweaty Student: Holy moly! How'd you drive away that bear?!");

@@ -36,13 +36,13 @@ public class MenuScreen extends Screen {
         title.setFontStyle(0);
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
-        playGame = new SpriteFont("DORM", 500, 250, "Algerian", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("DORM", 450, 250, "Algerian", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("HEAT DORM", 500, 325, "Algerian", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("HEAT DORM", 450, 325, "Algerian", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        playTest = new SpriteFont("DORM EXTERIOR", 500, 400, "Algerian", 30, new Color(49, 207, 240));
+        playTest = new SpriteFont("DORM EXTERIOR", 450, 400, "Algerian", 30, new Color(49, 207, 240));
         playTest.setOutlineColor(Color.black);
         playTest.setOutlineThickness(3);
         playTest2 = new SpriteFont("HEAT DORM EXTERIOR", 450, 475, "Algerian", 30, new Color(49, 207, 240));
@@ -85,21 +85,21 @@ public class MenuScreen extends Screen {
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(49, 207, 240));
             playTest2.setColor(new Color(49, 207, 240));
-            pointerLocationX = 440;
+            pointerLocationX = 390;
             pointerLocationY = 257;
         } else if (currentMenuItemHovered == 1) {
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(255, 215, 0));
             playTest.setColor(new Color(49, 207, 240));
             playTest2.setColor(new Color(49, 207, 240));
-            pointerLocationX = 440;
+            pointerLocationX = 390;
             pointerLocationY = 332;
         } else if (currentMenuItemHovered == 2){
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(255, 215, 0));
             playTest2.setColor(new Color(49, 207, 240));
-            pointerLocationX = 440;
+            pointerLocationX = 390;
             pointerLocationY = 407;
         } else if (currentMenuItemHovered == 3){
             playGame.setColor(new Color(49, 207, 240));
