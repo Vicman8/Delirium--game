@@ -25,7 +25,6 @@ public class HeatDormScreen extends Screen{
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
     public static Point heatDormPos;
-    public static Point heatDormPos;
 
     public HeatDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
