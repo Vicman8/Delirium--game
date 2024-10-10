@@ -6,6 +6,8 @@ import NPCs.Stache;
 import NPCs.Student;
 import NPCs.THEVICMAN;
 import NPCs.TheThim;
+import NPCs.Walrus;
+import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
 import Level.Map;
 import Level.NPC;
@@ -24,8 +26,9 @@ public class MountainviewDormOutdoor extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        TheThim thim = new TheThim(1, getMapTile(4, 27).getLocation().subtractY(40));
-        npcs.add(thim);
+        Walrus TotallyABear = new Walrus(1, getMapTile(19, 17).getLocation().subtractY(40));
+        TotallyABear.setInteractScript(new FirstBearFight());
+        npcs.add(TotallyABear);
 
         Stache stache = new Stache(1, getMapTile(6, 27).getLocation().subtractY(40));
         npcs.add(stache);
@@ -36,15 +39,13 @@ public class MountainviewDormOutdoor extends Map{
         Student student = new Student(1, getMapTile(8, 27).getLocation().subtractY(40));
         npcs.add(student);
 
-        THEVICMAN thevicman = new THEVICMAN(1, getMapTile(9, 27).getLocation().subtractY(40));
-        npcs.add(thevicman);
-
         return npcs;
     }
 
      @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+
         return triggers;
     }
 

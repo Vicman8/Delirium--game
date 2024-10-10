@@ -11,6 +11,11 @@ import NPCs.StudentM;
 import NPCs.THEVICMAN;
 import NPCs.THEVICMANM;
 import NPCs.TheThim;
+import NPCs.Walrus;
+import Scripts.DeliriousOutdoor.FirstBearFight;
+import Scripts.DeliriousOutdoor.Scary;
+import Scripts.DeliriousOutdoor.Scary2;
+import Scripts.DeliriousOutdoor.Scary3;
 import Scripts.MyMap.StudentScript;
 import Level.Map;
 import Level.NPC;
@@ -32,17 +37,22 @@ public class MountainviewDormOutdoorHeat extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        StacheM stacheM = new StacheM(1, getMapTile(6, 27).getLocation().subtractY(40));
+        Walrus TotallyABear = new Walrus(1, getMapTile(19, 17).getLocation().subtractY(40));
+        TotallyABear.setInteractScript(new FirstBearFight());
+        npcs.add(TotallyABear);
+
+        StacheM stacheM = new StacheM(1, getMapTile(15, 15).getLocation().subtractY(40));
+        stacheM.setInteractScript(new Scary());
         npcs.add(stacheM);
 
-        PubSafetyM pubSafetyM = new PubSafetyM(1, getMapTile(7, 27).getLocation().subtractY(40));
+        PubSafetyM pubSafetyM = new PubSafetyM(1, getMapTile(12, 19).getLocation().subtractY(40));
+        pubSafetyM.setInteractScript(new Scary3());
         npcs.add(pubSafetyM);
 
-        StudentM studentM = new StudentM(1, getMapTile(8, 27).getLocation().subtractY(40));
+        StudentM studentM = new StudentM(1, getMapTile(16, 20).getLocation().subtractY(40));
+        studentM.setInteractScript(new Scary2());
         npcs.add(studentM);
 
-        THEVICMANM thevicmanM = new THEVICMANM(1, getMapTile(9, 27).getLocation().subtractY(40));
-        npcs.add(thevicmanM);
 
         return npcs;
     }

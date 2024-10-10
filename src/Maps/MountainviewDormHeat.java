@@ -43,7 +43,7 @@ public class MountainviewDormHeat extends Map{
         return triggers;
     }
 
-    
+
     @Override
     public void loadScripts() {
         getMapTile(5, 5).setInteractScript(new SimpleTextScript("Kaegen: This is mine own sleep chamber.\nThe cov'rs smelleth quaint funky."));
