@@ -13,11 +13,11 @@ import Game.ScreenCoordinator;
 import java.util.HashMap;
 
 public class Fan extends NPC {
-    public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
-    public Fan(int id, Point location, ScreenCoordinator screenCoordinator) {
+    public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Fan1.png"), 30, 30), "STAND_LEFT");
-        this.screenCoordinator = screenCoordinator;
+        //this.screenCoordinator = screenCoordinator;
     }
 
     @Override

@@ -25,7 +25,7 @@ public class MoutainviewDorm extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Fan fan = new Fan(1,getMapTile(7,5).getLocation(), screenCoordinator);
+        Fan fan = new Fan(1,getMapTile(7,5).getLocation()/*, screenCoordinator*/);
         fan.setInteractScript(new FanScript());
         npcs.add(fan);
 

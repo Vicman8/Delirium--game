@@ -17,17 +17,17 @@ import java.util.ArrayList;
 
 public class MountainviewDormHeat extends Map{
     ScreenCoordinator screenCoordinator;
-    public MountainviewDormHeat(/*ScreenCoordinator screenCoordinator**/) {
+    public MountainviewDormHeat(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm__heat_map.txt", new HeatDormTilesetIndoor());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
-        this.screenCoordinator = screenCoordinator;
+        //this.screenCoordinator = screenCoordinator;
     }
 
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Fan fan = new Fan(1,getMapTile(7,5).getLocation(), screenCoordinator);
+        Fan fan = new Fan(1,getMapTile(7,5).getLocation()/* , screenCoordinator*/);
         fan.setInteractScript(new DeliriumFan());
         npcs.add(fan);
 

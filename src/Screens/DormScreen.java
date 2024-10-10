@@ -1,5 +1,3 @@
-//tied to VILLAGE
-
 package Screens;
 
 import Engine.GraphicsHandler;
@@ -16,6 +14,7 @@ import Maps.MoutainviewDorm;
 import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
+import Screens.HeatDormScreen;
 
 public class DormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
@@ -44,12 +43,12 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        //if(VillageScreen.villagePos == null){
-        //    VillageScreen.villagePos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        //}
+        if(HeatDormScreen.heatDormPos == null){
+            HeatDormScreen.heatDormPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
 
         // setup player
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new HistoryMan(HeatDormScreen.heatDormPos.x,HeatDormScreen.heatDormPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -78,8 +77,8 @@ public class DormScreen extends Screen{
                 break;
         }
 
-        dormPos = new Point(player.getX(), player.getY());
-        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
+        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+            dormPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
         }
 

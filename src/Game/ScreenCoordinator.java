@@ -29,7 +29,8 @@ public class ScreenCoordinator extends Screen {
 	public GameState gameState;
 	public GameState previousGameState;
 
-	public static Key SWITCH_WORLD = Key.Q;
+	public static Key SWITCH_TO_REALITY = Key.W;
+	public static Key SWITCH_TO_MEDIEVAL = Key.Q;
 
 	public GameState getGameState() {
 		return gameState;
@@ -65,7 +66,7 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new OutdoorDormScreen(this);
 						break;
 					case HEATDORM:
-						System.out.println("Game state is now "+gameState);		
+						System.out.println("Game state is now "+gameState);
 						currentScreen = new HeatDormScreen(this);
 						break;
 					case HEATDORMEXTERIOR:
@@ -85,23 +86,16 @@ public class ScreenCoordinator extends Screen {
 		screenCoordinator = this;
 		boolean hasSwitched = false;
 		
-        if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
-            screenCoordinator.setGameState(GameState.HEATDORM);
-			SWITCH_WORLD = Key.W;
-			hasSwitched = true;
-    	}
-
 		if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
             screenCoordinator.setGameState(GameState.DORM);
-			SWITCH_WORLD = Key.Q;
 			hasSwitched = true;
     	}
 
-	}
-
-	//for beginning the player position at whatever coordinates they were at before switching screens
-	public static Point getPreviousPosition(HistoryMan player){
-		return new Point(player.getX(), player.getY());
+        if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
+            screenCoordinator.setGameState(GameState.HEATDORM);
+			hasSwitched = true;
+    	}
+		
 	}
 
 	@Override

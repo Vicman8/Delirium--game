@@ -14,6 +14,7 @@ import Maps.MountainviewDormHeat;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
+import Utils.Point;
 
 public class HeatDormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
@@ -23,6 +24,7 @@ public class HeatDormScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
+    public static Point heatDormPos;
     public static Point heatDormPos;
 
     public HeatDormScreen(ScreenCoordinator screenCoordinator) {
@@ -39,12 +41,18 @@ public class HeatDormScreen extends Screen{
         flagManager.addFlag("bearFought", false);
 
         // define/setup map
+        map = new MountainviewDormHeat(/*screenCoordinator*/);
         //map = new MountainviewDormHeat(screenCoordinator);
         map = new MountainviewDormHeat();
         map.setFlagManager(flagManager);
 
+        //if you have not come here from it's other version, use this maps default start position instead
+        if(DormScreen.dormPos == null){
+            DormScreen.dormPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
+        
         // setup player
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new MedievalHistoryMan(DormScreen.dormPos.x,DormScreen.dormPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -70,18 +78,10 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
-
-        heatDormPos = new Point(player.getX(), player.getY());
-        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
+        
+        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
+            heatDormPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
-        }
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
         }
     }
 
