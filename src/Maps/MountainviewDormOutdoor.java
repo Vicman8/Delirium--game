@@ -27,9 +27,6 @@ public class MountainviewDormOutdoor extends Map{
         TheThim thim = new TheThim(1, getMapTile(4, 27).getLocation().subtractY(40));
         npcs.add(thim);
 
-        GMA gma = new GMA(1, getMapTile(5, 27).getLocation().subtractY(40));
-        npcs.add(gma);
-
         Stache stache = new Stache(1, getMapTile(6, 27).getLocation().subtractY(40));
         npcs.add(stache);
 

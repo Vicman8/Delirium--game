@@ -8,6 +8,7 @@ import Maps.TitleScreenMap;
 import Maps.MenuMap;
 import Maps.MountainviewDormHeat;
 import Maps.MountainviewDormOutdoor;
+import Maps.MountainviewDormOutdoorHeat;
 import Maps.MoutainviewDorm;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class EditorMaps {
             add("MountainviewDorm");
             add("MountainviewDormHeat");
             add("MountainviewDormOutdoor");
+            add("MountainviewDormOutdoorHeat");
         }};
     }
 
@@ -45,6 +47,8 @@ public class EditorMaps {
                 return new MountainviewDormHeat();
             case "MountainviewDormOutdoor":
                 return new MountainviewDormOutdoor();
+            case "MountainviewDormOutdoorHeat":
+                return new MountainviewDormOutdoorHeat();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

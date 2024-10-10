@@ -7,6 +7,7 @@ import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
+import Screens.HeatOutdoorScreen;
 import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
 import Screens.ShoreScreen;
@@ -66,6 +67,9 @@ public class ScreenCoordinator extends Screen {
 					case HEATDORM:
 						System.out.println("Game state is now "+gameState);		
 						currentScreen = new HeatDormScreen(this);
+						break;
+					case HEATDORMEXTERIOR:
+						currentScreen = new HeatOutdoorScreen(this);
 						break;
 				}
 				currentScreen.initialize();
