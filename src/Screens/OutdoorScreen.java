@@ -1,8 +1,6 @@
 package Screens;
 
 import Engine.GraphicsHandler;
-import Engine.Key;
-import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
@@ -10,47 +8,40 @@ import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
-import Maps.MountainviewDormHeat;
-import Players.MedievalHistoryMan;
+import Maps.MountainviewDormOutdoor;
+import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
-public class HeatDormScreen extends Screen{
+public class OutdoorScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    protected KeyLocker keyLocker = new KeyLocker();
-    public static Point heatDormPos;
+    //public static Point outdoorDormPos;
 
-    public HeatDormScreen(ScreenCoordinator screenCoordinator) {
+    public OutdoorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasTalkedToStudent", false);
-        flagManager.addFlag("introStarted", false);
-        flagManager.addFlag("fanHasDied", false);
-        flagManager.addFlag("mcUnfainted", false);
-        flagManager.addFlag("bearFought", false);
 
         // define/setup map
-        map = new MountainviewDormHeat(/*screenCoordinator*/);
-        //map = new MountainviewDormHeat(screenCoordinator);
-        map = new MountainviewDormHeat();
+        map = new MountainviewDormOutdoor();
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
         if(ScreenCoordinator.savedPlayerPos == null){
             ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
-        
+
+
         // setup player
-        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -76,7 +67,6 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
-        
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
     }

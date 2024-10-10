@@ -1,6 +1,7 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -12,6 +13,7 @@ import Maps.MountainviewDormOutdoorHeat;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
+import Utils.Point;
 
 public class HeatOutdoorScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
@@ -36,8 +38,14 @@ public class HeatOutdoorScreen extends Screen{
         map = new MountainviewDormOutdoorHeat();
         map.setFlagManager(flagManager);
 
+        //if you have not come here from it's other version, use this maps default start position instead
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
+
+
         // setup player
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -63,6 +71,8 @@ public class HeatOutdoorScreen extends Screen{
                 map.update(player);
                 break;
         }
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            screenCoordinator.switchWorld(screenCoordinator);
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

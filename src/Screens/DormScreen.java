@@ -14,7 +14,6 @@ import Maps.MoutainviewDorm;
 import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
-import Screens.HeatDormScreen;
 
 public class DormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
@@ -23,7 +22,6 @@ public class DormScreen extends Screen{
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    public static Point dormPos;
     protected KeyLocker keyLocker = new KeyLocker();
     
 
@@ -43,12 +41,12 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(HeatDormScreen.heatDormPos == null){
-            HeatDormScreen.heatDormPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
 
         // setup player
-        player = new HistoryMan(HeatDormScreen.heatDormPos.x,HeatDormScreen.heatDormPos.y);
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -77,10 +75,10 @@ public class DormScreen extends Screen{
                 break;
         }
 
-        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
-            dormPos = new Point(player.getX(), player.getY());
+        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
-        }
+        //}
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
