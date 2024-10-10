@@ -1,3 +1,4 @@
+
 package Scripts.DormMap;
 
 import java.util.ArrayList;
@@ -12,8 +13,13 @@ import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import Game.GameState;
+import Game.ScreenCoordinator;
 
 public class FanScript extends Script {
+
+    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
@@ -30,7 +36,11 @@ public class FanScript extends Script {
                     addText("Kaegen turns on the fan.");
                     addText("Kaegen: Thank god I have this fan!\nIt at least keeps me from passing out!");
                     addText("Kaegen: I REALLY have to shower though.");
+
+                    System.out.println("Activating switch world in FanScript");
+                    //screenCoordinator.switchWorld(screenCoordinator);
                 }});
+                
             }});
     
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{

@@ -1,4 +1,4 @@
-package Scripts.DeliriousDorm;
+package Scripts.DeliriousOutdoor;
 
 import Level.Script;
 import ScriptActions.ChangeFlagScriptAction;
@@ -18,9 +18,9 @@ public class FirstBearFight extends Script {
         scriptActions.add(new TextboxScriptAction() {{
             addText("Kaegen: Great gadzooks! Looketh here!\nThis beast must be removed posthaste!");
             addText("Kaegen: Upon furth'r inspection, thee behold familiar.");
-            addText("Kaegen: Thee. Thou art the one who is't hast did destroy our A.C unit!");
+            addText("Kaegen: Thee.\nThou art the one who is't hast did destroy our A.C unit!");
             addText("Black Bear: Womp Womp.");
-            addText("Kaegen: Thy sland'r knoweth nay bounds. I shalt slayeth thee!");
+            addText("Kaegen: Thy sland'r knoweth nay bounds.\nI shalt slayeth thee!");
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("bearFought", true));

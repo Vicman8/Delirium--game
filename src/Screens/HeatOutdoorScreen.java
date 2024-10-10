@@ -1,55 +1,43 @@
-//tied to VILLAGE
-
 package Screens;
 
 import Engine.GraphicsHandler;
-import Engine.Key;
-import Engine.KeyLocker;
-import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
-import Maps.MoutainviewDorm;
+import Maps.MountainviewDormOutdoor;
+import Maps.MountainviewDormOutdoorHeat;
 import Players.HistoryMan;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
-import Utils.Point;
 
-public class DormScreen extends Screen{
+public class HeatOutdoorScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    public Player player;
+    protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    public static Point dormPos;
-    protected KeyLocker keyLocker = new KeyLocker();
-    
 
-    public DormScreen(ScreenCoordinator screenCoordinator) {
+    public HeatOutdoorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasTalkedToStudent", false);
-        flagManager.addFlag("introStarted", false);
-        flagManager.addFlag("fanHasDied", false);
+        flagManager.addFlag("scaryBear", false);
+        flagManager.addFlag("Flee!", false);
+        flagManager.addFlag("Bear!", false);
 
         // define/setup map
-        map = new MoutainviewDorm();
+        map = new MountainviewDormOutdoorHeat();
         map.setFlagManager(flagManager);
 
-        //if you have not come here from it's other version, use this maps default start position instead
-        //if(VillageScreen.villagePos == null){
-        //    VillageScreen.villagePos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        //}
-
         // setup player
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -64,8 +52,6 @@ public class DormScreen extends Screen{
         map.preloadScripts();
 
         //winScreen = new WinScreen(this);
-
-        
     }
 
     public void update() {
@@ -77,20 +63,6 @@ public class DormScreen extends Screen{
                 map.update(player);
                 break;
         }
-
-        dormPos = new Point(player.getX(), player.getY());
-        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
-            screenCoordinator.switchWorld(screenCoordinator);
-        }
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
-        }
-        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

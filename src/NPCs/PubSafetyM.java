@@ -12,10 +12,10 @@ import Utils.Point;
 import java.util.HashMap;
 
 // This class is for the walrus NPC
-public class Student extends NPC {
+public class PubSafetyM extends NPC {
 
-    public Student(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("StudentNPC.png"), 30, 30), "STAND_LEFT");
+    public PubSafetyM(int id, Point location) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("PublicSafetyMedieval.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override

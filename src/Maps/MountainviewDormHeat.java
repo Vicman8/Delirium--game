@@ -7,18 +7,21 @@ import NPCs.Fan;
 import Scripts.SimpleTextScript;
 import Scripts.DeliriousDorm.DeliriumFan;
 import Scripts.DeliriousDorm.DeliriumIntro;
+import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
 import Scripts.TestMap.TreeScript;
 import Tilesets.DormTilesetIndoor;
 import Tilesets.HeatDormTilesetIndoor;
+import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
 
 public class MountainviewDormHeat extends Map{
-
-    public MountainviewDormHeat() {
+    ScreenCoordinator screenCoordinator;
+    public MountainviewDormHeat(/*ScreenCoordinator screenCoordinator**/) {
         super("mountainview_dorm__heat_map.txt", new HeatDormTilesetIndoor());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
+        this.screenCoordinator = screenCoordinator;
     }
 
     @Override
@@ -26,7 +29,7 @@ public class MountainviewDormHeat extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Fan fan = new Fan(1,getMapTile(7,5).getLocation());
-        fan.setInteractScript(new DeliriumFan());
+        fan.setInteractScript(new FanScript());
         npcs.add(fan);
 
         return npcs;
@@ -41,7 +44,7 @@ public class MountainviewDormHeat extends Map{
         return triggers;
     }
 
-    
+
     @Override
     public void loadScripts() {
         getMapTile(5, 5).setInteractScript(new SimpleTextScript("Kaegen: This is mine own sleep chamber.\nThe cov'rs smelleth quaint funky."));

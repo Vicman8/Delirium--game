@@ -2,16 +2,20 @@ package Game;
 
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
+import Engine.Key;
 import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
+import Screens.HeatOutdoorScreen;
 import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
-import Screens.PlayLevelTestScreen;
 import Screens.ShoreScreen;
 import Screens.MenuScreen;
+import Screens.OutdoorDormScreen;
 import Screens.OutskirtsScreen;
+import Utils.Point;
+import Players.HistoryMan;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -22,8 +26,10 @@ public class ScreenCoordinator extends Screen {
 	protected Screen currentScreen = new DefaultScreen();
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
-	protected GameState gameState;
-	protected GameState previousGameState;
+	public GameState gameState;
+	public GameState previousGameState;
+
+	public static Key SWITCH_WORLD = Key.Q;
 
 	public GameState getGameState() {
 		return gameState;
@@ -48,16 +54,22 @@ public class ScreenCoordinator extends Screen {
 			if (previousGameState != gameState) {
 				switch(gameState) {
 					case MENU:
+						System.out.println("Game state is now "+gameState);
 						currentScreen = new MenuScreen(this);
 						break;
 					case DORM:
+						System.out.println("Game state is now "+gameState);	
 						currentScreen = new DormScreen(this);
 						break;
-					case VILLAGE:
-						currentScreen = new PlayLevelTestScreen(this);
+					case DORMEXTERIOR:
+						currentScreen = new OutdoorDormScreen(this);
 						break;
 					case HEATDORM:
+						System.out.println("Game state is now "+gameState);		
 						currentScreen = new HeatDormScreen(this);
+						break;
+					case HEATDORMEXTERIOR:
+						currentScreen = new HeatOutdoorScreen(this);
 						break;
 				}
 				currentScreen.initialize();
@@ -67,6 +79,29 @@ public class ScreenCoordinator extends Screen {
 			// call the update method for the currentScreen
 			currentScreen.update();
 		} while (previousGameState != gameState);
+	}
+    
+    public void switchWorld(ScreenCoordinator screenCoordinator){    
+		screenCoordinator = this;
+		boolean hasSwitched = false;
+		
+        if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
+            screenCoordinator.setGameState(GameState.HEATDORM);
+			SWITCH_WORLD = Key.W;
+			hasSwitched = true;
+    	}
+
+		if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
+            screenCoordinator.setGameState(GameState.DORM);
+			SWITCH_WORLD = Key.Q;
+			hasSwitched = true;
+    	}
+
+	}
+
+	//for beginning the player position at whatever coordinates they were at before switching screens
+	public static Point getPreviousPosition(HistoryMan player){
+		return new Point(player.getX(), player.getY());
 	}
 
 	@Override

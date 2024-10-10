@@ -4,15 +4,14 @@ import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import Level.*;
-import Maps.MyMap;
-import Players.Cat;
+import Level.FlagManager;
+import Level.Map;
+import Level.Player;
+import Maps.MountainviewDormOutdoor;
 import Players.HistoryMan;
 import Utils.Direction;
-import Utils.Point;
 
-// This class is for when the RPG game is actually being played
-public class PlayLevelTestScreen extends Screen {
+public class OutdoorDormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -20,20 +19,16 @@ public class PlayLevelTestScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-    public PlayLevelTestScreen(ScreenCoordinator screenCoordinator) {
+    public OutdoorDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasTalkedToWalrus", false);
-        flagManager.addFlag("hasTalkedToStudent", false);
-        flagManager.addFlag("introStarted", false);
-        flagManager.addFlag("fanHasDied", false);
 
         // define/setup map
-        map = new MyMap();
+        map = new MountainviewDormOutdoor();
         map.setFlagManager(flagManager);
 
         // setup player
@@ -62,21 +57,7 @@ public class PlayLevelTestScreen extends Screen {
                 player.update();
                 map.update(player);
                 break;
-            // if level has been completed, bring up level cleared screen
-            
-            /*
-             * case LEVEL_COMPLETED:
-                winScreen.update();
-                break;
-             */
         }
-
-        // if flag is set at any point during gameplay, game is "won"
-        /*
-        *if (map.getFlagManager().isFlagSet("hasFoundBall")) {
-            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
-        }
-        */
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

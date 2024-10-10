@@ -2,14 +2,20 @@ package Level;
 
 import java.awt.Color;
 
+import Engine.DefaultScreen;
+import Engine.GameWindow;
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
+import Engine.Screen;
+import Engine.ScreenManager;
+import Game.GameState;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
+import Game.ScreenCoordinator;
 
 public abstract class Player extends GameObject {
     // values that affect player movement
@@ -38,13 +44,16 @@ public abstract class Player extends GameObject {
     protected Key MOVE_UP_KEY = Key.UP;
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
+        protected Key SWITCH_WORLD = Key.Q;
+
     
-    
-    //protected Inventory add, remove;
+    protected Inventory inventory;
 
     // protected Inventory addInventory = addItem;
 
     protected boolean isLocked = false;
+
+    public int posPrintDelay = 0;
 
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         super(spriteSheet, x, y, startingAnimationName);
@@ -52,6 +61,9 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
+        inventory = new Inventory();
+
+        keyLocker.lockKey(Key.I);
     }
 
     public void update() {
@@ -72,7 +84,6 @@ public abstract class Player extends GameObject {
         }
 
         handlePlayerAnimation();
-
         updateLockedKeys();
 
         // if(Keyboard.isKeyDown(Key.G) ){
@@ -81,17 +92,13 @@ public abstract class Player extends GameObject {
         // }
         // update player's animation
         super.update();
+
+        posPrintDelay++;
+        if (posPrintDelay == 180){
+            System.out.println("Player coordinates are ("+this.getX()+" ,"+this.getY()+")");
+            posPrintDelay = 0;
+        }
     }
-
-    // Method that is supposed to update the players inventory when key is pressed
-    // protected void updateInventory(Inventory inventory, NPC item){
-    //     //item = mapEntity();
-    //     if(Keyboard.isKeyDown(Key.G) && item.isNear(this, (int) (getWidth() * 1.5))){
-    //         Inventory.addItem(currentAnimationName, currentFrameIndex);
-    //         //setMapEntityStatus(mapEntityStatus.REMOVED);
-
-    //     }
-    // }
 
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {
@@ -214,6 +221,7 @@ public abstract class Player extends GameObject {
         this.facingDirection = facingDirection;
     }
 
+    
     public Rectangle getInteractionRange() {
         return new Rectangle(
                 getBounds().getX1() - interactionRange,
@@ -221,6 +229,7 @@ public abstract class Player extends GameObject {
                 getBounds().getWidth() + (interactionRange * 2),
                 getBounds().getHeight() + (interactionRange * 2));
     }
+     
 
     public Key getInteractKey() { return INTERACT_KEY; }
     public Direction getCurrentWalkingXDirection() { return currentWalkingXDirection; }

@@ -21,10 +21,13 @@ import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
 import Tilesets.CommonTileset;
 import Utils.Point;
+import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
 
+
 public class MyMap extends Map {
+
     public MyMap() {
         super("my_map.txt", new CommonTileset());
         this.playerStartPosition = getMapTile(21, 16).getLocation();
@@ -51,7 +54,7 @@ public class MyMap extends Map {
         student.setInteractScript(new WalrusScript());
         npcs.add(student);
 
-        Fan fan = new Fan(4,getMapTile(23,16).getLocation());
+        Fan fan = new Fan(1,getMapTile(7,5).getLocation());
         fan.setInteractScript(new FanScript());
         npcs.add(fan);
 

@@ -101,7 +101,7 @@ public class TitleScreen extends Screen {
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.HEATDORM);
             } else if (menuItemSelected == 2) {
-                screenCoordinator.setGameState(GameState.VILLAGE);
+                screenCoordinator.setGameState(GameState.DORMEXTERIOR);
             }
         }
     }

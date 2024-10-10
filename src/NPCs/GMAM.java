@@ -12,10 +12,10 @@ import Utils.Point;
 import java.util.HashMap;
 
 // This class is for the walrus NPC
-public class Student extends NPC {
+public class GMAM extends NPC {
 
-    public Student(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("StudentNPC.png"), 30, 30), "STAND_LEFT");
+    public GMAM(int id, Point location) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("NPCGMAMedieval.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override
@@ -24,12 +24,14 @@ public class Student extends NPC {
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
+                            .withBounds(7, 13, 11, 7)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
             put("STAND_RIGHT", new Frame[] {
                    new FrameBuilder(spriteSheet.getSprite(0, 0))
                            .withScale(3)
+                           .withBounds(7, 13, 11, 7)
                            .build()
            });
         }};

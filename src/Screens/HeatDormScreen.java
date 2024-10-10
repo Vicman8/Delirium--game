@@ -1,6 +1,9 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.KeyLocker;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -8,10 +11,9 @@ import Level.FlagManager;
 import Level.Map;
 import Level.Player;
 import Maps.MountainviewDormHeat;
-import Maps.MoutainviewDorm;
-import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
+import Utils.Point;
 
 public class HeatDormScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
@@ -20,6 +22,8 @@ public class HeatDormScreen extends Screen{
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected KeyLocker keyLocker = new KeyLocker();
+    public static Point heatDormPos;
 
     public HeatDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -35,6 +39,7 @@ public class HeatDormScreen extends Screen{
         flagManager.addFlag("bearFought", false);
 
         // define/setup map
+        //map = new MountainviewDormHeat(screenCoordinator);
         map = new MountainviewDormHeat();
         map.setFlagManager(flagManager);
 
@@ -64,6 +69,19 @@ public class HeatDormScreen extends Screen{
                 player.update();
                 map.update(player);
                 break;
+        }
+
+        heatDormPos = new Point(player.getX(), player.getY());
+        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
+            screenCoordinator.switchWorld(screenCoordinator);
+        }
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
         }
     }
 

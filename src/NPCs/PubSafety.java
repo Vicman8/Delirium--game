@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class PubSafety extends NPC {
 
     public PubSafety(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("PublicSafetyMedieval.png"), 30, 30), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("PubSafetyNPC.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override
@@ -24,14 +24,12 @@ public class PubSafety extends NPC {
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
-                            .withBounds(7, 13, 11, 7)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
             put("STAND_RIGHT", new Frame[] {
                    new FrameBuilder(spriteSheet.getSprite(0, 0))
                            .withScale(3)
-                           .withBounds(7, 13, 11, 7)
                            .build()
            });
         }};
