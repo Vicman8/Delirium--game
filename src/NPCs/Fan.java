@@ -12,13 +12,20 @@ import Utils.Point;
 import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
+<<<<<<< HEAD
 import Level.Player;
+=======
+import Game.ScreenCoordinator;
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 
 import java.util.HashMap;
 
 public class Fan extends NPC {
-     public Fan(int id, Point location) {
+    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+    
+    public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Fan1.png"), 30, 30), "STAND_LEFT");
+        //this.screenCoordinator = screenCoordinator;
     }
 
     @Override
@@ -37,6 +44,7 @@ public class Fan extends NPC {
                            .withBounds(7, 13, 11, 7)
                            .build()
            });
+           //screenCoordinator.switchWorld(screenCoordinator);
         }};
     }
 

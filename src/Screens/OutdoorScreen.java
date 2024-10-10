@@ -1,10 +1,7 @@
 package Screens;
 
 import Engine.GraphicsHandler;
-<<<<<<< HEAD
-=======
 import Engine.Keyboard;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -12,50 +9,34 @@ import Level.FlagManager;
 import Level.Map;
 import Level.Player;
 import Maps.MountainviewDormOutdoor;
-import Maps.MountainviewDormOutdoorHeat;
 import Players.HistoryMan;
-import Players.MedievalHistoryMan;
 import Utils.Direction;
-<<<<<<< HEAD
-=======
 import Utils.Point;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 
-public class HeatOutdoorScreen extends Screen{
+public class OutdoorScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    //public static Point outdoorDormPos;
 
-    public HeatOutdoorScreen(ScreenCoordinator screenCoordinator) {
+    public OutdoorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-<<<<<<< HEAD
-        flagManager.addFlag("scaryBear", false);
-        flagManager.addFlag("Flee!", false);
-        flagManager.addFlag("Bear!", false);
+        flagManager.addFlag("checkDone", false);
+        flagManager.addFlag("E", false);
+        flagManager.addFlag("exclaim",false);
 
-=======
-        flagManager.addFlag("bearFought", false);
-        flagManager.addFlag("scaryBear", false);
-        flagManager.addFlag("Flee!", false);
-        flagManager.addFlag("Bear!", false);
-        
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
         // define/setup map
-        map = new MountainviewDormOutdoorHeat();
+        map = new MountainviewDormOutdoor();
         map.setFlagManager(flagManager);
 
-<<<<<<< HEAD
-        // setup player
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-=======
         //if you have not come here from it's other version, use this maps default start position instead
         if(ScreenCoordinator.savedPlayerPos == null){
             ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -63,8 +44,7 @@ public class HeatOutdoorScreen extends Screen{
 
 
         // setup player
-        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -90,11 +70,8 @@ public class HeatOutdoorScreen extends Screen{
                 map.update(player);
                 break;
         }
-<<<<<<< HEAD
-=======
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

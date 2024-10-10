@@ -38,13 +38,23 @@ public class HeatDormScreen extends Screen{
         flagManager.addFlag("mcUnfainted", false);
         flagManager.addFlag("bearFought", false);
 
+
         // define/setup map
+<<<<<<< HEAD
+=======
+        map = new MountainviewDormHeat(/*screenCoordinator*/);
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
         //map = new MountainviewDormHeat(screenCoordinator);
         map = new MountainviewDormHeat();
         map.setFlagManager(flagManager);
 
+        //if you have not come here from it's other version, use this maps default start position instead
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
+        
         // setup player
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -70,6 +80,7 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
+<<<<<<< HEAD
 
         heatDormPos = new Point(player.getX(), player.getY());
         if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
@@ -83,6 +94,19 @@ public class HeatDormScreen extends Screen{
 
             screenCoordinator.setGameState(GameState.MENU);
         }
+=======
+        
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            screenCoordinator.switchWorld(screenCoordinator);
+
+            if (Keyboard.isKeyUp(Key.L)) {
+                keyLocker.unlockKey(Key.L);
+            }
+            if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+    
+                screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+            }
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

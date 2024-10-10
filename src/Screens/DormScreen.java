@@ -24,7 +24,10 @@ public class DormScreen extends Screen{
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+<<<<<<< HEAD
     public static Point dormPos;
+=======
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     protected KeyLocker keyLocker = new KeyLocker();
     
 
@@ -44,12 +47,18 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
+<<<<<<< HEAD
         //if(VillageScreen.villagePos == null){
         //    VillageScreen.villagePos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         //}
+=======
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 
         // setup player
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -78,10 +87,17 @@ public class DormScreen extends Screen{
                 break;
         }
 
+<<<<<<< HEAD
         dormPos = new Point(player.getX(), player.getY());
         if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
             screenCoordinator.switchWorld(screenCoordinator);
         }
+=======
+        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            screenCoordinator.switchWorld(screenCoordinator);
+        //}
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
@@ -90,7 +106,19 @@ public class DormScreen extends Screen{
 
             screenCoordinator.setGameState(GameState.MENU);
         }
+<<<<<<< HEAD
         
+=======
+
+        
+        if (Keyboard.isKeyUp(Key.L)) {
+            keyLocker.unlockKey(Key.L);
+        }
+        if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
