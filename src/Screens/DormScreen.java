@@ -87,7 +87,15 @@ public class DormScreen extends Screen{
 
             screenCoordinator.setGameState(GameState.MENU);
         }
+
         
+        if (Keyboard.isKeyUp(Key.L)) {
+            keyLocker.unlockKey(Key.L);
+        }
+        if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

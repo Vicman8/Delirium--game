@@ -79,6 +79,14 @@ public class HeatDormScreen extends Screen{
         
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
+
+            if (Keyboard.isKeyUp(Key.L)) {
+                keyLocker.unlockKey(Key.L);
+            }
+            if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+    
+                screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+            }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

@@ -19,7 +19,7 @@ public class MountainviewDormOutdoor extends Map{
 
     public MountainviewDormOutdoor() {
         super("mountainview_dorm_map_outdoor.txt", new DormTilesetOutdoor());
-        this.playerStartPosition = getMapTile(10, 10).getLocation();
+        this.playerStartPosition = getMapTile(9, 8).getLocation();
     }
 
     @Override
@@ -30,13 +30,13 @@ public class MountainviewDormOutdoor extends Map{
         TotallyABear.setInteractScript(new FirstBearFight());
         npcs.add(TotallyABear);
 
-        Stache stache = new Stache(1, getMapTile(6, 27).getLocation().subtractY(40));
+        Stache stache = new Stache(2, getMapTile(15, 15).getLocation().subtractY(40));
         npcs.add(stache);
 
-        PubSafety pubSafety = new PubSafety(1, getMapTile(7, 27).getLocation().subtractY(40));
+        PubSafety pubSafety = new PubSafety(3, getMapTile(12, 19).getLocation().subtractY(40));
         npcs.add(pubSafety);
 
-        Student student = new Student(1, getMapTile(8, 27).getLocation().subtractY(40));
+        Student student = new Student(4, getMapTile(16, 20).getLocation().subtractY(40));
         npcs.add(student);
 
         return npcs;
