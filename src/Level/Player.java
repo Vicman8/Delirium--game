@@ -45,6 +45,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SWITCH_WORLD = Key.Q;
+    protected Inventory inventory;
 
     protected boolean isLocked = false;
 

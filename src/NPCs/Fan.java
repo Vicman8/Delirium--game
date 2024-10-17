@@ -12,6 +12,7 @@ import Utils.Point;
 import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
+import Level.Player;
 import Game.ScreenCoordinator;
 
 import java.util.HashMap;

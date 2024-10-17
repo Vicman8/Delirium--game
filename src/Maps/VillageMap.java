@@ -25,12 +25,6 @@ import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD:src/Maps/MyMap.java
-
-public class MyMap extends Map {
-
-    public MyMap() {
-=======
 import Game.ScreenCoordinator;
 
 public class VillageMap extends Map {
@@ -38,7 +32,6 @@ public class VillageMap extends Map {
     public ScreenCoordinator screenCoordinator;
         
     public VillageMap(/*ScreenCoordinator screenCoordinator*/) {
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Maps/VillageMap.java
         super("my_map.txt", new CommonTileset());
         this.playerStartPosition = getMapTile(21, 16).getLocation();
         //this.screenCoordinator = screenCoordinator;
@@ -65,11 +58,7 @@ public class VillageMap extends Map {
         student.setInteractScript(new WalrusScript());
         npcs.add(student);
 
-<<<<<<< HEAD:src/Maps/MyMap.java
-        Fan fan = new Fan(1,getMapTile(7,5).getLocation());
-=======
         Fan fan = new Fan(4,getMapTile(23,16).getLocation()/*, screenCoordinator */);
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Maps/VillageMap.java
         fan.setInteractScript(new FanScript());
         npcs.add(fan);
 
