@@ -1,6 +1,7 @@
 package Engine;
 
 import GameObject.Rectangle;
+import Level.Inventory;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
 
@@ -17,8 +18,10 @@ public class GamePanel extends JPanel {
 
 	// used to draw graphics to the panel
 	private GraphicsHandler graphicsHandler;
+	private Inventory inventory;
 
 	private boolean isGamePaused = false;
+	private boolean isInInventory = false;
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
@@ -86,6 +89,16 @@ public class GamePanel extends JPanel {
 		if (!isGamePaused) {
 			screenManager.update();
 		}
+
+		if(Keyboard.isKeyDown(Key.I) && !keyLocker.isKeyLocked(Key.I)){
+			keyLocker.lockKey(Key.I);
+
+			isInInventory = !isInInventory;
+		}
+
+		if (Keyboard.isKeyUp(Key.I)) {
+			keyLocker.unlockKey(Key.I);
+		}
 	}
 
 	private void updatePauseState() {
@@ -120,6 +133,12 @@ public class GamePanel extends JPanel {
 		if (isGamePaused) {
 			pauseLabel.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), new Color(0, 0, 0, 100));
+		}
+
+		//Opens the invetory screen and shows the inventory
+		if (isInInventory) {
+			graphicsHandler.drawFilledRectangle(ScreenManager.getScreenWidth() / 2 - 250, ScreenManager.getScreenHeight() / 2 - 75, 500, 150, new Color(255, 255, 255, 200));
+			//System.out.println(showInventory);
 		}
 
 		if (showFPS) {

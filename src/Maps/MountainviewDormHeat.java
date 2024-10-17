@@ -7,6 +7,7 @@ import NPCs.Fan;
 import Scripts.SimpleTextScript;
 import Scripts.DeliriousDorm.DeliriumFan;
 import Scripts.DeliriousDorm.DeliriumIntro;
+import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
 import Scripts.TestMap.TreeScript;
 import Tilesets.DormTilesetIndoor;

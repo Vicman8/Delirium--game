@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Game",
+            "request": "launch",
+            "mainClass": "Game.Game",
+            "projectName": "Delirium--game_75f640df"
+        },
+        {
+            "type": "java",
             "name": "MapEditor",
             "request": "launch",
             "mainClass": "MapEditor.MapEditor",

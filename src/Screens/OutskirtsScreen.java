@@ -1,6 +1,8 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -57,7 +59,6 @@ public class OutskirtsScreen extends Screen{
                 player.update();
                 map.update(player);
                 break;
-            // if level has been completed, bring up level cleared screen
             
             /*
              * case LEVEL_COMPLETED:

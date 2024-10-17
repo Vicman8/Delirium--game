@@ -48,7 +48,9 @@ public class Keyboard {
 
     // returns if a key is currently being pressed
     public static boolean isKeyDown(Key key) {
+		
     	return keyDown.getOrDefault(keyMap.get(key), false);
+		
     }
 
     // returns if a key is currently not being pressed
@@ -60,6 +62,7 @@ public class Keyboard {
     public static boolean areKeysDown(Key[] keys) {
     	for (Key key : keys) {
     		if (!keyDown.getOrDefault(keyMap.get(key), false)) {
+			
     			return false;
     		}
     	}

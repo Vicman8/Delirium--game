@@ -97,9 +97,6 @@ public class NPC extends MapEntity {
             this.performAction(player);
         }
 
-        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
-            setMapEntityStatus(mapEntityStatus.REMOVED);
-        }
         super.update();
     }
 
