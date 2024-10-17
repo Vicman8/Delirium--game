@@ -19,7 +19,7 @@ public class DDanaHallway extends Script {
             addText("Kaegen: Are thou knowest the A.C in Nada is working?");
             addText("Preeda: It hath been perfectly brave since ere thou walked in.");
             addText("Kaegen: All I knoweth is yond QU’s Halloween party would’ve been on the quad.\nNot h're.");
-            addText("Kaegen: There’s no way... 'twere that black bear.\nHe doth lack revenge.");
+            addText("Kaegen: There’s no way...'twere that black bear.\nHe doth lack revenge.");
             addText("Preeda: Thou mean the bear thou somehow beat up earlier?!");
             addText("Kaegen: I hast a hunch! Ye Olde Black Bear surprised the A.C unit hither as well!");
         }});

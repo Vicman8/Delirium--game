@@ -16,10 +16,10 @@ public class DanaIntro extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Preeda:Did you ACTUALLY fight a black bear?!");
+            addText("Preeda: Did you ACTUALLY fight a black bear?!");
             addText("Kaegen: I suppose I did.\nMultiple people came up to me and asked me if I was fine.");
             addText("Preeda: Don’t you ever attempt anything like that again!\nYou could’ve been killed!");
-            addText("Kaegen: Fine. ");
+            addText("Kaegen: Fine.");
             addText("Preeda: Wait, didn’t you say you were going to the dining hall?\nLemme grab you something.");
             addText("Kaegen: Thanks.");
             addText("Kaegen: It seems hotter.\nAre you guys having an A.C problem too?!");
