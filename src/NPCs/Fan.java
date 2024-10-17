@@ -12,11 +12,8 @@ import Utils.Point;
 import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
-<<<<<<< HEAD
 import Level.Player;
-=======
 import Game.ScreenCoordinator;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 
 import java.util.HashMap;
 

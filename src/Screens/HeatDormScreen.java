@@ -40,10 +40,7 @@ public class HeatDormScreen extends Screen{
 
 
         // define/setup map
-<<<<<<< HEAD
-=======
         map = new MountainviewDormHeat(/*screenCoordinator*/);
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
         //map = new MountainviewDormHeat(screenCoordinator);
         map = new MountainviewDormHeat();
         map.setFlagManager(flagManager);
@@ -80,21 +77,6 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
-<<<<<<< HEAD
-
-        heatDormPos = new Point(player.getX(), player.getY());
-        if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_WORLD)){
-            screenCoordinator.switchWorld(screenCoordinator);
-        }
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
-        }
-=======
         
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
@@ -106,7 +88,6 @@ public class HeatDormScreen extends Screen{
     
                 screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
             }
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

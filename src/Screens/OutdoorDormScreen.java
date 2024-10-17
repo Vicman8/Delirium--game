@@ -5,24 +5,19 @@ import Engine.GraphicsHandler;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-<<<<<<<< HEAD:src/Screens/OutdoorDormScreen.java
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
 import Maps.MountainviewDormOutdoor;
-========
 import Level.*;
 import Maps.VillageMap;
->>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Screens/VillageScreen.java
 import Players.HistoryMan;
 import Utils.Direction;
+import Utils.Point;
 
-<<<<<<<< HEAD:src/Screens/OutdoorDormScreen.java
 public class OutdoorDormScreen extends Screen{
-========
 // This class is for when the RPG game is actually being played
-public class VillageScreen extends Screen {
->>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Screens/VillageScreen.java
+
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -30,22 +25,15 @@ public class VillageScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
 
-<<<<<<<< HEAD:src/Screens/OutdoorDormScreen.java
     public OutdoorDormScreen(ScreenCoordinator screenCoordinator) {
-========
-    public VillageScreen(ScreenCoordinator screenCoordinator) {
->>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Screens/VillageScreen.java
-        this.screenCoordinator = screenCoordinator;
-    }
+   
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-<<<<<<<< HEAD:src/Screens/OutdoorDormScreen.java
 
         // define/setup map
         map = new MountainviewDormOutdoor();
-========
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToStudent", false);
         flagManager.addFlag("introStarted", false);
@@ -53,7 +41,6 @@ public class VillageScreen extends Screen {
         
         // define/setup map
         map = new VillageMap(/*screenCoordinator*/);
->>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Screens/VillageScreen.java
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
@@ -89,8 +76,7 @@ public class VillageScreen extends Screen {
                 map.update(player);
                 break;
         }
-<<<<<<<< HEAD:src/Screens/OutdoorDormScreen.java
-========
+
 
         // if flag is set at any point during gameplay, game is "won"
         /*
@@ -99,7 +85,6 @@ public class VillageScreen extends Screen {
         }
         */
         ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
->>>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6:src/Screens/VillageScreen.java
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

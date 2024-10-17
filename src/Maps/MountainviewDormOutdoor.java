@@ -9,12 +9,9 @@ import NPCs.TheThim;
 import NPCs.Walrus;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
-<<<<<<< HEAD
-=======
 import Scripts.Outdoor.CheckUp;
 import Scripts.Outdoor.Exclaim;
 import Scripts.Outdoor.How;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 import Level.Map;
 import Level.NPC;
 import Tilesets.DormTilesetOutdoor;
@@ -25,11 +22,7 @@ public class MountainviewDormOutdoor extends Map{
 
     public MountainviewDormOutdoor() {
         super("mountainview_dorm_map_outdoor.txt", new DormTilesetOutdoor());
-<<<<<<< HEAD
-        this.playerStartPosition = getMapTile(10, 10).getLocation();
-=======
         this.playerStartPosition = getMapTile(9, 8).getLocation();
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     @Override
@@ -40,15 +33,6 @@ public class MountainviewDormOutdoor extends Map{
         TotallyABear.setInteractScript(new FirstBearFight());
         npcs.add(TotallyABear);
 
-<<<<<<< HEAD
-        Stache stache = new Stache(1, getMapTile(6, 27).getLocation().subtractY(40));
-        npcs.add(stache);
-
-        PubSafety pubSafety = new PubSafety(1, getMapTile(7, 27).getLocation().subtractY(40));
-        npcs.add(pubSafety);
-
-        Student student = new Student(1, getMapTile(8, 27).getLocation().subtractY(40));
-=======
         Stache stache = new Stache(2, getMapTile(15, 15).getLocation().subtractY(40));
         stache.setInteractScript(new Exclaim());
         npcs.add(stache);
@@ -59,7 +43,6 @@ public class MountainviewDormOutdoor extends Map{
 
         Student student = new Student(4, getMapTile(16, 20).getLocation().subtractY(40));
         student.setInteractScript(new How());
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
         npcs.add(student);
 
         return npcs;

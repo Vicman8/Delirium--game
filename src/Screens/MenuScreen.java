@@ -45,11 +45,7 @@ public class MenuScreen extends Screen {
         playTest = new SpriteFont("DORM EXTERIOR", 500, 400, "Algerian", 30, new Color(49, 207, 240));
         playTest.setOutlineColor(Color.black);
         playTest.setOutlineThickness(3);
-<<<<<<< HEAD
-        playTest2 = new SpriteFont("HEAT DORM EXTERIOR", 500, 475, "Algerian", 30, new Color(49, 207, 240));
-=======
         playTest2 = new SpriteFont("HEAT DORM EXTERIOR", 450, 475, "Algerian", 30, new Color(49, 207, 240));
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
         playTest2.setOutlineColor(Color.black);
         playTest2.setOutlineThickness(3);
         background = new MenuMap();
@@ -110,11 +106,7 @@ public class MenuScreen extends Screen {
             credits.setColor(new Color(49, 207, 240));
             playTest.setColor(new Color(49, 207, 240));
             playTest2.setColor(new Color(255, 215, 0));
-<<<<<<< HEAD
-            pointerLocationX = 440;
-=======
             pointerLocationX = 390;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
             pointerLocationY = 482;
         }
 

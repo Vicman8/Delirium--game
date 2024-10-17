@@ -18,30 +18,18 @@ import java.util.ArrayList;
 
 public class MountainviewDormHeat extends Map{
     ScreenCoordinator screenCoordinator;
-<<<<<<< HEAD
-    public MountainviewDormHeat(/*ScreenCoordinator screenCoordinator**/) {
-        super("mountainview_dorm__heat_map.txt", new HeatDormTilesetIndoor());
-        this.playerStartPosition = getMapTile(10, 10).getLocation();
-        this.screenCoordinator = screenCoordinator;
-=======
     public MountainviewDormHeat(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm__heat_map.txt", new HeatDormTilesetIndoor());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
         //this.screenCoordinator = screenCoordinator;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-<<<<<<< HEAD
-        Fan fan = new Fan(1,getMapTile(7,5).getLocation());
-        fan.setInteractScript(new FanScript());
-=======
         Fan fan = new Fan(1,getMapTile(7,5).getLocation()/* , screenCoordinator*/);
         fan.setInteractScript(new DeliriumFan());
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
         npcs.add(fan);
 
         return npcs;

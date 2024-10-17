@@ -37,11 +37,7 @@ public class FanScript extends Script {
                     addText("Kaegen: Thank god I have this fan!\nIt at least keeps me from passing out!");
                     addText("Kaegen: I REALLY have to shower though.");
 
-<<<<<<< HEAD
-                    System.out.println("Activating switch world in FanScript");
-=======
                     //System.out.println("Activating switch world in FanScript");
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
                     //screenCoordinator.switchWorld(screenCoordinator);
                 }});
                 

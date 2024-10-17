@@ -44,16 +44,12 @@ public abstract class Player extends GameObject {
     protected Key MOVE_UP_KEY = Key.UP;
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
-<<<<<<< HEAD
         protected Key SWITCH_WORLD = Key.Q;
 
     
     protected Inventory inventory;
 
     // protected Inventory addInventory = addItem;
-=======
-    protected Key SWITCH_WORLD = Key.Q;
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
 
     protected boolean isLocked = false;
 
@@ -298,13 +294,9 @@ public abstract class Player extends GameObject {
     //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     // }
     
-<<<<<<< HEAD
 }
 
 
     
     
 
-=======
-}
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6

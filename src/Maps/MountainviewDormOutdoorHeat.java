@@ -29,11 +29,7 @@ public class MountainviewDormOutdoorHeat extends Map{
 
     public MountainviewDormOutdoorHeat() {
         super("mountainview_dorm_map_outdoor_heat.txt", new DormTilesetOutdoorHeat());
-<<<<<<< HEAD
-        this.playerStartPosition = getMapTile(10, 10).getLocation();
-=======
         this.playerStartPosition = getMapTile(9, 8).getLocation();
->>>>>>> 4cb609805493e00c95acd5e3ee739a85fc313fc6
     }
 
     
