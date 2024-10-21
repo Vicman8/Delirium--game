@@ -4,6 +4,8 @@ import java.util.Map;
 
 import Engine.GamePanel;
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.Keyboard;
 import GameObject.GameObject;
 
 import java.awt.Color;
@@ -13,9 +15,12 @@ public class Inventory extends GamePanel {
 
     //Metho to hold items and quantities
     private static Map<String, Integer> inventory = new HashMap<>();
+    protected int quantity = 0;
 
     public static void addItem(String itemName, int quantity){
+        quantity = 0;
         inventory.put(itemName, inventory.getOrDefault(itemName,0)+ quantity);
+        quantity += 1;
         //Prints the inventory items to the terminal
         System.out.print(itemName +  "" + quantity+ " ");
     }
@@ -42,6 +47,10 @@ public class Inventory extends GamePanel {
     
     public static void showInventory() {
         // .drawFilledRectangle(100, 0, 400, 100, Color.white);
-        
+        if (Keyboard.isKeyDown(Key.I)) {
+            
+
+            
+        }
     }
 }

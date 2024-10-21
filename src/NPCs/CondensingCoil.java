@@ -12,16 +12,15 @@ import Utils.Point;
 import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
-import Level.Player;
 import Game.ScreenCoordinator;
 
 import java.util.HashMap;
 
-public class Fan extends NPC {
+public class CondensingCoil extends NPC {
     //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
-    public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Fan1.png"), 30, 30), "STAND_LEFT");
+    public CondensingCoil(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("CondensingCoil.png"), 30, 30), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
 
@@ -45,18 +44,7 @@ public class Fan extends NPC {
         }};
     }
 
-    //Makes the fan addable to the inventory
-    @Override
-    public void update(Player player) {
-        super.update(player);
 
-        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
-            setMapEntityStatus(MapEntityStatus.REMOVED);
-            int quantity = 0;
-            Inventory.addItem("Fan", + quantity);
-            quantity = quantity  + 1;
-        }
-    }
     
 
     @Override

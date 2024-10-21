@@ -61,7 +61,6 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
-        inventory = new Inventory();
 
         keyLocker.lockKey(Key.I);
     }

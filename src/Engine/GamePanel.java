@@ -21,7 +21,7 @@ public class GamePanel extends JPanel {
 	private Inventory inventory;
 
 	private boolean isGamePaused = false;
-	private boolean isInInventory = false;
+	protected boolean isInInventory = false;
 	private SpriteFont pauseLabel;
 	private KeyLocker keyLocker = new KeyLocker();
 	private final Key pauseKey = Key.P;
