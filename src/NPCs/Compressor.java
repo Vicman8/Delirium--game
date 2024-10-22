@@ -53,7 +53,7 @@ public class Compressor extends NPC {
         if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
             setMapEntityStatus(MapEntityStatus.REMOVED);
             
-            Inventory.addItem("Compressor ", + quantity);
+            //Inventory.addItem("Compressor ", + quantity);
             // quantity = quantity  + 1;
         }
     }

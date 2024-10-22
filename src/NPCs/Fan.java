@@ -51,25 +51,28 @@ public class Fan extends NPC {
     public void update(Player player ) {
         super.update(player);
         
-        // if (Keyboard.isKeyDown(Key.F) && player.isNear(this, (int) (getWidth() * 1.5)) && (screenCoordinator.getGameState()==HEATDORM && hasSwitched == false)) {
-            System.out.println("Cooling off");
+         //if (Keyboard.isKeyDown(Key.F) && player.isNear(this, (int) (getWidth() * 1.5)) && (screenCoordinator.getGameState()==HEATDORM && hasSwitched == false)) {
+            //System.out.println("Cooling off");
             //setMapEntityStatus(MapEntityStatus.REMOVED);
             //int quantity = 0;
             //Inventory.addItem("Fan", + quantity);
             //quantity = quantity  + 1;
-        //}
+            //}
+
+            
+            boolean hasSwitched = false;
+            if(Keyboard.isKeyDown(Key.F)){
+                System.out.println("f");
+                screenCoordinator.setGameState(GameState.DORM);
+                // if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
+                //     hasSwitched = true;
+                // }
+        
+            }
     }
     public void switchWorld(ScreenCoordinator screenCoordinator){    
 		//screenCoordinator = this;
-		boolean hasSwitched = false;
-
-		if(Keyboard.isKeyDown(Key.F)){
-			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.DORM);
-				hasSwitched = true;
-			}
-
-		}
+        
     }
     
 

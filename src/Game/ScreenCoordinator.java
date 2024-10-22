@@ -5,6 +5,7 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
+import NPCs.Fan;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
@@ -37,6 +38,13 @@ public class ScreenCoordinator extends Screen {
 
 	public static Point savedPlayerPos;
 
+	//protected GetWidth getWidth;
+	protected Fan fan;
+
+	protected boolean delay = false;
+	
+	protected long lastSwitchTime;
+	protected long randomDelay; 
 	public GameState getGameState() {
 		return gameState;
 	}
@@ -88,10 +96,21 @@ public class ScreenCoordinator extends Screen {
 	}
     
     public void switchWorld(ScreenCoordinator screenCoordinator){    
+		Math.random();
 		screenCoordinator = this;
 		boolean hasSwitched = false;
+		 //int getWidth = getWidth;
 
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
+		if(!delay){
+			randomDelay = (long) (Math.random()*5000)+2000;
+			System.out.println(randomDelay);
+			lastSwitchTime = System.currentTimeMillis();
+			delay = true;
+		}
+
+		long currentTime = System.currentTimeMillis();
+/*&& Keyboard.isKeyDown(Key.E) && fan.isNear(fan, (int) (getWidth() * 1.5))*/
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY) && fan.isNear(fan, currentTime) ){
 			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DORM);
 				hasSwitched = true;
@@ -103,12 +122,14 @@ public class ScreenCoordinator extends Screen {
 			}
 		}
 
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
-			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay) ){
+			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false ){
 				screenCoordinator.setGameState(GameState.HEATDORM);
 				hasSwitched = true;
 			}
 			
+
+
 			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
 				hasSwitched = true;
