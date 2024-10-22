@@ -13,12 +13,13 @@ import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
+import Game.GameState;
 import Game.ScreenCoordinator;
 
 import java.util.HashMap;
 
 public class Fan extends NPC {
-    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+    protected ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
     public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Fan1.png"), 30, 30), "STAND_LEFT");
@@ -47,15 +48,28 @@ public class Fan extends NPC {
 
     //Makes the fan addable to the inventory
     @Override
-    public void update(Player player) {
+    public void update(Player player ) {
         super.update(player);
+        
+        // if (Keyboard.isKeyDown(Key.F) && player.isNear(this, (int) (getWidth() * 1.5)) && (screenCoordinator.getGameState()==HEATDORM && hasSwitched == false)) {
+            System.out.println("Cooling off");
+            //setMapEntityStatus(MapEntityStatus.REMOVED);
+            //int quantity = 0;
+            //Inventory.addItem("Fan", + quantity);
+            //quantity = quantity  + 1;
+        //}
+    }
+    public void switchWorld(ScreenCoordinator screenCoordinator){    
+		//screenCoordinator = this;
+		boolean hasSwitched = false;
 
-        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
-            setMapEntityStatus(MapEntityStatus.REMOVED);
-            int quantity = 0;
-            Inventory.addItem("Fan", + quantity);
-            quantity = quantity  + 1;
-        }
+		if(Keyboard.isKeyDown(Key.F)){
+			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DORM);
+				hasSwitched = true;
+			}
+
+		}
     }
     
 
