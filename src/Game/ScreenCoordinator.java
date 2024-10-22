@@ -5,6 +5,8 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
+import Level.NPC;
+import Level.Player;
 import NPCs.Fan;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
@@ -38,8 +40,10 @@ public class ScreenCoordinator extends Screen {
 
 	public static Point savedPlayerPos;
 
+	protected Player player;
+
 	//protected GetWidth getWidth;
-	protected Fan fan;
+	protected NPC fan;
 
 	protected boolean delay = false;
 	
@@ -99,6 +103,8 @@ public class ScreenCoordinator extends Screen {
 		Math.random();
 		screenCoordinator = this;
 		boolean hasSwitched = false;
+		//this.player = player;
+		//fan = new fan();
 		 //int getWidth = getWidth;
 
 		if(!delay){
@@ -110,7 +116,7 @@ public class ScreenCoordinator extends Screen {
 
 		long currentTime = System.currentTimeMillis();
 /*&& Keyboard.isKeyDown(Key.E) && fan.isNear(fan, (int) (getWidth() * 1.5))*/
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY) && fan.isNear(fan, currentTime) ){
+		if(/*player.touching(fan.getBounds()) && */Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)  ){
 			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DORM);
 				hasSwitched = true;

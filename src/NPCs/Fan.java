@@ -74,6 +74,8 @@ public class Fan extends NPC {
 		//screenCoordinator = this;
         
     }
+
+    
     
 
     @Override
