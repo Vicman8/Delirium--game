@@ -6,7 +6,7 @@ import NPCs.Stache;
 import NPCs.Student;
 import NPCs.THEVICMAN;
 import NPCs.TheThim;
-import NPCs.Walrus;
+import NPCs.Bear;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
 import Scripts.Outdoor.CheckUp;
@@ -17,6 +17,8 @@ import Level.NPC;
 import Tilesets.DormTilesetOutdoor;
 
 import java.util.ArrayList;
+
+import javax.imageio.plugins.bmp.BMPImageWriteParam;
 
 public class MountainviewDormOutdoor extends Map{
 
@@ -29,9 +31,9 @@ public class MountainviewDormOutdoor extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus TotallyABear = new Walrus(1, getMapTile(19, 17).getLocation().subtractY(40));
-        TotallyABear.setInteractScript(new FirstBearFight());
-        npcs.add(TotallyABear);
+        Bear bear = new Bear(1, getMapTile(19, 17).getLocation().subtractY(40));
+        bear.setInteractScript(new FirstBearFight());
+        npcs.add(bear);
 
         Stache stache = new Stache(2, getMapTile(15, 15).getLocation().subtractY(40));
         stache.setInteractScript(new Exclaim());

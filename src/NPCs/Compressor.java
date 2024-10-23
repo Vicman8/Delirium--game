@@ -20,7 +20,7 @@ public class Compressor extends NPC {
     //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
     public Compressor(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Compressor.png"), 30, 30), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Compressor_1.png"), 30, 30), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
 

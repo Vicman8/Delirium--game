@@ -40,13 +40,12 @@ public class HeatOutdoorScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(screenCoordinator.getPreviousGameState()==GameState.DORMEXTERIOR){
+            player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else{
+            player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
         }
-
-
-        // setup player
-        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -74,6 +73,10 @@ public class HeatOutdoorScreen extends Screen{
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
+
+        if(((player.getX() >= 400.0) && (player.getX() <= 410.0)) && (player.getY() >= 340.0) && (player.getY() <= 350.0)){
+            screenCoordinator.setGameState(GameState.HEATDORM);
+        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

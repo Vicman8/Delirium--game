@@ -38,13 +38,16 @@ public class OutdoorScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(screenCoordinator.getPreviousGameState()==GameState.HEATDORMEXTERIOR){
+            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
+            player = new HistoryMan(-3, 769);
+        }else{
+            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
         }
 
-
-        // setup player
-        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
+        
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -72,6 +75,14 @@ public class OutdoorScreen extends Screen{
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
+
+            if(((player.getX() >= 400.0) && (player.getX() <= 410.0)) && (player.getY() >= 340.0) && (player.getY() <= 350.0)){
+                screenCoordinator.setGameState(GameState.DORM);
+            }
+            
+            if((player.getX() <=-30.0) && ((player.getY() >= 433.0) && (player.getY() <= 1528.0))){
+                screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
+            }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

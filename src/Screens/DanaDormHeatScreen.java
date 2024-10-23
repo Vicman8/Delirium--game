@@ -1,4 +1,3 @@
-//tied to VILLAGE
 
 package Screens;
 
@@ -13,13 +12,13 @@ import Level.FlagManager;
 import Level.Map;
 import Level.Player;
 import Maps.DanaDorm;
-import Maps.DanaOutdoor;
-import Maps.MoutainviewDorm;
+import Maps.DanaDormHeat;
 import Players.HistoryMan;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
-public class DormScreen extends Screen{
+public class DanaDormHeatScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     public Player player;
@@ -29,31 +28,25 @@ public class DormScreen extends Screen{
     protected KeyLocker keyLocker = new KeyLocker();
     
 
-    public DormScreen(ScreenCoordinator screenCoordinator) {
+    public DanaDormHeatScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        flagManager.addFlag("hasTalkedToStudent", false);
-        flagManager.addFlag("introStarted", false);
-        flagManager.addFlag("fanHasDied", false);
 
         // define/setup map
-        map = new MoutainviewDorm();
+        map = new DanaDormHeat();
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-
-        if(screenCoordinator.getPreviousGameState()==GameState.HEATDORM){
-            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else{
-            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
 
-        
+        // setup player
+        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -96,30 +89,9 @@ public class DormScreen extends Screen{
         }
 
         System.out.println(player.getX());
-        //System.out.println(player.getY());
-
-        if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
-            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
-        }
-
+        System.out.println(player.getY());
 
         
-        if (Keyboard.isKeyUp(Key.M)) {
-            keyLocker.unlockKey(Key.M);
-        }
-        if (!keyLocker.isKeyLocked(Key.M) && Keyboard.isKeyDown(Key.M)) {
-
-            screenCoordinator.setGameState(GameState.DANADORMHEAT);
-        }
-
-        if (Keyboard.isKeyUp(Key.N)) {
-            keyLocker.unlockKey(Key.N);
-        }
-        if (!keyLocker.isKeyLocked(Key.N) && Keyboard.isKeyDown(Key.N)) {
-
-            screenCoordinator.setGameState(GameState.DANADORM);
-        }
-
         if (Keyboard.isKeyUp(Key.L)) {
             keyLocker.unlockKey(Key.L);
         }

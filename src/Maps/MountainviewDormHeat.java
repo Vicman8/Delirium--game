@@ -20,7 +20,7 @@ public class MountainviewDormHeat extends Map{
     ScreenCoordinator screenCoordinator;
     public MountainviewDormHeat(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm__heat_map.txt", new HeatDormTilesetIndoor());
-        this.playerStartPosition = getMapTile(10, 10).getLocation();
+        this.playerStartPosition = getMapTile(8, 12).getLocation();
         //this.screenCoordinator = screenCoordinator;
     }
 
