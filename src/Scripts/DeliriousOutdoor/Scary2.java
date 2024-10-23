@@ -38,26 +38,21 @@ public class Scary2 extends Script {
         // }} );
 
 
-        //scriptActions.add(new NPCStandScriptAction(Direction.RIGHT));
-        scriptActions.add(new NPCWalkScriptAction(Direction.UP, 36, 10));
-        //scriptActions.add(new NPCWalkScriptAction(Direction.RIGHT, 19, 10));
-
-        // // Add conditional actions
+        
+        // // // Add conditional actions
         // scriptActions.add(new ConditionalScriptAction() {{
-        //     addConditionalScriptAction( addRequirement(new FlagRequirement("x", true));
-        //     {{
-        //         addRequirement(new FlagRequirement("x", true));
-
+        //         addConditionalScriptAction( addRequirement(new FlagRequirement("x", true));
+        //         {{
+        //                 addRequirement(new FlagRequirement("x", true)));
+                
         //         addScriptAction(new WaitScriptAction(70)); // Wait for 70 units (time steps, frames, etc.)
         //         addScriptAction(new NPCFacePlayerScriptAction()); // NPC faces player
 
-        //         // NPC's dialogue
-        //         addScriptAction(new TextboxScriptAction() {{
-        //             addText("Oh, you're still here...");
-        //             addText("...You heard from Walrus that he saw me with your\nball?");
-        //             addText("Well, I saw him playing with it and was worried it would\nroll into my garden.");
-        //             addText("So I kicked it as far as I could into the forest to the left.");
-        //             addText("Now, if you'll excuse me, I have to go.");
+        // scriptActions.add(new ChangeFlagScriptAction("Flee!", true));
+        // scriptActions.add(new NPCStandScriptAction(Direction.RIGHT));
+        // scriptActions.add(new NPCWalkScriptAction(Direction.UP, 36, 10));
+        // //scriptActions.add(new NPCWalkScriptAction(Direction.RIGHT, 19, 10));
+       
         //         }});
 
         //         // NPC stands facing right and walks
@@ -68,11 +63,9 @@ public class Scary2 extends Script {
         // }});
 
         // // Set a flag after the NPC flees
-        // scriptActions.add(new ChangeFlagScriptAction("Flee!", true));
-
         // Unlock the player
         scriptActions.add(new UnlockPlayerScriptAction());
-
+        
         return scriptActions;
     }
 }
