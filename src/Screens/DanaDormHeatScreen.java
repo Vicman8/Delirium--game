@@ -41,12 +41,12 @@ public class DanaDormHeatScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        }
+        if(screenCoordinator.getPreviousGameState()==GameState.DANADORM){
+            player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else{
+            player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 
-        // setup player
-        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        }
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -91,6 +91,10 @@ public class DanaDormHeatScreen extends Screen{
         System.out.println(player.getX());
         System.out.println(player.getY());
 
+        if(((player.getX() >= 1695.0) && (player.getX() <= 1745.0)) && (player.getY() >= 815.0) && (player.getY() <= 820.0)){
+            screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
+        }
+
         
         if (Keyboard.isKeyUp(Key.L)) {
             keyLocker.unlockKey(Key.L);
@@ -98,6 +102,14 @@ public class DanaDormHeatScreen extends Screen{
         if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
 
             screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
         }
         
     }

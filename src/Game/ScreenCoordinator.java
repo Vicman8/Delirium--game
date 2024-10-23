@@ -120,6 +120,11 @@ public class ScreenCoordinator extends Screen {
 				screenCoordinator.setGameState(GameState.DANADORM);
 				hasSwitched = true;
 			}
+
+			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOORHEAT && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
+				hasSwitched = true;
+			}
 		}
 
 		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
@@ -135,6 +140,11 @@ public class ScreenCoordinator extends Screen {
 
 			if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMHEAT);
+				hasSwitched = true;
+			}
+
+			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOOR && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
 				hasSwitched = true;
 			}
 		}
