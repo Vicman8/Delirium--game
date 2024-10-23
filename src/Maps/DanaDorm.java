@@ -1,6 +1,10 @@
 package Maps;
 import Level.Trigger;
+import NPCs.Preeda;
+import NPCs.Stache;
+import NPCs.StacheM;
 import NPCs.THEVICMAN;
+import Scripts.Dana.DanaIntro;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Level.Map;
 import Level.NPC;
@@ -27,6 +31,14 @@ public class DanaDorm extends Map{
 
         THEVICMAN vicman = new THEVICMAN(1, getMapTile(3, 2).getLocation());
         npcs.add(vicman);
+
+        Preeda preeda = new Preeda(2, getMapTile(19,12).getLocation());
+        preeda.setInteractScript(new DanaIntro());
+        npcs.add(preeda);
+
+        Stache stache = new Stache(2, getMapTile(27,11).getLocation());
+        //stache.setInteractScript(new FollowMC())
+        npcs.add(stache);
 
         return npcs;
         

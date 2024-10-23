@@ -3,6 +3,7 @@ package Scripts.DeliriousDana;
 import java.util.ArrayList;
 
 import Level.Script;
+import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
 import ScriptActions.CustomRequirement;
@@ -135,7 +136,7 @@ public class VictorFight extends Script {
                 });
             }
         });
-
+        scriptActions.add(new ChangeFlagScriptAction("victorFought", true));
         scriptActions.add(new NPCUnlockScriptAction());
         scriptActions.add(new UnlockPlayerScriptAction());
 

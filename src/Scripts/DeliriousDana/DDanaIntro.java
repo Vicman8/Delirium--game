@@ -18,12 +18,15 @@ public class DDanaIntro extends Script {
         scriptActions.add(new TextboxScriptAction() {{
             addText("Kaegen: Not again... everything looks weird.");
             addText("Preeda: Kaegen, wh’re art we? Ev'rything looks spooky.");
-            addText("Kaegen: All I knoweth is yond QU’s Halloween party would’ve been on the quad. Not h're.");
-            addText("Preeda: Followeth me! I knoweth wh're the coldest parteth of the d'rm is!");
-            addText("Kaegen: Guesseth I shouldst beholdeth 'round again while following her.");
+            addText("Kaegen: All I knoweth is yond QU’s Halloween party\nwould’ve been on the quad. Not h're.");
+            addText("Kaegen: Are thou knowest the A.C in Nada is working?");
+            addText("Preeda: It hath been perfectly brave since ere\nthou walked in.");
+            addText("Kaegen: There’s no way...'twere that black bear.\nHe doth lack revenge.");
+            addText("Preeda: Thou mean the bear thou somehow beat up\nearlier?!");
+            addText("Kaegen: I hast a hunch! Ye Olde Black Bear surprised\nthe A.C unit hither as well!");
         }});
 
-        scriptActions.add(new ChangeFlagScriptAction("introStarted", true));
+        scriptActions.add(new ChangeFlagScriptAction("dDanaIntroed", true));
 
         scriptActions.add(new UnlockPlayerScriptAction());
 

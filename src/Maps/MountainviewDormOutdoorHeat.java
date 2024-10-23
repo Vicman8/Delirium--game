@@ -47,7 +47,7 @@ public class MountainviewDormOutdoorHeat extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Bear bear = new Bear(1, getMapTile(19, 17).getLocation().subtractY(40));
-        bear.setInteractScript(new FirstBearFight());
+        bear.setInteractScript(new Diabear());
         npcs.add(bear);
 
         StacheM stacheM = new StacheM(1, getMapTile(15, 15).getLocation().subtractY(40));

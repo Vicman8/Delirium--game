@@ -10,6 +10,7 @@ import ScriptActions.UnlockPlayerScriptAction;
 import java.util.ArrayList;
 
 public class FirstBearFight extends Script {
+    //Unused. Will delete later.
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
