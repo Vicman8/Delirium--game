@@ -17,7 +17,7 @@ public class VictorIntro extends Script {
 
         scriptActions.add(new TextboxScriptAction() {{
             addText("Kaegen: Ah! It is not Ye Olde Black Bear!\nIt’s hold, but for a student!");
-            addText("Student: It’s so hot out!! I NEEDETH this cold milk man!!");
+            addText("Student: It’s so hot out!! I NEEDETH this cold strawberry milk man!!");
             addText("Preeda: You’re Victor, correct? Aren’t thou the person in the back coign of mine Calculus class?");
             addText("Victor: Preeda, right? Aren’t thou the one whom loves helping others all the time?");
             addText("Kaegen: Enough about that! Why art thou dressed like a vampire?");

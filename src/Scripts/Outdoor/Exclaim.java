@@ -18,7 +18,7 @@ public class Exclaim extends Script {
         scriptActions.add(new NPCFacePlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Sweaty Student: Holy moly! How'd you drive away that bear?!");
+            addText("Sweaty Student: Holy moly!\nHow'd you drive away that bear?!");
             addText("Kaegen: I actually have no idea.");
         }});
 

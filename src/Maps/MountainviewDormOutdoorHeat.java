@@ -17,6 +17,9 @@ import NPCs.THEVICMANM;
 import NPCs.TheThim;
 import NPCs.Walrus;
 import NPCs.CirculatingFan;
+import Scripts.DeliriousDana.VictorFight;
+import Scripts.DeliriousDana.VictorFight;
+import Scripts.DeliriousOutdoor.Diabear;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.DeliriousOutdoor.Scary;
 import Scripts.DeliriousOutdoor.Scary2;
@@ -44,7 +47,7 @@ public class MountainviewDormOutdoorHeat extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Walrus TotallyABear = new Walrus(1, getMapTile(19, 17).getLocation().subtractY(40));
-        TotallyABear.setInteractScript(new FirstBearFight());
+        TotallyABear.setInteractScript(new VictorFight());
         npcs.add(TotallyABear);
 
         StacheM stacheM = new StacheM(1, getMapTile(15, 15).getLocation().subtractY(40));
