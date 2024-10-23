@@ -17,6 +17,7 @@ import Screens.ShoreScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorDormScreen;
 import Screens.OutskirtsScreen;
+import Screens.InventoryScreen;
 import Utils.Point;
 import Players.HistoryMan;
 import Screens.MenuScreen;
@@ -37,6 +38,7 @@ public class ScreenCoordinator extends Screen {
 
 	public static Key SWITCH_TO_REALITY = Key.W;
 	public static Key SWITCH_TO_MEDIEVAL = Key.Q;
+	public static Key OPEN_INVENTORY = Key.I;
 
 	public static Point savedPlayerPos;
 
@@ -88,7 +90,11 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case HEATDORMEXTERIOR:
 						currentScreen = new HeatOutdoorScreen(this);
+						
+					// case INVENTORY:
+					// 	currentScreen = new InventoryScreen(this);
 						break;
+					
 				}
 				currentScreen.initialize();
 			}
@@ -98,6 +104,13 @@ public class ScreenCoordinator extends Screen {
 			currentScreen.update();
 		} while (previousGameState != gameState);
 	}
+
+	// public void inventory(ScreenCoordinator screenCoordinator){
+	// 	screenCoordinator = this;
+	// 	if(Keyboard.isKeyDown(ScreenCoordinator.OPEN_INVENTORY)){
+
+	// 	}
+	// }
     
     public void switchWorld(ScreenCoordinator screenCoordinator){    
 		Math.random();

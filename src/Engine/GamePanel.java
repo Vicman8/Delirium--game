@@ -2,11 +2,13 @@ package Engine;
 
 import GameObject.Rectangle;
 import Level.Inventory;
+import Screens.InventoryScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /*
  * This is where the game loop process and render back buffer is setup
@@ -18,7 +20,7 @@ public class GamePanel extends JPanel {
 
 	// used to draw graphics to the panel
 	private GraphicsHandler graphicsHandler;
-	private Inventory inventory;
+	protected InventoryScreen inventory;
 
 	private boolean isGamePaused = false;
 	protected boolean isInInventory = false;
@@ -52,6 +54,7 @@ public class GamePanel extends JPanel {
 		fpsDisplayLabel = new SpriteFont("FPS", 4, 3, "Arial", 12, Color.black);
 
 		currentFPS = Config.TARGET_FPS;
+		//inventory = new InventoryScreen();
 
 		// this game loop code will run in a separate thread from the rest of the program
 		// will continually update the game's logic and repaint the game's graphics
@@ -125,7 +128,9 @@ public class GamePanel extends JPanel {
 		fpsDisplayLabel.setText("FPS: " + currentFPS);
 	}
 
-	public void draw() {			
+	public void draw() {		
+		
+		//InventoryScreen() = new BufferedImage();
 		// draw current game state
 		screenManager.draw(graphicsHandler);
 
@@ -138,6 +143,8 @@ public class GamePanel extends JPanel {
 		//Opens the invetory screen and shows the inventory
 		if (isInInventory) {
 			graphicsHandler.drawFilledRectangle(ScreenManager.getScreenWidth() / 2 - 250, ScreenManager.getScreenHeight() / 2 - 75, 500, 150, new Color(255, 255, 255, 200));
+			graphicsHandler.drawImage(null, ALLBITS, ABORT);
+			//graphicsHandler.drawImage("InventoryScreen.png", ALLBITS, ABORT, WIDTH, HEIGHT);
 			//System.out.println(showInventory);
 		}
 
