@@ -84,6 +84,17 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
+
+        playerCurrPosition = new Point(player.getX(), player.getY());
+        
         
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             ScreenCoordinator.switchWorld();
@@ -96,6 +107,9 @@ public class HeatDormScreen extends Screen{
                 ScreenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
             }
 
+        
+
+        
             ScreenCoordinator.switchWorld();
     }
 

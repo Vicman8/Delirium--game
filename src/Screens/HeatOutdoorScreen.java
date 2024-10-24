@@ -1,6 +1,8 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
@@ -22,6 +24,7 @@ public class HeatOutdoorScreen extends Screen{
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected KeyLocker keyLocker = new KeyLocker();
 
     public HeatOutdoorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -40,6 +43,14 @@ public class HeatOutdoorScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
+        if(screenCoordinator.getPreviousGameState()==GameState.DORMEXTERIOR){
+            player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOORHEAT){
+            player = new MedievalHistoryMan(-3, 769);
+        }else{
+            player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
+        }
         if(ScreenCoordinator.savedPlayerPos == null){
             ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
@@ -64,6 +75,15 @@ public class HeatOutdoorScreen extends Screen{
 
     public void update() {
         // based on screen state, perform specific actions
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
+        
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
             case RUNNING:
@@ -72,6 +92,17 @@ public class HeatOutdoorScreen extends Screen{
                 break;
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            ScreenCoordinator.switchWorld();
+
+            if(((player.getX() >= 400.0) && (player.getX() <= 410.0)) && (player.getY() >= 340.0) && (player.getY() <= 350.0)){
+                screenCoordinator.setGameState(GameState.HEATDORM);
+            }
+            
+            if((player.getX() <=-30.0) && ((player.getY() >= 433.0) && (player.getY() <= 1528.0))){
+                screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
+            }
+
+        
             ScreenCoordinator.switchWorld();
     }
 

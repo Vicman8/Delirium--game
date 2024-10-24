@@ -3,6 +3,7 @@ import Level.Trigger;
 import Level.Map;
 import Level.NPC;
 import Level.Tileset;
+import Tilesets.DormTilesetOutdoorHeat;
 import Tilesets.HeatDormTilesetIndoor;
 import Game.ScreenCoordinator;
 
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 public class DanaOutdoorHeat extends Map{
     //ScreenCoordinator screenCoordinator;
     public DanaOutdoorHeat(/*ScreenCoordinator screenCoordinator*/) {
-        super("dana_dorm_outdoor_heat_map.txt", new HeatDormTilesetIndoor());
-        //this.playerStartPosition = getMapTile(10, 10).getLocation();
+        super("dana_dorm_outdoor_heat_map.txt", new DormTilesetOutdoorHeat());
+        this.playerStartPosition = getMapTile(17, 12).getLocation();
         //this.screenCoordinator = screenCoordinator;
     }
 

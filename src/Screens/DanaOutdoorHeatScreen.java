@@ -12,7 +12,9 @@ import Level.FlagManager;
 import Level.Map;
 import Level.Player;
 import Maps.DanaOutdoor;
+import Maps.DanaOutdoorHeat;
 import Players.HistoryMan;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
@@ -35,16 +37,17 @@ public class DanaOutdoorHeatScreen extends Screen{
         flagManager = new FlagManager();
 
         // define/setup map
-        map = new DanaOutdoor();
+        map = new DanaOutdoorHeat();
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
+            player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMHEAT){
+            player = new MedievalHistoryMan(416, 219);
+        }else{
+            player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
-
-        // setup player
-        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -86,13 +89,19 @@ public class DanaOutdoorHeatScreen extends Screen{
             ScreenCoordinator.setGameState(GameState.MENU);
         }
 
-        System.out.println(player.getX());
-        System.out.println(player.getY());
+        // System.out.println(player.getX());
+        // System.out.println(player.getY());
 
+        if(((player.getX() >= 400.0) && (player.getX() <= 440.0)) && (player.getY() >= 200.0) && (player.getY() <= 215.0)){
+            ScreenCoordinator.setGameState(GameState.DANADORMHEAT);
+        }
+
+        if(((player.getX() >= 870.0)) && (player.getY() >= 200.0) && (player.getY() <= 900.0)){
+            ScreenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+        }
         if((player.getX() == 365.0) && (player.getY() == 567.0)){
             ScreenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
-
         
         if (Keyboard.isKeyUp(Key.L)) {
             keyLocker.unlockKey(Key.L);
@@ -101,6 +110,7 @@ public class DanaOutdoorHeatScreen extends Screen{
 
             ScreenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
+
         
     }
 
