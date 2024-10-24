@@ -5,7 +5,6 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
-import Maps.TestMap;
 import Players.Cat;
 import Utils.Direction;
 import Utils.Point;
@@ -33,7 +32,6 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("Rock", false);
 
         // define/setup map
-        map = new TestMap();
         map.setFlagManager(flagManager);
 
         // setup player

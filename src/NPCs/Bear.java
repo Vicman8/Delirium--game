@@ -34,6 +34,19 @@ public class Bear extends NPC {
                            .withBounds(7, 13, 11, 7)
                            .build()
            });
+           put("WALK_RIGHT", new Frame[] {
+            new FrameBuilder(spriteSheet.getSprite(0, 0))
+                    .withScale(3)
+                    .withBounds(7, 13, 11, 7)
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                    .build()
+            });
+            put("WALK_LEFT", new Frame[] {
+            new FrameBuilder(spriteSheet.getSprite(0, 0))
+                   .withScale(3)
+                   .withBounds(7, 13, 11, 7)
+                   .build()
+            });
         }};
     }
 

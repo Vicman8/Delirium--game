@@ -3,7 +3,6 @@ package MapEditor;
 import Level.Map;
 import Maps.OutskirtsMap;
 import Maps.ShoreMap;
-import Maps.TestMap;
 import Maps.TitleScreenMap;
 import Maps.MenuMap;
 import Maps.MountainviewDormHeat;
@@ -40,8 +39,6 @@ public class EditorMaps {
 
     public static Map getMapByName(String mapName) {
         switch(mapName) {
-            case "TestMap":
-                return new TestMap();
             case "TitleScreen":
                 return new TitleScreenMap();
             case "MenuMap":
