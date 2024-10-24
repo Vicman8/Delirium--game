@@ -21,7 +21,7 @@ public class ScreenCoordinator extends Screen {
 	protected Screen currentScreen = new DefaultScreen();
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
-	public GameState gameState;
+	public static GameState gameState;
 	public GameState previousGameState;
 
 	public static Key SWITCH_TO_REALITY = Key.W;
@@ -29,13 +29,13 @@ public class ScreenCoordinator extends Screen {
 
 	public static Point savedPlayerPos;
 
-	public GameState getGameState() {
+	public static GameState getGameState() {
 		return gameState;
 	}
 
 	// Other Screens can set the gameState of this class to force it to change the currentScreen
-	public void setGameState(GameState gameState) {
-		this.gameState = gameState;
+	public static void setGameState(GameState newGameState) {
+		gameState = newGameState;
 	}
 
 	@Override
@@ -79,30 +79,30 @@ public class ScreenCoordinator extends Screen {
 		} while (previousGameState != gameState);
 	}
     
-    public void switchWorld(ScreenCoordinator screenCoordinator){    
-		screenCoordinator = this;
+    public static void switchWorld(/*ScreenCoordinator screenCoordinator*/){    
+		//screenCoordinator = this;
 		boolean hasSwitched = false;
 
 		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
-			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.DORM);
+			if(ScreenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
+				ScreenCoordinator.setGameState(GameState.DORM);
 				hasSwitched = true;
 			}
 
-			if(screenCoordinator.getGameState()==GameState.HEATDORMEXTERIOR && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+			if(ScreenCoordinator.getGameState()==GameState.HEATDORMEXTERIOR && hasSwitched == false){
+				ScreenCoordinator.setGameState(GameState.DORMEXTERIOR);
 				hasSwitched = true;
 			}
 		}
 
 		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
-			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.HEATDORM);
+			if(ScreenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
+				ScreenCoordinator.setGameState(GameState.HEATDORM);
 				hasSwitched = true;
 			}
 			
-			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+			if(ScreenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
+				ScreenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
 				hasSwitched = true;
 			}
 		}

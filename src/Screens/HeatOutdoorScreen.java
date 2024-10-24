@@ -43,7 +43,6 @@ public class HeatOutdoorScreen extends Screen{
             ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
 
-
         // setup player
         player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x, ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
@@ -72,7 +71,7 @@ public class HeatOutdoorScreen extends Screen{
                 break;
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
+            ScreenCoordinator.switchWorld();
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

@@ -25,11 +25,14 @@ import Tilesets.HeatDormTilesetIndoor;
 
 import java.util.ArrayList;
 
+import Game.Audio;
+
 public class MountainviewDormOutdoorHeat extends Map{
 
     public MountainviewDormOutdoorHeat() {
         super("mountainview_dorm_map_outdoor_heat.txt", new DormTilesetOutdoorHeat());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
+        Audio.playMusic("Audio Resources\\Approach Ye Castle!.wav");
     }
 
     

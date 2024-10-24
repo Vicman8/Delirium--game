@@ -15,11 +15,14 @@ import Tilesets.DormTilesetOutdoor;
 
 import java.util.ArrayList;
 
+import Game.Audio;
+
 public class MountainviewDormOutdoor extends Map{
 
     public MountainviewDormOutdoor() {
         super("mountainview_dorm_map_outdoor.txt", new DormTilesetOutdoor());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
+        Audio.playMusic(""); //TODO put 
     }
 
     @Override

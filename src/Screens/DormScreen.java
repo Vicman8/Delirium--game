@@ -77,7 +77,7 @@ public class DormScreen extends Screen{
 
         //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
+            ScreenCoordinator.switchWorld();
         //}
 
         if (Keyboard.isKeyUp(Key.ESC)) {
@@ -85,7 +85,7 @@ public class DormScreen extends Screen{
         }
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
 
-            screenCoordinator.setGameState(GameState.MENU);
+            ScreenCoordinator.setGameState(GameState.MENU);
         }
         
     }
@@ -112,7 +112,7 @@ public class DormScreen extends Screen{
     }
 
     public void goBackToMenu() {
-        screenCoordinator.setGameState(GameState.MENU);
+        ScreenCoordinator.setGameState(GameState.MENU);
     }
 
     // This enum represents the different states this screen can be in

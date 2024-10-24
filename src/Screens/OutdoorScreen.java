@@ -68,7 +68,7 @@ public class OutdoorScreen extends Screen{
                 break;
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
+            ScreenCoordinator.switchWorld();
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -93,7 +93,7 @@ public class OutdoorScreen extends Screen{
     }
 
     public void goBackToMenu() {
-        screenCoordinator.setGameState(GameState.MENU);
+        ScreenCoordinator.setGameState(GameState.MENU);
     }
 
     // This enum represents the different states this screen can be in

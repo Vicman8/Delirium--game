@@ -75,9 +75,8 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
-        
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
+            ScreenCoordinator.switchWorld();
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
