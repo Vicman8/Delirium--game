@@ -1,13 +1,24 @@
 package Scripts.DeliriousOutdoor;
 
+import Level.MapTile;
 import Level.Script;
+import Level.ScriptState;
+import Level.TileType;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
+import ScriptActions.NPCChangeVisibilityScriptAction;
+import ScriptActions.NPCWalkScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import Utils.Direction;
+import Utils.Point;
 
 import java.util.ArrayList;
+
+import Builders.FrameBuilder;
+import Builders.MapTileBuilder;
+import GameObject.Frame;
 
 public class FirstBearFight extends Script {
     //Unused. Will delete later.

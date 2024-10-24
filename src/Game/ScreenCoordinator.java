@@ -7,6 +7,7 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Maps.DanaDorm;
 import Maps.DanaDormHeat;
+import Screens.CreditsScreen;
 import Screens.DanaDormHeatScreen;
 import Screens.DanaDormScreen;
 import Screens.DanaOutdoorHeatScreen;
@@ -14,6 +15,7 @@ import Screens.DanaOutdoorScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
+import Screens.HowToPlayScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorScreen;
 import Utils.Point;
@@ -90,6 +92,12 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case DANADORMOUTDOORHEAT:
 						currentScreen = new DanaOutdoorHeatScreen(this);
+						break;
+					case CREDITS:
+						currentScreen = new CreditsScreen(this);
+						break;
+					case HOWTOPLAY:
+						currentScreen = new HowToPlayScreen(this);
 						break;
 				}
 				currentScreen.initialize();

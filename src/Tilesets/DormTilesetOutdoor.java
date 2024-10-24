@@ -320,6 +320,24 @@ public class DormTilesetOutdoor extends Tileset{
 
         mapTiles.add(brickTileDoorMirror);
 
+        Frame grassFrameNotPassableFrame = new FrameBuilder(getSubImage(5, 3))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder grassFrameNotPassableTile = new MapTileBuilder(grassFrameNotPassableFrame)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(grassFrameNotPassableTile);
+
+        Frame pavementFrameNotPassableFrame = new FrameBuilder(getSubImage(5, 4))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder pavementFrameNotPassableTile = new MapTileBuilder(pavementFrameNotPassableFrame)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(pavementFrameNotPassableTile);
+
         return mapTiles;
     }
 
