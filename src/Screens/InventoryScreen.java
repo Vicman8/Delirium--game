@@ -16,14 +16,15 @@ public class InventoryScreen extends GamePanel{
     protected Inventory inventory;
     protected GamePanel gamePanel;
     protected Sprite inventoryImage;
-    protected GraphicsHandler graphicsHandler;
+    GraphicsHandler graphicsHandler;
     
     //BufferedImage() = new BufferedImage("InventoryScreen.png")
     
 
-    public InventoryScreen(GamePanel gamePanel){
+    public InventoryScreen(){
+       // super(new SpriteSheet(ImageLoader.load("InventoryScreen.png"), 16, 16), x, y);
         this.gamePanel = gamePanel;
-        inventoryImage = new Sprite(ImageLoader.load("InventoryScreen.png")); 
+        //inventoryImage = new Sprite(ImageLoader.load("InventoryScreen.png")); 
     //    gamePanel = new GamePanel(ImageLoader.load("InventoryScreen.png"));
 
     }
@@ -31,10 +32,12 @@ public class InventoryScreen extends GamePanel{
 
     
 
-    public void showInventory(){
+    public void showInventoryScreen(GraphicsHandler graphicsHandler){
             // graphicsHandler.drawImage("InventoryScreen.png", 2,2 ,500,150);
 
-            if(Keyboard.isKeyDown(Key.I)){
+             if(Keyboard.isKeyDown(Key.I)){
+                System.out.println("Inventory");
+                graphicsHandler.drawImage(ImageLoader.load("InventoryScreen.png"), getWidth(), getHeight());
                 
             }
         }

@@ -38,7 +38,7 @@ public class ScreenCoordinator extends Screen {
 
 	public static Key SWITCH_TO_REALITY = Key.W;
 	public static Key SWITCH_TO_MEDIEVAL = Key.Q;
-	public static Key OPEN_INVENTORY = Key.I;
+	//public static Key OPEN_INVENTORY = Key.I;
 
 	public static Point savedPlayerPos;
 
@@ -116,7 +116,7 @@ public class ScreenCoordinator extends Screen {
 		Math.random();
 		screenCoordinator = this;
 		boolean hasSwitched = false;
-		//this.player = player;
+		this.player = player;
 		//fan = new fan();
 		 //int getWidth = getWidth;
 
@@ -126,6 +126,10 @@ public class ScreenCoordinator extends Screen {
 			lastSwitchTime = System.currentTimeMillis();
 			delay = true;
 		}
+
+
+		
+
 
 		long currentTime = System.currentTimeMillis();
 /*&& Keyboard.isKeyDown(Key.E) && fan.isNear(fan, (int) (getWidth() * 1.5))*/

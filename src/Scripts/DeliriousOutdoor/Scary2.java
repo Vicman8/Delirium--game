@@ -31,13 +31,13 @@ public class Scary2 extends Script {
         }});
 
 
-        //scriptActions.add(new ScriptAction() {{
+        // scriptActions.add(new ScriptAction() {{
         //     addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
         //     addScriptAction(new NPCWalkScriptAction(Direction.UP, 360, 100));
         //     addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 190, 10));
         // }} );
 
-
+        scriptActions.add(new ChangeFlagScriptAction("Flee!", false));
         
         // // // Add conditional actions
         // scriptActions.add(new ConditionalScriptAction() {{
@@ -48,21 +48,21 @@ public class Scary2 extends Script {
         //         addScriptAction(new WaitScriptAction(70)); // Wait for 70 units (time steps, frames, etc.)
         //         addScriptAction(new NPCFacePlayerScriptAction()); // NPC faces player
 
-        // scriptActions.add(new ChangeFlagScriptAction("Flee!", true));
         // scriptActions.add(new NPCStandScriptAction(Direction.RIGHT));
         // scriptActions.add(new NPCWalkScriptAction(Direction.UP, 36, 10));
         // //scriptActions.add(new NPCWalkScriptAction(Direction.RIGHT, 19, 10));
-       
+        
         //         }});
-
+        
         //         // NPC stands facing right and walks
         //         addScriptAction(new NPCStandScriptAction(Direction.RIGHT)); // NPC stands facing right
         //         addScriptAction(new NPCWalkScriptAction(Direction.DOWN, 36, 2)); // NPC walks down
         //         addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 196, 2)); // NPC walks right
         //     }});
         // }});
-
+        
         // // Set a flag after the NPC flees
+        scriptActions.add(new ChangeFlagScriptAction("Flee!", true));
         // Unlock the player
         scriptActions.add(new UnlockPlayerScriptAction());
         

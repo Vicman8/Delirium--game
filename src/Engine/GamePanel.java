@@ -142,8 +142,8 @@ public class GamePanel extends JPanel {
 
 		//Opens the invetory screen and shows the inventory
 		if (isInInventory) {
-			graphicsHandler.drawFilledRectangle(ScreenManager.getScreenWidth() / 2 - 250, ScreenManager.getScreenHeight() / 2 - 75, 500, 150, new Color(255, 255, 255, 200));
-			graphicsHandler.drawImage(null, ALLBITS, ABORT);
+			//graphicsHandler.drawFilledRectangle(ScreenManager.getScreenWidth() / 2 - 250, ScreenManager.getScreenHeight() / 2 - 75, 500, 150, new Color(255, 255, 255, 200));
+			//graphicsHandler.drawImage(inventory, ALLBITS, ABORT);
 			//graphicsHandler.drawImage("InventoryScreen.png", ALLBITS, ABORT, WIDTH, HEIGHT);
 			//System.out.println(showInventory);
 		}

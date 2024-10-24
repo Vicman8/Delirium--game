@@ -19,8 +19,11 @@ import Game.ScreenCoordinator;
 import java.util.HashMap;
 
 public class Fan extends NPC {
-    protected ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
+
+    protected ScreenCoordinator screenCoordinator;
+
     public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Fan1.png"), 30, 30), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
@@ -46,37 +49,19 @@ public class Fan extends NPC {
         }};
     }
 
+
     //Makes the fan addable to the inventory
     @Override
-    public void update(Player player ) {
+    public void update(Player player) {
         super.update(player);
-        
-         //if (Keyboard.isKeyDown(Key.F) && player.isNear(this, (int) (getWidth() * 1.5)) && (screenCoordinator.getGameState()==HEATDORM && hasSwitched == false)) {
-            //System.out.println("Cooling off");
-            //setMapEntityStatus(MapEntityStatus.REMOVED);
-            //int quantity = 0;
-            //Inventory.addItem("Fan", + quantity);
-            //quantity = quantity  + 1;
-            //}
 
-            
-            boolean hasSwitched = false;
-            if(Keyboard.isKeyDown(Key.F)){
-                System.out.println("f");
-                screenCoordinator.setGameState(GameState.DORM);
-                // if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
-                //     hasSwitched = true;
-                // }
-        
-            }
+        if (Keyboard.isKeyDown(Key.T) && player.isNear(this, (int) (getWidth() * 1.5))) {
+            //setMap(GameState.DORM););
+            // int quantity = 0;
+            // Inventory.addItem("Fan", + quantity);
+            // quantity = quantity  + 1;
+        }
     }
-    public void switchWorld(ScreenCoordinator screenCoordinator){    
-		//screenCoordinator = this;
-        
-    }
-
-    
-    
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
