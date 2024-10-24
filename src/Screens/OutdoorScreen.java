@@ -85,14 +85,14 @@ public class OutdoorScreen extends Screen{
                 break;
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
 
             if(((player.getX() >= 400.0) && (player.getX() <= 410.0)) && (player.getY() >= 340.0) && (player.getY() <= 350.0)){
-                ScreenCoordinator.setGameState(GameState.DORM);
+                screenCoordinator.setGameState(GameState.DORM);
             }
             
             if((player.getX() <=-30.0) && ((player.getY() >= 433.0) && (player.getY() <= 1528.0))){
-                ScreenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
+                screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
             }
     }
 
@@ -118,7 +118,7 @@ public class OutdoorScreen extends Screen{
     }
 
     public void goBackToMenu() {
-        ScreenCoordinator.setGameState(GameState.MENU);
+        screenCoordinator.setGameState(GameState.MENU);
     }
 
     // This enum represents the different states this screen can be in

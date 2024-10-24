@@ -92,7 +92,7 @@ public class HeatOutdoorScreen extends Screen{
                 break;
         }
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
 
             if(((player.getX() >= 400.0) && (player.getX() <= 410.0)) && (player.getY() >= 340.0) && (player.getY() <= 350.0)){
                 screenCoordinator.setGameState(GameState.HEATDORM);
@@ -103,7 +103,7 @@ public class HeatOutdoorScreen extends Screen{
             }
 
         
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

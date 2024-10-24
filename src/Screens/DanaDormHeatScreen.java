@@ -82,21 +82,19 @@ public class DanaDormHeatScreen extends Screen{
                 break;
         }
 
-        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld();
-        //}
+            //screenCoordinator.switchWorld(screenCoordinator);
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
         }
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
 
-            ScreenCoordinator.setGameState(GameState.MENU);
+            screenCoordinator.setGameState(GameState.MENU);
         }
 
-        System.out.println(player.getX());
-        System.out.println(player.getY());
+        //System.out.println(player.getX());
+        //System.out.println(player.getY());
 
         if(((player.getX() >= 1695.0) && (player.getX() <= 1745.0)) && (player.getY() >= 815.0) && (player.getY() <= 820.0)){
             screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);

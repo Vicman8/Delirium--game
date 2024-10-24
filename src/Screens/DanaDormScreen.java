@@ -74,24 +74,22 @@ public class DanaDormScreen extends Screen{
                 break;
         }
 
-        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld(/*screenCoordinator*/);
-        //}
+            screenCoordinator.switchWorld(screenCoordinator);
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
         }
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
 
-            ScreenCoordinator.setGameState(GameState.MENU);
+            screenCoordinator.setGameState(GameState.MENU);
         }
 
         System.out.println(player.getX());
         System.out.println(player.getY());
 
         if(((player.getX() >= 1695.0) && (player.getX() <= 1745.0)) && (player.getY() >= 815.0) && (player.getY() <= 820.0)){
-            ScreenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
+            screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
         }
 
         
@@ -100,7 +98,7 @@ public class DanaDormScreen extends Screen{
         }
         if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
 
-            ScreenCoordinator.setGameState(GameState.DORMEXTERIOR);
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
 
         if (Keyboard.isKeyUp(Key.ESC)) {
@@ -135,7 +133,7 @@ public class DanaDormScreen extends Screen{
     }
 
     public void goBackToMenu() {
-        ScreenCoordinator.setGameState(GameState.MENU);
+        screenCoordinator.setGameState(GameState.MENU);
     }
 
     // This enum represents the different states this screen can be in

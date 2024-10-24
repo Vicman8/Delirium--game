@@ -11,10 +11,12 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
+import Level.NPC;
 import Level.Player;
 import Maps.DanaDorm;
 import Maps.DanaOutdoor;
 import Maps.MoutainviewDorm;
+import NPCs.Fan;
 import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
@@ -45,6 +47,9 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        }
 
         if(screenCoordinator.getPreviousGameState()==GameState.HEATDORM){
             player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
@@ -82,9 +87,19 @@ public class DormScreen extends Screen{
                 break;
         }
 
+        // for (NPC npc : map.getNPCs()) {
+        //     if (npc instanceof Fan) {
+        //         System.out.println(npc.touching(player));
+        //         if (npc.touching(player)) {
+        //             screenCoordinator.setGameState(GameState.DORM);
+        //             return;
+        //         }
+        //     }
+        // }
+
         //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
         //}
 
         if (Keyboard.isKeyUp(Key.ESC)) {
@@ -92,7 +107,7 @@ public class DormScreen extends Screen{
         }
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
 
-            ScreenCoordinator.setGameState(GameState.MENU);
+            screenCoordinator.setGameState(GameState.MENU);
         }
 
         //System.out.println(player.getX());
@@ -152,7 +167,7 @@ public class DormScreen extends Screen{
     }
 
     public void goBackToMenu() {
-        ScreenCoordinator.setGameState(GameState.MENU);
+        screenCoordinator.setGameState(GameState.MENU);
     }
 
     // This enum represents the different states this screen can be in

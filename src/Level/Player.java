@@ -14,6 +14,7 @@ import Game.GameState;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
+import Screens.InventoryScreen;
 import Utils.Direction;
 import Game.ScreenCoordinator;
 
@@ -45,7 +46,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SWITCH_WORLD = Key.Q;
-    protected Inventory inventory;
+    private Inventory inventory;
 
     protected boolean isLocked = false;
 
@@ -57,8 +58,6 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
-
-        keyLocker.lockKey(Key.I);
     }
 
     public void update() {
@@ -76,18 +75,21 @@ public abstract class Player extends GameObject {
             // move player with respect to map collisions based on how much player needs to move this frame
             lastAmountMovedY = super.moveYHandleCollision(moveAmountY);
             lastAmountMovedX = super.moveXHandleCollision(moveAmountX);
+            
+            // if() {
+            //     //Inventory.addItem();
+            //     System.out.println("In");
+            // }
         }
-
+        
         handlePlayerAnimation();
         updateLockedKeys();
-
-        // if(Keyboard.isKeyDown(Key.G) ){
-        //     //Inventory.addItem();
-        //     System.out.prsdintln("In");
-        // }
+        
         // update player's animation
+        
         super.update();
-
+        
+        
         posPrintDelay++;
         if (posPrintDelay == 180){
             System.out.println("Player coordinates are ("+this.getX()+" ,"+this.getY()+")");
@@ -95,6 +97,11 @@ public abstract class Player extends GameObject {
         }
     }
 
+
+    // public void inventory(GraphicsHandler graphicsHandler, InventoryScreen inventoryScreen){
+    //     inventory.showInventory(graphicsHandler, inventoryScreen);;
+    // }
+    
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {
         switch (playerState) {

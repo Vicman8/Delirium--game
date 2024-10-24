@@ -78,7 +78,7 @@ public class DanaOutdoorScreen extends Screen{
 
         //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
         //}
 
         if (Keyboard.isKeyUp(Key.ESC)) {
@@ -86,17 +86,17 @@ public class DanaOutdoorScreen extends Screen{
         }
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
 
-            ScreenCoordinator.setGameState(GameState.MENU);
+            screenCoordinator.setGameState(GameState.MENU);
         }
 
         
 
         if(((player.getX() >= 400.0) && (player.getX() <= 440.0)) && (player.getY() >= 200.0) && (player.getY() <= 215.0)){
-            ScreenCoordinator.setGameState(GameState.DANADORM);
+            screenCoordinator.setGameState(GameState.DANADORM);
         }
 
         if(((player.getX() >= 870.0)) && (player.getY() >= 200.0) && (player.getY() <= 900.0)){
-            ScreenCoordinator.setGameState(GameState.DORMEXTERIOR);
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
 
         if (Keyboard.isKeyUp(Key.L)) {
@@ -104,7 +104,7 @@ public class DanaOutdoorScreen extends Screen{
         }
         if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
 
-            ScreenCoordinator.setGameState(GameState.DORMEXTERIOR);
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
         
     }
@@ -131,7 +131,7 @@ public class DanaOutdoorScreen extends Screen{
     }
 
     public void goBackToMenu() {
-        ScreenCoordinator.setGameState(GameState.MENU);
+        screenCoordinator.setGameState(GameState.MENU);
     }
 
     // This enum represents the different states this screen can be in

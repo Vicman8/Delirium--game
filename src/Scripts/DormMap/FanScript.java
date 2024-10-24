@@ -3,6 +3,8 @@ package Scripts.DormMap;
 
 import java.util.ArrayList;
 
+import Engine.Key;
+import Engine.Keyboard;
 import Level.Script;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.ConditionalScriptAction;
@@ -20,6 +22,7 @@ public class FanScript extends Script {
 
     //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
 
+    
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
@@ -33,6 +36,7 @@ public class FanScript extends Script {
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
                 addRequirement(new FlagRequirement("hasTalkedToStudent", false));
                 addScriptAction(new TextboxScriptAction() {{
+
                     addText("Kaegen turns on the fan.");
                     addText("Kaegen: Thank god I have this fan!\nIt at least keeps me from passing out!");
                     addText("Kaegen: I REALLY have to shower though.");

@@ -9,8 +9,10 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
+import Level.NPC;
 import Level.Player;
 import Maps.MountainviewDormHeat;
+import NPCs.Fan;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
@@ -72,9 +74,20 @@ public class HeatDormScreen extends Screen{
 
     public void update() {
 
+        for (NPC npc : map.getNPCs()) {
+            if (npc instanceof Fan ) {
+                if (npc.touching(player)) {
+                    screenCoordinator.hasSwitched = true;
+                    screenCoordinator.setGameState(GameState.DORM);
+                }
+            }
+        }
+
         if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
             screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
         }
+
+        
 
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
@@ -97,20 +110,20 @@ public class HeatDormScreen extends Screen{
         
         
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
 
             if (Keyboard.isKeyUp(Key.L)) {
                 keyLocker.unlockKey(Key.L);
             }
             if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
     
-                ScreenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+                screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
             }
 
         
 
         
-            ScreenCoordinator.switchWorld();
+            screenCoordinator.switchWorld(screenCoordinator);
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
