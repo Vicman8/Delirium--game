@@ -4,11 +4,13 @@ import Level.Map;
 import Level.NPC;
 import Level.Tileset;
 import NPCs.Fan;
+import Players.HistoryMan;
 import Scripts.SimpleTextScript;
 import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
 import Scripts.TestMap.TreeScript;
 import Tilesets.DormTilesetIndoor;
+import Game.GameState;
 import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ public class MoutainviewDorm extends Map{
 
     public MoutainviewDorm(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm_map.txt", new DormTilesetIndoor());
-        this.playerStartPosition = getMapTile(8, 12).getLocation();
+        this.playerStartPosition = getMapTile(10, 10).getLocation();
     }
 
     @Override
@@ -38,11 +40,17 @@ public class MoutainviewDorm extends Map{
         triggers.add(new Trigger(500, 530, 100, 1, new StartIntro(),"introStarted")); //bottom
         triggers.add(new Trigger(500, 460, 1, 80, new StartIntro(),"introStarted")); //side
         triggers.add(new Trigger(600, 460, 1, 80, new StartIntro(),"introStarted")); //side
+       
+
+        
+
+        
         return triggers;
     }
 
      @Override
     public void loadScripts() {
+        
         getMapTile(5, 5).setInteractScript(new SimpleTextScript("Kaegen: This is my bed.\nThe covers smell pretty funky."));
 
         getMapTile(5,7).setInteractScript(new SimpleTextScript("Kaegen: My history textbook has some of the\n most detailed drawings of George Washington in them!"));
