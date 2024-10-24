@@ -10,16 +10,19 @@ import SpriteFont.SpriteFont;
 import java.awt.*;
 
 // This class is for the credits screen
-public class CreditsScreen extends Screen {
+public class HowToPlayScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map background;
     protected KeyLocker keyLocker = new KeyLocker();
     protected SpriteFont creditsLabel;
     protected SpriteFont createdByLabel;
     protected SpriteFont createdByLabel2;
+    protected SpriteFont createdByLabel3;
+    protected SpriteFont createdByLabel4;
+    protected SpriteFont createdByLabel5;
     protected SpriteFont returnInstructionsLabel;
 
-    public CreditsScreen(ScreenCoordinator screenCoordinator) {
+    public HowToPlayScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -28,9 +31,12 @@ public class CreditsScreen extends Screen {
         // setup graphics on screen (background map, spritefont text)
         background = new MenuMap();
         background.setAdjustCamera(false);
-        creditsLabel = new SpriteFont("Credits", 15, 7, "Times New Roman", 30, Color.white);
-        createdByLabel = new SpriteFont("Base Game and Engine Created by Alex Thimineur", 130, 200, "Times New Roman", 20, Color.white);
-        createdByLabel2 = new SpriteFont("Art, Maps, Music, and Other Assets Created by Team Delirium", 130, 250, "Times New Roman", 20, Color.white);
+        creditsLabel = new SpriteFont("In this short demo of Medievirium, your goal is to locate 1 of the AC parts", 130, 150, "Times New Roman", 20, Color.white);
+        createdByLabel = new SpriteFont("required to create the AC unit needed to cool down your dorm room", 130, 200, "Times New Roman", 20, Color.white);
+        createdByLabel2 = new SpriteFont("Use the arrow keys to move and the space button to interact with people/objects", 130, 250, "Times New Roman", 20, Color.white);
+        createdByLabel3 = new SpriteFont("Use the I button to bring up the inventory, but that isn't used much in this demo", 130, 300, "Times New Roman", 20, Color.white);
+        createdByLabel4 = new SpriteFont("Hint: The AC part can be found held by someone in Dana", 130, 450, "Times New Roman", 20, Color.white);
+        createdByLabel5 = new SpriteFont("Dana is accessed by going to the left once out of your dorm", 130, 500, "Times New Roman", 20, Color.white);
         returnInstructionsLabel = new SpriteFont("Press Space to return to the menu", 0, 532, "Times New Roman", 30, Color.white);
         keyLocker.lockKey(Key.SPACE);
     }
@@ -53,6 +59,9 @@ public class CreditsScreen extends Screen {
         creditsLabel.draw(graphicsHandler);
         createdByLabel.draw(graphicsHandler);
         createdByLabel2.draw(graphicsHandler);
+        createdByLabel3.draw(graphicsHandler);
+        createdByLabel4.draw(graphicsHandler);
+        createdByLabel5.draw(graphicsHandler);
         returnInstructionsLabel.draw(graphicsHandler);
     }
 }

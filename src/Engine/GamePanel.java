@@ -47,7 +47,10 @@ public class GamePanel extends JPanel {
 
 		screenManager = new ScreenManager();
 
-		pauseLabel = new SpriteFont("Welcome to Medievirium! This is how you play.", 200, 280, "Arial", 24, Color.white);
+		pauseLabel = new SpriteFont("Welcome to Medievirium! This is how you play.", 000, 100, "Arial", 24, Color.white);
+		pauseLabel.setOutlineColor(Color.black);
+		pauseLabel.setOutlineThickness(2.0f);
+		pauseLabel = new SpriteFont("This game uses the basic control scheme of using the four arrow keys to move.", 000, 100, "Arial", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
 

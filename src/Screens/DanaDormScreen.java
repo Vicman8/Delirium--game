@@ -102,6 +102,14 @@ public class DanaDormScreen extends Screen{
 
             screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
         
     }
 
