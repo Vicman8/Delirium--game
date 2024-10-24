@@ -24,21 +24,21 @@ public class Scary2 extends Script {
         scriptActions.add(new LockPlayerScriptAction());
         scriptActions.add(new TextboxScriptAction("poo"));
         
-        scriptActions.add(new ScriptAction() {
-            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+        // scriptActions.add(new ScriptAction() {
+        //     addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
             
-        });
+        // });
         // Show textbox with initial dialogue
         scriptActions.add(new TextboxScriptAction() {{
             addText("Female Student?: Someone saveth me!");
             //addRequirement(new FlagRequirement("x", false));
-            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+            //addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
         }});
 
 
         scriptActions.add(new ScriptAction() {{
-            addScriptAction(new NPCWalkScriptAction(Direction.UP, 360, 100));
-            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 190, 10));
+           // addScriptAction(new NPCWalkScriptAction(Direction.UP, 360, 100));
+            //addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 190, 10));
         }} );
 
         //scriptActions.add(new ChangeFlagScriptAction("Flee!", false));

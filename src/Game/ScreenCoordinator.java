@@ -2,7 +2,9 @@ package Game;
 
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
+import Engine.ImageLoader;
 import Engine.Key;
+import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Level.NPC;
@@ -16,6 +18,7 @@ import Screens.DanaOutdoorScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
+import Screens.InventoryScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorScreen;
 import Utils.Point;
@@ -37,6 +40,7 @@ public class ScreenCoordinator extends Screen {
 	//public static Key OPEN_INVENTORY = Key.I;
 
 	public static Point savedPlayerPos;
+	protected KeyLocker keyLocker = new KeyLocker();
 
 	protected Player player;
 
@@ -46,6 +50,7 @@ public class ScreenCoordinator extends Screen {
 	protected boolean delay = false;
 	
 	protected long lastSwitchTime;
+	protected long nextSwitchTime = 0;
 	protected long randomDelay; 
 	public GameState getGameState() {
 		return gameState;
@@ -66,8 +71,26 @@ public class ScreenCoordinator extends Screen {
 		gameState = GameState.MENU;
 	}
 
+	private boolean isInventory = false;
+	public boolean hasSwitched = false;
+
 	@Override
 	public void update() {
+		if (Keyboard.isKeyDown(Key.I) && !keyLocker.isKeyLocked(Key.I)) {
+            isInventory = !isInventory;
+
+            keyLocker.lockKey(Key.I);
+        }
+
+        if (Keyboard.isKeyUp(Key.I) && keyLocker.isKeyLocked(Key.I)) {
+            keyLocker.unlockKey(Key.I);
+        }
+
+		if (hasSwitched && nextSwitchTime != 0 && System.currentTimeMillis() > nextSwitchTime) {
+			hasSwitched = false;
+			delay = false;
+		}
+
 		do {
 			// if previousGameState does not equal gameState, it means there was a change in gameState
 			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
@@ -93,7 +116,7 @@ public class ScreenCoordinator extends Screen {
 						
 					// case INVENTORY:
 					// 	currentScreen = new InventoryScreen(this);
-						break;
+					// 	break;
 					case DANADORM:
 						currentScreen = new DanaDormScreen(this);
 						break;
@@ -123,10 +146,10 @@ public class ScreenCoordinator extends Screen {
 	// 	}
 	// }
     
+	
     public void switchWorld(ScreenCoordinator screenCoordinator){    
 		Math.random();
 		screenCoordinator = this;
-		boolean hasSwitched = false;
 		this.player = player;
 		//fan = new fan();
 		 //int getWidth = getWidth;
@@ -135,6 +158,7 @@ public class ScreenCoordinator extends Screen {
 			randomDelay = (long) (Math.random()*5000)+2000;
 			System.out.println(randomDelay);
 			lastSwitchTime = System.currentTimeMillis();
+			nextSwitchTime = lastSwitchTime + randomDelay;
 			delay = true;
 		}
 
@@ -190,5 +214,9 @@ public class ScreenCoordinator extends Screen {
 	public void draw(GraphicsHandler graphicsHandler) {
 		// call the draw method for the currentScreen
 		currentScreen.draw(graphicsHandler);
+
+		if (isInventory) {
+			graphicsHandler.drawImage(ImageLoader.load("InventoryScreen.png"), 0, 0, 1000, 600);
+		}
 	}
 }
