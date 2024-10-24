@@ -23,43 +23,27 @@ public class Scary2 extends Script {
         // Lock the player at the start of the script
         scriptActions.add(new LockPlayerScriptAction());
         scriptActions.add(new TextboxScriptAction("poo"));
-
+        
+        scriptActions.add(new ScriptAction() {
+            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+            
+        });
         // Show textbox with initial dialogue
         scriptActions.add(new TextboxScriptAction() {{
             addText("Female Student?: Someone saveth me!");
             //addRequirement(new FlagRequirement("x", false));
+            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
         }});
 
 
-        // scriptActions.add(new ScriptAction() {{
-        //     addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
-        //     addScriptAction(new NPCWalkScriptAction(Direction.UP, 360, 100));
-        //     addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 190, 10));
-        // }} );
+        scriptActions.add(new ScriptAction() {{
+            addScriptAction(new NPCWalkScriptAction(Direction.UP, 360, 100));
+            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 190, 10));
+        }} );
 
-        scriptActions.add(new ChangeFlagScriptAction("Flee!", false));
+        //scriptActions.add(new ChangeFlagScriptAction("Flee!", false));
         
-        // // // Add conditional actions
-        // scriptActions.add(new ConditionalScriptAction() {{
-        //         addConditionalScriptAction( addRequirement(new FlagRequirement("x", true));
-        //         {{
-        //                 addRequirement(new FlagRequirement("x", true)));
-                
-        //         addScriptAction(new WaitScriptAction(70)); // Wait for 70 units (time steps, frames, etc.)
-        //         addScriptAction(new NPCFacePlayerScriptAction()); // NPC faces player
-
-        // scriptActions.add(new NPCStandScriptAction(Direction.RIGHT));
-        // scriptActions.add(new NPCWalkScriptAction(Direction.UP, 36, 10));
-        // //scriptActions.add(new NPCWalkScriptAction(Direction.RIGHT, 19, 10));
-        
-        //         }});
-        
-        //         // NPC stands facing right and walks
-        //         addScriptAction(new NPCStandScriptAction(Direction.RIGHT)); // NPC stands facing right
-        //         addScriptAction(new NPCWalkScriptAction(Direction.DOWN, 36, 2)); // NPC walks down
-        //         addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 196, 2)); // NPC walks right
-        //     }});
-        // }});
+      
         
         // // Set a flag after the NPC flees
         scriptActions.add(new ChangeFlagScriptAction("Flee!", true));

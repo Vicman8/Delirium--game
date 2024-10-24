@@ -45,12 +45,8 @@ public abstract class Player extends GameObject {
     protected Key MOVE_UP_KEY = Key.UP;
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
-        protected Key SWITCH_WORLD = Key.Q;
-
-    
-     Inventory inventory = new Inventory();
-
-    // protected Inventory addInventory = addItem;
+    protected Key SWITCH_WORLD = Key.Q;
+    protected Inventory inventory;
 
     protected boolean isLocked = false;
 
@@ -62,7 +58,6 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
-        //Inventory inventory = new Inventory();
 
         //keyLocker.lockKey(Key.I);
     }
@@ -302,8 +297,3 @@ public abstract class Player extends GameObject {
     // }
     
 }
-
-
-    
-    
-
