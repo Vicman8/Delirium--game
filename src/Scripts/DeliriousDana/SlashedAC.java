@@ -1,28 +1,27 @@
-package Scripts.Outdoor;
+package Scripts.DeliriousDana;
+
+import java.util.ArrayList;
 
 import Level.Script;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
-import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
 
-import java.util.ArrayList;
-
-public class Exclaim extends Script {
+public class SlashedAC extends Script {
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
         scriptActions.add(new LockPlayerScriptAction());
-        scriptActions.add(new NPCFacePlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Sweaty Student: Holy moly!\nHow'd you drive away that bear?!");
-            addText("Kaegen: I actually have no idea.");
+            addText("Kaegen: Gadzooks! Ye Olde Black Bear hath join\nthrough hither as well!");
+            addText("Preeda: Gasp! Ye Olde Black Bear this did?\nHow didst it e'en get in?");
+            addText("Kaegen: Hark! I hark rustling from the commons!\nHaply it’s Ye Olde Black Bear!");
         }});
 
-        scriptActions.add(new ChangeFlagScriptAction("exclaim", true));
+        scriptActions.add(new ChangeFlagScriptAction("a.cSlashed", true));
 
         scriptActions.add(new UnlockPlayerScriptAction());
 

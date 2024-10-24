@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
 
 		screenManager = new ScreenManager();
 
-		pauseLabel = new SpriteFont("PAUSE", 365, 280, "Arial", 24, Color.white);
+		pauseLabel = new SpriteFont("Welcome to Medievirium! This is how you play.", 200, 280, "Arial", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
 

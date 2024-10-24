@@ -10,6 +10,10 @@ import Maps.MountainviewDormHeat;
 import Maps.MountainviewDormOutdoor;
 import Maps.MountainviewDormOutdoorHeat;
 import Maps.MoutainviewDorm;
+import Maps.DanaDorm;
+import Maps.DanaDormHeat;
+import Maps.DanaOutdoor;
+import Maps.DanaOutdoorHeat;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,11 @@ public class EditorMaps {
             add("MountainviewDormHeat");
             add("MountainviewDormOutdoor");
             add("MountainviewDormOutdoorHeat");
+            add("DanaDorm");
+            add("DanaDormHeat");
+            add("DanaOutdoor");
+            add("DanaOutdoorHeat");
+
         }};
     }
 
@@ -49,6 +58,14 @@ public class EditorMaps {
                 return new MountainviewDormOutdoor();
             case "MountainviewDormOutdoorHeat":
                 return new MountainviewDormOutdoorHeat();
+            case "DanaDorm":
+                return new DanaDorm();
+            case "DanaDormHeat":
+                return new DanaDormHeat();
+            case "DanaOutdoor":
+                return new DanaOutdoor();
+            case "DanaOutdoorHeat":
+                return new DanaOutdoorHeat();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

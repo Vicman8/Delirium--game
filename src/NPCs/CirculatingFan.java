@@ -3,19 +3,25 @@ package NPCs;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Engine.Key;
+import Engine.Keyboard;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
-import Level.NPC;
 import Utils.Point;
+import Level.Inventory;
+import Level.MapEntityStatus;
+import Level.NPC;
+import Game.ScreenCoordinator;
 
 import java.util.HashMap;
 
-// This class is for the walrus NPC
-public class Walrus extends NPC {
-
-    public Walrus(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Walrus.png"), 24, 24), "STAND_LEFT");
+public class CirculatingFan extends NPC {
+    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+    
+    public CirculatingFan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("CirculatingFan.png"), 30, 30), "STAND_LEFT");
+        //this.screenCoordinator = screenCoordinator;
     }
 
     @Override
@@ -34,8 +40,12 @@ public class Walrus extends NPC {
                            .withBounds(7, 13, 11, 7)
                            .build()
            });
+           //screenCoordinator.switchWorld(screenCoordinator);
         }};
     }
+
+
+    
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {

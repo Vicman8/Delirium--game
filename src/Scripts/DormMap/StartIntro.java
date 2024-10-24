@@ -12,9 +12,9 @@ public class StartIntro extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Damn its hot today! I feel gross.");
-            addText("Time to shower I suppose.");
-            addText("Yep. Just another day in Mantle.");
+            addText("Kaegen: Damn its hot today! I feel gross.");
+            addText("Kaegen: Time to shower I suppose.");
+            addText("Kaegen: Yep. Just another day in Mantle.");
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("introStarted", true));

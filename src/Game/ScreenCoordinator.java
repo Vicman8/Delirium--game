@@ -5,6 +5,12 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
+import Maps.DanaDorm;
+import Maps.DanaDormHeat;
+import Screens.DanaDormHeatScreen;
+import Screens.DanaDormScreen;
+import Screens.DanaOutdoorHeatScreen;
+import Screens.DanaOutdoorScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
@@ -12,7 +18,6 @@ import Screens.TitleScreen;
 import Screens.PlayLevelScreen;
 import Screens.ShoreScreen;
 import Screens.MenuScreen;
-import Screens.OutdoorDormScreen;
 import Screens.OutskirtsScreen;
 import Utils.Point;
 import Players.HistoryMan;
@@ -39,6 +44,10 @@ public class ScreenCoordinator extends Screen {
 
 	public GameState getGameState() {
 		return gameState;
+	}
+
+	public GameState getPreviousGameState() {
+		return previousGameState;
 	}
 
 	// Other Screens can set the gameState of this class to force it to change the currentScreen
@@ -77,6 +86,18 @@ public class ScreenCoordinator extends Screen {
 					case HEATDORMEXTERIOR:
 						currentScreen = new HeatOutdoorScreen(this);
 						break;
+					case DANADORM:
+						currentScreen = new DanaDormScreen(this);
+						break;
+					case DANADORMHEAT:
+						currentScreen = new DanaDormHeatScreen(this);
+						break;
+					case DANADORMOUTDOOR:
+						currentScreen = new DanaOutdoorScreen(this);
+						break;
+					case DANADORMOUTDOORHEAT:
+						currentScreen = new DanaOutdoorHeatScreen(this);
+						break;
 				}
 				currentScreen.initialize();
 			}
@@ -101,6 +122,11 @@ public class ScreenCoordinator extends Screen {
 				screenCoordinator.setGameState(GameState.DORMEXTERIOR);
 				hasSwitched = true;
 			}
+
+			if(screenCoordinator.getGameState()==GameState.DANADORMHEAT && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DANADORM);
+				hasSwitched = true;
+			}
 		}
 
 		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
@@ -111,6 +137,11 @@ public class ScreenCoordinator extends Screen {
 			
 			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+				hasSwitched = true;
+			}
+
+			if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DANADORMHEAT);
 				hasSwitched = true;
 			}
 		}

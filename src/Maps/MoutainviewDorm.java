@@ -18,7 +18,7 @@ public class MoutainviewDorm extends Map{
 
     public MoutainviewDorm(/*ScreenCoordinator screenCoordinator*/) {
         super("mountainview_dorm_map.txt", new DormTilesetIndoor());
-        this.playerStartPosition = getMapTile(10, 10).getLocation();
+        this.playerStartPosition = getMapTile(8, 12).getLocation();
     }
 
     @Override

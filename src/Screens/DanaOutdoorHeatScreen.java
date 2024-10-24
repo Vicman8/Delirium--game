@@ -1,46 +1,41 @@
-//tied to dorm
+
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.KeyLocker;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
-import Maps.MountainviewDormOutdoor;
-import Level.*;
-import Maps.VillageMap;
+import Maps.DanaOutdoor;
 import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
-public class OutdoorDormScreen extends Screen{
-// This class is for when the RPG game is actually being played
-
+public class DanaOutdoorHeatScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    protected Player player;
+    public Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected KeyLocker keyLocker = new KeyLocker();
+    
 
-    public OutdoorDormScreen(ScreenCoordinator screenCoordinator) {
-   
+    public DanaOutdoorHeatScreen(ScreenCoordinator screenCoordinator) {
+        this.screenCoordinator = screenCoordinator;
+    }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
 
         // define/setup map
-        map = new MountainviewDormOutdoor();
-        flagManager.addFlag("hasTalkedToWalrus", false);
-        flagManager.addFlag("hasTalkedToStudent", false);
-        flagManager.addFlag("introStarted", false);
-        flagManager.addFlag("fanHasDied", false);
-        
-        // define/setup map
-        map = new VillageMap(/*screenCoordinator*/);
+        map = new DanaOutdoor();
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
@@ -49,7 +44,6 @@ public class OutdoorDormScreen extends Screen{
         }
 
         // setup player
-        //start at the coords from the previous world
         player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
@@ -65,6 +59,8 @@ public class OutdoorDormScreen extends Screen{
         map.preloadScripts();
 
         //winScreen = new WinScreen(this);
+
+        
     }
 
     public void update() {
@@ -77,14 +73,35 @@ public class OutdoorDormScreen extends Screen{
                 break;
         }
 
+        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            screenCoordinator.switchWorld(screenCoordinator);
+        //}
 
-        // if flag is set at any point during gameplay, game is "won"
-        /*
-        *if (map.getFlagManager().isFlagSet("hasFoundBall")) {
-            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
         }
-        */
-        ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
+
+        System.out.println(player.getX());
+        System.out.println(player.getY());
+
+        if((player.getX() == 365.0) && (player.getY() == 567.0)){
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+
+        
+        if (Keyboard.isKeyUp(Key.L)) {
+            keyLocker.unlockKey(Key.L);
+        }
+        if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

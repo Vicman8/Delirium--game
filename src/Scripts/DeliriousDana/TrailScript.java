@@ -1,28 +1,27 @@
-package Scripts.Outdoor;
+package Scripts.DeliriousDana;
+
+import java.util.ArrayList;
 
 import Level.Script;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
-import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
 
-import java.util.ArrayList;
-
-public class Exclaim extends Script {
+public class TrailScript extends Script {
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
         scriptActions.add(new LockPlayerScriptAction());
-        scriptActions.add(new NPCFacePlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Sweaty Student: Holy moly!\nHow'd you drive away that bear?!");
-            addText("Kaegen: I actually have no idea.");
+            addText("Kaegen: Look here! A.C parts leading into Victor's dorm!");
+            addText("Preeda: That's quite peculiar!");
+            addText("Kaegen: This should confirm it was either him\nor his roommate.");
         }});
 
-        scriptActions.add(new ChangeFlagScriptAction("exclaim", true));
+        scriptActions.add(new ChangeFlagScriptAction("trailFollowed", true));
 
         scriptActions.add(new UnlockPlayerScriptAction());
 
