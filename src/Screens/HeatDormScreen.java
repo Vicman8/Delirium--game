@@ -85,6 +85,14 @@ public class HeatDormScreen extends Screen{
                 break;
         }
 
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
+
         playerCurrPosition = new Point(player.getX(), player.getY());
         
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
@@ -97,6 +105,8 @@ public class HeatDormScreen extends Screen{
     
                 screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
             }
+
+        
 
         
     }

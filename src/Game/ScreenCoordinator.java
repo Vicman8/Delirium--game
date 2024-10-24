@@ -7,6 +7,7 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Maps.DanaDorm;
 import Maps.DanaDormHeat;
+import Screens.CreditsScreen;
 import Screens.DanaDormHeatScreen;
 import Screens.DanaDormScreen;
 import Screens.DanaOutdoorHeatScreen;
@@ -14,13 +15,7 @@ import Screens.DanaOutdoorScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
-import Screens.TitleScreen;
-import Screens.PlayLevelScreen;
-import Screens.ShoreScreen;
-import Screens.MenuScreen;
-import Screens.OutskirtsScreen;
-import Utils.Point;
-import Players.HistoryMan;
+import Screens.HowToPlayScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorScreen;
 import Utils.Point;
@@ -98,6 +93,12 @@ public class ScreenCoordinator extends Screen {
 					case DANADORMOUTDOORHEAT:
 						currentScreen = new DanaOutdoorHeatScreen(this);
 						break;
+					case CREDITS:
+						currentScreen = new CreditsScreen(this);
+						break;
+					case HOWTOPLAY:
+						currentScreen = new HowToPlayScreen(this);
+						break;
 				}
 				currentScreen.initialize();
 			}
@@ -127,6 +128,11 @@ public class ScreenCoordinator extends Screen {
 				screenCoordinator.setGameState(GameState.DANADORM);
 				hasSwitched = true;
 			}
+
+			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOORHEAT && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
+				hasSwitched = true;
+			}
 		}
 
 		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
@@ -142,6 +148,11 @@ public class ScreenCoordinator extends Screen {
 
 			if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMHEAT);
+				hasSwitched = true;
+			}
+
+			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOOR && hasSwitched == false){
+				screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
 				hasSwitched = true;
 			}
 		}
