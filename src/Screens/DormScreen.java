@@ -45,9 +45,6 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        }
 
         if(screenCoordinator.getPreviousGameState()==GameState.HEATDORM){
             player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
