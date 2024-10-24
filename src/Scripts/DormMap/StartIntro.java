@@ -14,7 +14,7 @@ public class StartIntro extends Script {
         scriptActions.add(new TextboxScriptAction() {{
             addText("Kaegen: Damn its hot today! I feel gross.");
             addText("Kaegen: Time to shower I suppose.");
-            addText("Kaegen: Yep. Just another day in Mantle.");
+            addText("Kaegen: Yep. Just another day in Mountainview.");
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("introStarted", true));

@@ -95,7 +95,7 @@ public class DormScreen extends Screen{
             screenCoordinator.setGameState(GameState.MENU);
         }
 
-        System.out.println(player.getX());
+        //System.out.println(player.getX());
         //System.out.println(player.getY());
 
         if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
