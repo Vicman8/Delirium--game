@@ -11,6 +11,7 @@ import Level.FlagManager;
 import Level.Map;
 import Level.Player;
 import Maps.MountainviewDormHeat;
+import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
@@ -23,6 +24,8 @@ public class HeatDormScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
+    public static Point heatDormPos;
+    protected Point playerCurrPosition;
 
     public HeatDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -37,6 +40,7 @@ public class HeatDormScreen extends Screen{
         flagManager.addFlag("mcUnfainted", false);
         flagManager.addFlag("bearFought", false);
 
+
         // define/setup map
         map = new MountainviewDormHeat(/*screenCoordinator*/);
         //map = new MountainviewDormHeat(screenCoordinator);
@@ -44,12 +48,12 @@ public class HeatDormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(screenCoordinator.getPreviousGameState()==GameState.DORM){
+            player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else{
+            player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
         }
-        
-        // setup player
-        player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -67,6 +71,11 @@ public class HeatDormScreen extends Screen{
     }
 
     public void update() {
+
+        if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
+            screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+        }
+
         // based on screen state, perform specific actions
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
@@ -75,7 +84,18 @@ public class HeatDormScreen extends Screen{
                 map.update(player);
                 break;
         }
+        
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            ScreenCoordinator.switchWorld();
+
+            if (Keyboard.isKeyUp(Key.L)) {
+                keyLocker.unlockKey(Key.L);
+            }
+            if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+    
+                ScreenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+            }
+
             ScreenCoordinator.switchWorld();
     }
 

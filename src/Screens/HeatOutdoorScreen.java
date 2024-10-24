@@ -30,10 +30,11 @@ public class HeatOutdoorScreen extends Screen{
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
+        flagManager.addFlag("bearFought", false);
         flagManager.addFlag("scaryBear", false);
         flagManager.addFlag("Flee!", false);
         flagManager.addFlag("Bear!", false);
-
+        
         // define/setup map
         map = new MountainviewDormOutdoorHeat();
         map.setFlagManager(flagManager);

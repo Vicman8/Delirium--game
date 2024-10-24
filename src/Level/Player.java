@@ -45,6 +45,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SWITCH_WORLD = Key.Q;
+    protected Inventory inventory;
 
     protected boolean isLocked = false;
 
@@ -56,6 +57,8 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
+
+        keyLocker.lockKey(Key.I);
     }
 
     public void update() {
@@ -76,9 +79,12 @@ public abstract class Player extends GameObject {
         }
 
         handlePlayerAnimation();
-
         updateLockedKeys();
 
+        // if(Keyboard.isKeyDown(Key.G) ){
+        //     //Inventory.addItem();
+        //     System.out.prsdintln("In");
+        // }
         // update player's animation
         super.update();
 
@@ -104,6 +110,7 @@ public abstract class Player extends GameObject {
     // player STANDING state logic
     protected void playerStanding() {
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
+            
             keyLocker.lockKey(INTERACT_KEY);
             map.entityInteract(this);
         }
@@ -111,6 +118,7 @@ public abstract class Player extends GameObject {
         // if a walk key is pressed, player enters WALKING state
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_UP_KEY) || Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             playerState = PlayerState.WALKING;
+            //System.out.println("walking");
         }
     }
 
@@ -123,6 +131,7 @@ public abstract class Player extends GameObject {
 
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
+            //System.out.println("walk left");
             moveAmountX -= walkSpeed;
             facingDirection = Direction.LEFT;
             currentWalkingXDirection = Direction.LEFT;
@@ -253,6 +262,7 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.WALKING;
         facingDirection = direction;
         if (direction == Direction.RIGHT) {
+            
             this.currentAnimationName = "WALK_RIGHT";
         }
         else if (direction == Direction.LEFT) {
@@ -274,9 +284,9 @@ public abstract class Player extends GameObject {
 
     // Uncomment this to have game draw player's bounds to make it easier to visualize
     
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
-        //drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-    }
+    // public void draw(GraphicsHandler graphicsHandler) {
+    //     super.draw(graphicsHandler);
+    //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    // }
     
 }

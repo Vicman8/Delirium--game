@@ -1,3 +1,5 @@
+//tied to VILLAGE
+
 package Screens;
 
 import Engine.GraphicsHandler;
@@ -10,6 +12,8 @@ import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
+import Maps.DanaDorm;
+import Maps.DanaOutdoor;
 import Maps.MoutainviewDorm;
 import Players.HistoryMan;
 import Utils.Direction;
@@ -41,12 +45,15 @@ public class DormScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
+        if(screenCoordinator.getPreviousGameState()==GameState.HEATDORM){
+            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else{
+            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
         }
 
-        // setup player
-        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -86,6 +93,39 @@ public class DormScreen extends Screen{
         if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
 
             ScreenCoordinator.setGameState(GameState.MENU);
+        }
+
+        System.out.println(player.getX());
+        //System.out.println(player.getY());
+
+        if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+
+
+        
+        if (Keyboard.isKeyUp(Key.M)) {
+            keyLocker.unlockKey(Key.M);
+        }
+        if (!keyLocker.isKeyLocked(Key.M) && Keyboard.isKeyDown(Key.M)) {
+
+            screenCoordinator.setGameState(GameState.DANADORMHEAT);
+        }
+
+        if (Keyboard.isKeyUp(Key.N)) {
+            keyLocker.unlockKey(Key.N);
+        }
+        if (!keyLocker.isKeyLocked(Key.N) && Keyboard.isKeyDown(Key.N)) {
+
+            screenCoordinator.setGameState(GameState.DANADORM);
+        }
+
+        if (Keyboard.isKeyUp(Key.L)) {
+            keyLocker.unlockKey(Key.L);
+        }
+        if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
+
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
         
     }

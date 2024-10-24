@@ -30,7 +30,7 @@ public class Game {
         
             for(heatLevel = 0; heatLevel <= 100; heatLevel += 1){
                 /* TODO: if statement that only runs the rest of the loop is the gamestate is LEVEL
-                 * if (getGameState() == GameState.LEVEL){
+                  * if (getGameState() == GameState.LEVEL){
                  *      code below in here
                  * }
                 

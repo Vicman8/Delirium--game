@@ -3,11 +3,16 @@ package NPCs;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Engine.Key;
+import Engine.Keyboard;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Utils.Point;
+import Level.Inventory;
+import Level.MapEntityStatus;
 import Level.NPC;
+import Level.Player;
 import Game.ScreenCoordinator;
 
 import java.util.HashMap;
@@ -39,6 +44,9 @@ public class Fan extends NPC {
            //screenCoordinator.switchWorld(screenCoordinator);
         }};
     }
+
+
+    
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {

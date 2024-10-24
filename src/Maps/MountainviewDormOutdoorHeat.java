@@ -1,5 +1,9 @@
 package Maps;
 import Level.Trigger;
+import NPCs.CirculatingFan;
+import NPCs.Compressor;
+import NPCs.CondensingCoil;
+import NPCs.EvaporatorCoil;
 import NPCs.GMA;
 import NPCs.GMAM;
 import NPCs.PubSafety;
@@ -11,11 +15,16 @@ import NPCs.StudentM;
 import NPCs.THEVICMAN;
 import NPCs.THEVICMANM;
 import NPCs.TheThim;
-import NPCs.Walrus;
+import NPCs.Bear;
+import NPCs.CirculatingFan;
+import Scripts.DeliriousDana.VictorFight;
+import Scripts.DeliriousDana.VictorFight;
+import Scripts.DeliriousOutdoor.Diabear;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.DeliriousOutdoor.Scary;
 import Scripts.DeliriousOutdoor.Scary2;
 import Scripts.DeliriousOutdoor.Scary3;
+import Scripts.DormMap.FanScript;
 import Scripts.MyMap.StudentScript;
 import Level.Map;
 import Level.NPC;
@@ -31,6 +40,7 @@ public class MountainviewDormOutdoorHeat extends Map{
 
     public MountainviewDormOutdoorHeat() {
         super("mountainview_dorm_map_outdoor_heat.txt", new DormTilesetOutdoorHeat());
+        this.playerStartPosition = getMapTile(9, 8).getLocation();
         this.playerStartPosition = getMapTile(10, 10).getLocation();
         Audio.playMusic("Audio Resources\\Approach Ye Castle!.wav");
     }
@@ -40,9 +50,9 @@ public class MountainviewDormOutdoorHeat extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Walrus TotallyABear = new Walrus(1, getMapTile(19, 17).getLocation().subtractY(40));
-        TotallyABear.setInteractScript(new FirstBearFight());
-        npcs.add(TotallyABear);
+        Bear bear = new Bear(1, getMapTile(19, 17).getLocation().subtractY(40));
+        bear.setInteractScript(new Diabear());
+        npcs.add(bear);
 
         StacheM stacheM = new StacheM(1, getMapTile(15, 15).getLocation().subtractY(40));
         stacheM.setInteractScript(new Scary());
@@ -55,6 +65,24 @@ public class MountainviewDormOutdoorHeat extends Map{
         StudentM studentM = new StudentM(1, getMapTile(16, 20).getLocation().subtractY(40));
         studentM.setInteractScript(new Scary2());
         npcs.add(studentM);
+
+        /*
+         * Fan fan = new Fan(1,getMapTile(7,5).getLocation()
+        fan.setInteractScript(new FanScript());
+        npcs.add(fan);
+         */
+
+        CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(11,18).getLocation());
+        npcs.add(circulatingFan);
+
+        Compressor compressor = new Compressor(1, getMapTile(11,19).getLocation());
+        npcs.add(compressor);
+
+        CondensingCoil condensingCoil = new CondensingCoil(1, getMapTile(11,20).getLocation());
+        npcs.add(condensingCoil);
+
+        EvaporatorCoil evaporatorCoil = new EvaporatorCoil(1, getMapTile(11,21).getLocation());
+        npcs.add(evaporatorCoil);
 
 
         return npcs;
