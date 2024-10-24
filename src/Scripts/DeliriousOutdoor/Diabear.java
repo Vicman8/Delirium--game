@@ -29,7 +29,7 @@ public class Diabear extends Script {
             addText("Kaegen: Upon furth'r inspection, thee behold familiar.");
             addText("Kaegen: Thee.\nThou art the one who is't hast did destroy our A.C unit!");
             addText("Black Bear: Womp Womp.");
-            addText("Kaegen: Thy sland'r knoweth nay bounds.I shall slayeth thee!", new String[] { "Punch Bear", "Kick Bear" });
+            addText("Kaegen: Thy sland'r knoweth nay bounds.\nI shall slayeth thee!", new String[] { "Punch Bear", "Kick Bear" });
         }});
 
         scriptActions.add(new ConditionalScriptAction() {{

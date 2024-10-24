@@ -35,6 +35,13 @@ public class DanaDormHeatScreen extends Screen{
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
+        flagManager.addFlag("danaIntroed", false);
+        flagManager.addFlag("dDanaIntroed", false);
+        flagManager.addFlag("victorIntroed", false);
+        flagManager.addFlag("trailFollowed", false);
+        flagManager.addFlag("a.cSlashed", false);
+        flagManager.addFlag("roommateTalked", false);
+        flagManager.addFlag("victorFought", false);
 
         // define/setup map
         map = new DanaDormHeat();

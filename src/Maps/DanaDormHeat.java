@@ -1,7 +1,18 @@
 package Maps;
 import Level.Trigger;
+import NPCs.Preeda;
+import NPCs.Stache;
+import NPCs.StacheM;
 import NPCs.THEVICMAN;
 import NPCs.THEVICMANM;
+import Scripts.SimpleTextScript;
+import Scripts.Dana.DanaIntro;
+import Scripts.DeliriousDana.DDanaIntro;
+import Scripts.DeliriousDana.SlashedAC;
+import Scripts.DeliriousDana.TrailScript;
+import Scripts.DeliriousDana.VictorFight;
+import Scripts.DeliriousDana.VictorIntro;
+import Scripts.DeliriousDorm.DeliriumIntro;
 import Level.Map;
 import Level.NPC;
 import Level.Tileset;
@@ -24,24 +35,45 @@ public class DanaDormHeat extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         THEVICMANM vicmanM = new THEVICMANM(1, getMapTile(3, 2).getLocation());
+        vicmanM.setInteractScript(new VictorIntro());
+        //figure out how to have the Victor fight here
         npcs.add(vicmanM);
+
+        THEVICMAN vicman = new THEVICMAN(4, getMapTile(2,3).getLocation());
+        vicman.setInteractScript(new VictorFight());
+        npcs.add(vicman);
+
+
+        Preeda preeda = new Preeda(2, getMapTile(19,12).getLocation());
+        preeda.setInteractScript(new DDanaIntro());
+        npcs.add(preeda);
+
+        StacheM stache = new StacheM(2, getMapTile(27,11).getLocation());
+        //stache.setInteractScript(new RoommateClue())
+        npcs.add(stache);
 
         return npcs;
         
     }
-    /*
+    
      @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(300, 600, 150, 1, new TrailScript(),"trailFollowed")); //bottom
+        triggers.add(new Trigger(300, 460, 1, 140, new TrailScript(),"trailFollowed")); //side
+        triggers.add(new Trigger(450, 460, 1, 140, new TrailScript(),"trailFollowed")); //side
+
+
         return triggers;
     }
 
 
     @Override
     public void loadScripts() {
-
+        getMapTile(38,14).setInteractScript(new SlashedAC());
+        
     }
-     */
+
     
 
 } 
