@@ -12,6 +12,7 @@ import Utils.Point;
 import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
+import Level.Player;
 import Game.ScreenCoordinator;
 
 import java.util.HashMap;
@@ -44,7 +45,18 @@ public class Compressor extends NPC {
         }};
     }
 
+    //Makes the fan addable to the inventory
+    @Override
+    public void update(Player player) {
+        super.update(player);
 
+        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
+            setMapEntityStatus(MapEntityStatus.REMOVED);
+            
+            //Inventory.addItem("Compressor ", + quantity);
+            // quantity = quantity  + 1;
+        }
+    }
     
 
     @Override

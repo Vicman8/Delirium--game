@@ -1,6 +1,7 @@
 package Engine;
 
 import GameObject.ImageEffect;
+import GameObject.Sprite;
 
 import java.awt.*;
 import java.awt.font.GlyphVector;
@@ -26,6 +27,8 @@ public class GraphicsHandler {
     public void drawImage(BufferedImage image, int x, int y, int width, int height) {
         g.drawImage(image, x, y, width, height, null);
     }
+
+   
 
     public void drawImage(BufferedImage image, int x, int y, int width, int height, ImageEffect imageEffect) {
         switch (imageEffect) {

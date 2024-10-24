@@ -104,6 +104,11 @@ public class Diabear extends Script {
                                 addText("Kaegen: Finally backing off?\nI see you've learned thine place!");
                                 addText("Black Bear: *whimpers*");
                             }});
+                            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
+                            
                         }});
                     }});
                 }});
@@ -141,6 +146,10 @@ public class Diabear extends Script {
                                     addText("Kaegen: Finally backing off? I see you've learned thine place!");
                                     addText("Black Bear: *whimpers*");
                                 }});
+                                addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                             }});
                 
                             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
@@ -160,6 +169,10 @@ public class Diabear extends Script {
                                     addText("Kaegen: Finally backing off?\nI see you've learned thine place!");
                                     addText("Black Bear: *whimpers*");
                                 }});
+                                addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                             }});
                         }});
                     }});

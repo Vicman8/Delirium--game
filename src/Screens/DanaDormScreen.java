@@ -87,8 +87,8 @@ public class DanaDormScreen extends Screen{
             screenCoordinator.setGameState(GameState.MENU);
         }
 
-        System.out.println(player.getX());
-        System.out.println(player.getY());
+        //System.out.println(player.getX());
+        //System.out.println(player.getY());
 
         if(((player.getX() >= 1695.0) && (player.getX() <= 1745.0)) && (player.getY() >= 815.0) && (player.getY() <= 820.0)){
             screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);

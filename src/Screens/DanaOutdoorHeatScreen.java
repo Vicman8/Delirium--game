@@ -89,8 +89,8 @@ public class DanaOutdoorHeatScreen extends Screen{
             screenCoordinator.setGameState(GameState.MENU);
         }
 
-        System.out.println(player.getX());
-        System.out.println(player.getY());
+        //System.out.println(player.getX());
+        //System.out.println(player.getY());
 
         if(((player.getX() >= 400.0) && (player.getX() <= 440.0)) && (player.getY() >= 200.0) && (player.getY() <= 215.0)){
             screenCoordinator.setGameState(GameState.DANADORMHEAT);

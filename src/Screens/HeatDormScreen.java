@@ -105,10 +105,13 @@ public class HeatDormScreen extends Screen{
     
                 screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
             }
+<<<<<<< HEAD
 
         
 
         
+=======
+>>>>>>> 92adcde74d2f70a55f0c7b6827583e097e561f24
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
