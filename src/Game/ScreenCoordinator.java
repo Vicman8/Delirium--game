@@ -2,13 +2,9 @@ package Game;
 
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
-import Engine.ImageLoader;
 import Engine.Key;
-import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
-import Level.NPC;
-import Level.Player;
 import Maps.DanaDorm;
 import Maps.DanaDormHeat;
 import Screens.CreditsScreen;
@@ -38,21 +34,9 @@ public class ScreenCoordinator extends Screen {
 
 	public static Key SWITCH_TO_REALITY = Key.W;
 	public static Key SWITCH_TO_MEDIEVAL = Key.Q;
-	//public static Key OPEN_INVENTORY = Key.I;
 
 	public static Point savedPlayerPos;
-	protected KeyLocker keyLocker = new KeyLocker();
 
-	protected Player player;
-
-	//protected GetWidth getWidth;
-	protected NPC fan;
-
-	protected boolean delay = false;
-	
-	protected long lastSwitchTime;
-	protected long nextSwitchTime = 0;
-	protected long randomDelay; 
 	public GameState getGameState() {
 		return gameState;
 	}
@@ -72,26 +56,8 @@ public class ScreenCoordinator extends Screen {
 		gameState = GameState.MENU;
 	}
 
-	private boolean isInventory = false;
-	public boolean hasSwitched = false;
-
 	@Override
 	public void update() {
-		if (Keyboard.isKeyDown(Key.I) && !keyLocker.isKeyLocked(Key.I)) {
-            isInventory = !isInventory;
-
-            keyLocker.lockKey(Key.I);
-        }
-
-        if (Keyboard.isKeyUp(Key.I) && keyLocker.isKeyLocked(Key.I)) {
-            keyLocker.unlockKey(Key.I);
-        }
-
-		if (hasSwitched && nextSwitchTime != 0 && System.currentTimeMillis() > nextSwitchTime) {
-			hasSwitched = false;
-			delay = false;
-		}
-
 		do {
 			// if previousGameState does not equal gameState, it means there was a change in gameState
 			// this triggers ScreenCoordinator to bring up a new Screen based on what the gameState is
@@ -114,10 +80,7 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case HEATDORMEXTERIOR:
 						currentScreen = new HeatOutdoorScreen(this);
-						
-					// case INVENTORY:
-					// 	currentScreen = new InventoryScreen(this);
-					// 	break;
+						break;
 					case DANADORM:
 						currentScreen = new DanaDormScreen(this);
 						break;
@@ -145,37 +108,12 @@ public class ScreenCoordinator extends Screen {
 			currentScreen.update();
 		} while (previousGameState != gameState);
 	}
-
-	// public void inventory(ScreenCoordinator screenCoordinator){
-	// 	screenCoordinator = this;
-	// 	if(Keyboard.isKeyDown(ScreenCoordinator.OPEN_INVENTORY)){
-
-	// 	}
-	// }
     
-	
     public void switchWorld(ScreenCoordinator screenCoordinator){    
-		Math.random();
 		screenCoordinator = this;
-		//this.player = player;
-		//fan = new fan();
-		 //int getWidth = getWidth;
+		boolean hasSwitched = false;
 
-		if(!delay){
-			randomDelay = (long) (Math.random()*5000)+2000;
-			System.out.println(randomDelay);
-			lastSwitchTime = System.currentTimeMillis();
-			nextSwitchTime = lastSwitchTime + randomDelay;
-			delay = true;
-		}
-
-
-		
-
-
-		long currentTime = System.currentTimeMillis();
-/*&& Keyboard.isKeyDown(Key.E) && fan.isNear(fan, (int) (getWidth() * 1.5))*/
-		if(/*player.touching(fan.getBounds()) && */Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)  ){
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
 			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DORM);
 				hasSwitched = true;
@@ -197,8 +135,8 @@ public class ScreenCoordinator extends Screen {
 			}
 		}
 
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay) ){
-			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false ){
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORM);
 				hasSwitched = true;
 			}
@@ -229,9 +167,5 @@ public class ScreenCoordinator extends Screen {
 	public void draw(GraphicsHandler graphicsHandler) {
 		// call the draw method for the currentScreen
 		currentScreen.draw(graphicsHandler);
-
-		if (isInventory) {
-			graphicsHandler.drawImage(ImageLoader.load("InventoryScreen.png"), 0, 0, 1000, 600);
-		}
 	}
 }

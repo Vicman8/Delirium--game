@@ -2,17 +2,29 @@ package Scripts.DeliriousOutdoor;
 
 import java.util.ArrayList;
 
+import Builders.FrameBuilder;
+import Builders.MapTileBuilder;
+import GameObject.Frame;
+import Level.MapTile;
 import Level.Script;
+import Level.ScriptState;
+import Level.TileType;
 import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
 import ScriptActions.CustomRequirement;
 import ScriptActions.LockPlayerScriptAction;
+import ScriptActions.NPCChangeVisibilityScriptAction;
 import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.NPCLockScriptAction;
+import ScriptActions.NPCStandScriptAction;
 import ScriptActions.NPCUnlockScriptAction;
+import ScriptActions.NPCWalkScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import Utils.Direction;
+import Utils.Point;
+import Utils.Visibility;
 
 public class Diabear extends Script {
     @Override
@@ -68,6 +80,11 @@ public class Diabear extends Script {
                                 addText("Kaegen: Finally backing off?\nI see you've learned thine place!");
                                 addText("Black Bear: *whimpers*");
                             }});
+
+                            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                         }});
             
                         addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
@@ -87,6 +104,11 @@ public class Diabear extends Script {
                                 addText("Kaegen: Finally backing off?\nI see you've learned thine place!");
                                 addText("Black Bear: *whimpers*");
                             }});
+                            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
+                            
                         }});
                     }});
                 }});
@@ -124,6 +146,10 @@ public class Diabear extends Script {
                                     addText("Kaegen: Finally backing off? I see you've learned thine place!");
                                     addText("Black Bear: *whimpers*");
                                 }});
+                                addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                             }});
                 
                             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
@@ -143,6 +169,10 @@ public class Diabear extends Script {
                                     addText("Kaegen: Finally backing off?\nI see you've learned thine place!");
                                     addText("Black Bear: *whimpers*");
                                 }});
+                                addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                             }});
                         }});
                     }});
