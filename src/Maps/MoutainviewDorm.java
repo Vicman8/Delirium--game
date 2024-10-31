@@ -4,6 +4,7 @@ import Level.Map;
 import Level.NPC;
 import Level.Tileset;
 import NPCs.Fan;
+import NPCs.WaterBottle;
 import Scripts.SimpleTextScript;
 import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
@@ -26,7 +27,10 @@ public class MoutainviewDorm extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Fan fan = new Fan(1,getMapTile(7,5).getLocation()/*, screenCoordinator*/);
+                WaterBottle waterBottle = new WaterBottle(1, getMapTile(5, 8).getLocation());
+
         fan.setInteractScript(new FanScript());
+        npcs.add(waterBottle);
         npcs.add(fan);
 
         return npcs;

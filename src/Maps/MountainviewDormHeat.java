@@ -4,6 +4,7 @@ import Level.Map;
 import Level.NPC;
 import Level.Tileset;
 import NPCs.Fan;
+import NPCs.WaterBottle;
 import Scripts.SimpleTextScript;
 import Scripts.DeliriousDorm.DeliriumFan;
 import Scripts.DeliriousDorm.DeliriumIntro;
@@ -28,9 +29,13 @@ public class MountainviewDormHeat extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Fan fan = new Fan(1,getMapTile(7,5).getLocation()/* , screenCoordinator*/);
+        WaterBottle waterBottle = new WaterBottle(1, getMapTile(2, 12).getLocation());
+
+        Fan fan = new Fan(1,getMapTile(7,5).getLocation());
         fan.setInteractScript(new DeliriumFan());
+
         npcs.add(fan);
+        npcs.add(waterBottle);
 
         return npcs;
     }
