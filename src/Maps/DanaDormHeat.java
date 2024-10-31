@@ -35,13 +35,11 @@ public class DanaDormHeat extends Map{
         ArrayList<NPC> npcs = new ArrayList<>();
 
         THEVICMANM vicmanM = new THEVICMANM(1, getMapTile(3, 2).getLocation());
-        vicmanM.setInteractScript(new VictorIntro());
+        vicmanM.setInteractScript(new VictorFight());
         //figure out how to have the Victor fight here
         npcs.add(vicmanM);
 
-        THEVICMAN vicman = new THEVICMAN(4, getMapTile(2,3).getLocation());
-        vicman.setInteractScript(new VictorFight());
-        npcs.add(vicman);
+        
 
 
         Preeda preeda = new Preeda(2, getMapTile(19,12).getLocation());

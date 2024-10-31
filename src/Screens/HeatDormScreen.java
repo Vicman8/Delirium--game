@@ -87,7 +87,7 @@ public class HeatDormScreen extends Screen{
             }
             if (npc instanceof Fan ) {
                 if (npc.touching(player)) {
-                    screenCoordinator.hasSwitched = true;
+                    //screenCoordinator.hasSwitched = true;
                     screenCoordinator.setGameState(GameState.DORM);
                 }
             }
