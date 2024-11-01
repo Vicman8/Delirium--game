@@ -89,8 +89,8 @@ public class DanaOutdoorHeatScreen extends Screen{
             screenCoordinator.setGameState(GameState.MENU);
         }
 
-        System.out.println(player.getX());
-        System.out.println(player.getY());
+        // System.out.println(player.getX());
+        // System.out.println(player.getY());
 
         if(((player.getX() >= 400.0) && (player.getX() <= 440.0)) && (player.getY() >= 200.0) && (player.getY() <= 215.0)){
             screenCoordinator.setGameState(GameState.DANADORMHEAT);
@@ -99,7 +99,9 @@ public class DanaOutdoorHeatScreen extends Screen{
         if(((player.getX() >= 870.0)) && (player.getY() >= 200.0) && (player.getY() <= 900.0)){
             screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
         }
-
+        if((player.getX() == 365.0) && (player.getY() == 567.0)){
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
         
         if (Keyboard.isKeyUp(Key.L)) {
             keyLocker.unlockKey(Key.L);
@@ -108,6 +110,7 @@ public class DanaOutdoorHeatScreen extends Screen{
 
             screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
+
         
     }
 

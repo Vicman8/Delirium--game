@@ -46,7 +46,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SWITCH_WORLD = Key.Q;
-    protected Inventory inventory;
+    private Inventory inventory;
 
     protected boolean isLocked = false;
 
@@ -58,13 +58,9 @@ public abstract class Player extends GameObject {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
-
-        //keyLocker.lockKey(Key.I);
     }
 
-    public void update(/*GraphicsHandler graphicsHandler*/) {
-        this.inventory = inventory;
-
+    public void update() {
         if (!isLocked) {
             moveAmountX = 0;
             moveAmountY = 0;
@@ -80,8 +76,7 @@ public abstract class Player extends GameObject {
             lastAmountMovedY = super.moveYHandleCollision(moveAmountY);
             lastAmountMovedX = super.moveXHandleCollision(moveAmountX);
             
-            // if(Keyboard.isKeyDown(Key.I) ){
-            //     inventory.showInventory(graphicsHandler);
+            // if() {
             //     //Inventory.addItem();
             //     System.out.println("In");
             // }
@@ -101,6 +96,11 @@ public abstract class Player extends GameObject {
             posPrintDelay = 0;
         }
     }
+
+
+    // public void inventory(GraphicsHandler graphicsHandler, InventoryScreen inventoryScreen){
+    //     inventory.showInventory(graphicsHandler, inventoryScreen);;
+    // }
     
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {

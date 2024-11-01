@@ -242,8 +242,7 @@ public class DanaDormTileset extends Tileset {
                 .withScale(tileScale)
                 .build();
         
-        MapTileBuilder waterBottleTile= new MapTileBuilder(topBedFrameAlt)
-                .withTopLayer(waterBottleFrame)
+        MapTileBuilder waterBottleTile= new MapTileBuilder(waterBottleFrame)
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(waterBottleTile);
@@ -251,9 +250,9 @@ public class DanaDormTileset extends Tileset {
         Frame penFrame = new FrameBuilder(getSubImage(4, 2))
                 .withScale(tileScale)
                 .build();
+                
         
-        MapTileBuilder penTile= new MapTileBuilder(topBedFrameAlt)
-                .withTopLayer(penFrame)
+        MapTileBuilder penTile= new MapTileBuilder(penFrame)
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(penTile);

@@ -82,10 +82,8 @@ public class DanaDormHeatScreen extends Screen{
                 break;
         }
 
-        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
-        //}
+            //screenCoordinator.switchWorld(screenCoordinator);
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);

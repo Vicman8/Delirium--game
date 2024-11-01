@@ -19,7 +19,7 @@ public class GamePanel extends JPanel {
 	private ScreenManager screenManager;
 
 	// used to draw graphics to the panel
-	private GraphicsHandler graphicsHandler;
+	protected GraphicsHandler graphicsHandler;
 	protected InventoryScreen inventory;
 
 	private boolean isGamePaused = false;
@@ -102,15 +102,15 @@ public class GamePanel extends JPanel {
 			screenManager.update();
 		}
 
-		if(Keyboard.isKeyDown(Key.I) && !keyLocker.isKeyLocked(Key.I)){
-			keyLocker.lockKey(Key.I);
+		// if(Keyboard.isKeyDown(Key.I) && !keyLocker.isKeyLocked(Key.I)){
+		// 	keyLocker.lockKey(Key.I);
 
-			isInInventory = !isInInventory;
-		}
+		// 	isInInventory = !isInInventory;
+		// }
 
-		if (Keyboard.isKeyUp(Key.I)) {
-			keyLocker.unlockKey(Key.I);
-		}
+		// if (Keyboard.isKeyUp(Key.I)) {
+		// 	keyLocker.unlockKey(Key.I);
+		// }
 	}
 
 	private void updatePauseState() {

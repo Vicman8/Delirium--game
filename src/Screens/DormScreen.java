@@ -11,10 +11,12 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
+import Level.NPC;
 import Level.Player;
 import Maps.DanaDorm;
 import Maps.DanaOutdoor;
 import Maps.MoutainviewDorm;
+import NPCs.Fan;
 import Players.HistoryMan;
 import Utils.Direction;
 import Utils.Point;
@@ -81,6 +83,16 @@ public class DormScreen extends Screen{
                 map.update(player);
                 break;
         }
+
+        // for (NPC npc : map.getNPCs()) {
+        //     if (npc instanceof Fan) {
+        //         System.out.println(npc.touching(player));
+        //         if (npc.touching(player)) {
+        //             screenCoordinator.setGameState(GameState.DORM);
+        //             return;
+        //         }
+        //     }
+        // }
 
         //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());

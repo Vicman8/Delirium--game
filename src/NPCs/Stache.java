@@ -3,10 +3,15 @@ package NPCs;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Engine.Key;
+import Engine.Keyboard;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
+import Level.Inventory;
+import Level.MapEntityStatus;
 import Level.NPC;
+import Level.Player;
 import Utils.Point;
 
 import java.util.HashMap;
@@ -35,6 +40,18 @@ public class Stache extends NPC {
                            .build()
            });
         }};
+    }
+
+ @Override
+    public void update(Player player) {
+        super.update(player);
+
+        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
+            setMapEntityStatus(MapEntityStatus.REMOVED);
+            int quantity = 0;
+            Inventory.addItem("Stache", + quantity);
+            quantity = quantity  + 1;
+        }
     }
 
     @Override

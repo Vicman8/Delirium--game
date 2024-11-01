@@ -41,8 +41,8 @@ public class FanScript extends Script {
                     addText("Kaegen: Thank god I have this fan!\nIt at least keeps me from passing out!");
                     addText("Kaegen: I REALLY have to shower though.");
 
-                    //System.out.println("Activating switch world in FanScript");
-                    //screenCoordinator.switchWorld(screenCoordinator);
+                    // System.out.println("Activating switch world in FanScript");
+                    // ScreenCoordinator.switchWorld();
                 }});
                 
             }});
@@ -57,6 +57,7 @@ public class FanScript extends Script {
                     addText("Kaegen: GIVE ME A.C OR GIVE ME DEATH!!!!");
                     addText("Kaegen: I... feel weak. ");
                     addText("Kaegen: Shouldn’t... have... shouted.");
+                    
                 }});
                 addScriptAction(new ChangeFlagScriptAction("fanHasDied", true));
             }});
