@@ -40,7 +40,6 @@ public class ScreenCoordinator extends Screen {
 	protected boolean hasSwitched = false;
 
 
-
 	public GameState getGameState() {
 		return gameState;
 	}
