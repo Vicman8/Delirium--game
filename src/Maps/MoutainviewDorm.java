@@ -4,11 +4,8 @@ import Level.Map;
 import Level.NPC;
 import Level.Tileset;
 import NPCs.Fan;
-<<<<<<< HEAD
 import NPCs.WaterBottle;
-=======
 import Players.HistoryMan;
->>>>>>> afa80859356dcbe2f03555d3ba516284c31a92a8
 import Scripts.SimpleTextScript;
 import Scripts.DormMap.FanScript;
 import Scripts.DormMap.StartIntro;
