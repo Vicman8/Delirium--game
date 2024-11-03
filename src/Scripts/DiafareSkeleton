@@ -1,0 +1,139 @@
+/* 
+
+*ADD ALL PACKAGES NECESSARY*
+
+package Scripts.ScriptPackage;
+
+import java.util.ArrayList;
+
+import Level.Script;
+import ScriptActions.ChangeFlagScriptAction;
+import ScriptActions.ConditionalScriptAction;
+import ScriptActions.ConditionalScriptActionGroup;
+import ScriptActions.CustomRequirement;
+import ScriptActions.LockPlayerScriptAction;
+import ScriptActions.NPCFacePlayerScriptAction;
+import ScriptActions.NPCLockScriptAction;
+import ScriptActions.NPCUnlockScriptAction;
+import ScriptActions.ScriptAction;
+import ScriptActions.TextboxScriptAction;
+import ScriptActions.UnlockPlayerScriptAction;
+
+public class ClassName extends Script {
+    @Override
+
+    *INTRO OF DIAFARE*
+
+    public ArrayList<ScriptAction> loadScriptActions() {
+        ArrayList<ScriptAction> scriptActions = new ArrayList<>();
+        scriptActions.add(new LockPlayerScriptAction());
+
+        scriptActions.add(new NPCLockScriptAction());
+
+        scriptActions.add(new NPCFacePlayerScriptAction());
+
+        scriptActions.add(new TextboxScriptAction() {
+            {
+                addText(""");
+                addText("",new String[] { "Option 1", "Option 2" });
+            }
+        });
+    *END OF DIAFARE INTRO*
+
+        *THE LINE BELOW ENCAPSULATES EVERYTHING BELOW IT*
+        *DO NOT USE THE COMMAND BELOW MORE THAN ONCE PER FILE*
+        scriptActions.add(new ConditionalScriptAction() {
+            {
+
+                // A.C parts
+                addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {
+                    {
+                        addRequirement(new CustomRequirement() {
+                            @Override
+                            public boolean isRequirementMet() {
+                                int answer = outputManager.getFlagData("TEXTBOX_OPTION_SELECTION");
+                                return answer == 0;
+                            }
+                        });
+                        *FAILED OPTION. NO DIALOGUE OCCURS AFTER THIS*
+                        addScriptAction(new TextboxScriptAction() {
+                            {
+                                
+                            }
+                        });
+                    }
+                });
+
+                *THIS BELOW IS A SUCCESSFUL OPTION*
+
+                addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {
+                    {
+                        addRequirement(new CustomRequirement() {
+                            @Override
+                            public boolean isRequirementMet() {
+                                int answer = outputManager.getFlagData("TEXTBOX_OPTION_SELECTION");
+                                return answer == 1;
+                            }
+                        });
+                        addScriptAction(new TextboxScriptAction() {
+                            {
+                                addText("",new String[] { "Option 1", "Option 2" });
+                            }
+                        });
+
+                        addScriptAction(new ConditionalScriptAction() {
+                            {
+
+                                addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {
+                                    {
+                                        addRequirement(new CustomRequirement() {
+                                            @Override
+                                            public boolean isRequirementMet() {
+                                                int answer = outputManager.getFlagData("TEXTBOX_OPTION_SELECTION");
+                                                return answer == 0;
+                                            }
+                                        });
+                                        *FAILED OPTION DOES NOT LEAD TO MORE DIALOGUE*
+                                        addScriptAction(new TextboxScriptAction() {
+                                            {
+
+                                            }
+                                        });
+                                    }
+                                });
+
+                                addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {
+                                    {
+
+                                        addRequirement(new CustomRequirement() {
+                                            @Override
+                                            public boolean isRequirementMet() {
+                                                int answer = outputManager.getFlagData("TEXTBOX_OPTION_SELECTION");
+                                                return answer == 1;
+                                            }
+                                        });
+
+                                        addScriptAction(new TextboxScriptAction() {
+                                            {
+                                                
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+                *LINE ABOVE ENDS A SUCCESSFUL OPTION
+            }
+        });
+        *THE LINE ABOVE ENCAPSULATES EVERYTHING ABOVE THE LINE
+
+        scriptActions.add(new ChangeFlagScriptAction("victorFought", true));
+        scriptActions.add(new NPCUnlockScriptAction());
+        scriptActions.add(new UnlockPlayerScriptAction());
+
+        return scriptActions;
+    }
+}
+ */
