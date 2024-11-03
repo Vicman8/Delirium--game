@@ -15,7 +15,7 @@ public class DanaTilesetOutdoorNormal extends Tileset{
     
 
     public DanaTilesetOutdoorNormal() {
-        super(ImageLoader.load("DanaTileSetOutDoorNormal.png"), 16, 16, 3);
+        super(ImageLoader.load("DanaTileSetOutDoorNormal_2.png"), 16, 16, 3);
     }
 
     @Override
@@ -426,6 +426,45 @@ public class DanaTilesetOutdoorNormal extends Tileset{
                     .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(bushTileNormal);
+
+        Frame grassFramePavFrame = new FrameBuilder(getSubImage(5, 3))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder grassFramePavTile = new MapTileBuilder(grassFramePavFrame)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(grassFramePavTile);
+
+        Frame tree2FrameNormalPav = new FrameBuilder(getSubImage(5, 0))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder tree2TileNormalPav = new MapTileBuilder(grassFramePavFrame)
+                    .withTopLayer(tree2FrameNormalPav)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(tree2TileNormalPav);
+
+        Frame tree3FrameNormalPav = new FrameBuilder(getSubImage(5, 1))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder tree3TileNormalPav = new MapTileBuilder(grassFramePavFrame)
+                    .withTopLayer(tree3FrameNormalPav)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(tree3TileNormalPav);
+
+        Frame tree4FrameNormalPav = new FrameBuilder(getSubImage(5, 2))
+        .withScale(tileScale)
+        .build();
+
+        MapTileBuilder tree4TileNormalPav = new MapTileBuilder(grassFramePavFrame)
+            .withTopLayer(tree4FrameNormalPav)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(tree4TileNormalPav);
 
         return mapTiles;
     }

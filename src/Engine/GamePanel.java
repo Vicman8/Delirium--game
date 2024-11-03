@@ -35,6 +35,13 @@ public class GamePanel extends JPanel {
 	private int currentFPS;
 	private boolean doPaint;
 
+	protected SpriteFont creditsLabel;
+    protected SpriteFont createdByLabel;
+    protected SpriteFont createdByLabel2;
+    protected SpriteFont createdByLabel3;
+    protected SpriteFont createdByLabel4;
+    protected SpriteFont createdByLabel5;
+
 	// The JPanel and various important class instances are setup here
 	public GamePanel() {
 		super();
@@ -47,12 +54,11 @@ public class GamePanel extends JPanel {
 
 		screenManager = new ScreenManager();
 
-		pauseLabel = new SpriteFont("Welcome to Medievirium! This is how you play.", 000, 100, "Arial", 24, Color.white);
-		pauseLabel.setOutlineColor(Color.black);
-		pauseLabel.setOutlineThickness(2.0f);
-		pauseLabel = new SpriteFont("This game uses the basic control scheme of using the four arrow keys to move.", 000, 100, "Arial", 24, Color.white);
-		pauseLabel.setOutlineColor(Color.black);
-		pauseLabel.setOutlineThickness(2.0f);
+		pauseLabel = new SpriteFont("The game is now paused!", 100, 100, "Times New Roman", 20, Color.white);
+		createdByLabel2 = new SpriteFont("Use the arrow keys to move and the space button to interact with people/objects", 100, 250, "Times New Roman", 20, Color.white);
+        createdByLabel3 = new SpriteFont("Use the I button to bring up the inventory, but that isn't used much in this demo", 100, 300, "Times New Roman", 20, Color.white);
+        createdByLabel4 = new SpriteFont("Hint: The AC part can be found held by someone in Dana", 100, 450, "Times New Roman", 20, Color.white);
+        createdByLabel5 = new SpriteFont("Dana is accessed by going to the left once out of your dorm", 100, 500, "Times New Roman", 20, Color.white);
 
 		fpsDisplayLabel = new SpriteFont("FPS", 4, 3, "Arial", 12, Color.black);
 
@@ -140,6 +146,10 @@ public class GamePanel extends JPanel {
 		// if game is paused, draw pause gfx over Screen gfx
 		if (isGamePaused) {
 			pauseLabel.draw(graphicsHandler);
+			createdByLabel2.draw(graphicsHandler);
+			createdByLabel3.draw(graphicsHandler);
+			createdByLabel4.draw(graphicsHandler);
+			createdByLabel5.draw(graphicsHandler);
 			graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), new Color(0, 0, 0, 100));
 		}
 

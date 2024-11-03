@@ -51,7 +51,7 @@ public class Audio {
              //gets the audio file from the input above
              Clip clip = AudioSystem.getClip();
              clip.open(audioInput);
-             clip.start();
+             //clip.start();
          } else {
              System.out.println("Erm, like, there is no music lmao");
          }

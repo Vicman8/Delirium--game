@@ -39,7 +39,9 @@ public class DanaDormHeat extends Map{
         //figure out how to have the Victor fight here
         npcs.add(vicmanM);
 
-        
+        //THEVICMAN vicman = new THEVICMAN(4, getMapTile(2,3).getLocation());
+        //vicman.setInteractScript(new VictorFight());
+        //npcs.add(vicman);
 
 
         Preeda preeda = new Preeda(2, getMapTile(19,12).getLocation());

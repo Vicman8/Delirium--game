@@ -133,7 +133,6 @@ public class HeatDormScreen extends Screen{
         
 
         
-            screenCoordinator.switchWorld(screenCoordinator);
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
