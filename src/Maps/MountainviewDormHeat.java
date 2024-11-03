@@ -29,7 +29,7 @@ public class MountainviewDormHeat extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        WaterBottle waterBottle = new WaterBottle(1, getMapTile(2, 12).getLocation());
+        WaterBottle waterBottle = new WaterBottle(1, getMapTile(5, 9).getLocation());
 
         Fan fan = new Fan(1,getMapTile(7,5).getLocation());
         fan.setInteractScript(new DeliriumFan());

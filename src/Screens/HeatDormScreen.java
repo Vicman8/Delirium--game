@@ -81,7 +81,7 @@ public class HeatDormScreen extends Screen{
 
             if(npc instanceof WaterBottle){
                 if(npc.touching(player) && Keyboard.isKeyDown(Key.E)){
-                    screenCoordinator.hasSwitched = true;
+                    
                     screenCoordinator.setGameState(GameState.DORM);
                 }
             }

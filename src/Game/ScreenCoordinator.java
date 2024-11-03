@@ -37,12 +37,10 @@ public class ScreenCoordinator extends Screen {
 
 	public static Point savedPlayerPos;
 
-<<<<<<< HEAD
 	protected boolean hasSwitched = false;
 
 
-=======
->>>>>>> 7811cafb2b393b12eaa200978236e0a3fa598528
+
 	public GameState getGameState() {
 		return gameState;
 	}
