@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Builders.FrameBuilder;
 import Builders.MapTileBuilder;
 import GameObject.Frame;
+import Level.MapEntity;
 import Level.MapTile;
 import Level.Script;
 import Level.ScriptState;
@@ -173,6 +174,7 @@ public class Diabear extends Script {
 
                             addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
                             addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
+                            
                             }});
                         }});
                     }});

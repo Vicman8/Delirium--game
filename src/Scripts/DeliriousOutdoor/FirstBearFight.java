@@ -36,6 +36,7 @@ public class FirstBearFight extends Script {
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("bearFought", true));
+        
 
         scriptActions.add(new UnlockPlayerScriptAction());
 
