@@ -75,6 +75,23 @@ public class DanaDormHeat extends Map{
     @Override
     public void loadScripts() {
         getMapTile(38,14).setInteractScript(new SlashedAC());
+        // coordinates needed
+        getMapTile(18, 2).setInteractScript(new SimpleTextScript("Kaegen: This is Preeda's sleep chamber."));
+        getMapTile(18, 3).setInteractScript(new SimpleTextScript("Kaegen: This is Preeda's sleep chamber."));
+        
+        getMapTile(22, 2).setInteractScript(new SimpleTextScript("Kaegen: This is her roommate's sleep chamber."));
+        getMapTile(22, 3).setInteractScript(new SimpleTextScript("Kaegen: This is her roommate's sleep chamber."));
+        
+        getMapTile(18, 9).setInteractScript(new SimpleTextScript("Kaegen: The objects on their table hast dissappeared!"));
+        getMapTile(22, 9).setInteractScript(new SimpleTextScript("Kaegen: The objects on their table hast dissappeared!"));
+        
+        getMapTile(20, 1).setInteractScript(new SimpleTextScript("Kaegen: Seemeth liketh everything is hazy here too"));
+
+        getMapTile(8, 10).setInteractScript(new SimpleTextScript("Kaegen: Yond vile villain liveth here? And there's traces of parts here too!"));
+        
+        getMapTile(3, 10).setInteractScript(new SimpleTextScript("Kaegen: This signeth reads 'HOT'.\nOf course it's hot!."));
+
+        getMapTile(17, 18).setInteractScript(new SimpleTextScript("Kaegen: These T symbols art becoming more ingraft!\nWhat is this did suppose to cullionly?."));
         
     }
 

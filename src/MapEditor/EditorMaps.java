@@ -4,6 +4,7 @@ import Level.Map;
 import Maps.OutskirtsMap;
 import Maps.ShoreMap;
 import Maps.TitleScreenMap;
+import Maps.Victor;
 import Maps.MenuMap;
 import Maps.MountainviewDormHeat;
 import Maps.MountainviewDormOutdoor;
@@ -33,6 +34,7 @@ public class EditorMaps {
             add("DanaDormHeat");
             add("DanaOutdoor");
             add("DanaOutdoorHeat");
+            add("Victor");
 
         }};
     }
@@ -63,6 +65,8 @@ public class EditorMaps {
                 return new DanaOutdoor();
             case "DanaOutdoorHeat":
                 return new DanaOutdoorHeat();
+            case "Victor":
+                return new Victor();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

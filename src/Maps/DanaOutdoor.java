@@ -17,7 +17,7 @@ public class DanaOutdoor extends Map{
     //ScreenCoordinator screenCoordinator;
     public DanaOutdoor(/*ScreenCoordinator screenCoordinator*/) {
         super("dana_dorm_outdoor_map.txt", new DanaTilesetOutdoorNormal());
-        this.playerStartPosition = getMapTile(17, 12).getLocation();
+        this.playerStartPosition = getMapTile(22, 10).getLocation();
         //this.screenCoordinator = screenCoordinator;
     }
 

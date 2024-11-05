@@ -19,6 +19,7 @@ import Screens.HeatOutdoorScreen;
 import Screens.HowToPlayScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorScreen;
+import Screens.VictorScreen;
 import Utils.Point;
 
 /*
@@ -109,6 +110,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case HOWTOPLAY:
 						currentScreen = new HowToPlayScreen(this);
+						break;
+					case VICTOR:
+						currentScreen = new VictorScreen(this);
 						break;
 				}
 				currentScreen.initialize();

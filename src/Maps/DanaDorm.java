@@ -5,6 +5,7 @@ import NPCs.Stache;
 import NPCs.StacheM;
 import NPCs.THEVICMAN;
 import NPCs.WaterCooler;
+import Scripts.SimpleTextScript;
 import Scripts.Dana.DanaIntro;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Level.Map;
@@ -48,7 +49,7 @@ public class DanaDorm extends Map{
         
     }
 
-/* 
+ 
      @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
@@ -58,8 +59,22 @@ public class DanaDorm extends Map{
 
     @Override
     public void loadScripts() {
-
+        // coordinates needed
+        getMapTile(18, 2).setInteractScript(new SimpleTextScript("Kaegen: This is Preeda's bed."));
+        getMapTile(18, 3).setInteractScript(new SimpleTextScript("Kaegen: This is Preeda's bed."));
+        
+        getMapTile(22, 2).setInteractScript(new SimpleTextScript("Kaegen: This is Preeda's roommate's bed."));
+        getMapTile(22, 3).setInteractScript(new SimpleTextScript("Kaegen: This is Preeda's roommate's bed."));
+        
+        getMapTile(18, 9).setInteractScript(new SimpleTextScript("Kaegen: Is this a Rubix Cube?\n Didn't think Preeda would have one."));
+        getMapTile(22, 9).setInteractScript(new SimpleTextScript("Kaegen: That is a really nice scarf.\nToo bad its useless in this heat."));
+        
+        getMapTile(20, 1).setInteractScript(new SimpleTextScript("Kaegen: The view from here isn't nearly as\ngood as Mountainview's"));//(20,1) Dana window view
+        
+        getMapTile(8, 10).setInteractScript(new SimpleTextScript("Kaegen: This is... quite the decoration on this door."));//(8,10) Victor Room
+        
+        getMapTile(3, 10).setInteractScript(new SimpleTextScript("Kaegen: This sign reads 'HOT'. Seems like common knowledge\nthat it's starting to get hot everywhere."));//(3,10) Weird Sign
+        getMapTile(37, 13).setInteractScript(new SimpleTextScript("Kaegen: Parts on the ground are a hazard to anyone\nwalking! Why won't staff pick it up?"));//(37,13) A.C Parts on ground
     }
-     */
 
 } 

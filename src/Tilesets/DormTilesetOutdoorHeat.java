@@ -238,8 +238,7 @@ public class DormTilesetOutdoorHeat extends Tileset{
                 .withScale(tileScale)
                 .build();
 
-        MapTileBuilder brickTowerTile1 = new MapTileBuilder(brickTowerFrame1)
-                    .withTileType(TileType.NOT_PASSABLE);
+        MapTileBuilder brickTowerTile1 = new MapTileBuilder(brickTowerFrame1);
 
         mapTiles.add(brickTowerTile1);
 

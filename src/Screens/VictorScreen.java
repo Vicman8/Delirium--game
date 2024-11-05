@@ -1,53 +1,41 @@
-
 package Screens;
 
 import Engine.GraphicsHandler;
 import Engine.Key;
-import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import Level.FlagManager;
-import Level.Map;
-import Level.Player;
-import Maps.DanaOutdoor;
-import Maps.DanaOutdoorHeat;
-import Players.HistoryMan;
+import Level.*;
+import Maps.OutskirtsMap;
+import Maps.Victor;
+import Players.Cat;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
-import Utils.Point;
 
-public class DanaOutdoorScreen extends Screen{
+public class VictorScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    public Player player;
+    protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
-    protected KeyLocker keyLocker = new KeyLocker();
-    
 
-    public DanaOutdoorScreen(ScreenCoordinator screenCoordinator) {
+    public VictorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
+        //flagManager.addFlag("hasTalkedToWalrus", false);
 
         // define/setup map
-        map = new DanaOutdoor();
+        //map = new Victor();
         map.setFlagManager(flagManager);
 
-        //if you have not come here from it's other version, use this maps default start position instead
-        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOORHEAT){
-            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORM){
-            player = new HistoryMan(416, 219);
-        }else{
-            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        }
-
+        // setup player
+        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -62,8 +50,6 @@ public class DanaOutdoorScreen extends Screen{
         map.preloadScripts();
 
         //winScreen = new WinScreen(this);
-
-        
     }
 
     public void update() {
@@ -74,39 +60,20 @@ public class DanaOutdoorScreen extends Screen{
                 player.update();
                 map.update(player);
                 break;
+            
+            /*
+             * case LEVEL_COMPLETED:
+                winScreen.update();
+                break;
+             */
         }
 
-        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
-            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
-        //}
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
+        // if flag is set at any point during gameplay, game is "won"
+        /*
+        *if (map.getFlagManager().isFlagSet("hasFoundBall")) {
+            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
         }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
-        }
-
-        
-
-        if(((player.getX() >= 400.0) && (player.getX() <= 440.0)) && (player.getY() >= 200.0) && (player.getY() <= 215.0)){
-            screenCoordinator.setGameState(GameState.DANADORM);
-        }
-
-        if(((player.getX() >= 1150.0)) && (player.getY() >= 200.0) && (player.getY() <= 900.0)){
-            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
-        }
-
-        if (Keyboard.isKeyUp(Key.L)) {
-            keyLocker.unlockKey(Key.L);
-        }
-        if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
-
-            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
-        }
-        
+        */
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -138,4 +105,5 @@ public class DanaOutdoorScreen extends Screen{
     private enum PlayLevelScreenState {
         RUNNING, LEVEL_COMPLETED
     }
+
 }
