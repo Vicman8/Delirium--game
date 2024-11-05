@@ -18,14 +18,14 @@ import Game.ScreenCoordinator;
 
 import java.util.HashMap;
 
-public class Fan extends NPC {
+public class WaterBottle extends NPC {
     //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
 
     protected ScreenCoordinator screenCoordinator;
 
-    public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("avatar2-1.png.png"), 30, 30), "STAND_LEFT");
+    public WaterBottle(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("WaterBottle.png"), 20, 20), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
 
@@ -55,13 +55,18 @@ public class Fan extends NPC {
     public void update(Player player) {
         super.update(player);
 
-        if (Keyboard.isKeyDown(Key.T) && player.isNear(this, (int) (getWidth() * 1.5))) {
+        if (Keyboard.isKeyDown(Key.E) && player.touching(this)) {
+            System.out.println("hide");
+            //setMapEntityStatus(MapEntityStatus.REMOVED);
+            setExistenceFlag("has drank");
             //setMap(GameState.DORM););
             // int quantity = 0;
             // Inventory.addItem("Fan", + quantity);
             // quantity = quantity  + 1;
         }
     }
+
+    
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {

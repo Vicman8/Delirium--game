@@ -51,7 +51,7 @@ public class MapEntity extends GameObject {
         return mapEntityStatus;
     }
 
-    public void setMapEntityStatus(MapEntityStatus mapEntityStatus) {
+    public  void setMapEntityStatus(MapEntityStatus mapEntityStatus) {
         this.mapEntityStatus = mapEntityStatus;
     }
 

@@ -1,5 +1,7 @@
 package Screens;
 
+import java.rmi.server.RemoteObjectInvocationHandler;
+
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
@@ -9,10 +11,13 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
+import Level.MapEntity;
+import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
 import Maps.MountainviewDormHeat;
 import NPCs.Fan;
+import NPCs.WaterBottle;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
@@ -28,6 +33,8 @@ public class HeatDormScreen extends Screen{
     protected KeyLocker keyLocker = new KeyLocker();
     public static Point heatDormPos;
     protected Point playerCurrPosition;
+
+
 
     public HeatDormScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -75,6 +82,14 @@ public class HeatDormScreen extends Screen{
     public void update() {
 
         for (NPC npc : map.getNPCs()) {
+
+            // if(npc instanceof WaterBottle){
+            //     if(npc.touching(player) && Keyboard.isKeyDown(Key.E)){
+                    
+            //         screenCoordinator.setGameState(GameState.DORM);
+                    
+            //     }
+            //}
             if (npc instanceof Fan ) {
                 if (npc.touching(player)) {
                     //screenCoordinator.hasSwitched = true;

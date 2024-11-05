@@ -5,6 +5,7 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
+import Engine.TimeSwitch;
 import Maps.DanaDorm;
 import Maps.DanaDormHeat;
 import Screens.CreditsScreen;
@@ -37,6 +38,11 @@ public class ScreenCoordinator extends Screen {
 	public static Key SWITCH_TO_MEDIEVAL = Key.Q;
 
 	public static Point savedPlayerPos;
+
+	protected TimeSwitch timeSwitch = new TimeSwitch();
+
+	protected boolean hasSwitched = false;
+
 
 	public GameState getGameState() {
 		return gameState;
