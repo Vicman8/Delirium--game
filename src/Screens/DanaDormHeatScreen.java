@@ -10,9 +10,11 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
+import Level.NPC;
 import Level.Player;
 import Maps.DanaDorm;
 import Maps.DanaDormHeat;
+import NPCs.Fan;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
@@ -74,6 +76,24 @@ public class DanaDormHeatScreen extends Screen{
 
     public void update() {
         // based on screen state, perform specific actions
+
+
+        for (NPC npc : map.getNPCs()) {
+
+            // if(npc instanceof WaterBottle){
+            //     if(npc.touching(player) && Keyboard.isKeyDown(Key.E)){
+                    
+            //         screenCoordinator.setGameState(GameState.DORM);
+                    
+            //     }
+            //}
+            if (npc instanceof Fan ) {
+                if (npc.touching(player)) {
+                    //screenCoordinator.hasSwitched = true;
+                    screenCoordinator.setGameState(GameState.DANADORM);
+                }
+            }
+        }
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
             case RUNNING:
@@ -81,6 +101,7 @@ public class DanaDormHeatScreen extends Screen{
                 map.update(player);
                 break;
         }
+        
 
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             //screenCoordinator.switchWorld(screenCoordinator);

@@ -41,6 +41,11 @@ public class ScreenCoordinator extends Screen {
 	protected TimeSwitch timeSwitch = new TimeSwitch();
 
 	protected boolean hasSwitched = false;
+	protected boolean nextSwitch = false;
+
+	private long lastSwitchTime;    
+    private long randomDelay; 
+    private boolean isDelaySet = false; 
 
 
 	public GameState getGameState() {
@@ -114,52 +119,89 @@ public class ScreenCoordinator extends Screen {
 			currentScreen.update();
 		} while (previousGameState != gameState);
 	}
+
+
+
+
     
     public void switchWorld(ScreenCoordinator screenCoordinator){    
 		screenCoordinator = this;
-		boolean hasSwitched = false;
+		
+		if (!isDelaySet) {
+            randomDelay = (long) (Math.random() * 5000) + 2000; // Random delay between 2 to 7 seconds (2000ms to 7000ms)
+            lastSwitchTime = System.currentTimeMillis();
+            isDelaySet = true;
+        }
+
+		// if ((!nextSwitch)) {
+		// 	randomDelay = (long)(Math.random()*5000) +3000;
+		// 	lastSwitchTime = System.currentTimeMillis();
+			
+		// }
+
+        long currentTime = System.currentTimeMillis();
+
+
 
 		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
 			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DORM);
 				hasSwitched = true;
+				nextSwitch = true;
 			}
 
 			if(screenCoordinator.getGameState()==GameState.HEATDORMEXTERIOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DORMEXTERIOR);
 				hasSwitched = true;
+				nextSwitch = true;
+
 			}
 
 			if(screenCoordinator.getGameState()==GameState.DANADORMHEAT && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORM);
 				hasSwitched = true;
+				nextSwitch = true;
+
 			}
 
 			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOORHEAT && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
 				hasSwitched = true;
+				nextSwitch = true;
+
 			}
 		}
 
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay) ){
 			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORM);
 				hasSwitched = true;
+				// nextSwitch = true;
+				// System.out.println(nextSwitch);
+
 			}
 			
 			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
 				hasSwitched = true;
+				// nextSwitch = true;
+				// System.out.println(nextSwitch);
+
 			}
 
 			if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMHEAT);
 				hasSwitched = true;
+				// nextSwitch = true;
+				// System.out.println(nextSwitch);
+
 			}
 
 			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
 				hasSwitched = true;
+				// nextSwitch = true;
+				// System.out.println(nextSwitch);
 			}
 		}
 	}
