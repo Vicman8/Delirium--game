@@ -18,14 +18,14 @@ import Game.ScreenCoordinator;
 
 import java.util.HashMap;
 
-public class WaterBottle extends NPC {
+public class WaterCooler extends NPC {
     //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
 
     protected ScreenCoordinator screenCoordinator;
 
-    public WaterBottle(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("WaterBottle.png"), 20, 20), "STAND_LEFT");
+    public WaterCooler(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("WaterCooler.png"), 20, 20), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
 
@@ -50,15 +50,13 @@ public class WaterBottle extends NPC {
     }
 
 
-    //Makes the fan addable to the inventory
+    
     @Override
     public void update(Player player) {
         super.update(player);
 
         if (Keyboard.isKeyDown(Key.E) && player.touching(this)) {
-            System.out.println("hide");
-            //setMapEntityStatus(MapEntityStatus.REMOVED);
-            setExistenceFlag("has drank");
+            setMapEntityStatus(MapEntityStatus.INACTIVE);
             //setMap(GameState.DORM););
             // int quantity = 0;
             // Inventory.addItem("Fan", + quantity);

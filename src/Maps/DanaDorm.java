@@ -4,6 +4,7 @@ import NPCs.Preeda;
 import NPCs.Stache;
 import NPCs.StacheM;
 import NPCs.THEVICMAN;
+import NPCs.WaterCooler;
 import Scripts.Dana.DanaIntro;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Level.Map;
@@ -39,6 +40,9 @@ public class DanaDorm extends Map{
         Stache stache = new Stache(2, getMapTile(27,11).getLocation());
         //stache.setInteractScript(new FollowMC())
         npcs.add(stache);
+
+         WaterCooler waterCooler = new WaterCooler(4, getMapTile(25, 13).getLocation());
+         npcs.add(waterCooler);
 
         return npcs;
         

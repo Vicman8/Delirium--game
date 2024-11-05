@@ -1,5 +1,6 @@
 package Maps;
 import Level.Trigger;
+import NPCs.Fan;
 import NPCs.Preeda;
 import NPCs.Stache;
 import NPCs.StacheM;
@@ -51,6 +52,9 @@ public class DanaDormHeat extends Map{
         StacheM stache = new StacheM(2, getMapTile(27,11).getLocation());
         //stache.setInteractScript(new RoommateClue())
         npcs.add(stache);
+
+        Fan fan = new Fan(1,getMapTile(25,12).getLocation()/*, screenCoordinator*/);
+        npcs.add(fan);
 
         return npcs;
         
