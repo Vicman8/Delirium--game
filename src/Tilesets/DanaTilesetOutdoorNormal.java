@@ -199,8 +199,7 @@ public class DanaTilesetOutdoorNormal extends Tileset{
                 .withScale(tileScale)
                 .build();
 
-        MapTileBuilder roofCenterTile = new MapTileBuilder(roofCenterFrame)
-                    .withTileType(TileType.NOT_PASSABLE);
+        MapTileBuilder roofCenterTile = new MapTileBuilder(roofCenterFrame);
 
         mapTiles.add(roofCenterTile);
 
@@ -208,9 +207,7 @@ public class DanaTilesetOutdoorNormal extends Tileset{
                 .withScale(tileScale)
                 .build();
 
-        MapTileBuilder roofRightTile = new MapTileBuilder(grassFrame)
-                    .withTopLayer(roofRightFrame)
-                    .withTileType(TileType.NOT_PASSABLE);
+        MapTileBuilder roofRightTile = new MapTileBuilder(roofRightFrame);
 
         mapTiles.add(roofRightTile);
 

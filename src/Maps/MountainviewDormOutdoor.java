@@ -1,6 +1,7 @@
 package Maps;
 import Level.Trigger;
 import NPCs.GMA;
+import NPCs.HelperGuy;
 import NPCs.PubSafety;
 import NPCs.Stache;
 import NPCs.Student;
@@ -11,6 +12,7 @@ import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
 import Scripts.Outdoor.CheckUp;
 import Scripts.Outdoor.Exclaim;
+import Scripts.Outdoor.HelperGuyIntro;
 import Scripts.Outdoor.How;
 import Level.Map;
 import Level.NPC;
@@ -48,6 +50,10 @@ public class MountainviewDormOutdoor extends Map{
         Student student = new Student(4, getMapTile(16, 20).getLocation().subtractY(40));
         student.setInteractScript(new How());
         npcs.add(student);
+
+        HelperGuy helperGuy = new HelperGuy(4, getMapTile(0, 15).getLocation().subtractY(40));
+        helperGuy.setInteractScript(new HelperGuyIntro());
+        npcs.add(helperGuy);
 
         return npcs;
     }

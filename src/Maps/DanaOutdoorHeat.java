@@ -13,7 +13,7 @@ public class DanaOutdoorHeat extends Map{
     //ScreenCoordinator screenCoordinator;
     public DanaOutdoorHeat(/*ScreenCoordinator screenCoordinator*/) {
         super("dana_dorm_outdoor_heat_map.txt", new DormTilesetOutdoorHeat());
-        this.playerStartPosition = getMapTile(17, 12).getLocation();
+        this.playerStartPosition = getMapTile(22, 10).getLocation();
         //this.screenCoordinator = screenCoordinator;
     }
 
