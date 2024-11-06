@@ -45,6 +45,10 @@ public class OutdoorScreen extends Screen{
             player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
         } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
             player = new HistoryMan(-3, 769);
+        }else if(screenCoordinator.getPreviousGameState()==GameState.DISCO){
+            player = new HistoryMan(215, 1150);
+        }else if(screenCoordinator.getPreviousGameState()==GameState.DININGROOM){
+            player = new HistoryMan(1060, 1150);
         }else{
             player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 
@@ -93,6 +97,14 @@ public class OutdoorScreen extends Screen{
             
             if((player.getX() <=-30.0) && ((player.getY() >= 433.0) && (player.getY() <= 1528.0))){
                 screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
+            }
+
+            if(((player.getX() >= 207.0) && (player.getX() <= 222.0)) && ((player.getY() >= 1116.0) && (player.getY() <= 1146.0))){
+                screenCoordinator.setGameState(GameState.DISCO);
+            }
+
+            if(((player.getX() >= 1050.0) && (player.getX() <= 1080.0)) && (player.getY() >= 1116.0) && (player.getY() <= 1146.0)){
+                screenCoordinator.setGameState(GameState.DININGROOM);
             }
     }
 

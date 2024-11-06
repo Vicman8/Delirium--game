@@ -2,26 +2,30 @@ package Screens;
 
 import Engine.GraphicsHandler;
 import Engine.Key;
+import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
+import Maps.Disco;
 import Maps.OutskirtsMap;
 import Maps.Victor;
 import Players.Cat;
+import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 
-public class VictorScreen extends Screen{
+public class DiscoScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    protected KeyLocker keyLocker = new KeyLocker();
 
-    public VictorScreen(ScreenCoordinator screenCoordinator) {
+    public DiscoScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -31,11 +35,13 @@ public class VictorScreen extends Screen{
         //flagManager.addFlag("hasTalkedToWalrus", false);
 
         // define/setup map
-        map = new Victor();
+        map = new Disco();
         map.setFlagManager(flagManager);
 
+        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+
         // setup player
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -68,12 +74,21 @@ public class VictorScreen extends Screen{
              */
         }
 
-        // if flag is set at any point during gameplay, game is "won"
-        /*
-        *if (map.getFlagManager().isFlagSet("hasFoundBall")) {
-            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
         }
-        */
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
+
+        
+
+        if(((player.getX() >= 430.0) && (player.getX() <= 480.0)) && (player.getY() >= 398.0) && (player.getY() <= 423.0)){
+            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+
+        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

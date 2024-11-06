@@ -13,6 +13,8 @@ import Screens.DanaDormHeatScreen;
 import Screens.DanaDormScreen;
 import Screens.DanaOutdoorHeatScreen;
 import Screens.DanaOutdoorScreen;
+import Screens.DiningRoomScreen;
+import Screens.DiscoScreen;
 import Screens.DormScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
@@ -113,6 +115,12 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case VICTOR:
 						currentScreen = new VictorScreen(this);
+						break;
+					case DISCO:
+						currentScreen = new DiscoScreen(this);
+						break;
+					case DININGROOM:
+						currentScreen = new DiningRoomScreen(this);
 						break;
 				}
 				currentScreen.initialize();

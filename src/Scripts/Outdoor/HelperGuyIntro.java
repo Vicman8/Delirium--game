@@ -20,7 +20,10 @@ public class HelperGuyIntro extends Script {
 
         scriptActions.add(new TextboxScriptAction() {{
             addText("Hey there! I'm a helper guy!");
-            
+            addText("You'll see me around, remember you can press p \nat anytime to pause the game!");
+            addText("Talk to me for helpful info!");
+            addText("For example... there's some weird dude trying to \nsell 'water' over at Dana to the left...");
+
             
         }});
 

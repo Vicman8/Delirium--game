@@ -14,6 +14,8 @@ import Maps.DanaDorm;
 import Maps.DanaDormHeat;
 import Maps.DanaOutdoor;
 import Maps.DanaOutdoorHeat;
+import Maps.DiningRoom;
+import Maps.Disco;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,8 @@ public class EditorMaps {
             add("DanaOutdoor");
             add("DanaOutdoorHeat");
             add("Victor");
+            add("Disco");
+            add("DiningRoom");
 
         }};
     }
@@ -67,6 +71,10 @@ public class EditorMaps {
                 return new DanaOutdoorHeat();
             case "Victor":
                 return new Victor();
+            case "Disco":
+                return new Disco();
+            case "DiningRoom":
+                return new DiningRoom();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }
