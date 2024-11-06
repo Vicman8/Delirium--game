@@ -75,22 +75,12 @@ public class DanaOutdoorHeatScreen extends Screen{
                 map.update(player);
                 break;
         }
-
-        //if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL)){
             ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
             screenCoordinator.switchWorld(screenCoordinator);
-        //}
 
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
+        if (Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
-
-        // System.out.println(player.getX());
-        // System.out.println(player.getY());
 
         if(((player.getX() >= 400.0) && (player.getX() <= 440.0)) && (player.getY() >= 200.0) && (player.getY() <= 215.0)){
             screenCoordinator.setGameState(GameState.DANADORMHEAT);

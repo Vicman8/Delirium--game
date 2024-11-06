@@ -19,16 +19,16 @@ import Level.NPC;
 import Tilesets.DormTilesetOutdoor;
 
 import java.util.ArrayList;
-//import Game.Audio;
-import javax.imageio.plugins.bmp.BMPImageWriteParam;
+import Game.Audio;
+//import javax.imageio.plugins.bmp.BMPImageWriteParam;
 
 public class MountainviewDormOutdoor extends Map{
 
     public MountainviewDormOutdoor() {
         super("mountainview_dorm_map_outdoor.txt", new DormTilesetOutdoor());
         this.playerStartPosition = getMapTile(10, 10).getLocation();
-        //Audio.playMusic(""); //TODO
         this.playerStartPosition = getMapTile(9, 8).getLocation();
+        Audio.playAudio("Audio Resources\\Mountainview Courtyard.wav", true);
     }
 
     @Override

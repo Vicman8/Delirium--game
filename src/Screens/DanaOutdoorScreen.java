@@ -40,9 +40,9 @@ public class DanaOutdoorScreen extends Screen{
         map.setFlagManager(flagManager);
 
         //if you have not come here from it's other version, use this maps default start position instead
-        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOORHEAT){
+        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMHEAT){ //if coming from inside the heat dorm
             player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORM){
+        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
             player = new HistoryMan(416, 219);
         }else{
             player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);

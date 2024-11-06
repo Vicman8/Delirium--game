@@ -38,13 +38,12 @@ public class DanaDormScreen extends Screen{
         map = new DanaDorm();
         map.setFlagManager(flagManager);
 
-        //if you have not come here from it's other version, use this maps default start position instead
-        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMHEAT){
-            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else{
-            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-
+        if(ScreenCoordinator.savedPlayerPos == null){
+            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
+        //if you have not come here from it's other version, use this maps default start position instead
+        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+
 
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
@@ -74,41 +73,16 @@ public class DanaDormScreen extends Screen{
                 break;
         }
 
-            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-            screenCoordinator.switchWorld(screenCoordinator);
+        ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+        //screenCoordinator.switchWorld(screenCoordinator);
 
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
+        if (Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
-
-        //System.out.println(player.getX());
-        //System.out.println(player.getY());
 
         if(((player.getX() >= 1695.0) && (player.getX() <= 1745.0)) && (player.getY() >= 815.0) && (player.getY() <= 820.0)){
             screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
         }
-
-        
-        if (Keyboard.isKeyUp(Key.L)) {
-            keyLocker.unlockKey(Key.L);
-        }
-        if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
-
-            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
-        }
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
-            screenCoordinator.setGameState(GameState.MENU);
-        }
-        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
