@@ -23,10 +23,10 @@ public class RoommateClue extends Script {
 
         scriptActions.add(new TextboxScriptAction() {{
             addText("Kaegen: Thou are Victor's roommate correct?");
-            addText("Roommate: Yes? Why do you ask?");
-            addText("Kaegen: I wanted to inquire about the A.C part\ntrail coming out of your room.");
-            addText("Roommate: It wasn't me! I didn't destroy the A.C!");
-            addText("Kaegen: This basically confirms that Victor was behind it.");
+            addText("Roommate: Yes? Whereforth doth thee asketh?");
+            addText("Kaegen: I did want to inquire about the A.C part\ntrail coming out of thy cubicle.");
+            addText("Roommate: It wasn't me! I didn't destroyeth the A.C!");
+            addText("Kaegen: This basically confirms yond Victor wast behind it.\nHe's busted.");
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("roommateTalked", true));
