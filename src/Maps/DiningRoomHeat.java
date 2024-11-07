@@ -13,10 +13,10 @@ import Tilesets.MiscIndoorTilesetHeat;
 import java.util.ArrayList;
 
 // Represents a test map to be used in a level
-public class Jail extends Map {
+public class DiningRoomHeat extends Map {
 
-    public Jail() {
-        super("jail_map.txt", new MiscIndoorTilesetHeat());
+    public DiningRoomHeat() {
+        super("dining_room_heat_map.txt", new MiscIndoorTilesetHeat());
         this.playerStartPosition = getMapTile(10, 9).getLocation();
     }
 

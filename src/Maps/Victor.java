@@ -3,8 +3,15 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import Game.Audio;
 import Level.*;
+import NPCs.Buddha;
 import NPCs.Bug;
+import NPCs.Cat;
+import NPCs.Confucius;
+import NPCs.DameTuCosita;
 import NPCs.Dinosaur;
+import NPCs.MLK;
+import NPCs.Moses;
+import NPCs.MountRushmore;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
@@ -48,9 +55,33 @@ public class Victor extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        //Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        //walrus.setInteractScript(new WalrusScript());
-        //npcs.add(walrus);
+        Confucius confucius = new Confucius(2, getMapTile(5, 3).getLocation());
+        confucius.setInteractScript(new DinoScript());
+        npcs.add(confucius);
+
+        MLK mLK = new MLK(2, getMapTile(8, 3).getLocation());
+        mLK.setInteractScript(new DinoScript());
+        npcs.add(mLK);
+
+        MountRushmore mountRushmore = new MountRushmore(2, getMapTile(11, 3).getLocation());
+        mountRushmore.setInteractScript(new DinoScript());
+        npcs.add(mountRushmore);
+
+        DameTuCosita dameTuCosita = new DameTuCosita(2, getMapTile(14, 3).getLocation());
+        dameTuCosita.setInteractScript(new DinoScript());
+        npcs.add(dameTuCosita);
+
+        Moses moses = new Moses(2, getMapTile(17, 3).getLocation());
+        moses.setInteractScript(new DinoScript());
+        npcs.add(moses);
+
+        Buddha buddha = new Buddha(2, getMapTile(20, 3).getLocation());
+        buddha.setInteractScript(new DinoScript());
+        npcs.add(buddha);
+
+        Cat cat = new Cat(2, getMapTile(17, 8).getLocation());
+        cat.setInteractScript(new DinoScript());
+        npcs.add(cat);
 
         return npcs;
     }

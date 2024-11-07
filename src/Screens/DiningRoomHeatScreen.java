@@ -8,7 +8,9 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.*;
-import Maps.Jail;
+import Maps.DiningRoom;
+import Maps.DiningRoomHeat;
+import Maps.Disco;
 import Maps.OutskirtsMap;
 import Maps.Victor;
 import Players.Cat;
@@ -16,7 +18,7 @@ import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 
-public class JailScreen extends Screen{
+public class DiningRoomHeatScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -24,8 +26,10 @@ public class JailScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
+    
 
-    public JailScreen(ScreenCoordinator screenCoordinator) {
+
+    public DiningRoomHeatScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -35,13 +39,11 @@ public class JailScreen extends Screen{
         //flagManager.addFlag("hasTalkedToWalrus", false);
 
         // define/setup map
-        map = new Jail();
+        map = new DiningRoomHeat();
         map.setFlagManager(flagManager);
 
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-
         // setup player
-        
+        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -82,17 +84,16 @@ public class JailScreen extends Screen{
             screenCoordinator.setGameState(GameState.MENU);
         }
 
+        // if flag is set at any point during gameplay, game is "won"
+        /*
+        *if (map.getFlagManager().isFlagSet("hasFoundBall")) {
+            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
+        }
+        */
+
         if(((player.getX() >= 457.0) && (player.getX() <= 462.0)) && (player.getY() >= 420.0) && (player.getY() <= 423.0)){
             screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
         }
-
-        
-
-        //if(((player.getX() >= 430.0) && (player.getX() <= 480.0)) && (player.getY() >= 398.0) && (player.getY() <= 423.0)){
-          //  screenCoordinator.setGameState(GameState.DORMEXTERIOR);
-        //}
-
-        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

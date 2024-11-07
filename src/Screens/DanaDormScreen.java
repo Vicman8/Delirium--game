@@ -13,6 +13,7 @@ import Level.Map;
 import Level.Player;
 import Maps.DanaDorm;
 import Players.HistoryMan;
+import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
@@ -38,11 +39,13 @@ public class DanaDormScreen extends Screen{
         map = new DanaDorm();
         map.setFlagManager(flagManager);
 
-        if(ScreenCoordinator.savedPlayerPos == null){
-            ScreenCoordinator.savedPlayerPos = new Point(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMHEAT){
+            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        } else{
+            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
         //if you have not come here from it's other version, use this maps default start position instead
-        player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
+        
 
 
         player.setMap(map);

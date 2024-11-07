@@ -11,10 +11,10 @@ import Level.Tileset;
 import java.util.ArrayList;
 
 // This class represents a "common" tileset of standard tiles defined in the CommonTileset.png file
-public class MiscIndoorTileSetHeat extends Tileset {
+public class MiscIndoorTilesetHeat extends Tileset {
 
-    public MiscIndoorTileSetHeat() {
-        super(ImageLoader.load("IndoorHouseTileSetHeat_1.png"), 16, 16, 3);
+    public MiscIndoorTilesetHeat() {
+        super(ImageLoader.load("IndoorHouseTileSetHeat.png"), 16, 16, 3);
     }
 
     @Override
@@ -143,7 +143,7 @@ public class MiscIndoorTileSetHeat extends Tileset {
                 .build();
         
         MapTileBuilder topBedTileAlt = new MapTileBuilder(topBedFrameAlt)
-                .withTileType(TileType.NOT_PASSABLE);
+                .withTileType(TileType.PASSABLE);
 
         mapTiles.add(topBedTileAlt);
 
@@ -443,6 +443,16 @@ public class MiscIndoorTileSetHeat extends Tileset {
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(tvTile);
+
+        Frame gateFrame = new FrameBuilder(getSubImage(4, 4))
+                .withScale(tileScale)
+                .build();
+        
+        MapTileBuilder gateTile= new MapTileBuilder(bottomBedFrameAlt)
+                .withTopLayer(gateFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(gateTile);
 
         return mapTiles;
     }

@@ -45,11 +45,14 @@ public class HeatOutdoorScreen extends Screen{
         //if you have not come here from it's other version, use this maps default start position instead
         if(screenCoordinator.getPreviousGameState()==GameState.DORMEXTERIOR){
             player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOORHEAT){
+        }else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
             player = new MedievalHistoryMan(-3, 769);
+        }else if(screenCoordinator.getPreviousGameState()==GameState.JAIL){
+            player = new MedievalHistoryMan(1140, 740);
+        }else if(screenCoordinator.getPreviousGameState()==GameState.DININGROOMHEAT){
+            player = new MedievalHistoryMan(1060, 1150);
         }else{
             player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-
         }
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
@@ -94,6 +97,14 @@ public class HeatOutdoorScreen extends Screen{
             
             if((player.getX() <=-30.0) && ((player.getY() >= 433.0) && (player.getY() <= 1528.0))){
                 screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
+            }
+
+            if(((player.getX() >= 1120.0) && (player.getX() <= 1160.0)) && ((player.getY() >= 732.0) && (player.getY() <= 737.0))){
+                screenCoordinator.setGameState(GameState.JAIL);
+            }
+
+            if(((player.getX() >= 1050.0) && (player.getX() <= 1080.0)) && (player.getY() >= 1116.0) && (player.getY() <= 1146.0)){
+                screenCoordinator.setGameState(GameState.DININGROOMHEAT);
             }
 
         
