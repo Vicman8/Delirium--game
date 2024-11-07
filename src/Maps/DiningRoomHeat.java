@@ -4,6 +4,8 @@ import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
 import NPCs.Dinosaur;
+import NPCs.TheKingThim;
+import NPCs.TheThim;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
@@ -50,9 +52,9 @@ public class DiningRoomHeat extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        //Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        //walrus.setInteractScript(new WalrusScript());
-        //npcs.add(walrus);
+        TheKingThim theKingThim = new TheKingThim(1, getMapTile(7, 7).getLocation());
+        //figure out how to have the Victor fight here
+        npcs.add(theKingThim);
 
         return npcs;
     }

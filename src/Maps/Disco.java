@@ -16,7 +16,7 @@ public class Disco extends Map {
 
     public Disco() {
         super("disco_map.txt", new MiscIndoorTileset());
-        this.playerStartPosition = getMapTile(10, 9).getLocation();
+        this.playerStartPosition = getMapTile(10, 8).getLocation();
     }
 
     

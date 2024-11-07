@@ -4,9 +4,11 @@ import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
 import NPCs.Dinosaur;
+import NPCs.TheThim;
+import NPCs.TheThimImposter;
 import Scripts.SimpleTextScript;
-import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
+
 import Tilesets.MiscIndoorTileset;
 
 import java.util.ArrayList;
@@ -48,10 +50,12 @@ public class DiningRoom extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
+        TheThim theThim = new TheThim(1, getMapTile(7, 7).getLocation());
+        //figure out how to have the Victor fight here
 
-        //Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        //walrus.setInteractScript(new WalrusScript());
-        //npcs.add(walrus);
+        npcs.add(theThim);
+
+        
 
         return npcs;
     }

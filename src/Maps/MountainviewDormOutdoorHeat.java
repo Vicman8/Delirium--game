@@ -6,6 +6,7 @@ import NPCs.CondensingCoil;
 import NPCs.EvaporatorCoil;
 import NPCs.GMA;
 import NPCs.GMAM;
+import NPCs.HelperGuy;
 import NPCs.PubSafety;
 import NPCs.PubSafetyM;
 import NPCs.Stache;
@@ -26,6 +27,7 @@ import Scripts.DeliriousOutdoor.Scary2;
 import Scripts.DeliriousOutdoor.Scary3;
 import Scripts.DormMap.FanScript;
 import Scripts.MyMap.StudentScript;
+import Scripts.Outdoor.HelperGuyIntro;
 import Level.Map;
 import Level.NPC;
 import Tilesets.DormTilesetOutdoor;
@@ -65,6 +67,10 @@ public class MountainviewDormOutdoorHeat extends Map{
         StudentM studentM = new StudentM(1, getMapTile(16, 20).getLocation().subtractY(40));
         studentM.setInteractScript(new Scary2());
         npcs.add(studentM);
+
+        HelperGuy helperGuy = new HelperGuy(4, getMapTile(0, 15).getLocation().subtractY(40));
+        helperGuy.setInteractScript(new HelperGuyIntro());
+        npcs.add(helperGuy);
 
         /*
          * Fan fan = new Fan(1,getMapTile(7,5).getLocation()

@@ -7,10 +7,13 @@ import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
 import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.NPCLockScriptAction;
+import ScriptActions.NPCStandScriptAction;
 import ScriptActions.NPCUnlockScriptAction;
+import ScriptActions.NPCWalkScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import Utils.Direction;
 
 public class ImposterThimineur extends Script {
     @Override
@@ -30,7 +33,13 @@ public class ImposterThimineur extends Script {
             addText("GOTTA LOCK IN!!!!!");
             addText("What?");
             addText("LOOK KID I'M A BUSY GUY, WANT WATER OR NOT?????",  new String[] {"Yes", "No"});
+            addText("OK HAHA!! FOLLOW ME!!!");
         }});
+        scriptActions.add(new NPCStandScriptAction(Direction.RIGHT));
+
+        scriptActions.add(new NPCWalkScriptAction(Direction.DOWN, 1000, 2));
+
+        
 
 
         scriptActions.add(new UnlockPlayerScriptAction());

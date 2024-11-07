@@ -158,13 +158,11 @@ public abstract class Player extends GameObject {
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
             moveAmountY -= walkSpeed;
-            facingDirection = Direction.UP;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             moveAmountY += walkSpeed;
-            facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;
         }
@@ -263,11 +261,6 @@ public abstract class Player extends GameObject {
         }
         else if (direction == Direction.LEFT) {
             this.currentAnimationName = "STAND_LEFT";
-        }else if (direction == Direction.UP) {
-            this.currentAnimationName = "STAND_UP";
-        }
-        else if (direction == Direction.DOWN) {
-            this.currentAnimationName = "STAND_DOWN";
         }
     }
 
@@ -281,10 +274,6 @@ public abstract class Player extends GameObject {
         }
         else if (direction == Direction.LEFT) {
             this.currentAnimationName = "WALK_LEFT";
-        }else if (direction == Direction.UP) {
-            this.currentAnimationName = "WALK_UP";
-        }else if (direction == Direction.DOWN) {
-            this.currentAnimationName = "WALK_DOWN";
         }
         if (direction == Direction.UP) {
             moveY(-speed);
