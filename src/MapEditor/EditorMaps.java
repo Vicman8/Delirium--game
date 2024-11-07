@@ -17,6 +17,7 @@ import Maps.DanaOutdoorHeat;
 import Maps.DiningRoom;
 import Maps.DiningRoomHeat;
 import Maps.Disco;
+import Maps.GameOverMap;
 import Maps.Jail;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class EditorMaps {
             add("DiningRoom");
             add("Jail");
             add("DiningRoomHeat");
+            add("GameOver");
 
         }};
     }
@@ -83,6 +85,8 @@ public class EditorMaps {
                 return new DiningRoomHeat();
             case "Jail":
                 return new Jail();
+            case "GameOver":
+                return new GameOverMap();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

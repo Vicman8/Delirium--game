@@ -9,9 +9,11 @@ import NPCs.Cat;
 import NPCs.Confucius;
 import NPCs.DameTuCosita;
 import NPCs.Dinosaur;
+import NPCs.Jesus;
 import NPCs.MLK;
 import NPCs.Moses;
 import NPCs.MountRushmore;
+import NPCs.Sal;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
@@ -78,6 +80,14 @@ public class Victor extends Map {
         Buddha buddha = new Buddha(2, getMapTile(20, 3).getLocation());
         buddha.setInteractScript(new DinoScript());
         npcs.add(buddha);
+
+        Jesus jesus = new Jesus(2, getMapTile(17, 5).getLocation());
+        jesus.setInteractScript(new DinoScript());
+        npcs.add(jesus);
+
+        Sal sal = new Sal(2, getMapTile(20, 5).getLocation());
+        sal.setInteractScript(new DinoScript());
+        npcs.add(sal);
 
         Cat cat = new Cat(2, getMapTile(17, 8).getLocation());
         cat.setInteractScript(new DinoScript());

@@ -15,6 +15,7 @@ import Screens.DiningRoomHeatScreen;
 import Screens.DiningRoomScreen;
 import Screens.DiscoScreen;
 import Screens.DormScreen;
+import Screens.GameOverScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
 import Screens.HowToPlayScreen;
@@ -128,6 +129,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case JAIL:
 						currentScreen = new JailScreen(this);
+						break;
+					case GAMEOVER:
+						currentScreen = new GameOverScreen(this);
 						break;
 					
 				}

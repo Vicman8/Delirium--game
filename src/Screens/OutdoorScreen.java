@@ -100,6 +100,10 @@ public class OutdoorScreen extends Screen{
             if(((player.getX() >= 1050.0) && (player.getX() <= 1080.0)) && (player.getY() >= 1116.0) && (player.getY() <= 1146.0)){
                 screenCoordinator.setGameState(GameState.DININGROOM);
             }
+
+            if(((player.getX() >= 1388.0) && (player.getX() <= 1400.0)) && (player.getY() >= 1260.0) && (player.getY() <= 1287.0)){
+                screenCoordinator.setGameState(GameState.VICTOR);
+            }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

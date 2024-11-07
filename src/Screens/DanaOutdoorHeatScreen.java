@@ -89,6 +89,10 @@ public class DanaOutdoorHeatScreen extends Screen{
         if(((player.getX() >= 1150.0)) && (player.getY() >= 200.0) && (player.getY() <= 900.0)){
             screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
         }
+
+        if(((player.getY() >= 895.0)) && (player.getX() >= 471.0) && (player.getY() <= 1061.0)){
+            screenCoordinator.setGameState(GameState.GAMEOVER);
+        }
         
         if (Keyboard.isKeyUp(Key.L)) {
             keyLocker.unlockKey(Key.L);

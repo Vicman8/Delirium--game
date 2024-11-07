@@ -10,6 +10,7 @@ import Level.*;
 import Maps.OutskirtsMap;
 import Maps.Victor;
 import Players.Cat;
+import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 
@@ -35,7 +36,7 @@ public class VictorScreen extends Screen{
         map.setFlagManager(flagManager);
 
         // setup player
-        player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
