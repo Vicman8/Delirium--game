@@ -83,22 +83,23 @@ public class HeatDormScreen extends Screen{
 
         for (NPC npc : map.getNPCs()) {
 
-            // if(npc instanceof WaterBottle){
-            //     if(npc.touching(player) && Keyboard.isKeyDown(Key.E)){
+            if(npc instanceof WaterBottle){
+                if(npc.touching(player) && Keyboard.isKeyDown(Key.E)){
+                    System.out.println("working");
+                    screenCoordinator.setGameState(GameState.DORM);;
                     
-            //         screenCoordinator.setGameState(GameState.DORM);
-                    
-            //     }
-            //}
+                }
+            }
             if (npc instanceof Fan ) {
                 if (npc.touching(player)) {
+                      System.out.println("working");
                     //screenCoordinator.hasSwitched = true;
                     screenCoordinator.setGameState(GameState.DORM);
                 }
             }
         }
 
-        if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
+        if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)  ){
             screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
         }
 
