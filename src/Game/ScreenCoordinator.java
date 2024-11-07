@@ -6,8 +6,6 @@ import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
 import Engine.TimeSwitch;
-import Maps.DanaDorm;
-import Maps.DanaDormHeat;
 import Screens.CreditsScreen;
 import Screens.DanaDormHeatScreen;
 import Screens.DanaDormScreen;
@@ -49,6 +47,7 @@ public class ScreenCoordinator extends Screen {
 	private long lastSwitchTime;    
     private long randomDelay; 
     private boolean isDelaySet = false; 
+
 
 
 	public GameState getGameState() {
@@ -136,7 +135,8 @@ public class ScreenCoordinator extends Screen {
 
 
     
-    public void switchWorld(ScreenCoordinator screenCoordinator){    
+    
+    public void switchWorld(ScreenCoordinator screenCoordinator){
 		screenCoordinator = this;
 		
 		if (!isDelaySet) {
@@ -148,14 +148,12 @@ public class ScreenCoordinator extends Screen {
 		// if ((!nextSwitch)) {
 		// 	randomDelay = (long)(Math.random()*5000) +3000;
 		// 	lastSwitchTime = System.currentTimeMillis();
-			
 		// }
 
         long currentTime = System.currentTimeMillis();
 
-
-
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
+		//if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
+		/* 
 			if(screenCoordinator.getGameState()==GameState.HEATDORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DORM);
 				hasSwitched = true;
@@ -166,7 +164,6 @@ public class ScreenCoordinator extends Screen {
 				screenCoordinator.setGameState(GameState.DORMEXTERIOR);
 				hasSwitched = true;
 				nextSwitch = true;
-
 			}
 
 			if(screenCoordinator.getGameState()==GameState.DANADORMHEAT && hasSwitched == false){
@@ -180,43 +177,48 @@ public class ScreenCoordinator extends Screen {
 				screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
 				hasSwitched = true;
 				nextSwitch = true;
-
 			}
-		}
+		//}*/
 
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay) ){
+	if(!hasSwitched){
+		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay)){
+			System.out.println("Activated switch world");
 			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORM);
-				hasSwitched = true;
+				//hasSwitched = true;
 				// nextSwitch = true;
 				// System.out.println(nextSwitch);
-
 			}
 			
 			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
-				hasSwitched = true;
+				//hasSwitched = true;
 				// nextSwitch = true;
 				// System.out.println(nextSwitch);
-
 			}
-
+			
 			if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMHEAT);
-				hasSwitched = true;
+				//hasSwitched = true;
 				// nextSwitch = true;
 				// System.out.println(nextSwitch);
-
+				
 			}
-
+			
 			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOOR && hasSwitched == false){
 				screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
-				hasSwitched = true;
+				//hasSwitched = true;
 				// nextSwitch = true;
 				// System.out.println(nextSwitch);
 			}
+			
+			hasSwitched = true;
+			// if(){
+
+			// }
 		}
 	}
+}
 
 	//updates the static variable
 	public static void setSavedPlayerPosition(int playerX, int playerY){

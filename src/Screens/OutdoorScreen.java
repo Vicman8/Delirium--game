@@ -40,10 +40,10 @@ public class OutdoorScreen extends Screen{
         map = new MountainviewDormOutdoor();
         map.setFlagManager(flagManager);
 
-        //if you have not come here from it's other version, use this maps default start position instead
+        //changes player coordinates depending on where you came from
         if(screenCoordinator.getPreviousGameState()==GameState.HEATDORMEXTERIOR){
             player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
+        }else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
             player = new HistoryMan(-3, 769);
         }else if(screenCoordinator.getPreviousGameState()==GameState.DISCO){
             player = new HistoryMan(215, 1150);
@@ -51,9 +51,7 @@ public class OutdoorScreen extends Screen{
             player = new HistoryMan(1060, 1150);
         }else{
             player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-
         }
-
         
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
@@ -73,11 +71,7 @@ public class OutdoorScreen extends Screen{
 
     public void update() {
         // based on screen state, perform specific actions
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
+        if (Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
 

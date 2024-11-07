@@ -22,6 +22,7 @@ import Tilesets.HeatDormTilesetIndoor;
 import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
+import Game.Audio;
 
 public class DanaDormHeat extends Map{
     //ScreenCoordinator screenCoordinator;
@@ -29,6 +30,7 @@ public class DanaDormHeat extends Map{
         super("dana_dorm_heat_map.txt", new DanaDormHeatTileset());
         this.playerStartPosition = getMapTile(36, 17).getLocation();
         //this.screenCoordinator = screenCoordinator;
+        Audio.playAudio("Audio Resources/Approach Ye Castle!.wav", true);
     }
 
     @Override

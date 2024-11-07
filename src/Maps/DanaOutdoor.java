@@ -9,6 +9,7 @@ import Level.NPC;
 import Level.Tileset;
 import Tilesets.DanaTilesetOutdoorNormal;
 import Tilesets.HeatDormTilesetIndoor;
+import Game.Audio;
 import Game.ScreenCoordinator;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class DanaOutdoor extends Map{
         super("dana_dorm_outdoor_map.txt", new DanaTilesetOutdoorNormal());
         this.playerStartPosition = getMapTile(22, 10).getLocation();
         //this.screenCoordinator = screenCoordinator;
+        Audio.playAudio("Audio Resources/Mountainview Courtyard.wav", true);
     }
 
     

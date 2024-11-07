@@ -1,6 +1,7 @@
 package Maps;
 
 import EnhancedMapTiles.PushableRock;
+import Game.Audio;
 import Level.*;
 import NPCs.Bug;
 import NPCs.Dinosaur;
@@ -16,9 +17,8 @@ public class Victor extends Map {
     public Victor() {
         super("victor_map.txt", new CommonTileset());
         //this.playerStartPosition = getMapTile(17, 20).getLocation();
+        Audio.playAudio("Audio Resources/boing2.wav",true);
     }
-
-    
 
     /*
      * @Override

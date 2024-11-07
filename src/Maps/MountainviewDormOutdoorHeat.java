@@ -42,7 +42,7 @@ public class MountainviewDormOutdoorHeat extends Map{
         super("mountainview_dorm_map_outdoor_heat.txt", new DormTilesetOutdoorHeat());
         this.playerStartPosition = getMapTile(9, 8).getLocation();
         this.playerStartPosition = getMapTile(10, 10).getLocation();
-        Audio.playMusic("Audio Resources\\Approach Ye Castle!.wav");
+        Audio.playAudio("Audio Resources\\Approach Ye Castle!.wav", true);
     }
 
     
