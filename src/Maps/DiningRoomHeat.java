@@ -10,7 +10,7 @@ import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
 import Tilesets.MiscIndoorTileset;
-import Tilesets.MiscIndoorTilesetHeat;
+import Tilesets.MiscIndoorTileSetHeat;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class DiningRoomHeat extends Map {
 
     public DiningRoomHeat() {
-        super("dining_room_heat_map.txt", new MiscIndoorTilesetHeat());
+        super("dining_room_heat_map.txt", new MiscIndoorTileSetHeat());
         this.playerStartPosition = getMapTile(10, 9).getLocation();
     }
 

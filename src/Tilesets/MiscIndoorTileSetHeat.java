@@ -11,9 +11,9 @@ import Level.Tileset;
 import java.util.ArrayList;
 
 // This class represents a "common" tileset of standard tiles defined in the CommonTileset.png file
-public class MiscIndoorTilesetHeat extends Tileset {
+public class MiscIndoorTileSetHeat extends Tileset {
 
-    public MiscIndoorTilesetHeat() {
+    public MiscIndoorTileSetHeat() {
         super(ImageLoader.load("IndoorHouseTileSetHeat.png"), 16, 16, 3);
     }
 
