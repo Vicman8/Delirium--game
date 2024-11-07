@@ -9,6 +9,7 @@ import NPCs.THEVICMANM;
 import Scripts.SimpleTextScript;
 import Scripts.Dana.DanaIntro;
 import Scripts.DeliriousDana.DDanaIntro;
+import Scripts.DeliriousDana.RoommateClue;
 import Scripts.DeliriousDana.SlashedAC;
 import Scripts.DeliriousDana.TrailScript;
 import Scripts.DeliriousDana.VictorFight;
@@ -52,7 +53,7 @@ public class DanaDormHeat extends Map{
         npcs.add(preeda);
 
         StacheM stache = new StacheM(2, getMapTile(27,11).getLocation());
-        //stache.setInteractScript(new RoommateClue())
+        stache.setInteractScript(new RoommateClue());
         npcs.add(stache);
 
         Fan fan = new Fan(1,getMapTile(25,12).getLocation()/*, screenCoordinator*/);
