@@ -12,6 +12,7 @@ import Level.ScriptState;
 import Level.TileType;
 import Level.ScriptState;
 import Level.TileType;
+import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
 import ScriptActions.CustomRequirement;
@@ -202,6 +203,7 @@ public class Diabear extends Script {
                     }});
             }});
 
+        scriptActions.add(new ChangeFlagScriptAction("bearFought", true));
         scriptActions.add(new NPCUnlockScriptAction());
         scriptActions.add(new UnlockPlayerScriptAction());
 

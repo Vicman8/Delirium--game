@@ -17,6 +17,7 @@ public class HistoryMan extends Player {
     public HistoryMan(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("MainCharacterWalk_1.png"), 29, 29), x, y, "STAND_RIGHT");
         walkSpeed = 5.0f;
+        sprintSpeed = 8.0f;
     }
 
     public void update() {

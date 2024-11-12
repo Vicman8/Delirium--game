@@ -22,6 +22,7 @@ public abstract class Player extends GameObject {
     // values that affect player movement
     // these should be set in a subclass
     protected float walkSpeed = 0;
+    protected float sprintSpeed = 2;
     protected int interactionRange = 1;
     protected Direction currentWalkingXDirection;
     protected Direction currentWalkingYDirection;
@@ -46,6 +47,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_DOWN_KEY = Key.DOWN;
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SWITCH_WORLD = Key.Q;
+    protected Key SPRINT = Key.SHIFT;
     private Inventory inventory;
 
     protected boolean isLocked = false;
@@ -139,32 +141,66 @@ public abstract class Player extends GameObject {
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
             //System.out.println("walk left");
-            moveAmountX -= walkSpeed;
-            facingDirection = Direction.LEFT;
-            currentWalkingXDirection = Direction.LEFT;
-            lastWalkingXDirection = Direction.LEFT;
+            if(Keyboard.isKeyDown(SPRINT) && Keyboard.isKeyDown(MOVE_LEFT_KEY)){
+                moveAmountX -= sprintSpeed;
+                facingDirection = Direction.LEFT;
+                currentWalkingXDirection = Direction.LEFT;
+                lastWalkingXDirection = Direction.LEFT;
+            }
+            else{
+                moveAmountX -= walkSpeed;
+                facingDirection = Direction.LEFT;
+                currentWalkingXDirection = Direction.LEFT;
+                lastWalkingXDirection = Direction.LEFT;
+            }
         }
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
-            moveAmountX += walkSpeed;
-            facingDirection = Direction.RIGHT;
-            currentWalkingXDirection = Direction.RIGHT;
-            lastWalkingXDirection = Direction.RIGHT;
+            if(Keyboard.isKeyDown(SPRINT) && Keyboard.isKeyDown(MOVE_RIGHT_KEY)){
+                moveAmountX += sprintSpeed;
+                facingDirection = Direction.RIGHT;
+                currentWalkingXDirection = Direction.RIGHT;
+                lastWalkingXDirection = Direction.RIGHT;
+            }
+            else{
+                moveAmountX += walkSpeed;
+                facingDirection = Direction.RIGHT;
+                currentWalkingXDirection = Direction.RIGHT;
+                lastWalkingXDirection = Direction.RIGHT;
+            }
+            
         }
         else {
             currentWalkingXDirection = Direction.NONE;
         }
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
-            moveAmountY -= walkSpeed;
-            currentWalkingYDirection = Direction.UP;
-            lastWalkingYDirection = Direction.UP;
+            if(Keyboard.isKeyDown(SPRINT) && Keyboard.isKeyDown(MOVE_UP_KEY)){
+                moveAmountY -= sprintSpeed;
+                currentWalkingYDirection = Direction.UP;
+                lastWalkingYDirection = Direction.UP;
+            }
+            else{
+                moveAmountY -= walkSpeed;
+                currentWalkingYDirection = Direction.UP;
+                lastWalkingYDirection = Direction.UP;
+            }
+            
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
-            moveAmountY += walkSpeed;
-            currentWalkingYDirection = Direction.DOWN;
-            lastWalkingYDirection = Direction.DOWN;
+            if(Keyboard.isKeyDown(SPRINT) && Keyboard.isKeyDown(MOVE_DOWN_KEY)){
+                moveAmountY += sprintSpeed;
+                currentWalkingYDirection = Direction.DOWN;
+                lastWalkingXDirection = Direction.DOWN;
+            }
+            else{
+                moveAmountY += walkSpeed;
+                currentWalkingYDirection = Direction.DOWN;
+                lastWalkingYDirection = Direction.DOWN;
+            }
+            
+            // else copy paste above and change walkSpeed to sprintSpeed
         }
         else {
             currentWalkingYDirection = Direction.NONE;
