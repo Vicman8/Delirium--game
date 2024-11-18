@@ -68,6 +68,26 @@ public class DiningRoom extends Map {
 
     @Override
     public void loadScripts() {
+        getMapTile(7, 3).setInteractScript(new SimpleTextScript("Kaegen: Wow! The chefs did a great job!"));
+        getMapTile(7, 4).setInteractScript(new SimpleTextScript("Kaegen: Wow! The chefs did a great job!"));
+        // 7,3 table
+        // 7,4 table
+
+        getMapTile(9, 1).setInteractScript(new SimpleTextScript("Kaegen: Just a standard fridge."));
+        getMapTile(10, 1).setInteractScript(new SimpleTextScript("Kaegen: The sink is shiny.\nGlad they clean it often."));
+        getMapTile(11, 1).setInteractScript(new SimpleTextScript("Kaegen: The oven smells great!"));
+        //9,1 Fridge
+        //10,1 Sink
+        //11,1 Oven
+
+        getMapTile(13, 1).setInteractScript(new SimpleTextScript("Kaegen: Nice flowers."));
+        getMapTile(6, 1).setInteractScript(new SimpleTextScript("Kaegen: Nice flowers."));
+        //13,1 Flowers?
+        //6,1 Flowers?
+        
+        getMapTile(7, 1).setInteractScript(new SimpleTextScript("Kaegen: Wish they'd use the pizza oven more."));
+        //7,1 Pizza Oven?
+
 
     }
 }

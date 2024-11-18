@@ -66,5 +66,36 @@ public class Jail extends Map {
     @Override
     public void loadScripts() {
 
+        getMapTile(6, 2).setInteractScript(new SimpleTextScript("Kaegen: Alas, the prison'rs receiveth nay privacy\ncoequal at which hour sleeping."));
+        getMapTile(6, 3).setInteractScript(new SimpleTextScript("Kaegen: Alas, the prison'rs receiveth nay privacy\ncoequal at which hour sleeping."));
+        getMapTile(6, 5).setInteractScript(new SimpleTextScript("Kaegen: Alas, the prison'rs receiveth nay privacy\ncoequal at which hour sleeping."));
+        getMapTile(6, 6).setInteractScript(new SimpleTextScript("Kaegen: Alas, the prison'rs receiveth nay privacy\ncoequal at which hour sleeping."));
+        getMapTile(6, 8).setInteractScript(new SimpleTextScript("Kaegen: Alas, the prison'rs receiveth nay privacy\ncoequal at which hour sleeping."));
+        getMapTile(6, 9).setInteractScript(new SimpleTextScript("Kaegen: Alas, the prison'rs receiveth nay privacy\ncoequal at which hour sleeping."));
+        // 6,2 Bed 1
+        // 6,3 Bed 1
+        // 6,5 Bed 2
+        // 6,6 Bed 2
+        // 6,8 Bed 3
+        // 6,9(nice) Bed 3
+
+        getMapTile(7, 1).setInteractScript(new SimpleTextScript("Kaegen: The jail wouldst beest pitch black if it\nbe true the torches weren't here."));
+        getMapTile(8, 1).setInteractScript(new SimpleTextScript("Kaegen: Art these... torture instruments?"));
+        getMapTile(9, 1).setInteractScript(new SimpleTextScript("Kaegen: These pots art fusty and did chip.\nCompletely unusable."));
+        getMapTile(10, 1).setInteractScript(new SimpleTextScript("Kaegen: People could'st setteth fireth to the jail with this!"));
+        //7,1 Torch
+        //8,1 Mysterious Items
+        //9,1 Pots
+        //10,1 Candle
+        
+        getMapTile(12, 1).setInteractScript(new SimpleTextScript("Kaegen: These art gallows! Those gents perform executions on campus?!"));
+        getMapTile(12, 2).setInteractScript(new SimpleTextScript("Kaegen: These art gallows! Those gents perform executions on campus?!"));
+        //12,1 Torture Instrument
+        //12,2 ^^
+
+        getMapTile(7, 1).setInteractScript(new SimpleTextScript("Kaegen: The jail wouldst beest pitch black if it\nbe true the torches weren't here."));
+        //13,1 Torch
+
+
     }
 }
