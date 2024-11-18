@@ -1,5 +1,6 @@
 package Maps;
 import Level.Trigger;
+import NPCs.Student;
 import NPCs.THEVICMANM;
 import NPCs.TheThimImposter;
 import Scripts.Dana.ImposterThimineur;
@@ -29,10 +30,13 @@ public class DanaOutdoor extends Map{
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
-        TheThimImposter theThimImposter = new TheThimImposter(1, getMapTile(11, 12).getLocation());
-        theThimImposter.setInteractScript(new ImposterThimineur());
-        //figure out how to have the Victor fight here
-        npcs.add(theThimImposter);
+        TheThimImposter Thimposter = new TheThimImposter(1, getMapTile(11, 12).getLocation());
+        Thimposter.setInteractScript(new ImposterThimineur());
+        npcs.add(Thimposter);
+
+        Student student = new Student(2,getMapTile(16, 6).getLocation());
+
+        npcs.add(student);
 
         return npcs;
         
