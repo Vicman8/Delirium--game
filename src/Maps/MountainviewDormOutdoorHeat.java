@@ -18,6 +18,7 @@ import NPCs.THEVICMANM;
 import NPCs.TheThim;
 import NPCs.Bear;
 import NPCs.CirculatingFan;
+import Scripts.ACParts.CirculatingFanScript;
 import Scripts.DeliriousDana.VictorFight;
 import Scripts.DeliriousDana.VictorFight;
 import Scripts.DeliriousOutdoor.Diabear;
@@ -79,6 +80,7 @@ public class MountainviewDormOutdoorHeat extends Map{
          */
 
         CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(11,18).getLocation());
+        circulatingFan.setInteractScript(new CirculatingFanScript());
         npcs.add(circulatingFan);
 
         Compressor compressor = new Compressor(1, getMapTile(11,19).getLocation());

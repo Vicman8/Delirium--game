@@ -14,6 +14,8 @@ import java.awt.Color;
 
 public class Inventory {
 
+    public boolean working = true;
+
     // Array to store inventory items (size 12)
     private static final int MAX_ITEMS = 12;
     private static Item[] inventory = new Item[MAX_ITEMS];
@@ -27,6 +29,28 @@ public class Inventory {
             this.name = name;
             this.quantity = quantity;
         }
+
+        @Override
+        public String toString() {
+            return name + ": " + quantity;
+        }
+    }
+
+    // Method to check if the inventory has items
+    public void Exists() {
+        boolean hasItems = false;
+        for (Item item : inventory) {
+            if (item != null) {
+                hasItems = true;
+                break;
+            }
+        }
+
+        if (hasItems) {
+            System.out.println("Inventory exists and is " + (working ? "working" : "not working"));
+        } else {
+            System.out.println("Inventory is empty.");
+        }
     }
 
     // Add an item to the inventory
@@ -36,12 +60,11 @@ public class Inventory {
                 inventory[i].quantity += quantity; // Update quantity
                 return;
             }
-            System.out.println(">>>");
         }
 
         // Add new item if there's space
         for (int i = 0; i < MAX_ITEMS; i++) {
-            if (Keyboard.isKeyDown(Key.E) && (inventory[i] == null)) {
+            if (inventory[i] == null) {
                 inventory[i] = new Item(itemName, quantity);
                 return;
             }
@@ -56,7 +79,7 @@ public class Inventory {
         for (Item item : inventory) {
             if (item != null) {
                 isEmpty = false;
-                System.out.println(item.name + ": " + item.quantity);
+                System.out.println(item);
             }
         }
 
@@ -91,16 +114,18 @@ public class Inventory {
         return 0; // Item not found
     }
 
-    // Show inventory (prints to console for simplicity)
+    // Show inventory
     public void showInventory() {
-       
-            for (Item item : inventory) {
-                if (item != null) {
-                    //System.out.println(item.name + ": " + item.quantity);
-                }
+        boolean isEmpty = true;
+        for (Item item : inventory) {
+            if (item != null) {
+                System.out.println(item);
+                isEmpty = false;
             }
-            System.out.println(Arrays.toString(inventory));
-        
+        }
+
+        if (isEmpty) {
+            System.out.println("Inventory is empty.");
+        }
     }
-    
 }
