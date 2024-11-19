@@ -7,6 +7,7 @@ import NPCs.Stache;
 import NPCs.Student;
 import NPCs.THEVICMAN;
 import NPCs.TheThim;
+import NPCs.ArtThim;
 import NPCs.Bear;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
@@ -50,6 +51,9 @@ public class MountainviewDormOutdoor extends Map{
         HelperGuy helperGuy = new HelperGuy(4, getMapTile(0, 15).getLocation().subtractY(40));
         helperGuy.setInteractScript(new HelperGuyIntro());
         npcs.add(helperGuy);
+
+        ArtThim artThim = new ArtThim(5, getMapTile(0, 12).getLocation().subtractY(40));
+        npcs.add(artThim);
 
         return npcs;
     }

@@ -1,4 +1,5 @@
 package Level;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,63 +8,99 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.Keyboard;
 import GameObject.GameObject;
-import Screens.InventoryScreen;
 
 import java.awt.Color;
 
 
-public class Inventory  {
+public class Inventory {
 
-    //Metho to hold items and quantities
-    private static Map<String, Integer> inventory = new HashMap<>();
-    protected int quantity = 0;
-    
-    // InventoryScreen inventoryScreen = new InventoryScreen();
+    // Array to store inventory items (size 12)
+    private static final int MAX_ITEMS = 12;
+    private static Item[] inventory = new Item[MAX_ITEMS];
 
-    public static void addItem(String itemName, int quantity){
-        quantity = 0;
-        inventory.put(itemName, inventory.getOrDefault(itemName,0)+ quantity);
-        quantity += 1;
-        //Prints the inventory items to the terminal
-        System.out.print(itemName +  "" + quantity+ " ");
-    }
+    // Nested class to represent an item with name and quantity
+    private static class Item {
+        String name;
+        int quantity;
 
-public static void isInInventory(){
-    if(inventory.isEmpty()){
-        System.out.println("Inventory Empty");
-    }   else{
-
-        for(Map.Entry<String, Integer> entry : inventory.entrySet()){
-            System.out.println(entry.getKey() + ": " + entry.getValue());
+        Item(String name, int quantity) {
+            this.name = name;
+            this.quantity = quantity;
         }
-       // System.out.println(inventory.get(itemName, quantity);
-
     }
-}
 
-    //Method to remove an item from the inventory
-    public static void removeItem(String itemName, int quantity){
-        if(inventory.containsKey(itemName)){
-            int currentQuantity = inventory.get(itemName);
-            if(currentQuantity <= quantity){
-                inventory.remove(itemName);
-            } else{
-                inventory.put(itemName, currentQuantity-quantity);
+    // Add an item to the inventory
+    public static void addItem(String itemName, int quantity) {
+        for (int i = 0; i < MAX_ITEMS; i++) {
+            if (inventory[i] != null && inventory[i].name.equals(itemName)) {
+                inventory[i].quantity += quantity; // Update quantity
+                return;
             }
-            
+            System.out.println(">>>");
         }
-        else{
-            System.out.println("Item not in inventory");
+
+        // Add new item if there's space
+        for (int i = 0; i < MAX_ITEMS; i++) {
+            if (Keyboard.isKeyDown(Key.E) && (inventory[i] == null)) {
+                inventory[i] = new Item(itemName, quantity);
+                return;
+            }
         }
-    }
-    public static int getItemQuantity(String itemName){
-        return inventory.getOrDefault(itemName, 0);
+
+        System.out.println("Inventory is full! Cannot add more items.");
     }
 
-    
-    public void showInventory() {
-        // .drawFilledRectangle(100, 0, 400, 100, Color.white);
-        // inventoryScreen.showInventoryScreen();
-     //showInventory(inventoryScreen);
+    // Check if the inventory is empty
+    public static void isInInventory() {
+        boolean isEmpty = true;
+        for (Item item : inventory) {
+            if (item != null) {
+                isEmpty = false;
+                System.out.println(item.name + ": " + item.quantity);
+            }
+        }
+
+        if (isEmpty) {
+            System.out.println("Inventory Empty");
+        }
     }
+
+    // Remove an item from the inventory
+    public static void removeItem(String itemName, int quantity) {
+        for (int i = 0; i < MAX_ITEMS; i++) {
+            if (inventory[i] != null && inventory[i].name.equals(itemName)) {
+                if (inventory[i].quantity <= quantity) {
+                    inventory[i] = null; // Remove item completely
+                } else {
+                    inventory[i].quantity -= quantity; // Decrease quantity
+                }
+                return;
+            }
+        }
+
+        System.out.println("Item not in inventory");
+    }
+
+    // Get the quantity of a specific item
+    public static int getItemQuantity(String itemName) {
+        for (Item item : inventory) {
+            if (item != null && item.name.equals(itemName)) {
+                return item.quantity;
+            }
+        }
+        return 0; // Item not found
+    }
+
+    // Show inventory (prints to console for simplicity)
+    public void showInventory() {
+       
+            for (Item item : inventory) {
+                if (item != null) {
+                    //System.out.println(item.name + ": " + item.quantity);
+                }
+            }
+            System.out.println(Arrays.toString(inventory));
+        
+    }
+    
 }

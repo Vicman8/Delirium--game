@@ -54,7 +54,6 @@ public class CirculatingFan extends NPC {
             setMapEntityStatus(MapEntityStatus.REMOVED);
             int quantity = 0;
             Inventory.addItem("Circulating Fan", + quantity);
-            quantity = quantity  + 1;
         }
     }
     
