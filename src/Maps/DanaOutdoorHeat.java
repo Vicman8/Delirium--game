@@ -1,5 +1,7 @@
 package Maps;
 import Level.Trigger;
+import NPCs.Student;
+import NPCs.StudentM;
 import NPCs.TheThimImposter;
 import Level.Map;
 import Level.NPC;
@@ -9,6 +11,7 @@ import Tilesets.HeatDormTilesetIndoor;
 import Game.Audio;
 import Game.ScreenCoordinator;
 import Scripts.DeliriousDanaOutdoor.ImposterThimineur;
+import Scripts.DeliriousDanaOutdoor.WarningM;
 
 import java.util.ArrayList;
 
@@ -27,10 +30,13 @@ public class DanaOutdoorHeat extends Map{
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
-        TheThimImposter theThimImposter = new TheThimImposter(1, getMapTile(11, 12).getLocation());
-        theThimImposter.setInteractScript(new ImposterThimineur());
-        //figure out how to have the Victor fight here
-        npcs.add(theThimImposter);
+        TheThimImposter Thimposter = new TheThimImposter(1, getMapTile(11, 12).getLocation());
+        Thimposter.setInteractScript(new ImposterThimineur());
+        npcs.add(Thimposter);
+
+        StudentM studentM = new StudentM(2,getMapTile(16, 6).getLocation());
+        studentM.setInteractScript(new WarningM());
+        npcs.add(studentM);
 
         return npcs;
         
