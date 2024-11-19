@@ -15,6 +15,7 @@ import Screens.DiningRoomHeatScreen;
 import Screens.DiningRoomScreen;
 import Screens.DiscoScreen;
 import Screens.DormScreen;
+import Screens.GameCompleteScreen;
 import Screens.GameOverScreen;
 import Screens.HeatDormScreen;
 import Screens.HeatOutdoorScreen;
@@ -23,6 +24,7 @@ import Screens.JailScreen;
 import Screens.MenuScreen;
 import Screens.OutdoorScreen;
 import Screens.VictorScreen;
+import Screens.WinScreen;
 import Utils.Point;
 
 /*
@@ -110,10 +112,10 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new DanaOutdoorHeatScreen(this);
 						break;
 					case CREDITS:
-						currentScreen = new JailScreen(this);
+						currentScreen = new CreditsScreen(this);
 						break;
 					case HOWTOPLAY:
-						currentScreen = new DiningRoomHeatScreen(this);
+						currentScreen = new HowToPlayScreen(this);
 						break;
 					case VICTOR:
 						currentScreen = new VictorScreen(this);
@@ -132,6 +134,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case GAMEOVER:
 						currentScreen = new GameOverScreen(this);
+						break;
+					case WIN:
+						currentScreen = new GameCompleteScreen(this);
 						break;
 					
 				}
