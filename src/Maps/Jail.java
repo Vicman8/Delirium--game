@@ -1,6 +1,6 @@
 package Maps;
 
-import EnhancedMapTiles.PushableRock;
+import EnhancedMapTiles.PushableCrate;
 import Level.*;
 import NPCs.Bug;
 import NPCs.Dinosaur;
@@ -20,18 +20,26 @@ public class Jail extends Map {
         this.playerStartPosition = getMapTile(10, 9).getLocation();
     }
 
-    
 
-    /*
-     * @Override
+    
+    @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        // PushableRock pushableRock = new PushableRock(getMapTile(2, 7).getLocation());
-        // enhancedMapTiles.add(pushableRock);
+        int[][] coordinates = {
+            {7, 5}, {12, 4}, {10, 5}, {9, 2}, {9, 6}, {11, 3}, {9, 5},
+            {7, 3}, {12, 5}, {10, 7}, {11, 2}, {8, 5}, {11, 5}, {9, 7},
+            {13, 5}, {14, 5}, {10, 4}
+        };
+        
+        for (int[] coordinate : coordinates) {
+            PushableCrate pushableCrate = new PushableCrate(getMapTile(coordinate[0], coordinate[1]).getLocation());
+            enhancedMapTiles.add(pushableCrate);
+        }
 
-        for (MapTile tile : mapTiles) {
-            if (tile.getTileIndex() == 3) {
+        /*
+         * for (MapTile tile : mapTiles) {
+            if (tile.getTileIndex() == 9) {
                 int x = Math.round(tile.getX() / tileset.getScaledSpriteWidth());
                 int y = Math.round(tile.getY() / tileset.getScaledSpriteHeight());
 
@@ -41,10 +49,10 @@ public class Jail extends Map {
                 enhancedMapTiles.add(pushableRock);
             }
         }
+         */
 
         return enhancedMapTiles;
     }
-     */
 
     @Override
     public ArrayList<NPC> loadNPCs() {

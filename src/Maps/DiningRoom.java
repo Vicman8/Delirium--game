@@ -7,6 +7,7 @@ import NPCs.Dinosaur;
 import NPCs.TheThim;
 import NPCs.TheThimImposter;
 import Scripts.SimpleTextScript;
+import Scripts.DiningRoom.TheThimQuiz;
 import Tilesets.CommonTileset;
 
 import Tilesets.MiscIndoorTileset;
@@ -51,6 +52,7 @@ public class DiningRoom extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
         TheThim theThim = new TheThim(1, getMapTile(7, 7).getLocation());
+        theThim.setInteractScript(new TheThimQuiz());
         //figure out how to have the Victor fight here
 
         npcs.add(theThim);
