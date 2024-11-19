@@ -178,11 +178,13 @@ public abstract class Player extends GameObject {
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
             if(Keyboard.isKeyDown(SPRINT) && Keyboard.isKeyDown(MOVE_UP_KEY)){
                 moveAmountY -= sprintSpeed;
+                facingDirection = Direction.UP;
                 currentWalkingYDirection = Direction.UP;
                 lastWalkingYDirection = Direction.UP;
             }
             else{
                 moveAmountY -= walkSpeed;
+                facingDirection = Direction.UP;
                 currentWalkingYDirection = Direction.UP;
                 lastWalkingYDirection = Direction.UP;
             }
@@ -191,11 +193,13 @@ public abstract class Player extends GameObject {
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             if(Keyboard.isKeyDown(SPRINT) && Keyboard.isKeyDown(MOVE_DOWN_KEY)){
                 moveAmountY += sprintSpeed;
+                facingDirection = Direction.DOWN;
                 currentWalkingYDirection = Direction.DOWN;
                 lastWalkingXDirection = Direction.DOWN;
             }
             else{
                 moveAmountY += walkSpeed;
+                facingDirection = Direction.DOWN;
                 currentWalkingYDirection = Direction.DOWN;
                 lastWalkingYDirection = Direction.DOWN;
             }
@@ -229,11 +233,36 @@ public abstract class Player extends GameObject {
     protected void handlePlayerAnimation() {
         if (playerState == PlayerState.STANDING) {
             // sets animation to a STAND animation based on which way player is facing
-            this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
-        }
-        else if (playerState == PlayerState.WALKING) {
+            switch (facingDirection) {
+                case RIGHT:
+                    this.currentAnimationName = "STAND_RIGHT";
+                    break;
+                case LEFT:
+                    this.currentAnimationName = "STAND_LEFT";
+                    break;
+                case UP:
+                    this.currentAnimationName = "STAND_UP";
+                    break;
+                case DOWN:
+                    this.currentAnimationName = "STAND_DOWN";
+                    break;
+            }
+        } else if (playerState == PlayerState.WALKING) {
             // sets animation to a WALK animation based on which way player is facing
-            this.currentAnimationName = facingDirection == Direction.RIGHT ? "WALK_RIGHT" : "WALK_LEFT";
+            switch (facingDirection) {
+                case RIGHT:
+                    this.currentAnimationName = "WALK_RIGHT";
+                    break;
+                case LEFT:
+                    this.currentAnimationName = "WALK_LEFT";
+                    break;
+                case UP:
+                    this.currentAnimationName = "WALK_UP";
+                    break;
+                case DOWN:
+                    this.currentAnimationName = "WALK_DOWN";
+                    break;
+            }
         }
     }
 
@@ -279,51 +308,88 @@ public abstract class Player extends GameObject {
     public void lock() {
         isLocked = true;
         playerState = PlayerState.STANDING;
-        this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+        switch (facingDirection) {
+            case RIGHT:
+                this.currentAnimationName = "STAND_RIGHT";
+                break;
+            case LEFT:
+                this.currentAnimationName = "STAND_LEFT";
+                break;
+            case UP:
+                this.currentAnimationName = "STAND_UP";
+                break;
+            case DOWN:
+                this.currentAnimationName = "STAND_DOWN";
+                break;
+        }
     }
+    
 
     public void unlock() {
         isLocked = false;
         playerState = PlayerState.STANDING;
-        this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+        switch (facingDirection) {
+            case RIGHT:
+                this.currentAnimationName = "STAND_RIGHT";
+                break;
+            case LEFT:
+                this.currentAnimationName = "STAND_LEFT";
+                break;
+            case UP:
+                this.currentAnimationName = "STAND_UP";
+                break;
+            case DOWN:
+                this.currentAnimationName = "STAND_DOWN";
+                break;
+        }
     }
+    
 
     // used by other files or scripts to force player to stand
     public void stand(Direction direction) {
         playerState = PlayerState.STANDING;
         facingDirection = direction;
-        if (direction == Direction.RIGHT) {
-            this.currentAnimationName = "STAND_RIGHT";
-        }
-        else if (direction == Direction.LEFT) {
-            this.currentAnimationName = "STAND_LEFT";
+        switch (direction) {
+            case RIGHT:
+                this.currentAnimationName = "STAND_RIGHT";
+                break;
+            case LEFT:
+                this.currentAnimationName = "STAND_LEFT";
+                break;
+            case UP:
+                this.currentAnimationName = "STAND_UP";
+                break;
+            case DOWN:
+                this.currentAnimationName = "STAND_DOWN";
+                break;
         }
     }
+    
 
     // used by other files or scripts to force player to walk
     public void walk(Direction direction, float speed) {
         playerState = PlayerState.WALKING;
         facingDirection = direction;
-        if (direction == Direction.RIGHT) {
-            
-            this.currentAnimationName = "WALK_RIGHT";
-        }
-        else if (direction == Direction.LEFT) {
-            this.currentAnimationName = "WALK_LEFT";
-        }
-        if (direction == Direction.UP) {
-            moveY(-speed);
-        }
-        else if (direction == Direction.DOWN) {
-            moveY(speed);
-        }
-        else if (direction == Direction.LEFT) {
-            moveX(-speed);
-        }
-        else if (direction == Direction.RIGHT) {
-            moveX(speed);
+        switch (direction) {
+            case RIGHT:
+                this.currentAnimationName = "WALK_RIGHT";
+                moveX(speed);
+                break;
+            case LEFT:
+                this.currentAnimationName = "WALK_LEFT";
+                moveX(-speed);
+                break;
+            case UP:
+                this.currentAnimationName = "WALK_UP";
+                moveY(-speed);
+                break;
+            case DOWN:
+                this.currentAnimationName = "WALK_DOWN";
+                moveY(speed);
+                break;
         }
     }
+    
 
     // Uncomment this to have game draw player's bounds to make it easier to visualize
     

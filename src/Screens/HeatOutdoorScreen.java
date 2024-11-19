@@ -45,7 +45,7 @@ public class HeatOutdoorScreen extends Screen{
         //if you have not come here from it's other version, use this maps default start position instead
         if(screenCoordinator.getPreviousGameState()==GameState.DORMEXTERIOR){
             player = new MedievalHistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        }else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOOR){
+        }else if(screenCoordinator.getPreviousGameState()==GameState.DANADORMOUTDOORHEAT){
             player = new MedievalHistoryMan(-3, 769);
         }else if(screenCoordinator.getPreviousGameState()==GameState.JAIL){
             player = new MedievalHistoryMan(1140, 740);

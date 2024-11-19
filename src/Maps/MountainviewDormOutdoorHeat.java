@@ -77,7 +77,6 @@ public class MountainviewDormOutdoorHeat extends Map{
          * Fan fan = new Fan(1,getMapTile(7,5).getLocation()
         fan.setInteractScript(new FanScript());
         npcs.add(fan);
-         */
 
         CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(11,18).getLocation());
         circulatingFan.setInteractScript(new CirculatingFanScript());
@@ -91,6 +90,9 @@ public class MountainviewDormOutdoorHeat extends Map{
 
         EvaporatorCoil evaporatorCoil = new EvaporatorCoil(1, getMapTile(11,21).getLocation());
         npcs.add(evaporatorCoil);
+         */
+
+        
 
 
         return npcs;
