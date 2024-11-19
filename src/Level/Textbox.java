@@ -34,16 +34,16 @@ public class Textbox {
     protected final int optionX = 400;
     protected final int moveDot = optionX + 10; //makes it so everything moves fluidly
     protected final int moveText1 = optionX + 30; //when changing textbox location
-    protected final int optionBottomY = 350;
+    protected final int optionBottomY = 300; 
     protected final int optionTopY = 130;
     protected final int optionWidth = 350; //This is how I can change the size
-    protected final int optionHeight = 100; //^^
+    protected final int optionHeight = 150; //^^
     protected final int fontOptionX = moveText1;
-    protected final int fontOptionBottomYStart = 365;
+    protected final int fontOptionBottomYStart = 315;
     protected final int fontOptionTopYStart = 145;
     protected final int fontOptionSpacing = 35;
     protected final int optionPointerX = moveDot;
-    protected final int optionPointerYBottomStart = 378;
+    protected final int optionPointerYBottomStart = 320;
     protected final int optionPointerYTopStart = 158;
 
     // core vars that make textbox work
