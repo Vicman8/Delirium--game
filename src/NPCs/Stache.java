@@ -8,7 +8,6 @@ import Engine.Keyboard;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
-import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
@@ -49,7 +48,6 @@ public class Stache extends NPC {
         if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
             setMapEntityStatus(MapEntityStatus.REMOVED);
             int quantity = 0;
-            Inventory.addItem("Stache", + quantity);
             quantity = quantity  + 1;
         }
     }

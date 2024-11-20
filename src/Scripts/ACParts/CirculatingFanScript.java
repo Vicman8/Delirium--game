@@ -16,11 +16,11 @@ public class CirculatingFanScript extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Pub Sec?: Headeth inside!\ni shall protecteth thee all from harmeth!");
+            addText("You Picked up the Circulating Fan");
             
         }});
 
-        scriptActions.add(new ChangeFlagScriptAction("Bear!", true));
+        scriptActions.add(new ChangeFlagScriptAction("CirculatingFan", true));
 
         scriptActions.add(new UnlockPlayerScriptAction());
 

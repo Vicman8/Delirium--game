@@ -3,6 +3,7 @@ package Scripts.ACParts;
 import java.util.ArrayList;
 
 import Level.Script;
+import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
 import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.NPCLockScriptAction;
@@ -24,6 +25,8 @@ public class CompressorScript extends Script{
         scriptActions.add(new TextboxScriptAction() {{
             addText("You picked up the compressor");
         }});
+
+        scriptActions.add(new ChangeFlagScriptAction("Compressor", true));
 
 
         scriptActions.add(new UnlockPlayerScriptAction());

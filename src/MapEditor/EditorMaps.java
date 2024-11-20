@@ -20,7 +20,7 @@ import Maps.Disco;
 import Maps.GameCompleteMap;
 import Maps.GameOverMap;
 import Maps.Jail;
-import Maps.WinMap;
+import Maps.GameCompleteMap;
 
 import java.util.ArrayList;
 

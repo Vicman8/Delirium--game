@@ -13,6 +13,7 @@ import java.util.HashMap;
 public class NPC extends MapEntity {
     protected int id = 0;
     protected boolean isLocked = false;
+    private static final Key INTERACT_KEY = Key.E;
 
     public NPC(int id, float x, float y, SpriteSheet spriteSheet, String startingAnimation) {
         super(x, y, spriteSheet, startingAnimation);
@@ -95,6 +96,13 @@ public class NPC extends MapEntity {
     public void update(Player player) {
         if (!isLocked) {
             this.performAction(player);
+        }
+
+        if (Keyboard.isKeyDown(INTERACT_KEY)) {
+            System.out.println("Interact key pressed for NPC with ID: " + this.id);
+            InventoryItems item = InventoryItems.fromNPC(this);
+            System.out.println("InventoryItems created: " + item);
+            InventoryItems.addToInventory(item);
         }
 
         super.update();

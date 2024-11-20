@@ -1,7 +1,7 @@
 package Maps;
 import Level.Trigger;
 import NPCs.CirculatingFan;
-import NPCs.Compressor;
+// import NPCs.Compressor;
 import NPCs.CondensingCoil;
 import NPCs.EvaporatorCoil;
 import NPCs.GMA;

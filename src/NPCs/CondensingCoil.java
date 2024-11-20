@@ -9,7 +9,6 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Utils.Point;
-import Level.Inventory;
 import Level.MapEntityStatus;
 import Level.NPC;
 import Game.ScreenCoordinator;

@@ -25,33 +25,33 @@ public class PushableCrate extends EnhancedMapTile {
     public void update(Player player) {
         super.update(player);
 
-        if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
-            setMapEntityStatus(mapEntityStatus.REMOVED);
-        }
+        // if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
+        //     setMapEntityStatus(mapEntityStatus.REMOVED);
+        // }
 
         if (player.touching(this) && player.getPlayerState() == PlayerState.WALKING) {
             if (player.getCurrentWalkingXDirection() == Direction.LEFT) {
                 if (canMoveLeft(player)) {
-                    moveXHandleCollision(-10);
-                    System.out.println("Moving Left");
+                    moveXHandleCollision(-1);
+                    // System.out.println("Moving Left");
                 }
             }
             else if (player.getCurrentWalkingXDirection() == Direction.RIGHT) {
                 if (canMoveRight(player)) {
                     moveXHandleCollision(1);
-                    System.out.println("moving right");
+                    // System.out.println("moving right");
                 }
             }
              if (player.getCurrentWalkingYDirection() == Direction.UP) {
                 if (canMoveUp(player)) {
                     moveYHandleCollision(-1);
-                    System.out.println("Moving up");
+                    // System.out.println("Moving up");
                 }
             }
             else if (player.getCurrentWalkingYDirection() == Direction.DOWN) {
                 if (canMoveDown(player)) {
                     moveYHandleCollision(1);
-                    System.out.println("moving down");
+                    // System.out.println("moving down");
                 }
             }
         }

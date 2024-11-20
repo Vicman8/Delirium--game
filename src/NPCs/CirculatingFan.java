@@ -9,7 +9,7 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Utils.Point;
-import Level.Inventory;
+import Level.InventoryItems;
 import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class CirculatingFan extends NPC {
     //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
     
-    public CirculatingFan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
+    public CirculatingFan(int id, Point location, InventoryItems inventoryItems) {
         super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("CirculatingFan.png"), 30, 30), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
@@ -53,7 +53,6 @@ public class CirculatingFan extends NPC {
         if (Keyboard.isKeyDown(Key.E) && player.isNear(this, (int) (getWidth() * 1.5))) {
             setMapEntityStatus(MapEntityStatus.REMOVED);
             int quantity = 0;
-            Inventory.addItem("Circulating Fan", + quantity);
         }
     }
     
