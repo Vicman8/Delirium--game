@@ -27,13 +27,13 @@ public class ImposterThimineur extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("HEY KID!!!!");
-            addText("WNAT SOME WATER?????");
-            addText("Why art not thou talking strange?");
-            addText("GOTTA LOCK IN!!!!!");
-            addText("What?");
-            addText("LOOK KID I'M A BUSY GUY, WANT WATER OR NOT?????",  new String[] {"Yes", "No"});
-            addText("OK HAHA!! FOLLOW ME!!!");
+            addText("???: HEY KID!!!!");
+            addText("???: WNAT SOME WATER?????");
+            addText("Kaegen: Why art not thou talking strange?");
+            addText("???: GOTTA LOCK IN!!!!!");
+            addText("Kaegen: What?");
+            addText("???: LOOK KID I'M A BUSY GUY,\nWANT WATER OR NOT?????",  new String[] {"Yes", "No"});
+            addText("???: OK HAHA!! FOLLOW ME!!!");
         }});
         scriptActions.add(new NPCStandScriptAction(Direction.RIGHT));
 
