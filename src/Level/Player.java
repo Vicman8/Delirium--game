@@ -48,6 +48,8 @@ public abstract class Player extends GameObject {
     protected Key INTERACT_KEY = Key.SPACE;
     protected Key SWITCH_WORLD = Key.Q;
     protected Key SPRINT = Key.SHIFT;
+    protected Key PUNCH = Key.J;
+    protected Key KICK = Key.K;
     private Inventory inventory;
 
     protected boolean isLocked = false;
@@ -129,7 +131,7 @@ public abstract class Player extends GameObject {
             playerState = PlayerState.WALKING;
             //System.out.println("walking");
         }
-    }
+    } 
 
     // player WALKING state logic
     protected void playerWalking() {

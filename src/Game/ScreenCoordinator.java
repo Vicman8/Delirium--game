@@ -6,6 +6,7 @@ import Engine.Key;
 import Engine.Keyboard;
 import Engine.Screen;
 import Engine.TimeSwitch;
+import Screens.BossArenaScreen;
 import Screens.CreditsScreen;
 import Screens.DanaDormHeatScreen;
 import Screens.DanaDormScreen;
@@ -137,6 +138,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case WIN:
 						currentScreen = new GameCompleteScreen(this);
+						break;
+					case BOSSARENA:
+						currentScreen = new BossArenaScreen(this);
 						break;
 					
 				}

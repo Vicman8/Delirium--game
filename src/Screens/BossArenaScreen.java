@@ -7,17 +7,18 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import Level.*;
-import Maps.Disco;
-import Maps.OutskirtsMap;
-import Maps.Victor;
-import Players.Cat;
+import Level.FlagManager;
+import Level.Map;
+import Level.Player;
+import Maps.BossArena;
+import Maps.MountainviewDormOutdoor;
+import Maps.MountainviewDormOutdoorHeat;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
-import Players.TIMETODANCE;
 import Utils.Direction;
+import Utils.Point;
 
-public class DiscoScreen extends Screen{
+public class BossArenaScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -26,23 +27,20 @@ public class DiscoScreen extends Screen{
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
 
-    public DiscoScreen(ScreenCoordinator screenCoordinator) {
+    public BossArenaScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        //flagManager.addFlag("hasTalkedToWalrus", false);
-
+        
         // define/setup map
-        map = new Disco();
+        map = new BossArena();
         map.setFlagManager(flagManager);
 
-        player = new TIMETODANCE(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-
-        // setup player
-        
+        //if you have not come here from it's other version, use this maps default start position instead
+        player = new MedievalHistoryMan(50, 200);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -61,19 +59,6 @@ public class DiscoScreen extends Screen{
 
     public void update() {
         // based on screen state, perform specific actions
-        switch (playLevelScreenState) {
-            // if level is "running" update player and map to keep game logic for the platformer level going
-            case RUNNING:
-                player.update();
-                map.update(player);
-                break;
-            
-            /*
-             * case LEVEL_COMPLETED:
-                winScreen.update();
-                break;
-             */
-        }
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
@@ -82,12 +67,24 @@ public class DiscoScreen extends Screen{
 
             screenCoordinator.setGameState(GameState.MENU);
         }
-
         
-
-        if(((player.getX() >= 430.0) && (player.getX() <= 480.0)) && (player.getY() >= 398.0) && (player.getY() <= 423.0)){
-            screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        switch (playLevelScreenState) {
+            // if level is "running" update player and map to keep game logic for the platformer level going
+            case RUNNING:
+                player.update();
+                map.update(player);
+                break;
         }
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            screenCoordinator.switchWorld(screenCoordinator);
+
+            if(((player.getX() >= -40.0) && (player.getX() <= -2.0)) && (player.getY() >= -1.0) && (player.getY() <= 863.0)){
+                screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+            }
+
+            if(((player.getX() >= 830.0) && (player.getX() <= 850.0)) && (player.getY() >= 8.0) && (player.getY() <= 805.0)){
+                screenCoordinator.setGameState(GameState.WIN);
+            }
 
         
     }
@@ -121,5 +118,4 @@ public class DiscoScreen extends Screen{
     private enum PlayLevelScreenState {
         RUNNING, LEVEL_COMPLETED
     }
-
 }

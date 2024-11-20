@@ -242,10 +242,15 @@ public class FinalBoss extends Script {
                                                                                     addText("Sam...");
                                                                                     scriptActions.add(new ChangeFlagScriptAction("finalBossFought", true));
                                                                                 }
+                                                                                
                                                                             });
                                                                             
                                                                         }
                                                                     });
+                                                                    addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 500, 5));
+                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                                                                     addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {
                                                                         {
                             

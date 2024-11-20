@@ -51,7 +51,10 @@ public class HeatOutdoorScreen extends Screen{
             player = new MedievalHistoryMan(1140, 740);
         }else if(screenCoordinator.getPreviousGameState()==GameState.DININGROOMHEAT){
             player = new MedievalHistoryMan(1060, 1150);
-        }else{
+        }else if(screenCoordinator.getPreviousGameState()==GameState.BOSSARENA){
+            player = new MedievalHistoryMan(685, 1320);
+        } 
+        else{
             player = new MedievalHistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         }
         player.setMap(map);
@@ -105,6 +108,10 @@ public class HeatOutdoorScreen extends Screen{
 
             if(((player.getX() >= 1050.0) && (player.getX() <= 1080.0)) && (player.getY() >= 1116.0) && (player.getY() <= 1146.0)){
                 screenCoordinator.setGameState(GameState.DININGROOMHEAT);
+            }
+
+            if(((player.getX() >= 74.0) && (player.getX() <= 1164.0)) && (player.getY() >= 1360.0) && (player.getY() <= 1380.0)){
+                screenCoordinator.setGameState(GameState.BOSSARENA);
             }
 
         
