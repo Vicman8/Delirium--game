@@ -2,12 +2,15 @@
 
 package Screens;
 
+import java.io.IOException;
+
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
+import Game.SaveIO;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
@@ -71,6 +74,11 @@ public class DormScreen extends Screen{
 
         //winScreen = new WinScreen(this);
 
+        try {
+            SaveIO.ApplySaveFile(/*player, screenCoordinator*/);
+        } catch (Exception e) {
+            System.out.println("Your player instance is probably false numbnuts");
+        }
         
     }
 
@@ -99,28 +107,15 @@ public class DormScreen extends Screen{
             screenCoordinator.switchWorld(screenCoordinator);
         //}
 
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
-
+        if (Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
-
-        //System.out.println(player.getX());
-        //System.out.println(player.getY());
 
         if(((player.getX() >= 360.0) && (player.getX() <= 370.0)) && (player.getY() >= 560.0) && (player.getY() <= 570.0)){
             screenCoordinator.setGameState(GameState.DORMEXTERIOR);
         }
 
-
-        
-        if (Keyboard.isKeyUp(Key.M)) {
-            keyLocker.unlockKey(Key.M);
-        }
-        if (!keyLocker.isKeyLocked(Key.M) && Keyboard.isKeyDown(Key.M)) {
-
+        if (Keyboard.isKeyDown(Key.M)) {
             screenCoordinator.setGameState(GameState.DANADORMHEAT);
         }
 
@@ -138,6 +133,12 @@ public class DormScreen extends Screen{
         if (!keyLocker.isKeyLocked(Key.L) && Keyboard.isKeyDown(Key.L)) {
 
             screenCoordinator.setGameState(GameState.DORMEXTERIOR);
+        }
+
+        try {
+            SaveIO.SaveToFile(screenCoordinator);
+        } catch (IOException e) {
+            System.out.println("Sorry. Looks like some IDIOT developer FUCKED UP the save function");
         }
         
     }

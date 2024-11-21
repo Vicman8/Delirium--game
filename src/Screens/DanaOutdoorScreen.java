@@ -81,10 +81,7 @@ public class DanaOutdoorScreen extends Screen{
             screenCoordinator.switchWorld(screenCoordinator);
         //}
 
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+        if (Keyboard.isKeyDown(Key.ESC)) {
 
             screenCoordinator.setGameState(GameState.MENU);
         }
