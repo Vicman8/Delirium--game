@@ -12,6 +12,7 @@ import Level.ScriptState;
 import Level.TileType;
 import Level.ScriptState;
 import Level.TileType;
+import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
 import ScriptActions.CustomRequirement;
@@ -162,7 +163,7 @@ public class Diabear extends Script {
                                 addScriptAction(new TextboxScriptAction() {{
                                     addText("Kaegen: I shall parry thee peasant!!");
                                     addText("Black Bear: grrr");
-                                    addText("Kaegen: Finally backing off? I see you've learned thine place!");
+                                    addText("Kaegen: Finally backing off? I see you've learned\nthine place!");
                                     addText("Black Bear: *whimpers*");
                                 }});
                                 addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
@@ -189,7 +190,7 @@ public class Diabear extends Script {
                                 addScriptAction(new TextboxScriptAction() {{
                                     addText("Kaegen: Thine swipes mean nothing to mine quick jabs!");
                                     addText("Black Bear: grrr...");
-                                    addText("Kaegen: Finally backing off?\nI see you've learned thine place!");
+                                    addText("Kaegen: Finally backing off?\nI see you've learned\nthine place!");
                                     addText("Black Bear: *whimpers*");
                                 }});
                                 addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
@@ -202,6 +203,7 @@ public class Diabear extends Script {
                     }});
             }});
 
+        scriptActions.add(new ChangeFlagScriptAction("bearFought", true));
         scriptActions.add(new NPCUnlockScriptAction());
         scriptActions.add(new UnlockPlayerScriptAction());
 

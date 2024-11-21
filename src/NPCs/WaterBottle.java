@@ -25,7 +25,7 @@ public class WaterBottle extends NPC {
     protected ScreenCoordinator screenCoordinator;
 
     public WaterBottle(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Avatar3.png"), 20, 20), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("WaterBottle.png"), 20, 20), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
 

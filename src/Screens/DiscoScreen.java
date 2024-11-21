@@ -14,6 +14,7 @@ import Maps.Victor;
 import Players.Cat;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
+import Players.TIMETODANCE;
 import Utils.Direction;
 
 public class DiscoScreen extends Screen{
@@ -38,7 +39,7 @@ public class DiscoScreen extends Screen{
         map = new Disco();
         map.setFlagManager(flagManager);
 
-        player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+        player = new TIMETODANCE(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
 
         // setup player
         

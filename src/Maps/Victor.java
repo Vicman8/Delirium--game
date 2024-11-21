@@ -16,6 +16,7 @@ import NPCs.MountRushmore;
 import NPCs.Sal;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
+import Scripts.VictorRoom.ImYou;
 import Tilesets.CommonTileset;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class Victor extends Map {
         npcs.add(sal);
 
         Cat cat = new Cat(2, getMapTile(17, 8).getLocation());
-        cat.setInteractScript(new DinoScript());
+        cat.setInteractScript(new ImYou());
         npcs.add(cat);
 
         return npcs;

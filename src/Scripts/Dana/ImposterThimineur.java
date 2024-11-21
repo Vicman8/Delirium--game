@@ -24,7 +24,7 @@ public class ImposterThimineur extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("GOTTA LOCK IN!");
+            addText("???: GOTTA LOCK IN!");
         }});
 
 

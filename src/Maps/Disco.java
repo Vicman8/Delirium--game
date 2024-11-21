@@ -16,7 +16,7 @@ public class Disco extends Map {
 
     public Disco() {
         super("disco_map.txt", new MiscIndoorTileset());
-        this.playerStartPosition = getMapTile(10, 9).getLocation();
+        this.playerStartPosition = getMapTile(10, 8).getLocation();
     }
 
     
@@ -64,6 +64,16 @@ public class Disco extends Map {
 
     @Override
     public void loadScripts() {
+        getMapTile(6, 1).setInteractScript(new SimpleTextScript("Kaegen: The painting enhances the happiness of the room."));
+        getMapTile(7, 1).setInteractScript(new SimpleTextScript("Kaegen: Why the need for food in here?"));
+        getMapTile(9, 1).setInteractScript(new SimpleTextScript("Kaegen: Just bring food from the dining hall!"));
+        getMapTile(11, 1).setInteractScript(new SimpleTextScript("Kaegen: This room is bright enough already!"));
+        getMapTile(14, 1).setInteractScript(new SimpleTextScript("Kaegen: This room is bright enough already!"));
+        //14,1 Painting
+        //6,1 Fridge
+        //7,1 Oven
+        //9,1 Lights?
+        //11,1 Lights?
 
     }
 }

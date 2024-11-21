@@ -25,7 +25,7 @@ public class Fan extends NPC {
     protected ScreenCoordinator screenCoordinator;
 
     public Fan(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("avatar2-1.png.png"), 30, 30), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Fan1.png"), 30, 30), "STAND_LEFT");
         //this.screenCoordinator = screenCoordinator;
     }
 

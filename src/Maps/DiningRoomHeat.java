@@ -3,8 +3,13 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
+import NPCs.CondensingCoil;
 import NPCs.Dinosaur;
+import NPCs.TheKingThim;
+import NPCs.TheThim;
 import Scripts.SimpleTextScript;
+import Scripts.Field.FinalBoss;
+import Scripts.Field.FinalTest;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
 import Tilesets.MiscIndoorTileset;
@@ -50,9 +55,10 @@ public class DiningRoomHeat extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        //Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        //walrus.setInteractScript(new WalrusScript());
-        //npcs.add(walrus);
+        TheKingThim theKingThim = new TheKingThim(1, getMapTile(7, 7).getLocation());
+        npcs.add(theKingThim);
+
+        
 
         return npcs;
     }
@@ -65,6 +71,24 @@ public class DiningRoomHeat extends Map {
 
     @Override
     public void loadScripts() {
+        getMapTile(7, 3).setInteractScript(new SimpleTextScript("Kaegen: Wow! King Thimineur's chefs must have\nput a lot of time into this food!"));
+        getMapTile(7, 4).setInteractScript(new SimpleTextScript("Kaegen: Wow! King Thimineur's chefs must have\nput a lot of time into this food!"));
+        // 7,3 table
+        // 7,4 table
+
+        getMapTile(9, 1).setInteractScript(new SimpleTextScript("Kaegen: Where didst the fridge wend?!"));
+        getMapTile(10, 1).setInteractScript(new SimpleTextScript("Kaegen: The sinketh seemeth so much simpler."));
+        getMapTile(11, 1).setInteractScript(new SimpleTextScript("Kaegen: This seemeth similar to a pizza oven."));
+        //9,1 Fridge
+        //10,1 Sink
+        //11,1 Oven
+
+        getMapTile(6, 1).setInteractScript(new SimpleTextScript("Kaegen: I'm fain I anon knoweth who is't\nputteth up the flags."));
+        
+        //6,1 Thimineur Flag
+
+        getMapTile(6, 1).setInteractScript(new SimpleTextScript("Kaegen: This torch might not but beest\nhath used to keepeth the oven going."));
+        //7,1 Torch
 
     }
 }

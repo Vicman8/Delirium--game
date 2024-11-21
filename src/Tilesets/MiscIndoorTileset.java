@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MiscIndoorTileset extends Tileset {
 
     public MiscIndoorTileset() {
-        super(ImageLoader.load("IndoorHouseTileSet_1.png"), 16, 16, 3);
+        super(ImageLoader.load("IndoorHouseTileSet.png"), 16, 16, 3);
     }
 
     @Override
