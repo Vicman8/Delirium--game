@@ -31,11 +31,14 @@ public class TIMETODANCE extends Player {
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
+            
             put("STAND_RIGHT", new Frame[] {
+                
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 40)
                             .withScale(3)
                             .withBounds(6, 12, 12, 7)
                             .build(),
+                            
                         new FrameBuilder(spriteSheet.getSprite(0, 1), 40)
                         .withScale(3)
                         .withBounds(6, 12, 12, 7)
@@ -65,6 +68,7 @@ public class TIMETODANCE extends Player {
                             .withBounds(6, 12, 12, 7)
                             .build()
             });
+            
 
             put("STAND_LEFT", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0), 40)
@@ -108,7 +112,7 @@ public class TIMETODANCE extends Player {
                 .withBounds(6, 12, 12, 7)
                 .build()
             });
-
+        
             put("WALK_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(1, 2), 20)
                             .withScale(3)

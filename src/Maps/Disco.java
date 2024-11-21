@@ -3,6 +3,7 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
+import NPCs.CirculatingFan;
 import NPCs.Dinosaur;
 import Scripts.SimpleTextScript;
 import Scripts.TestMap.*;
@@ -52,6 +53,9 @@ public class Disco extends Map {
         //Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
         //walrus.setInteractScript(new WalrusScript());
         //npcs.add(walrus);
+
+        CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(10,10).getLocation());
+        npcs.add(circulatingFan);
 
         return npcs;
     }

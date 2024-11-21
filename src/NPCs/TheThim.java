@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class TheThim extends NPC{
 
     public TheThim(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("TheThimSprite.png"), 30, 30), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("TheThimSpriteSheet_1.png"), 29, 29), "STAND_RIGHT");
     }
 
     @Override
@@ -28,10 +28,44 @@ public class TheThim extends NPC{
                             .build()
             });
             put("STAND_RIGHT", new Frame[] {
-                   new FrameBuilder(spriteSheet.getSprite(0, 0))
+                   new FrameBuilder(spriteSheet.getSprite(0, 0), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(0, 1), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(0, 0), 20)
+                           .withScale(3)
+                           .build(),
+           });
+           put("WALK_LEFT", new Frame[] {
+            new FrameBuilder(spriteSheet.getSprite(0, 3), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(1, 1), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(1, 2), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(1, 3),200)
                            .withScale(3)
                            .build()
-           });
+    });
+    put("WALK_RIGHT", new Frame[] {
+        new FrameBuilder(spriteSheet.getSprite(0, 3), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(1, 1), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(1, 2), 20)
+                           .withScale(3)
+                           .build(),
+                           new FrameBuilder(spriteSheet.getSprite(3, 1), 20)
+                           .withScale(3)
+                           .build()
+   });
         }};
     }
 
