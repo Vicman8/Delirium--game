@@ -4,8 +4,10 @@ import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
 import NPCs.CirculatingFan;
+import NPCs.CondensingCoil;
 import NPCs.Dinosaur;
 import Scripts.SimpleTextScript;
+import Scripts.ACParts.CondensingCoilScript;
 import Scripts.DeliriousDana.TrailScript;
 import Scripts.Disco.DiscoScript;
 import Scripts.TestMap.*;
@@ -56,8 +58,10 @@ public class Disco extends Map {
         //walrus.setInteractScript(new WalrusScript());
         //npcs.add(walrus);
 
-        //CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(10,10).getLocation());
-        //npcs.add(circulatingFan);
+        CirculatingFan circulatingFan = new CirculatingFan(2 , getMapTile(11,2).getLocation(), null);
+        circulatingFan.setInteractScript(new CondensingCoilScript());
+        npcs.add(circulatingFan);
+
 
         return npcs;
     }

@@ -33,36 +33,6 @@ public class TIMETODANCE extends Player {
         return new HashMap<String, Frame[]>() {{
             
             put("STAND_RIGHT", new Frame[] {
-                
-                    new FrameBuilder(spriteSheet.getSprite(0, 0), 40)
-                            .withScale(3)
-                            .withBounds(6, 12, 12, 7)
-                            .build(),
-                            
-                        new FrameBuilder(spriteSheet.getSprite(0, 1), 40)
-                        .withScale(3)
-                        .withBounds(6, 12, 12, 7)
-                        .build(),
-                        new FrameBuilder(spriteSheet.getSprite(0, 2), 40)
-                            .withScale(3)
-                            .withBounds(6, 12, 12, 7)
-                            .build(),
-                        new FrameBuilder(spriteSheet.getSprite(0, 3), 40)
-                        .withScale(3)
-                        .withBounds(6, 12, 12, 7)
-                        .build(),
-                        new FrameBuilder(spriteSheet.getSprite(0, 4), 40)
-                            .withScale(3)
-                            .withBounds(6, 12, 12, 7)
-                            .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 0), 40)
-                        .withScale(3)
-                        .withBounds(6, 12, 12, 7)
-                        .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 1), 40)
-                            .withScale(3)
-                            .withBounds(6, 12, 12, 7)
-                            .build(),
                             new FrameBuilder(spriteSheet.getSprite(1, 2))
                             .withScale(3)
                             .withBounds(6, 12, 12, 7)
@@ -71,41 +41,6 @@ public class TIMETODANCE extends Player {
             
 
             put("STAND_LEFT", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 40)
-                .withScale(3)
-                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                .withBounds(6, 12, 12, 7)
-                .build(),
-            new FrameBuilder(spriteSheet.getSprite(0, 1), 40)
-            .withScale(3)
-            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-            .withBounds(6, 12, 12, 7)
-            .build(),
-            new FrameBuilder(spriteSheet.getSprite(0, 2), 40)
-                .withScale(3)
-                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                .withBounds(6, 12, 12, 7)
-                .build(),
-            new FrameBuilder(spriteSheet.getSprite(0, 3), 40)
-            .withScale(3)
-            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-            .withBounds(6, 12, 12, 7)
-            .build(),
-            new FrameBuilder(spriteSheet.getSprite(0, 4), 40)
-                .withScale(3)
-                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                .withBounds(6, 12, 12, 7)
-                .build(),
-            new FrameBuilder(spriteSheet.getSprite(1, 0), 40)
-            .withScale(3)
-            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-            .withBounds(6, 12, 12, 7)
-            .build(),
-            new FrameBuilder(spriteSheet.getSprite(1, 1), 40)
-                .withScale(3)
-                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                .withBounds(6, 12, 12, 7)
-                .build(),
                 new FrameBuilder(spriteSheet.getSprite(1, 2))
                 .withScale(3)
                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
