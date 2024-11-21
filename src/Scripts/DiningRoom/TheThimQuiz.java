@@ -66,6 +66,7 @@ public class TheThimQuiz extends Script {
 
                         addScriptAction(new TextboxScriptAction() {
                             {
+                                addScriptAction(new NPCWalkScriptAction(Direction.RIGHT,0,1));
                                 addText("Prof. Thimineur: Wrong! Geez some expert you are huh.");
                                 addText("Kaegen: I just said I'm a history major!");
                             }
@@ -85,12 +86,17 @@ public class TheThimQuiz extends Script {
                         });
                         addScriptAction(new TextboxScriptAction() {
                             {
+                                addScriptAction(new NPCWalkScriptAction(Direction.LEFT,0,1));
+                                
+                                
                                 addText("Prof. Thimineur: Correct!");
                                 addText("Kaegen: Easy! What else you got?");
+                                
                                 addText("Prof. Thimineur: Next, what is the name of a commonly\nused website by software engineers?",
                                         new String[] { "Github.com", "Fortnite.com" });
                             }
-                        });
+                            
+                        }); 
 
                         addScriptAction(new ConditionalScriptAction() {
                             {
@@ -108,6 +114,8 @@ public class TheThimQuiz extends Script {
 
                                         addScriptAction(new TextboxScriptAction() {
                                             {
+                                                addScriptAction(new NPCWalkScriptAction(Direction.LEFT,0,1));
+                                                
                                                 addText("Prof. Thimineur: Right! I even teach a class on it!");
                                                 addText("Kaegen: Wow! Everyone should take it!");
                                                 addText("Prof. Thimineur: Now, which of these follows a first in\nfirst out procedure?",
@@ -129,11 +137,14 @@ public class TheThimQuiz extends Script {
     
                                                     addScriptAction(new TextboxScriptAction() {
                                                         {
+                                                            addScriptAction(new NPCWalkScriptAction(Direction.LEFT,0,1));
+                                                            
                                                             addText("Prof. Thimineur: Impressive! As opposed to stacks which\n are last in first out.");
                                                             addText("Kaegen: Yes!");
                                                             addText("Prof. Thimineur: Better than I expected!\n...So far at least.");
                                                             addText("Kaegen: I got this! Give me another!");
                                                             addText("Prof. Thimineur: What is needed for a proper\nrecursive algorithm?",
+                                                            
                                                                     new String[] { "Iteration", "A base case" });
                                                         }
                                                     });
@@ -152,6 +163,7 @@ public class TheThimQuiz extends Script {
                 
                                                                 addScriptAction(new TextboxScriptAction() {
                                                                     {
+                                                                        addScriptAction(new NPCWalkScriptAction(Direction.RIGHT,0,1));
                                                                         addText("Prof. Thimineur: Wrong! You always need a base case!");
                                                                         addText("Kaegen: Darn, I forgot.");
                                                                     }
@@ -174,6 +186,8 @@ public class TheThimQuiz extends Script {
                 
                                                                 addScriptAction(new TextboxScriptAction() {
                                                                     {
+                                                                        addScriptAction(new NPCWalkScriptAction(Direction.LEFT,0,1));
+                                                                        addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
                                                                         addText("Prof. Thimineur: Right! Iteration is not needed\nbut a base case always is!");
                                                                         addText("Prof. Thimineur: Last one! You ready?");
                                                                         addText("Kaegen: Let's do it.");
@@ -195,6 +209,7 @@ public class TheThimQuiz extends Script {
                             
                                                                             addScriptAction(new TextboxScriptAction() {
                                                                                 {
+                                                                                    addScriptAction(new NPCWalkScriptAction(Direction.RIGHT,0,1));
                                                                                     addText("Prof. Thimineur: Wrong! No one's ever proven that!");
                                                                                 }
                                                                             });
@@ -222,6 +237,8 @@ public class TheThimQuiz extends Script {
                                                                                     addText("Kaegen: Yes!");
                                                                                     addText("Prof. Thimineur: Well, as promised, you earned this!");
                                                                                     addText("Kaegen: Thank you!");
+                                                                                    addScriptAction(new NPCWalkScriptAction(Direction.LEFT,0,1));
+                                                                                    addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
                                                                                     
                                                                                 }
                                                                                 
@@ -244,6 +261,7 @@ public class TheThimQuiz extends Script {
                             
                                                                             addScriptAction(new TextboxScriptAction() {
                                                                                 {
+                                                                                    addScriptAction(new NPCWalkScriptAction(Direction.RIGHT,0,1));
                                                                                     addText("Prof. Thimineur: Wrong! No one's ever proven that!");
                                                                                 }
                                                                             });
@@ -275,6 +293,7 @@ public class TheThimQuiz extends Script {
     
                                                     addScriptAction(new TextboxScriptAction() {
                                                         {
+                                                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT,0,1));
                                                             addText("Prof. Thimineur: Wrong! That's how stacks work!");
                                                             addText("Kaegen: Right...");
                                                         }
@@ -301,6 +320,7 @@ public class TheThimQuiz extends Script {
 
                                         addScriptAction(new TextboxScriptAction() {
                                             {
+                                                addScriptAction(new NPCWalkScriptAction(Direction.RIGHT,0,1));
                                                 addText("Prof. Thimineur: ...Did you just say\nFortnite.com...?");
                                                 addText("Kaegan: I don't know what\nyou're talking about.");
                                             }

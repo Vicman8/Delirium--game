@@ -115,6 +115,7 @@ public abstract class Player extends GameObject {
             case WALKING:
                 playerWalking();
                 break;
+            case ATTACKING:
         }
     }
 
@@ -233,40 +234,56 @@ public abstract class Player extends GameObject {
 
     // anything extra the player should do based on interactions can be handled here
     protected void handlePlayerAnimation() {
-        if (playerState == PlayerState.STANDING) {
-            // sets animation to a STAND animation based on which way player is facing
-            switch (facingDirection) {
-                case RIGHT:
-                    this.currentAnimationName = "STAND_RIGHT";
-                    break;
-                case LEFT:
-                    this.currentAnimationName = "STAND_LEFT";
-                    break;
-                case UP:
-                    this.currentAnimationName = "STAND_UP";
-                    break;
-                case DOWN:
-                    this.currentAnimationName = "STAND_DOWN";
-                    break;
-            }
-        } else if (playerState == PlayerState.WALKING) {
-            // sets animation to a WALK animation based on which way player is facing
-            switch (facingDirection) {
-                case RIGHT:
-                    this.currentAnimationName = "WALK_RIGHT";
-                    break;
-                case LEFT:
-                    this.currentAnimationName = "WALK_LEFT";
-                    break;
-                case UP:
-                    this.currentAnimationName = "WALK_UP";
-                    break;
-                case DOWN:
-                    this.currentAnimationName = "WALK_DOWN";
-                    break;
-            }
+        switch (playerState) {
+            case STANDING:
+                switch (facingDirection) {
+                    case RIGHT:
+                        this.currentAnimationName = "STAND_RIGHT";
+                        break;
+                    case LEFT:
+                        this.currentAnimationName = "STAND_LEFT";
+                        break;
+                    case UP:
+                        this.currentAnimationName = "STAND_UP";
+                        break;
+                    case DOWN:
+                        this.currentAnimationName = "STAND_DOWN";
+                        break;
+                }
+                break;
+    
+            case WALKING:
+                switch (facingDirection) {
+                    case RIGHT:
+                        this.currentAnimationName = "WALK_RIGHT";
+                        break;
+                    case LEFT:
+                        this.currentAnimationName = "WALK_LEFT";
+                        break;
+                    case UP:
+                        this.currentAnimationName = "WALK_UP";
+                        break;
+                    case DOWN:
+                        this.currentAnimationName = "WALK_DOWN";
+                        break;
+                }
+                break;
+    
+            case ATTACKING:
+                switch (facingDirection) {
+                    case RIGHT:
+                        this.currentAnimationName = "ATTACK_RIGHT";
+                        break;
+                    case LEFT:
+                        this.currentAnimationName = "ATTACK_LEFT";
+                        break;
+                }
+                break;
+    
+            // Handle other states similarly
         }
     }
+    
 
     @Override
     public void onEndCollisionCheckX(boolean hasCollided, Direction direction, GameObject entityCollidedWith) { }
@@ -389,6 +406,22 @@ public abstract class Player extends GameObject {
                 moveY(speed);
                 break;
         }
+    }
+
+    public void attack(Direction direction, float speed) {
+        playerState = PlayerState.ATTACKING;
+        facingDirection = direction;
+        switch (direction) {
+            case RIGHT:
+                this.currentAnimationName = "ATTACK_RIGHT";
+                moveX(speed);
+                break;
+            case LEFT:
+                this.currentAnimationName = "ATTACK_LEFT";
+                moveX(-speed);
+                break;
+        }
+        // Logic to perform attack
     }
     
 

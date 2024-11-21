@@ -36,15 +36,15 @@ public class MountainviewDormOutdoor extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Stache stache = new Stache(1, getMapTile(15, 15).getLocation().subtractY(40));
+        Stache stache = new Stache(1, getMapTile(15, 20).getLocation().subtractY(40));
         stache.setInteractScript(new Exclaim());
         npcs.add(stache);
 
-        PubSafety pubSafety = new PubSafety(2, getMapTile(12, 19).getLocation().subtractY(40));
+        PubSafety pubSafety = new PubSafety(2, getMapTile(12, 24).getLocation().subtractY(40));
         pubSafety.setInteractScript(new CheckUp());
         npcs.add(pubSafety);
 
-        Student student = new Student(3, getMapTile(16, 20).getLocation().subtractY(40));
+        Student student = new Student(3, getMapTile(16, 25).getLocation().subtractY(40));
         student.setInteractScript(new How());
         npcs.add(student);
 

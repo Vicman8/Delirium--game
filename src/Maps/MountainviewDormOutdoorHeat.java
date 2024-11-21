@@ -53,19 +53,15 @@ public class MountainviewDormOutdoorHeat extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Bear bear = new Bear(1, getMapTile(19, 17).getLocation().subtractY(40));
-        bear.setInteractScript(new Diabear());
-        npcs.add(bear);
-
-        StacheM stacheM = new StacheM(1, getMapTile(15, 15).getLocation().subtractY(40));
+        StacheM stacheM = new StacheM(1, getMapTile(15, 20).getLocation().subtractY(40));
         stacheM.setInteractScript(new Scary());
         npcs.add(stacheM);
 
-        PubSafetyM pubSafetyM = new PubSafetyM(1, getMapTile(12, 19).getLocation().subtractY(40));
+        PubSafetyM pubSafetyM = new PubSafetyM(1, getMapTile(12, 24).getLocation().subtractY(40));
         pubSafetyM.setInteractScript(new Scary3());
         npcs.add(pubSafetyM);
 
-        StudentM studentM = new StudentM(1, getMapTile(16, 20).getLocation().subtractY(40));
+        StudentM studentM = new StudentM(1, getMapTile(16, 25).getLocation().subtractY(40));
         studentM.setInteractScript(new Scary2());
         npcs.add(studentM);
 

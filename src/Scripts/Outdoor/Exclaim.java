@@ -18,8 +18,7 @@ public class Exclaim extends Script {
         scriptActions.add(new NPCFacePlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Sweaty Student: Holy moly!\nHow'd you drive away that bear?!");
-            addText("Kaegen: I actually have no idea.");
+            addText("Sweaty Student: Holy moly!\nStay away from south, there's a crazed bear!");
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("exclaim", true));

@@ -15,7 +15,7 @@ import java.util.HashMap;
 public class ArtThim extends NPC {
 
     public ArtThim(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("artThim.png"), 17, 30), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("CowSkull.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override

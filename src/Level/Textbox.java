@@ -170,7 +170,7 @@ public class Textbox {
         // if camera is at bottom of screen, textbox is drawn at top of screen instead of the bottom like usual
         // to prevent it from covering the player
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
-        graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, Color.white, Color.black, 2);
+        graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, Color.gray, Color.black, 2);
 
         if (text != null) {
             // draw text in textbox
@@ -181,7 +181,7 @@ public class Textbox {
                 // if camera is at bottom of screen, textbox is drawn at top of screen instead of the bottom like usual
                 // to prevent it from covering the player
                 int optionY = !map.getCamera().isAtBottomOfMap() ? optionBottomY : optionTopY;
-                graphicsHandler.drawFilledRectangleWithBorder(optionX, optionY, optionWidth, optionHeight, Color.white, Color.black, 2);
+                graphicsHandler.drawFilledRectangleWithBorder(optionX, optionY, optionWidth, optionHeight, Color.gray, Color.black, 2);
 
                 // draw each option text
                 for (SpriteFont option : options) {

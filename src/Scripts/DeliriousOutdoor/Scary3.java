@@ -16,6 +16,7 @@ public class Scary3 extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
+            addText("Pub Sec?: Careful! There's a bear down yonder!");
             addText("Pub Sec?: Headeth inside!\ni shall protecteth thee all from harmeth!");
             
         }});

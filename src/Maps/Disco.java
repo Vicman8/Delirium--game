@@ -3,8 +3,11 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
+import NPCs.CirculatingFan;
 import NPCs.Dinosaur;
 import Scripts.SimpleTextScript;
+import Scripts.DeliriousDana.TrailScript;
+import Scripts.Disco.DiscoScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
 import Tilesets.MiscIndoorTileset;
@@ -53,12 +56,16 @@ public class Disco extends Map {
         //walrus.setInteractScript(new WalrusScript());
         //npcs.add(walrus);
 
+        //CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(10,10).getLocation());
+        //npcs.add(circulatingFan);
+
         return npcs;
     }
 
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(440, 420, 150, 1, new DiscoScript(),"DiscoStart")); //bottom
         return triggers;
     }
 
