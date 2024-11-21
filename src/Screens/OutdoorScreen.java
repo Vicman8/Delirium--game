@@ -1,5 +1,8 @@
 package Screens;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
@@ -27,6 +30,8 @@ public class OutdoorScreen extends Screen{
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
     //public static Point outdoorDormPos;
+
+    protected boolean showInventory;
 
     public OutdoorScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -81,6 +86,9 @@ public class OutdoorScreen extends Screen{
         if (Keyboard.isKeyDown(Key.ESC)) {
             screenCoordinator.setGameState(GameState.MENU);
         }
+        if(Keyboard.isKeyDown(Key.I)){
+            showInventory = !showInventory;
+        }
         
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
@@ -128,6 +136,25 @@ public class OutdoorScreen extends Screen{
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
+                if (showInventory) {
+                    graphicsHandler.drawStringWithOutline("Inventory", 0, 50, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+                    if(ScreenCoordinator.compressor == true){
+                        graphicsHandler.drawStringWithOutline("Compressor", 0, 80, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+
+
+                    }
+                    if(ScreenCoordinator.evaporator == true){
+                        graphicsHandler.drawStringWithOutline("Evaporator Coil", 0, 100, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+
+                    }
+                    if (ScreenCoordinator.condensing == true) {
+                        graphicsHandler.drawStringWithOutline("Condensing Coil", 0, 120, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+                    }
+                    if (ScreenCoordinator.circulating == true) {
+                        graphicsHandler.drawStringWithOutline("Circulating Fan", 0, 140, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+
+                    }
+            }
                 break;
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);

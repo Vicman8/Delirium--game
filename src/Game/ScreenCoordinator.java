@@ -51,7 +51,12 @@ public class ScreenCoordinator extends Screen {
 	protected boolean nextSwitch = false;
 
 
-	protected boolean compressor;
+	public static boolean compressor = false;
+
+	public static boolean evaporator = false;
+
+	public static boolean condensing = false;
+	public static boolean circulating = false;
 
 	private long lastSwitchTime;    
     private long randomDelay; 
@@ -80,13 +85,25 @@ public class ScreenCoordinator extends Screen {
 		gameState = GameState.MENU;
 	}
 
-	public boolean getCompressor(){
-		return compressor;
-	}
+	// public void setEvaporator(){
+	// 	evaporator = false;
+	// }
 
-	public void setCompressor(boolean compressor){
-		this.compressor = compressor;
-	}
+	// public boolean getEvaporator(){
+	// 	return evaporator;
+	// }
+
+
+	
+	// public void setCompressor(){
+	// 	compressor = false;
+	// }
+	
+	// public boolean getCompressor(){
+	// 	return compressor;
+	// }
+
+
 
 	@Override
 	public void update() {

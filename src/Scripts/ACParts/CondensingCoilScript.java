@@ -2,7 +2,9 @@ package Scripts.ACParts;
 
 import java.util.ArrayList;
 
+import Game.ScreenCoordinator;
 import Level.Script;
+import Level.ScriptState;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
@@ -33,6 +35,18 @@ public class CondensingCoilScript extends Script {
                 addScriptAction(new TextboxScriptAction () {{
                     addText("You picked up the Condensing Coil");
                    
+   addScriptAction(new ScriptAction() {
+                        @Override
+                        public ScriptState execute() {
+                            // change door to the open door map tile
+                            ScreenCoordinator.condensing = true;                
+                           
+                            return ScriptState.COMPLETED;
+                        }
+                    });
+
+
+
                 }});
 
 
@@ -40,7 +54,7 @@ public class CondensingCoilScript extends Script {
 
                 addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
 
-                
+                                
 
                 addScriptAction(new ChangeFlagScriptAction("GrabbedConCoil", true));
             }});

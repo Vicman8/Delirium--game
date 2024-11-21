@@ -2,7 +2,9 @@ package Scripts.ACParts;
 
 import java.util.ArrayList;
 
+import Game.ScreenCoordinator;
 import Level.Script;
+import Level.ScriptState;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
@@ -32,7 +34,15 @@ public class CirculatingFanScript extends Script {
                 addScriptAction(new NPCFacePlayerScriptAction());
                 addScriptAction(new TextboxScriptAction () {{
                     addText("You picked up the Circulating Fan");
-                   
+                      addScriptAction(new ScriptAction() {
+                        @Override
+                        public ScriptState execute() {
+                            // change door to the open door map tile
+                            ScreenCoordinator.circulating = true;                
+                           
+                            return ScriptState.COMPLETED;
+                        }
+                    });
                 }});
 
 
@@ -40,7 +50,6 @@ public class CirculatingFanScript extends Script {
 
                 addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
 
-                
 
                 addScriptAction(new ChangeFlagScriptAction("GrabbedCirculatingFan", true));
             }});
