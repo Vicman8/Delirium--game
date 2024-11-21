@@ -33,7 +33,7 @@ public class DiscoScreen extends Screen{
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-        //flagManager.addFlag("hasTalkedToWalrus", false);
+        flagManager.addFlag("DiscoStart", false);
 
         // define/setup map
         map = new Disco();

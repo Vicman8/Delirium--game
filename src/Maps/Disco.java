@@ -6,6 +6,8 @@ import NPCs.Bug;
 import NPCs.CirculatingFan;
 import NPCs.Dinosaur;
 import Scripts.SimpleTextScript;
+import Scripts.DeliriousDana.TrailScript;
+import Scripts.Disco.DiscoScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
 import Tilesets.MiscIndoorTileset;
@@ -63,6 +65,7 @@ public class Disco extends Map {
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(440, 420, 150, 1, new DiscoScript(),"DiscoStart")); //bottom
         return triggers;
     }
 
