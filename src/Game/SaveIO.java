@@ -37,10 +37,10 @@ public class SaveIO{
 
             ArrayList<String> fileData = new ArrayList<>();
             fileData.add("true");
-            fileData.add(""+FlagManager.isFlagSet("EvaporatorCoil")+"");
-            fileData.add(""+FlagManager.isFlagSet("CirculatingFan")+"");
-            fileData.add(""+FlagManager.isFlagSet("Compressor")+"");
-            fileData.add(""+FlagManager.isFlagSet("Condensing")+"");
+            fileData.add(""+FlagManager.isFlagSet("GrabbedEvapCoil")+"");
+            fileData.add(""+FlagManager.isFlagSet("GrabbedCirculatingFan")+"");
+            fileData.add(""+FlagManager.isFlagSet("GrabbedCompressor")+"");
+            fileData.add(""+FlagManager.isFlagSet("GrabbedConCoil")+"");
 
             try{
                 //BufferedReader is for reading the file more efficiently

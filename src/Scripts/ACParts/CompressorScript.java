@@ -6,6 +6,7 @@ import Builders.FrameBuilder;
 import Builders.MapTileBuilder;
 import Engine.Key;
 import Engine.Keyboard;
+import Game.ScreenCoordinator;
 import GameObject.Frame;
 import Level.MapTile;
 import Level.Script;
@@ -30,7 +31,7 @@ import Utils.Point;
 import Utils.Visibility;
 
 public class CompressorScript extends Script{
-     protected static boolean compressor = false;
+     //protected static boolean compressor = false;
     
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
@@ -42,11 +43,24 @@ public class CompressorScript extends Script{
         scriptActions.add(new ConditionalScriptAction() {{
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
                 addRequirement(new FlagRequirement("GrabbedCompressor", false));
+                //ScreenCoordinator.compressor;
 
-                addScriptAction(new WaitScriptAction(70));
+                addScriptAction(new WaitScriptAction(50));
                 addScriptAction(new NPCFacePlayerScriptAction());
                 addScriptAction(new TextboxScriptAction () {{
                     addText("You picked up the Compressor");
+
+
+                    addScriptAction(new ScriptAction() {
+                        @Override
+                        public ScriptState execute() {
+                            // change door to the open door map tile
+                            ScreenCoordinator.compressor = true;                
+                           
+                            return ScriptState.COMPLETED;
+                        }
+                    });
+                    
 
                 }});
                 
@@ -57,11 +71,24 @@ public class CompressorScript extends Script{
                 
                 
                 
+                
                 addScriptAction(new ChangeFlagScriptAction("GrabbedCompressor", true));
+
+
+                
             }});
         }});
+       
         
-        compressor = true;
+
+        // if()
+
+        // if(ScreenCoordinator.compressor = false){
+        //     ScreenCoordinator.compressor = true;
+        // }
+        
+
+       // compressor = true;
 
         scriptActions.add(new UnlockPlayerScriptAction());
         
