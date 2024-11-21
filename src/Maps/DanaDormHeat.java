@@ -1,5 +1,6 @@
 package Maps;
 import Level.Trigger;
+import NPCs.EvaporatorCoil;
 import NPCs.Fan;
 import NPCs.Preeda;
 import NPCs.Stache;
@@ -42,6 +43,9 @@ public class DanaDormHeat extends Map{
         vicmanM.setInteractScript(new VictorFight());
         //figure out how to have the Victor fight here
         npcs.add(vicmanM);
+
+        EvaporatorCoil evaporatorCoil = new EvaporatorCoil(2, getMapTile(4, 2).getLocation());
+        npcs.add(evaporatorCoil);
 
         //THEVICMAN vicman = new THEVICMAN(4, getMapTile(2,3).getLocation());
         //vicman.setInteractScript(new VictorFight());

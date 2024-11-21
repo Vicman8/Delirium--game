@@ -131,12 +131,11 @@ public class VictorFight extends Script {
                                                 addText("Victor: ...how?");
                                                 addText("Victor: How could thou hast figured me out?!");
                                                 addText("Kaegen: None shall forbear me from mine A.C!");
+                                                addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 0, 10));
                                             }
                                         });
-
-                            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
-
-                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 0, 10));
+                                        
+                                        addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                             //addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                                     }
                                     
