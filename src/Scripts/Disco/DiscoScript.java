@@ -6,9 +6,11 @@ import Level.Script;
 import ScriptActions.ChangeFlagScriptAction;
 import ScriptActions.LockPlayerScriptAction;
 import ScriptActions.NPCFacePlayerScriptAction;
+import ScriptActions.NPCStandScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import Utils.Direction;
 
 public class DiscoScript extends Script {
     @Override
@@ -18,9 +20,14 @@ public class DiscoScript extends Script {
         
         scriptActions.add(new LockPlayerScriptAction());
 
+        
+        
+
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Disco");
+            addText("I FEEL A SONG COMING ON, I GOTTA DANCE!");
+            
         }});
+
 
         scriptActions.add(new ChangeFlagScriptAction("DiscoStart", true));
 
