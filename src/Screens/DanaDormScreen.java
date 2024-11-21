@@ -10,8 +10,11 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
+import Level.NPC;
 import Level.Player;
 import Maps.DanaDorm;
+import NPCs.ArtThim;
+import NPCs.WaterBottle;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
@@ -76,6 +79,16 @@ public class DanaDormScreen extends Screen{
                 break;
         }
 
+         for (NPC npc : map.getNPCs()) {
+
+            if(npc instanceof ArtThim){
+                if(npc.touching(player)){
+                    System.out.println("working");
+                    screenCoordinator.setGameState(GameState.DANADORMHEAT);;
+                    
+                }
+            }
+        }
         ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
         //screenCoordinator.switchWorld(screenCoordinator);
 

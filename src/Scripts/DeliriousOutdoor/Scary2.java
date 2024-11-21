@@ -16,7 +16,7 @@ public class Scary2 extends Script {
         scriptActions.add(new LockPlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Female Student?: Someone saveth me!");
+            addText("Female Student?: Someone saveth me! \nThere's a bear to thine south!");
             
         }});
 

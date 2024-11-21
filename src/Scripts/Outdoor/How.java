@@ -19,11 +19,8 @@ public class How extends Script {
         scriptActions.add(new NPCFacePlayerScriptAction());
 
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Student: Excuse me!\nHow did you manage to fight off that bear?");
-            addText("Kaegen: I combated a beareth? When did I do that? ");
-            addText("Student: Just now! Look! It ran away! ");
-            addText("Black Bear: *Growls*");
-            addText("Kaegen: Guh... I really did that huh?");
+            addText("Student: Excuse me!\nDon't go any further, there's a bear!");
+            addText("Kaegen: A bear?");
             
         }});
 

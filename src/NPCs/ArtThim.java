@@ -3,24 +3,19 @@ package NPCs;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
-import Engine.Key;
-import Engine.Keyboard;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
-import Utils.Point;
-import Level.MapEntityStatus;
 import Level.NPC;
-import Game.ScreenCoordinator;
+import Utils.Point;
 
 import java.util.HashMap;
 
-public class CondensingCoil extends NPC {
-    //public ScreenCoordinator screenCoordinator = new ScreenCoordinator();
-    
-    public CondensingCoil(int id, Point location/*, ScreenCoordinator screenCoordinator*/) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("CondensingCoil.png"), 30, 30), "STAND_LEFT");
-        //this.screenCoordinator = screenCoordinator;
+// This class is for the walrus NPC
+public class ArtThim extends NPC {
+
+    public ArtThim(int id, Point location) {
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("CowSkull.png"), 30, 30), "STAND_LEFT");
     }
 
     @Override
@@ -28,23 +23,19 @@ public class CondensingCoil extends NPC {
         return new HashMap<String, Frame[]>() {{
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
-                            .withScale(2)
+                            .withScale(3)
                             .withBounds(7, 13, 11, 7)
-                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
             put("STAND_RIGHT", new Frame[] {
                    new FrameBuilder(spriteSheet.getSprite(0, 0))
-                           .withScale(2)
+                           .withScale(3)
                            .withBounds(7, 13, 11, 7)
+                           .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                            .build()
            });
-           //screenCoordinator.switchWorld(screenCoordinator);
         }};
     }
-
-
-    
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {

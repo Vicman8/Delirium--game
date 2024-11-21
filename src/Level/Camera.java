@@ -26,6 +26,7 @@ public class Camera extends Rectangle {
     private ArrayList<EnhancedMapTile> activeEnhancedMapTiles = new ArrayList<>();
     private ArrayList<NPC> activeNPCs = new ArrayList<>();
     private ArrayList<Trigger> activeTriggers = new ArrayList<>();
+    private ArrayList<InventoryItems> activeInventoryItems = new ArrayList<>();
 
     // determines how many tiles off screen an entity can be before it will be deemed inactive and not included in the update/draw cycles until it comes back in range
     private final int UPDATE_OFF_SCREEN_RANGE = 4;
@@ -66,6 +67,7 @@ public class Camera extends Rectangle {
         activeEnhancedMapTiles = loadActiveEnhancedMapTiles();
         activeNPCs = loadActiveNPCs();
         activeTriggers = loadActiveTriggers();
+        activeInventoryItems = loadActiveInventoryItems();
 
         for (EnhancedMapTile enhancedMapTile : activeEnhancedMapTiles) {
             enhancedMapTile.update(player);
@@ -73,6 +75,9 @@ public class Camera extends Rectangle {
 
         for (NPC npc : activeNPCs) {
             npc.update(player);
+        }
+        for(InventoryItems inventoryItems : activeInventoryItems){
+            inventoryItems.update(player);
         }
     }
 
@@ -123,6 +128,29 @@ public class Camera extends Rectangle {
             }
         }
         return activeNPCs;
+    }
+
+
+    private ArrayList<InventoryItems> loadActiveInventoryItems(){
+        ArrayList<InventoryItems> activeInventoryItems = new ArrayList<>();
+        for (int i = map.getActivInventoryItems().size()-1; i>=0;  i--) {
+            InventoryItems inventoryItems = map.getInventoryItems().get(i);
+
+            if(isMapEntityActive(inventoryItems)){
+                activeInventoryItems.add(inventoryItems);
+                if(inventoryItems.mapEntityStatus == MapEntityStatus.INACTIVE){
+                    inventoryItems.setMapEntityStatus(MapEntityStatus.ACTIVE);
+                }
+
+            }
+            else if(inventoryItems.getMapEntityStatus() == MapEntityStatus.ACTIVE){
+                inventoryItems.setMapEntityStatus(MapEntityStatus.INACTIVE);
+            } else if(inventoryItems.getMapEntityStatus() == MapEntityStatus.REMOVED){
+                map.getInventoryItems().remove(i);
+            }
+            
+        }
+        return activeInventoryItems;
     }
 
     // determine which trigger map tiles are active (exist and are within range of the camera)
@@ -211,6 +239,7 @@ public class Camera extends Rectangle {
     // draws active map entities to the screen
     public void drawMapEntities(Player player, GraphicsHandler graphicsHandler) {
         ArrayList<NPC> drawNpcsAfterPlayer = new ArrayList<>();
+        ArrayList<InventoryItems> drawInventoryItemsAfterPlayer = new ArrayList<>();
 
         // goes through each active npc and determines if it should be drawn at this time based on their location relative to the player
         // if drawn here, npc will later be "overlapped" by player
@@ -232,6 +261,10 @@ public class Camera extends Rectangle {
         // npcs determined to be drawn after player from the above step are drawn here
         for (NPC npc : drawNpcsAfterPlayer) {
             npc.draw(graphicsHandler);
+        }
+
+        for(InventoryItems inventoryItems : activeInventoryItems){
+            inventoryItems.draw(graphicsHandler);
         }
 
         // Uncomment this to see triggers drawn on screen
@@ -273,6 +306,10 @@ public class Camera extends Rectangle {
         return activeTriggers;
     }
 
+    public ArrayList<InventoryItems> getActiveInventoryItems(){
+        return activeInventoryItems;
+    }
+
     // gets end bound X position of the camera (start position is always 0)
     public float getEndBoundX() {
         return x + (width * tileWidth) + leftoverSpaceX;
@@ -290,4 +327,6 @@ public class Camera extends Rectangle {
     public boolean isAtBottomOfMap() {
         return this.getEndBoundY() >= map.getEndBoundY();
     }
+
+    
 }

@@ -3,10 +3,12 @@ import Level.Trigger;
 import NPCs.Student;
 import NPCs.THEVICMANM;
 import NPCs.TheThimImposter;
+// import NPCs.ITEMS.ItemCompressor;
 import Scripts.Dana.ImposterThimineur;
 import Scripts.DanaOutdoor.Warning;
 import Scripts.DeliriousDana.VictorFight;
 import Scripts.DeliriousDanaOutdoor.WarningM;
+import Level.InventoryItems;
 import Level.Map;
 import Level.NPC;
 import Level.Tileset;
@@ -14,8 +16,11 @@ import Tilesets.DanaTilesetOutdoorNormal;
 import Tilesets.HeatDormTilesetIndoor;
 import Game.Audio;
 import Game.ScreenCoordinator;
+import GameObject.Frame;
 
 import java.util.ArrayList;
+
+import Engine.ImageLoader;
 
 public class DanaOutdoor extends Map{
     //ScreenCoordinator screenCoordinator;
@@ -43,6 +48,15 @@ public class DanaOutdoor extends Map{
         return npcs;
         
     }
+
+    // @Override
+    // public ArrayList<InventoryItems> loadInventoryItems(){
+    //     ArrayList<InventoryItems> inventoryItems = new ArrayList<>();
+    //     ItemCompressor itemCompressor = new ItemCompressor(getMapTile(7 ,2).getLocation(), new Frame(ImageLoader.load("Compressor.png")));
+    //     inventoryItems.add(itemCompressor);
+
+    //     return inventoryItems;
+    // }
 
      @Override
     public ArrayList<Trigger> loadTriggers() {

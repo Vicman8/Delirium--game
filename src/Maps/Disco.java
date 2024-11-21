@@ -54,8 +54,8 @@ public class Disco extends Map {
         //walrus.setInteractScript(new WalrusScript());
         //npcs.add(walrus);
 
-        CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(10,10).getLocation());
-        npcs.add(circulatingFan);
+        //CirculatingFan circulatingFan = new CirculatingFan(1, getMapTile(10,10).getLocation());
+        //npcs.add(circulatingFan);
 
         return npcs;
     }

@@ -3,17 +3,24 @@ package Maps;
 import EnhancedMapTiles.PushableCrate;
 import Level.*;
 import NPCs.Bug;
+import NPCs.Compressor;
 import NPCs.Dinosaur;
+// import NPCs.ITEMS.ItemCompressor;
 import Scripts.SimpleTextScript;
+import Scripts.ACParts.CompressorScript;
 import Scripts.TestMap.*;
 import Tilesets.CommonTileset;
 import Tilesets.MiscIndoorTileset;
 import Tilesets.MiscIndoorTileSetHeat;
 
+import GameObject.Frame;
 import java.util.ArrayList;
+
+import Engine.ImageLoader;
 
 // Represents a test map to be used in a level
 public class Jail extends Map {
+
 
     public Jail() {
         super("jail_map.txt", new MiscIndoorTileSetHeat());
@@ -58,12 +65,21 @@ public class Jail extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        //Walrus walrus = new Walrus(1, getMapTile(4, 28).getLocation().subtractY(40));
-        //walrus.setInteractScript(new WalrusScript());
-        //npcs.add(walrus);
+        Compressor walrus = new Compressor(1, getMapTile(8, 3).getLocation().subtractY(40));
+        walrus.setInteractScript(new CompressorScript());
+        npcs.add(walrus);
 
         return npcs;
     }
+
+    // @Override
+    // public ArrayList<InventoryItems> loadInventoryItems(){
+    //     ArrayList<InventoryItems> inventoryItems = new ArrayList<>();
+    //     ItemCompressor itemCompressor = new ItemCompressor(getMapTile(8, 3).getLocation(), new Frame(ImageLoader.load("Compressor.png")));
+    //     inventoryItems.add(itemCompressor);
+
+    //     return inventoryItems;
+    // }
 
     @Override
     public ArrayList<Trigger> loadTriggers() {

@@ -20,8 +20,8 @@ public class CheckUp extends Script {
         scriptActions.add(new TextboxScriptAction() {{
             addText("Pub Sec: Hey Kid! You ok?!");
             addText("Kaegen: I'm fine.");
-            addText("Pub Sec: How bold of you to drive that bear away.\nYou'd be a perfect fit on Pub Sec.");
-            addText("Kaegen: Thank you sir.");
+            addText("Pub Sec: Watch out for that bear down there!");
+            addText("Kaegen: Ok sir.");
         }});
 
         scriptActions.add(new ChangeFlagScriptAction("checkDone", true));

@@ -1,7 +1,6 @@
 package Engine;
 
 import GameObject.Rectangle;
-import Level.Inventory;
 import Screens.InventoryScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;

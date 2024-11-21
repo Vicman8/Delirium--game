@@ -55,6 +55,7 @@ public abstract class Map {
 
     // lists to hold map entities that are a part of the map
     protected ArrayList<EnhancedMapTile> enhancedMapTiles;
+    protected ArrayList<InventoryItems> inventoryItems;
     protected ArrayList<NPC> npcs;
     protected ArrayList<Trigger> triggers;
 
@@ -110,6 +111,11 @@ public abstract class Map {
         this.triggers = loadTriggers();
         for (Trigger trigger: this.triggers) {
             trigger.setMap(this);
+        }
+
+        this.inventoryItems = loadInventoryItems();
+        for(InventoryItems inventoryItems: this.inventoryItems){
+            inventoryItems.setMap(this);
         }
 
         this.loadScripts();
@@ -283,6 +289,10 @@ public abstract class Map {
         return new ArrayList<>();
     }
 
+    protected ArrayList<InventoryItems> loadInventoryItems(){
+        return new ArrayList<>();
+    }
+
     // list of npcs defined to be a part of the map, should be overridden in a subclass
     protected ArrayList<NPC> loadNPCs() {
         return new ArrayList<>();
@@ -298,6 +308,10 @@ public abstract class Map {
 
     public ArrayList<EnhancedMapTile> getEnhancedMapTiles() {
         return enhancedMapTiles;
+    }
+
+    public ArrayList<InventoryItems> getInventoryItems(){
+        return inventoryItems;
     }
 
     public ArrayList<NPC> getNPCs() {
@@ -362,6 +376,13 @@ public abstract class Map {
                 trigger.getTriggerScript().initialize();
             }
         }
+        for(InventoryItems inventoryItems : inventoryItems){
+            if(inventoryItems.getInteractScript() != null){
+                inventoryItems.getInteractScript().setMap(this);
+                inventoryItems.getInteractScript().setPlayer(player);
+                inventoryItems.getInteractScript().initialize();
+            }
+        }
     }
 
     public NPC getNPCById(int id) {
@@ -385,6 +406,9 @@ public abstract class Map {
 
     public ArrayList<Trigger> getActiveTriggers() {
         return camera.getActiveTriggers();
+    }
+    public ArrayList<InventoryItems> getActivInventoryItems(){
+        return camera.getActiveInventoryItems();
     }
 
     // add an enhanced map tile to the map's list of enhanced map tiles

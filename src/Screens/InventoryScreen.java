@@ -2,7 +2,6 @@ package Screens;
 
 import Engine.GamePanel;
 import Engine.GraphicsHandler;
-import Level.Inventory;
 import Utils.Point;
 import Engine.Key;
 import Engine.KeyLocker;
@@ -15,7 +14,6 @@ import Engine.ImageLoader;
 
 public class InventoryScreen extends Screen {
 
-    protected Inventory inventory;
     protected GamePanel gamePanel;
     protected Sprite inventoryImage;
     protected KeyLocker keyLocker;

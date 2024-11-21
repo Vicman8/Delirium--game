@@ -7,6 +7,7 @@ import NPCs.Stache;
 import NPCs.Student;
 import NPCs.THEVICMAN;
 import NPCs.TheThim;
+import NPCs.ArtThim;
 import NPCs.Bear;
 import Scripts.DeliriousOutdoor.FirstBearFight;
 import Scripts.MyMap.StudentScript;
@@ -35,21 +36,24 @@ public class MountainviewDormOutdoor extends Map{
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Stache stache = new Stache(1, getMapTile(15, 15).getLocation().subtractY(40));
+        Stache stache = new Stache(1, getMapTile(15, 20).getLocation().subtractY(40));
         stache.setInteractScript(new Exclaim());
         npcs.add(stache);
 
-        PubSafety pubSafety = new PubSafety(2, getMapTile(12, 19).getLocation().subtractY(40));
+        PubSafety pubSafety = new PubSafety(2, getMapTile(12, 24).getLocation().subtractY(40));
         pubSafety.setInteractScript(new CheckUp());
         npcs.add(pubSafety);
 
-        Student student = new Student(3, getMapTile(16, 20).getLocation().subtractY(40));
+        Student student = new Student(3, getMapTile(16, 25).getLocation().subtractY(40));
         student.setInteractScript(new How());
         npcs.add(student);
 
         HelperGuy helperGuy = new HelperGuy(4, getMapTile(0, 15).getLocation().subtractY(40));
         helperGuy.setInteractScript(new HelperGuyIntro());
         npcs.add(helperGuy);
+
+        ArtThim artThim = new ArtThim(5, getMapTile(0, 12).getLocation().subtractY(40));
+        npcs.add(artThim);
 
         return npcs;
     }

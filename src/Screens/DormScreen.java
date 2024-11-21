@@ -4,6 +4,9 @@ package Screens;
 
 import java.io.IOException;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
@@ -149,6 +152,7 @@ public class DormScreen extends Screen{
             case RUNNING:
                 map.draw(player, graphicsHandler);
                 break;
+
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);
                 break;

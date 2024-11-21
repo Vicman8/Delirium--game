@@ -50,6 +50,9 @@ public class ScreenCoordinator extends Screen {
 	protected boolean hasSwitched = false;
 	protected boolean nextSwitch = false;
 
+
+	protected boolean compressor;
+
 	private long lastSwitchTime;    
     private long randomDelay; 
     private boolean isDelaySet = false; 
@@ -75,6 +78,14 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
+	}
+
+	public boolean getCompressor(){
+		return compressor;
+	}
+
+	public void setCompressor(boolean compressor){
+		this.compressor = compressor;
 	}
 
 	@Override
@@ -163,18 +174,18 @@ public class ScreenCoordinator extends Screen {
     public void switchWorld(ScreenCoordinator screenCoordinator){
 		screenCoordinator = this;
 		
-		if (!isDelaySet) {
-            randomDelay = (long) (Math.random() * 5000) + 2000; // Random delay between 2 to 7 seconds (2000ms to 7000ms)
-            lastSwitchTime = System.currentTimeMillis();
-            isDelaySet = true;
-        }
+		// if (!isDelaySet) {
+        //     randomDelay = (long) (Math.random() * 5000) + 2000; // Random delay between 2 to 7 seconds (2000ms to 7000ms)
+        //     lastSwitchTime = System.currentTimeMillis();
+        //     isDelaySet = true;
+        // }
 
 		// if ((!nextSwitch)) {
 		// 	randomDelay = (long)(Math.random()*5000) +3000;
 		// 	lastSwitchTime = System.currentTimeMillis();
 		// }
 
-        long currentTime = System.currentTimeMillis();
+        //long currentTime = System.currentTimeMillis();
 
 		//if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_REALITY)){
 		/* 
@@ -204,44 +215,44 @@ public class ScreenCoordinator extends Screen {
 			}
 		//}*/
 
-	if(!hasSwitched){
-		if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay)){
-			System.out.println("Activated switch world");
-			if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.HEATDORM);
-				//hasSwitched = true;
-				// nextSwitch = true;
-				// System.out.println(nextSwitch);
-			}
+	// if(!hasSwitched){
+	// 	if(Keyboard.isKeyDown(ScreenCoordinator.SWITCH_TO_MEDIEVAL) || (currentTime - lastSwitchTime > randomDelay)){
+	// 		System.out.println("Activated switch world");
+	// 		if(screenCoordinator.getGameState()==GameState.DORM && hasSwitched == false){
+	// 			screenCoordinator.setGameState(GameState.HEATDORM);
+	// 			//hasSwitched = true;
+	// 			// nextSwitch = true;
+	// 			// System.out.println(nextSwitch);
+	// 		}
 			
-			if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
-				//hasSwitched = true;
-				// nextSwitch = true;
-				// System.out.println(nextSwitch);
-			}
+	// 		if(screenCoordinator.getGameState()==GameState.DORMEXTERIOR && hasSwitched == false){
+	// 			screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
+	// 			//hasSwitched = true;
+	// 			// nextSwitch = true;
+	// 			// System.out.println(nextSwitch);
+	// 		}
 			
-			if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.DANADORMHEAT);
-				//hasSwitched = true;
-				// nextSwitch = true;
-				// System.out.println(nextSwitch);
+	// 		if(screenCoordinator.getGameState()==GameState.DANADORM && hasSwitched == false){
+	// 			screenCoordinator.setGameState(GameState.DANADORMHEAT);
+	// 			//hasSwitched = true;
+	// 			// nextSwitch = true;
+	// 			// System.out.println(nextSwitch);
 				
-			}
+	// 		}
 			
-			if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOOR && hasSwitched == false){
-				screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
-				//hasSwitched = true;
-				// nextSwitch = true;
-				// System.out.println(nextSwitch);
-			}
+	// 		if(screenCoordinator.getGameState()==GameState.DANADORMOUTDOOR && hasSwitched == false){
+	// 			screenCoordinator.setGameState(GameState.DANADORMOUTDOORHEAT);
+	// 			//hasSwitched = true;
+	// 			// nextSwitch = true;
+	// 			// System.out.println(nextSwitch);
+	// 		}
 			
-			hasSwitched = true;
-			// if(){
+	// 		hasSwitched = true;
+	// 		// if(){
 
-			// }
-		}
-	}
+	// 		// }
+	// 	}
+	// }
 }
 
 	//updates the static variable
