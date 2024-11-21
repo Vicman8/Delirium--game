@@ -1,4 +1,3 @@
-
 package Screens;
 
 import Engine.GraphicsHandler;
@@ -10,47 +9,38 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import Level.FlagManager;
 import Level.Map;
-import Level.NPC;
 import Level.Player;
-import Maps.DanaDorm;
-import NPCs.ArtThim;
-import NPCs.WaterBottle;
+import Maps.BossArena;
+import Maps.MountainviewDormOutdoor;
+import Maps.MountainviewDormOutdoorHeat;
 import Players.HistoryMan;
 import Players.MedievalHistoryMan;
 import Utils.Direction;
 import Utils.Point;
 
-public class DanaDormScreen extends Screen{
+public class BossArenaScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
-    public Player player;
+    protected Player player;
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
-    
 
-    public DanaDormScreen(ScreenCoordinator screenCoordinator) {
+    public BossArenaScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     public void initialize() {
         // setup state
         flagManager = new FlagManager();
-
+        
         // define/setup map
-        map = new DanaDorm();
+        map = new BossArena();
         map.setFlagManager(flagManager);
 
-        if(screenCoordinator.getPreviousGameState()==GameState.DANADORMHEAT){
-            player = new HistoryMan(ScreenCoordinator.savedPlayerPos.x,ScreenCoordinator.savedPlayerPos.y);
-        } else{
-            player = new HistoryMan(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        }
         //if you have not come here from it's other version, use this maps default start position instead
-        
-
-
+        player = new MedievalHistoryMan(50, 200);
         player.setMap(map);
         playLevelScreenState = PlayLevelScreenState.RUNNING;
         player.setFacingDirection(Direction.LEFT);
@@ -65,12 +55,19 @@ public class DanaDormScreen extends Screen{
         map.preloadScripts();
 
         //winScreen = new WinScreen(this);
-
-        
     }
 
     public void update() {
         // based on screen state, perform specific actions
+
+        if (Keyboard.isKeyUp(Key.ESC)) {
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+
+            screenCoordinator.setGameState(GameState.MENU);
+        }
+        
         switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
             case RUNNING:
@@ -78,27 +75,18 @@ public class DanaDormScreen extends Screen{
                 map.update(player);
                 break;
         }
+            ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
+            screenCoordinator.switchWorld(screenCoordinator);
 
-         for (NPC npc : map.getNPCs()) {
-
-            if(npc instanceof ArtThim){
-                if(npc.touching(player)){
-                    System.out.println("working");
-                    screenCoordinator.setGameState(GameState.DANADORMHEAT);;
-                    
-                }
+            if(((player.getX() >= -40.0) && (player.getX() <= -2.0)) && (player.getY() >= -1.0) && (player.getY() <= 863.0)){
+                screenCoordinator.setGameState(GameState.HEATDORMEXTERIOR);
             }
-        }
-        ScreenCoordinator.savedPlayerPos = new Point(player.getX(), player.getY());
-        //screenCoordinator.switchWorld(screenCoordinator);
 
-        if (Keyboard.isKeyDown(Key.ESC)) {
-            screenCoordinator.setGameState(GameState.MENU);
-        }
+            if(((player.getX() >= 830.0) && (player.getX() <= 850.0)) && (player.getY() >= 8.0) && (player.getY() <= 805.0)){
+                screenCoordinator.setGameState(GameState.WIN);
+            }
 
-        if(((player.getX() >= 1695.0) && (player.getX() <= 1745.0)) && (player.getY() >= 815.0) && (player.getY() <= 820.0)){
-            screenCoordinator.setGameState(GameState.DANADORMOUTDOOR);
-        }
+        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {

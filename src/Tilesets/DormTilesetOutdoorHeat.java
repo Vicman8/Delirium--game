@@ -127,7 +127,7 @@ public class DormTilesetOutdoorHeat extends Tileset{
 
         mapTiles.add(brickThingTile);
 
-        Frame brickFanFrame = new FrameBuilder(getSubImage(02, 1))
+        Frame brickFanFrame = new FrameBuilder(getSubImage(2, 1))
                 .withScale(tileScale)
                 .build();
 
@@ -318,6 +318,15 @@ public class DormTilesetOutdoorHeat extends Tileset{
                     .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(brickTileDoorMirror);
+
+        Frame grassFrameNP = new FrameBuilder(getSubImage(5, 3))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder grassTileNP = new MapTileBuilder(grassFrameNP)
+                    .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(grassTileNP);
 
         return mapTiles;
     }

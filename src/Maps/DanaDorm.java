@@ -1,5 +1,6 @@
 package Maps;
 import Level.Trigger;
+import NPCs.ArtThim;
 import NPCs.Preeda;
 import NPCs.Stache;
 import NPCs.StacheM;
@@ -43,6 +44,9 @@ public class DanaDorm extends Map{
         Stache stache = new Stache(2, getMapTile(27,11).getLocation());
         //stache.setInteractScript(new FollowMC())
         npcs.add(stache);
+
+        ArtThim artThim = new ArtThim(2, getMapTile(6,16).getLocation());
+        npcs.add(artThim);
 
          WaterCooler waterCooler = new WaterCooler(4, getMapTile(25, 13).getLocation());
          npcs.add(waterCooler);

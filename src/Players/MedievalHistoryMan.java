@@ -16,8 +16,8 @@ public class MedievalHistoryMan extends Player {
 
     public MedievalHistoryMan(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("MainCharacterMedievalSpriteSheet_2.png"), 29, 29), x, y, "STAND_RIGHT");
-        walkSpeed = 5.0f;
-        sprintSpeed = 8.5f;
+        walkSpeed = 5.5f;
+        sprintSpeed = 8.0f;
     }
 
     public void update() {

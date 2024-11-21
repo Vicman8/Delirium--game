@@ -55,8 +55,6 @@ public class DiningRoomHeat extends Map {
         ArrayList<NPC> npcs = new ArrayList<>();
 
         TheKingThim theKingThim = new TheKingThim(1, getMapTile(7, 7).getLocation());
-        theKingThim.setInteractScript(new FinalBoss());
-        //figure out how to have the Victor fight here
         npcs.add(theKingThim);
 
         return npcs;

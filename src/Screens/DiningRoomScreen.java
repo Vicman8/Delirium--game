@@ -1,5 +1,8 @@
 package Screens;
 
+import java.awt.Color;
+import java.awt.Font;
+
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
@@ -25,7 +28,7 @@ public class DiningRoomScreen extends Screen{
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     protected KeyLocker keyLocker = new KeyLocker();
-    
+    protected boolean showInventory;
 
 
     public DiningRoomScreen(ScreenCoordinator screenCoordinator) {
@@ -67,13 +70,16 @@ public class DiningRoomScreen extends Screen{
                 player.update();
                 map.update(player);
                 break;
-            
-            /*
-             * case LEVEL_COMPLETED:
+                
+                /*
+                * case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
-             */
-        }
+                */
+            }
+            if(Keyboard.isKeyDown(Key.I)){
+                showInventory = !showInventory;
+            }
 
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
@@ -100,6 +106,9 @@ public class DiningRoomScreen extends Screen{
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
+                if (showInventory) {
+                    graphicsHandler.drawStringWithOutline("Inventory", 0, 50, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+                }
                 break;
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);

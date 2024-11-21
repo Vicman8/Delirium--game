@@ -8,12 +8,17 @@ import ScriptActions.ConditionalScriptAction;
 import ScriptActions.ConditionalScriptActionGroup;
 import ScriptActions.CustomRequirement;
 import ScriptActions.LockPlayerScriptAction;
+import ScriptActions.NPCChangeVisibilityScriptAction;
 import ScriptActions.NPCFacePlayerScriptAction;
 import ScriptActions.NPCLockScriptAction;
+import ScriptActions.NPCStandScriptAction;
 import ScriptActions.NPCUnlockScriptAction;
+import ScriptActions.NPCWalkScriptAction;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import ScriptActions.UnlockPlayerScriptAction;
+import Utils.Direction;
+import Utils.Visibility;
 
 public class VictorFight extends Script {
     @Override
@@ -128,8 +133,15 @@ public class VictorFight extends Script {
                                                 addText("Kaegen: None shall forbear me from mine A.C!");
                                             }
                                         });
+
+                            addScriptAction(new NPCStandScriptAction(Direction.RIGHT));
+
+                            addScriptAction(new NPCWalkScriptAction(Direction.RIGHT, 0, 10));
+                            //addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                                     }
+                                    
                                 });
+                                
                             }
                         });
                     }

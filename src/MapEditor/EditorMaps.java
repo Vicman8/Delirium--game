@@ -21,6 +21,7 @@ import Maps.GameCompleteMap;
 import Maps.GameOverMap;
 import Maps.Jail;
 import Maps.GameCompleteMap;
+import Maps.BossArena;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ public class EditorMaps {
             add("DiningRoomHeat");
             add("GameOver");
             add("Win");
+            add("BossArena");
 
         }};
     }
@@ -92,6 +94,8 @@ public class EditorMaps {
                 return new GameOverMap();
             case "Win":
                 return new GameCompleteMap();
+            case "BossArena":
+                return new BossArena();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

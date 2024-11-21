@@ -34,16 +34,16 @@ public class Textbox {
     protected final int optionX = 400;
     protected final int moveDot = optionX + 10; //makes it so everything moves fluidly
     protected final int moveText1 = optionX + 30; //when changing textbox location
-    protected final int optionBottomY = 350;
+    protected final int optionBottomY = 330; 
     protected final int optionTopY = 130;
     protected final int optionWidth = 350; //This is how I can change the size
-    protected final int optionHeight = 100; //^^
+    protected final int optionHeight = 120; //^^
     protected final int fontOptionX = moveText1;
-    protected final int fontOptionBottomYStart = 365;
+    protected final int fontOptionBottomYStart = 345;
     protected final int fontOptionTopYStart = 145;
     protected final int fontOptionSpacing = 35;
     protected final int optionPointerX = moveDot;
-    protected final int optionPointerYBottomStart = 378;
+    protected final int optionPointerYBottomStart = 345;
     protected final int optionPointerYTopStart = 158;
 
     // core vars that make textbox work
@@ -122,7 +122,7 @@ public class Textbox {
                 options = new ArrayList<>();
                 // for each option, crate option text spritefont that will be drawn in options textbox
                 for (int i = 0; i < currentTextItem.getOptions().size(); i++) {
-                    options.add(new SpriteFont(currentTextItem.options.get(i), fontOptionX, fontOptionY + (i *  fontOptionSpacing), "Arial", 30, Color.black));
+                    options.add(new SpriteFont(currentTextItem.options.get(i), fontOptionX, fontOptionY + (i *  fontOptionSpacing), "Algerian", 15, Color.black));
                 }
                 selectedOptionIndex = 0;
             }
@@ -144,15 +144,23 @@ public class Textbox {
         }
 
         if (options != null) {
-            if (Keyboard.isKeyDown(Key.DOWN)) {
+            if (Keyboard.isKeyDown(Key.DOWN) && !keyLocker.isKeyLocked(Key.DOWN)) {
+                keyLocker.lockKey(Key.DOWN);
                 if (selectedOptionIndex < options.size() - 1) {
                     selectedOptionIndex++;
                 }
             }
-            if (Keyboard.isKeyDown(Key.UP)) {
+            if (Keyboard.isKeyDown(Key.UP)&& !keyLocker.isKeyLocked(Key.UP)) {
+                keyLocker.lockKey(Key.UP);
                 if (selectedOptionIndex > 0) {
                     selectedOptionIndex--;
                 }
+            }
+            if (Keyboard.isKeyUp(Key.DOWN)) {
+                keyLocker.unlockKey(Key.DOWN);
+            }
+            if (Keyboard.isKeyUp(Key.UP)) {
+                keyLocker.unlockKey(Key.UP);
             }
         }
     }

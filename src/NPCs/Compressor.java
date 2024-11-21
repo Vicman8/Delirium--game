@@ -13,6 +13,7 @@ import Level.InventoryItems;
 import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
+import Scripts.ACParts.CompressorScript;
 import Game.ScreenCoordinator;
 
 import java.util.HashMap;
@@ -58,6 +59,7 @@ public class Compressor extends NPC {
 
         double distance = Math.sqrt(Math.pow(this.getX() - player.getX(), 2) + Math.pow(this.getY() - player.getY(), 2));
         if (distance <= 55 && Keyboard.isKeyDown(Key.E)) {
+            this.setInteractScript(new CompressorScript());
             System.out.println("Interact key pressed for Compressor with ID: " + this.id);
             InventoryItems item = InventoryItems.fromNPC(this);
             System.out.println("InventoryItems created: " + item);
