@@ -1,7 +1,7 @@
 package Level;
 
 import java.awt.Color;
-
+import java.io.IOException;
 import Engine.DefaultScreen;
 import Engine.GameWindow;
 import Engine.GraphicsHandler;
@@ -11,6 +11,7 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Engine.ScreenManager;
 import Game.GameState;
+import Game.SaveIO;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
@@ -60,7 +61,7 @@ public abstract class Player extends GameObject {
         this.affectedByTriggers = true;
     }
 
-    public void update() {
+    public void update(){
         if (!isLocked) {
             moveAmountX = 0;
             moveAmountY = 0;
@@ -89,14 +90,12 @@ public abstract class Player extends GameObject {
         
         super.update();
         
-        
         posPrintDelay++;
         if (posPrintDelay == 180){
             System.out.println("Player coordinates are ("+this.getX()+" ,"+this.getY()+")");
             posPrintDelay = 0;
         }
     }
-
 
     // public void inventory(GraphicsHandler graphicsHandler, InventoryScreen inventoryScreen){
     //     inventory.showInventory(graphicsHandler, inventoryScreen);;
@@ -228,13 +227,12 @@ public abstract class Player extends GameObject {
     
     public Rectangle getInteractionRange() {
         return new Rectangle(
-                getBounds().getX1() - interactionRange,
-                getBounds().getY1() - interactionRange,
-                getBounds().getWidth() + (interactionRange * 2),
-                getBounds().getHeight() + (interactionRange * 2));
+            getBounds().getX1() - interactionRange,
+            getBounds().getY1() - interactionRange,
+            getBounds().getWidth() + (interactionRange * 2),
+            getBounds().getHeight() + (interactionRange * 2));
     }
-     
-
+    
     public Key getInteractKey() { return INTERACT_KEY; }
     public Direction getCurrentWalkingXDirection() { return currentWalkingXDirection; }
     public Direction getCurrentWalkingYDirection() { return currentWalkingYDirection; }

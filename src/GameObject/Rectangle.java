@@ -10,49 +10,49 @@ import java.awt.*;
 // the methods here are pretty self explanatory
 public class Rectangle implements IntersectableRectangle {
 	protected float x;
-	protected float y;
-	protected int width;
-	protected int height;
-	protected float scale;
-	protected Color color;
-	protected Color borderColor;
-	protected int borderThickness;
-
-	public Rectangle() {
-		this.x = 0;
-		this.y = 0;
-		this.width = 0;
-		this.height = 0;
-		this.scale = 1;
-		this.color = Color.white;
-		this.borderColor = null;
-		this.borderThickness = 0;
-	}
-
-	public Rectangle(float x, float y, int width, int height) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.scale = 1;
-		this.color = Color.white;
-		this.borderColor = null;
-		this.borderThickness = 0;
-	}
-
-	public Rectangle(float x, float y, int width, int height, float scale) {
-		this.x = x;
-		this.y = y;
-		this.width = width;
-		this.height = height;
-		this.scale = scale;
-		this.color = Color.white;
-		this.borderColor = null;
-		this.borderThickness = 0;
-	}
-
-	public float getX() {
-		return x;
+		protected float y;
+		protected int width;
+		protected int height;
+		protected float scale;
+		protected Color color;
+		protected Color borderColor;
+		protected int borderThickness;
+	
+		public Rectangle() {
+			this.x = 0;
+			this.y = 0;
+			this.width = 0;
+			this.height = 0;
+			this.scale = 1;
+			this.color = Color.white;
+			this.borderColor = null;
+			this.borderThickness = 0;
+		}
+	
+		public Rectangle(float x, float y, int width, int height) {
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			this.scale = 1;
+			this.color = Color.white;
+			this.borderColor = null;
+			this.borderThickness = 0;
+		}
+	
+		public Rectangle(float x, float y, int width, int height, float scale) {
+			this.x = x;
+			this.y = y;
+			this.width = width;
+			this.height = height;
+			this.scale = scale;
+			this.color = Color.white;
+			this.borderColor = null;
+			this.borderThickness = 0;
+		}
+	
+		public float getX() {
+			return x;
 	}
 
 	public float getX1() {

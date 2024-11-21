@@ -51,7 +51,9 @@ public class ScreenCoordinator extends Screen {
     private long randomDelay; 
     private boolean isDelaySet = false; 
 
-
+	public ScreenCoordinator getScreenCoordinator(){
+		return this;
+	}
 
 	public GameState getGameState() {
 		return gameState;
