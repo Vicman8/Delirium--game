@@ -30,7 +30,7 @@ import Utils.Point;
 import Utils.Visibility;
 
 public class CompressorScript extends Script{
-     //public boolean compressor = false;
+     protected static boolean compressor = false;
     
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
@@ -48,23 +48,23 @@ public class CompressorScript extends Script{
                 addScriptAction(new TextboxScriptAction () {{
                     addText("You picked up the Compressor");
 
-                    compressor = true;
-                   
                 }});
-
-
-             
-
-                addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
-
                 
-
+                
+                
+                
+                addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
+                
+                
+                
                 addScriptAction(new ChangeFlagScriptAction("GrabbedCompressor", true));
             }});
         }});
-
+        
+        compressor = true;
 
         scriptActions.add(new UnlockPlayerScriptAction());
+        
         return scriptActions;
     }
 }

@@ -25,7 +25,7 @@ import Utils.Direction;
 import Utils.Point;
 
 public class DormScreen extends Screen{
-    public static final boolean compressor = false;
+    //public static final boolean compressor = false;
         protected ScreenCoordinator screenCoordinator;
         protected Map map;
         public Player player;
@@ -34,6 +34,8 @@ public class DormScreen extends Screen{
         protected FlagManager flagManager;
         protected KeyLocker keyLocker = new KeyLocker();
         protected boolean showInventory;
+      //  boolean compressor;
+
         
     
         public DormScreen(ScreenCoordinator screenCoordinator) {
@@ -157,9 +159,20 @@ public class DormScreen extends Screen{
                     map.draw(player, graphicsHandler);
                     if (showInventory) {
                         graphicsHandler.drawStringWithOutline("Inventory", 0, 50, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
-                        if(compressor){
-                            graphicsHandler.drawStringWithOutline("Compressor", 0, 60, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+                        if(){
+                            graphicsHandler.drawStringWithOutline("Compressor", 0, 80, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
 
+
+                        }
+                        if(1==1){
+                            graphicsHandler.drawStringWithOutline("Evaporator Coil", 0, 100, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+
+                        }
+                        if (1+1==2) {
+                            graphicsHandler.drawStringWithOutline("Condensing Coil", 0, 120, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
+                        }
+                        if (1 == 1) {
+                            graphicsHandler.drawStringWithOutline("Circulating Fan", 0, 140, new Font("Algerian", 0, 25), Color.RED, Color.black, 2);
 
                         }
                 }

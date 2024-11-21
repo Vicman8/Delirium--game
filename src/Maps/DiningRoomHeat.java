@@ -3,6 +3,7 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
+import NPCs.CondensingCoil;
 import NPCs.Dinosaur;
 import NPCs.TheKingThim;
 import NPCs.TheThim;
@@ -56,6 +57,8 @@ public class DiningRoomHeat extends Map {
 
         TheKingThim theKingThim = new TheKingThim(1, getMapTile(7, 7).getLocation());
         npcs.add(theKingThim);
+
+        
 
         return npcs;
     }

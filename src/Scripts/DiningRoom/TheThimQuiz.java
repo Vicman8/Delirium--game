@@ -222,10 +222,11 @@ public class TheThimQuiz extends Script {
                                                                                     addText("Kaegen: Yes!");
                                                                                     addText("Prof. Thimineur: Well, as promised, you earned this!");
                                                                                     addText("Kaegen: Thank you!");
-                                                                                    scriptActions.add(new ChangeFlagScriptAction("finalBossFought", true));
+                                                                                    
                                                                                 }
+                                                                                
                                                                             });
-                                                                            
+                                                                            addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
                                                                         }
                                                                     });
                                                                     addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {

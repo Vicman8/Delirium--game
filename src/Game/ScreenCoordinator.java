@@ -50,6 +50,9 @@ public class ScreenCoordinator extends Screen {
 	protected boolean hasSwitched = false;
 	protected boolean nextSwitch = false;
 
+
+	protected boolean compressor;
+
 	private long lastSwitchTime;    
     private long randomDelay; 
     private boolean isDelaySet = false; 
@@ -73,6 +76,14 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
+	}
+
+	public boolean getCompressor(){
+		return compressor;
+	}
+
+	public void setCompressor(boolean compressor){
+		this.compressor = compressor;
 	}
 
 	@Override

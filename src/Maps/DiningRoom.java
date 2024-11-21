@@ -3,10 +3,12 @@ package Maps;
 import EnhancedMapTiles.PushableRock;
 import Level.*;
 import NPCs.Bug;
+import NPCs.CondensingCoil;
 import NPCs.Dinosaur;
 import NPCs.TheThim;
 import NPCs.TheThimImposter;
 import Scripts.SimpleTextScript;
+import Scripts.ACParts.CondensingCoilScript;
 import Scripts.DiningRoom.TheThimQuiz;
 import Tilesets.CommonTileset;
 
@@ -56,6 +58,11 @@ public class DiningRoom extends Map {
         //figure out how to have the Victor fight here
 
         npcs.add(theThim);
+        CondensingCoil condensingCoil = new CondensingCoil(2 , getMapTile(7,7).getLocation());
+        condensingCoil.setInteractScript(new CondensingCoilScript());
+        npcs.add(condensingCoil);
+
+
 
         
 

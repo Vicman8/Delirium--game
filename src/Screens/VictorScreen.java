@@ -76,9 +76,6 @@ public class VictorScreen extends Screen{
         }
         */
 
-        if(Keyboard.isKeyDown(Key.I)){
-            map.getFlagManager().isFlagSet()
-        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
