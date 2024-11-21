@@ -75,11 +75,7 @@ public class HeatOutdoorScreen extends Screen{
 
     public void update() {
         // based on screen state, perform specific actions
-
-        if (Keyboard.isKeyUp(Key.ESC)) {
-            keyLocker.unlockKey(Key.ESC);
-        }
-        if (!keyLocker.isKeyLocked(Key.ESC) && Keyboard.isKeyDown(Key.ESC)) {
+        if (Keyboard.isKeyDown(Key.ESC)) {
 
             screenCoordinator.setGameState(GameState.MENU);
         }

@@ -27,9 +27,7 @@ public class DanaDorm extends Map{
         //this.screenCoordinator = screenCoordinator;
         Audio.playAudio("Audio Resources/Mountainview Courtyard.wav", true);
     }
-
-   
-    
+ 
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();

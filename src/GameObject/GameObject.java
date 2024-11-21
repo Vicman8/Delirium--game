@@ -52,7 +52,7 @@ public class GameObject extends AnimatedSprite {
 		this.previousY = y;
 	}
 
-	public GameObject(float x, float y, Frame[] frames) {
+	public GameObject(float x, float y, Frame[] frames){
 		super(x, y, frames);
 		this.startPositionX = x;
 		this.startPositionY = y;
@@ -60,7 +60,7 @@ public class GameObject extends AnimatedSprite {
 		this.previousY = y;
 	}
 
-	public GameObject(float x, float y, Frame frame) {
+	public GameObject(float x, float y, Frame frame){
 		super(x, y, frame);
 		this.startPositionX = x;
 		this.startPositionY = y;
