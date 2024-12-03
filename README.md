@@ -10,8 +10,8 @@ The main method for the game is in the `Game` package > `Game.java` file.<br>
 The main method for the map editor is in the `MapEditor` package > `MapEditor.java` file.
 
 ## Credits
-Tamar Foster
-Akshaj Illa
-Brandon McCrave
-Nicholas Demetrio
+Tamar Foster,
+Akshaj Illa,
+Brandon McCrave,
+Nicholas Demetrio,
 Victor Fuda
